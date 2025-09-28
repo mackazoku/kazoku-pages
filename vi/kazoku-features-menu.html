@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kazoku Features - Family App</title>
+    <title>Kazoku App - Smart Assistant for Families</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <style>
         * {
             margin: 0;
@@ -232,6 +234,35 @@
             font-size: 0.9rem;
         }
 
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+
         .footer-note {
             text-align: center;
             margin-top: 30px;
@@ -362,6 +393,35 @@
 
             .tutorial-help {
                 grid-template-columns: 1fr;
+            }
+
+            footer {
+                background: transparent;
+                color: white;
+                text-align: center;
+                padding: 2rem 0;
+            }
+            
+            .footer-content {
+                margin-bottom: 1rem;
+            }
+            
+            .social-links {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin: 1rem 0;
+            }
+            
+            .social-links a {
+                color: white;
+                font-size: 1.5rem;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+            
+            .social-links a:hover {
+                color: #667eea;
             }
 
             /* Footer Mobile */
@@ -791,21 +851,33 @@
             box-shadow: 0 8px 20px rgba(74, 222, 128, 0.3);
         }
 
-        /* Footer Styles */
-        .footer {
-            background: linear-gradient(135deg, #2c3e50, #34495e);
+        footer {
+            background: transparent;
             color: white;
-            margin-top: 60px;
-            padding: 50px 0 0;
+            text-align: center;
+            padding: 2rem 0;
         }
-
+        
         .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
         }
 
         .footer-section h3 {
@@ -1005,21 +1077,84 @@
             </div>
 
             <div class="features-list">
-                <a href="#timeline" class="feature-item" onclick="handleFeatureClick(event, 'Timeline')">
-                    <div class="feature-icon">🕐</div>
+                <!-- Timeline -->
+                <a href="kazoku-timeline-page.html" class="feature-item">
+                    <div class="feature-icon">📸</div>
                     <div class="feature-content">
                         <div class="feature-name">Timeline</div>
                         <div class="feature-description">
-                            Chia sẻ ảnh, video tức thì với tính năng bình luận và thả tim. Tự động sắp xếp theo thời gian và chia sẻ khoảnh khắc trong các sự kiện gia đình hoặc hoạt động vui chơi.
+                            Lưu giữ và chia sẻ những kỷ niệm đẹp cùng gia đình.
                         </div>
                     </div>
                     <div class="feature-arrow">→</div>
                 </a>
 
-                <a href="#family-chat" class="feature-item" onclick="handleFeatureClick(event, 'Family Chat')">
+                <!-- Tasks -->
+                <a href="kazoku_task_guide.html" class="feature-item">
+                    <div class="feature-icon">🏠</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Quản lý việc nhà</div>
+                        <div class="feature-description">
+                            Phân chia và theo dõi công việc nhà một cách hiệu quả.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <!-- Events -->
+                <a href="kazoku_calendar_guide.html" class="feature-item">
+                    <div class="feature-icon">📅</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Lịch gia đình</div>
+                        <div class="feature-description">
+                            Quản lý và đồng bộ lịch trình của cả gia đình trên một giao diện trực quan.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <!-- Fun activities -->
+                <a href="kazoku_activities_guide.html" class="feature-item">
+                    <div class="feature-icon">🏕️</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Hoạt động vui chơi</div>
+                        <div class="feature-description">
+                            Lên kế hoạch và tổ chức các hoạt động vui chơi cho cả gia đình.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <!-- Personal activities -->
+                <a href="kazoku_personal_guide.html" class="feature-item">
+                    <div class="feature-icon">🏃‍♀️</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Hoạt động cá nhân</div>
+                        <div class="feature-description">
+                            Theo dõi sức khỏe và thói quen cá nhân của từng thành viên.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <!-- Kazoku AI -->
+                <a href="kazoku_activities_guide.html" class="feature-item">
+                    <div class="feature-icon">✨</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Kazoku AI</div>
+                        <div class="feature-description">
+                            Trợ lý AI thông minh hỗ trợ quản lý gia đình.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <!-- Kazoku AI -->
+                <a href="kazoku-family-chat.html
+" class="feature-item">
                     <div class="feature-icon">💬</div>
                     <div class="feature-content">
-                        <div class="feature-name">Family Chat</div>
+                        <div class="feature-name">Tin nhắn</div>
                         <div class="feature-description">
                             Phòng chat riêng tư cho gia đình với chat realtime, hỗ trợ text, hình ảnh, emoji và sticker sinh động. Có typing indicator, bookmark tin nhắn và tìm kiếm thông minh.
                         </div>
@@ -1027,7 +1162,8 @@
                     <div class="feature-arrow">→</div>
                 </a>
 
-                <a href="#expense-management" class="feature-item" onclick="handleFeatureClick(event, 'Expense Management')">
+                <!-- Expense Management-->
+                <a href="kazoku-expense-management.html" class="feature-item">
                     <div class="feature-icon">💰</div>
                     <div class="feature-content">
                         <div class="feature-name">Quản lý Chi tiêu</div>
@@ -1038,46 +1174,29 @@
                     <div class="feature-arrow">→</div>
                 </a>
 
-                <a href="#family-notes" class="feature-item" onclick="handleFeatureClick(event, 'Family Notes')">
+                <!-- Family Notes -->
+                <a href="kazoku-family-notes.html" class="feature-item">
                     <div class="feature-icon">📝</div>
                     <div class="feature-content">
-                        <div class="feature-name">Family Notes</div>
+                        <div class="feature-name">Sổ tay gia đình</div>
                         <div class="feature-description">
-                            Sổ ghi chép chung về mọi vấn đề trong gia đình như nhật ký, tài khoản, kinh nghiệm. Hỗ trợ đính kèm ảnh và PDF, sắp xếp theo thời gian chỉnh sửa.
+                            Sổ ghi chép chung của gia đình - nơi lưu giữ những kiến thức, kinh nghiệm và kỷ niệm quý báu. Từ nhật ký hàng ngày, thông tin tài khoản quan trọng đến những bí quyết sống, mọi thứ đều được chia sẻ và bảo quản an toàn cho cả gia đình.
                         </div>
                     </div>
                     <div class="feature-arrow">→</div>
                 </a>
 
-                <a href="#member-management" class="feature-item" onclick="handleFeatureClick(event, 'Member Management')">
+                <!-- Member Management -->
+                <a href="kazoku-member-management.html" class="feature-item">
                     <div class="feature-icon">👨‍👩‍👧‍👦</div>
                     <div class="feature-content">
                         <div class="feature-name">Quản lý Thành viên</div>
                         <div class="feature-description">
-                            Supervisor thêm và quản lý thành viên gia đình. Liên kết tài khoản, lưu thông tin chi tiết cho Kazoku AI cá nhân hóa. Mời thành viên qua email hoặc QR code.
+                            Quản lý thành viên gia đình một cách thông minh và hiệu quả. Supervisor có toàn quyền kiểm soát việc thêm, mời và quản lý thông tin của từng thành viên, giúp Kazoku AI hiểu rõ hơn về gia đình để đưa ra những gợi ý cá nhân hóa tốt nhất cho mọi người.
                         </div>
                     </div>
                     <div class="feature-arrow">→</div>
                 </a>
-            </div>
-
-            <div class="stats-section">
-                <div class="stat-item">
-                    <div class="stat-number">5</div>
-                    <div class="stat-label">Tính năng chính</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Miễn phí</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24/7</div>
-                    <div class="stat-label">Hỗ trợ</div>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">AI</div>
-                    <div class="stat-label">Thông minh</div>
-                </div>
             </div>
 
             <div class="footer-note">
@@ -1104,31 +1223,7 @@
                         <div class="video-duration">⏱️ 3:24</div>
                     </div>
                 </div>
-            </div>
-
-            <div class="video-features">
-                <div class="video-feature-item">
-                    <span class="video-feature-icon">🎯</span>
-                    <div class="video-feature-text">
-                        <strong>Demo thực tế</strong>
-                        <small>Xem cách sử dụng từng tính năng</small>
-                    </div>
-                </div>
-                <div class="video-feature-item">
-                    <span class="video-feature-icon">👨‍👩‍👧‍👦</span>
-                    <div class="video-feature-text">
-                        <strong>Gia đình mẫu</strong>
-                        <small>Trải nghiệm với gia đình thực tế</small>
-                    </div>
-                </div>
-                <div class="video-feature-item">
-                    <span class="video-feature-icon">⚡</span>
-                    <div class="video-feature-text">
-                        <strong>Nhanh chóng</strong>
-                        <small>Chỉ trong vài phút</small>
-                    </div>
-                </div>
-            </div>
+            </div>            
         </div>
 
         <!-- Tutorial Section -->
@@ -1186,141 +1281,39 @@
                     </div>
                 </div>
             </div>
-
-            <div class="tutorial-help">
-                <div class="help-card">
-                    <h4>💬 Cần hỗ trợ?</h4>
-                    <p>Đội ngũ hỗ trợ 24/7 sẵn sàng giúp đỡ bạn</p>
-                    <button class="help-btn" onclick="showSupport()">Liên hệ hỗ trợ</button>
-                </div>
-                <div class="help-card">
-                    <h4>📖 Tài liệu</h4>
-                    <p>Hướng dẫn chi tiết và FAQ</p>
-                    <button class="help-btn" onclick="showDocs()">Xem tài liệu</button>
-                </div>
-            </div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <div class="footer-logo">
-                    <h3>🏠 Kazoku</h3>
-                    <p>Ứng dụng quản lý gia đình thông minh</p>
-                </div>
-                <div class="footer-social">
-                    <a href="#" class="social-link">📘 Facebook</a>
-                    <a href="#" class="social-link">📷 Instagram</a>
-                    <a href="#" class="social-link">🐦 Twitter</a>
-                    <a href="#" class="social-link">💼 LinkedIn</a>
-                </div>
-            </div>
-
-            <div class="footer-section">
-                <h4>Tính năng</h4>
-                <ul class="footer-links">
-                    <li><a href="#timeline">🕐 Timeline</a></li>
-                    <li><a href="#family-chat">💬 Family Chat</a></li>
-                    <li><a href="#expense-management">💰 Quản lý Chi tiêu</a></li>
-                    <li><a href="#family-notes">📝 Family Notes</a></li>
-                    <li><a href="#member-management">👨‍👩‍👧‍👦 Quản lý Thành viên</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Hỗ trợ</h4>
-                <ul class="footer-links">
-                    <li><a href="#help">❓ Trung tâm trợ giúp</a></li>
-                    <li><a href="#contact">📞 Liên hệ</a></li>
-                    <li><a href="#privacy">🔒 Chính sách bảo mật</a></li>
-                    <li><a href="#terms">📋 Điều khoản sử dụng</a></li>
-                    <li><a href="#faq">💬 FAQ</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-section">
-                <h4>Tải ứng dụng</h4>
-                <div class="download-buttons">
-                    <a href="#" class="download-btn">
-                        <span class="download-icon">📱</span>
-                        <div class="download-text">
-                            <small>Tải trên</small>
-                            <strong>App Store</strong>
-                        </div>
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <h3>❤️ Kazoku - Gia đình hạnh phúc bắt đầu từ việc nhỏ</h3>
+                <p>📧 Email: contact@kazoku-ai.com</p>
+                <p>🌐 Website: kazoku-ai.com | 🏢 Địa chỉ: Edogawa, Tokyo, Japan</p>
+                <div style="display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap;">
+                    <a href="#" style="color: #fff; text-decoration: none;">
+                        <i class="fab fa-apple"></i> Tải iOS
                     </a>
-                    <a href="#" class="download-btn">
-                        <span class="download-icon">🤖</span>
-                        <div class="download-text">
-                            <small>Tải trên</small>
-                            <strong>Google Play</strong>
-                        </div>
+                    <a href="#" style="color: #fff; text-decoration: none;">
+                        <i class="fab fa-android"></i> Tải Android
                     </a>
                 </div>
-                <div class="footer-newsletter">
-                    <h5>📧 Nhận thông báo cập nhật</h5>
-                    <div class="newsletter-form">
-                        <input type="email" placeholder="Nhập email của bạn">
-                        <button onclick="subscribeNewsletter()">Đăng ký</button>
-                    </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-threads"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
                 </div>
             </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="footer-bottom-content">
-                <p>&copy; 2025 Kazoku Family App. Tất cả quyền được bảo lưu.</p>
-                <div class="footer-bottom-links">
-                    <a href="#privacy">Chính sách bảo mật</a>
-                    <a href="#terms">Điều khoản</a>
-                    <a href="#cookies">Cookie</a>
-                </div>
-            </div>
+            <p>&copy; 2025 Kazoku App. Tất cả quyền được bảo lưu.<br>
+                <em>"Kết nối yêu thương - Chia sẻ hạnh phúc"</em>
+            </p>
         </div>
     </footer>
 
     <script>
-        function handleFeatureClick(event, featureName) {
-            event.preventDefault();
-            
-            // Create ripple effect
-            const item = event.currentTarget;
-            const rect = item.getBoundingClientRect();
-            const ripple = document.createElement('span');
-            const size = Math.max(rect.width, rect.height);
-            const x = event.clientX - rect.left - size / 2;
-            const y = event.clientY - rect.top - size / 2;
-            
-            ripple.style.cssText = `
-                position: absolute;
-                width: ${size}px;
-                height: ${size}px;
-                left: ${x}px;
-                top: ${y}px;
-                background: rgba(102, 126, 234, 0.3);
-                border-radius: 50%;
-                transform: scale(0);
-                animation: ripple-animation 0.6s linear;
-                pointer-events: none;
-            `;
-            ripple.classList.add('ripple');
-            
-            item.appendChild(ripple);
-            
-            setTimeout(() => {
-                ripple.remove();
-            }, 600);
-            
-            // Show feature selection
-            setTimeout(() => {
-                alert(`🎉 Đã chọn tính năng: ${featureName}\n\nBạn sẽ được chuyển đến trang demo của tính năng này!`);
-                
-                // Here you can add actual navigation logic
-                // window.location.href = item.href;
-            }, 300);
-        }
-
         // Parallax effect for floating elements
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính sách bảo mật - Kazoku</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+        .section:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #059669;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #059669, #10b981);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left: 4px solid #059669;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '🔒';
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #059669;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #bbf7d0;
+            margin-top: 30px;
+        }
+
+        .contact-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #065f46;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            color: #047857;
+            font-size: 0.9em;
+        }
+
+        .footer {
+            background: #f8fafc;
+            padding: 20px 30px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.9em;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #d1fae5;
+            color: #065f46;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th, .data-table td {
+                padding: 10px 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">🔐 Kazoku</div>
+            <div class="app-subtitle">Chính sách Bảo mật & Quyền riêng tư</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                Có hiệu lực từ: 27/09/2025
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. Giới thiệu</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku cam kết bảo vệ quyền riêng tư và dữ liệu cá nhân của bạn. Chính sách này giải thích cách chúng tôi thu thập, sử dụng, lưu trữ và bảo vệ thông tin của bạn khi sử dụng ứng dụng quản lý gia đình Kazoku.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>🛡️ Cam kết của chúng tôi:</strong> Dữ liệu gia đình của bạn là tài sản quý giá nhất. Chúng tôi áp dụng các biện pháp bảo mật cao nhất để đảm bảo thông tin của bạn luôn được an toàn và riêng tư.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📊</span>
+                    <h2 class="section-title">2. Thông tin chúng tôi thu thập</h2>
+                </div>
+                <div class="section-content">
+                    <table class="data-table">
+                        <tr>
+                            <th>Loại thông tin</th>
+                            <th>Chi tiết</th>
+                            <th>Mục đích sử dụng</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Thông tin cá nhân</strong></td>
+                            <td>Họ tên, email, số điện thoại, ảnh đại diện</td>
+                            <td>Tạo và quản lý tài khoản</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Thông tin gia đình</strong></td>
+                            <td>Tên thành viên, mối quan hệ, ngày sinh</td>
+                            <td>Tổ chức và quản lý gia đình</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dữ liệu hoạt động</strong></td>
+                            <td>Lịch trình, công việc, ghi chú, chi tiêu</td>
+                            <td>Cung cấp tính năng quản lý</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Thông tin thiết bị</strong></td>
+                            <td>Loại thiết bị, hệ điều hành, ID thiết bị</td>
+                            <td>Tối ưu hóa hiệu suất</td>
+                        </tr>
+                    </table>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ Lưu ý:</strong> Chúng tôi chỉ thu thập thông tin cần thiết để cung cấp dịch vụ. Bạn có thể từ chối một số loại dữ liệu nhưng điều này có thể ảnh hưởng đến trải nghiệm sử dụng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🎯</span>
+                    <h2 class="section-title">3. Cách chúng tôi sử dụng thông tin</h2>
+                </div>
+                <div class="section-content">
+                    <p>Dữ liệu của bạn được sử dụng để:</p>
+                    
+                    <div class="list-item">Cung cấp và duy trì các tính năng của ứng dụng</div>
+                    <div class="list-item">Đồng bộ hóa dữ liệu giữa các thiết bị</div>
+                    <div class="list-item">Gửi thông báo và nhắc nhở theo yêu cầu</div>
+                    <div class="list-item">Cải thiện hiệu suất và trải nghiệm người dùng</div>
+                    <div class="list-item">Hỗ trợ kỹ thuật khi bạn yêu cầu</div>
+                    <div class="list-item">Phân tích xu hướng sử dụng để phát triển tính năng mới</div>
+
+                    <p style="margin-top: 20px;"><strong>Chúng tôi KHÔNG sử dụng dữ liệu để:</strong></p>
+                    <div class="sub-list-item">Bán hoặc cho thuê thông tin cá nhân</div>
+                    <div class="sub-list-item">Quảng cáo hoặc marketing từ bên thứ ba</div>
+                    <div class="sub-list-item">Theo dõi hoạt động bên ngoài ứng dụng</div>
+                    <div class="sub-list-item">Chia sẻ với đối tác mà không có sự đồng ý</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🛡️</span>
+                    <h2 class="section-title">4. Bảo mật dữ liệu</h2>
+                </div>
+                <div class="section-content">
+                    <p>Chúng tôi áp dụng nhiều lớp bảo mật để bảo vệ dữ liệu của bạn:</p>
+                    
+                    <div class="list-item">
+                        <strong>Mã hóa dữ liệu:</strong>
+                        <div class="sub-list-item">Mã hóa AES-256 cho dữ liệu lưu trữ</div>
+                        <div class="sub-list-item">Mã hóa TLS 1.3 cho truyền tải dữ liệu</div>
+                        <div class="sub-list-item">Hash SHA-256 cho mật khẩu</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Kiểm soát truy cập:</strong>
+                        <div class="sub-list-item">Xác thực đa yếu tố (2FA)</div>
+                        <div class="sub-list-item">Kiểm tra quyền truy cập theo vai trò</div>
+                        <div class="sub-list-item">Phiên đăng nhập có thời hạn</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Giám sát bảo mật:</strong>
+                        <div class="sub-list-item">Phát hiện hoạt động bất thường</div>
+                        <div class="sub-list-item">Sao lưu dữ liệu định kỳ</div>
+                        <div class="sub-list-item">Kiểm tra bảo mật thường xuyên</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🤝</span>
+                    <h2 class="section-title">5. Chia sẻ thông tin</h2>
+                </div>
+                <div class="section-content">
+                    <p>Chúng tôi chỉ chia sẻ thông tin trong các trường hợp sau:</p>
+                    
+                    <div class="list-item">
+                        <strong>Trong gia đình:</strong> Theo cài đặt quyền riêng tư mà bạn thiết lập
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Nhà cung cấp dịch vụ:</strong> Các đối tác kỹ thuật đã ký thỏa thuận bảo mật
+                        <div class="sub-list-item">Dịch vụ lưu trữ đám mây (AWS, Google Cloud)</div>
+                        <div class="sub-list-item">Dịch vụ phân tích (Firebase Analytics)</div>
+                        <div class="sub-list-item">Dịch vụ thông báo đẩy</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Yêu cầu pháp lý:</strong> Khi được yêu cầu bởi cơ quan có thẩm quyền
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🔒 Đảm bảo:</strong> Tất cả đối tác của chúng tôi đều phải tuân thủ các tiêu chuẩn bảo mật cao và chỉ được truy cập dữ liệu cần thiết để cung cấp dịch vụ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">⚙️</span>
+                    <h2 class="section-title">6. Quyền kiểm soát của bạn</h2>
+                </div>
+                <div class="section-content">
+                    <p>Bạn có toàn quyền kiểm soát dữ liệu cá nhân của mình:</p>
+                    
+                    <div class="list-item">
+                        <strong>Truy cập:</strong> Xem tất cả dữ liệu chúng tôi lưu trữ về bạn
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Chỉnh sửa:</strong> Cập nhật hoặc sửa đổi thông tin cá nhân
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Xóa dữ liệu:</strong> Yêu cầu xóa một phần hoặc toàn bộ dữ liệu
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Xuất dữ liệu:</strong> Tải xuống dữ liệu dưới định dạng có thể đọc được
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Từ chối xử lý:</strong> Hạn chế một số hoạt động xử lý dữ liệu
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Cài đặt quyền riêng tư:</strong> Kiểm soát ai có thể thấy thông tin của bạn
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>📱 Cách thực hiện:</strong> Truy cập <strong>Cài đặt → Quyền riêng tư → Quản lý dữ liệu</strong> trong ứng dụng, hoặc liên hệ đội ngũ hỗ trợ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🍪</span>
+                    <h2 class="section-title">7. Cookie và Công nghệ theo dõi</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku sử dụng các công nghệ sau để cải thiện trải nghiệm:</p>
+                    
+                    <table class="data-table">
+                        <tr>
+                            <th>Loại</th>
+                            <th>Mục đích</th>
+                            <th>Thời hạn</th>
+                        </tr>
+                        <tr>
+                            <td>Session Storage</td>
+                            <td>Duy trì phiên đăng nhập</td>
+                            <td>Khi đóng ứng dụng</td>
+                        </tr>
+                        <tr>
+                            <td>Local Storage</td>
+                            <td>Lưu cài đặt cá nhân</td>
+                            <td>Đến khi xóa</td>
+                        </tr>
+                        <tr>
+                            <td>Analytics</td>
+                            <td>Thống kê sử dụng</td>
+                            <td>26 tháng</td>
+                        </tr>
+                        <tr>
+                            <td>Crash Reports</td>
+                            <td>Cải thiện ổn định</td>
+                            <td>90 ngày</td>
+                        </tr>
+                    </table>
+
+                    <p>Bạn có thể tắt một số tính năng này trong phần Cài đặt ứng dụng.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">8. Lưu trữ và Xóa dữ liệu</h2>
+                </div>
+                <div class="section-content">
+                    <div class="list-item">
+                        <strong>Thời gian lưu trữ:</strong>
+                        <div class="sub-list-item">Dữ liệu hoạt động: Trong thời gian sử dụng ứng dụng</div>
+                        <div class="sub-list-item">Dữ liệu tài khoản: Đến khi bạn yêu cầu xóa</div>
+                        <div class="sub-list-item">Log hệ thống: 12 tháng</div>
+                        <div class="sub-list-item">Dữ liệu phân tích: 26 tháng (ẩn danh)</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Xóa tự động:</strong>
+                        <div class="sub-list-item">Tài khoản không hoạt động sau 2 năm</div>
+                        <div class="sub-list-item">Dữ liệu tạm thời sau 30 ngày</div>
+                        <div class="sub-list-item">File backup cũ sau 90 ngày</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🗑️ Xóa tài khoản:</strong> Khi bạn xóa tài khoản, chúng tôi sẽ xóa toàn bộ dữ liệu cá nhân trong vòng 30 ngày, trừ những thông tin cần thiết cho mục đích pháp lý.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">👶</span>
+                    <h2 class="section-title">9. Bảo vệ trẻ em</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku đặc biệt quan tâm đến việc bảo vệ thông tin của trẻ em:</p>
+                    
+                    <div class="list-item">Không thu thập thông tin cá nhân từ trẻ dưới 13 tuổi mà không có sự đồng ý của phụ huynh</div>
+                    <div class="list-item">Các tính năng dành cho trẻ em được thiết kế với mức độ bảo mật cao hơn</div>
+                    <div class="list-item">Phụ huynh có quyền kiểm soát hoàn toàn dữ liệu của con em mình</div>
+                    <div class="list-item">Không hiển thị quảng cáo hoặc nội dung không phù hợp với trẻ em</div>
+
+                    <div class="warning-box">
+                        <p><strong>👨‍👩‍👧‍👦 Dành cho phụ huynh:</strong> Nếu bạn phát hiện con mình đã cung cấp thông tin cá nhân mà không có sự đồng ý, vui lòng liên hệ ngay để chúng tôi xóa thông tin đó.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">10. Cập nhật Chính sách</h2>
+                </div>
+                <div class="section-content">
+                    <p>Chúng tôi có thể cập nhật chính sách này để:</p>
+                    
+                    <div class="list-item">Tuân thủ các quy định pháp luật mới</div>
+                    <div class="list-item">Phản ánh các thay đổi trong dịch vụ</div>
+                    <div class="list-item">Cải thiện việc bảo vệ dữ liệu</div>
+
+                    <p>Mọi thay đổi quan trọng sẽ được thông báo qua:</p>
+                    <div class="sub-list-item">Thông báo trong ứng dụng</div>
+                    <div class="sub-list-item">Email đến địa chỉ đã đăng ký</div>
+                    <div class="sub-list-item">Thông báo đẩy (nếu đã bật)</div>
+
+                    <p>Phiên bản cập nhật sẽ có hiệu lực sau 30 ngày thông báo.</p>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <div class="contact-title">📧 Liên hệ về Quyền riêng tư</div>
+                <div class="contact-info">
+                    <p>Nếu bạn có thắc mắc về chính sách này hoặc muốn thực hiện quyền của mình:</p>
+                    <p><strong>Email Bảo mật:</strong> privacy@kazoku.app</p>
+                    <p><strong>Hotline Hỗ trợ:</strong> 1900 - KAZOKU (52-96-58)</p>
+                    <p><strong>Thời gian phản hồi:</strong> Trong vòng 72 giờ</p>
+                    <p><strong>Địa chỉ:</strong> [Địa chỉ công ty của bạn]</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Kazoku App. Cam kết bảo vệ quyền riêng tư của bạn.</p>
+            <p>Phiên bản chính sách: 2.0 | Cập nhật lần cuối: 27/09/2025</p>
+        </div>
+    </div>
+</body>
+</html>

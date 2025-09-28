@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline - Kazoku Family App</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #e1e8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(360deg) scale(1.1);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #6c7b8a;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .demo-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .demo-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .timeline-demo {
+            max-width: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-post {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideInLeft 0.8s ease-out forwards;
+        }
+
+        .timeline-post:nth-child(1) { animation-delay: 0.8s; }
+        .timeline-post:nth-child(2) { animation-delay: 1s; }
+        .timeline-post:nth-child(3) { animation-delay: 1.2s; }
+
+        .timeline-post:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .post-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        .post-info h4 {
+            color: #2c3e50;
+            font-size: 0.9rem;
+            margin-bottom: 2px;
+        }
+
+        .post-time {
+            color: #8e9aaf;
+            font-size: 0.8rem;
+        }
+
+        .post-content {
+            color: #4a5568;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+
+        .post-actions {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
+            color: #667eea;
+        }
+
+        .post-actions span {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .post-actions span:hover {
+            color: #764ba2;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 30px 25px;
+            }
+            
+            .demo-section {
+                padding: 40px 25px;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🕐 Timeline</h1>
+            <p>Ghi lại và chia sẻ những khoảnh khắc đáng nhớ của gia đình. Từ những bữa ăn ấm cúng đến những chuyến du lịch vui vẻ, mọi kỷ niệm đều được lưu giữ và sắp xếp theo thời gian một cách tự động.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📸</div>
+                <h3>Chia sẻ tức thì</h3>
+                <p>Dễ dàng chia sẻ ảnh, video ngay lập tức với tất cả thành viên trong gia đình. Chỉ cần chụp và đăng, mọi người sẽ thấy ngay!</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>Tương tác sinh động</h3>
+                <p>Bình luận, thả tim và phản hồi với những khoảnh khắc của nhau. Tạo nên những cuộc trò chuyện ý nghĩa quanh mỗi bức ảnh.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⏰</div>
+                <h3>Tự động sắp xếp</h3>
+                <p>Timeline thông minh tự động sắp xếp tất cả nội dung theo thời gian, giúp bạn dễ dàng tìm lại những kỷ niệm đã qua.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎉</div>
+                <h3>Khoảnh khắc đặc biệt</h3>
+                <p>Đánh dấu và chia sẻ những sự kiện quan trọng, từ sinh nhật, kỷ niệm đến những hoạt động vui chơi cùng gia đình.</p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Timeline Demo</h2>
+            <div class="timeline-demo">
+                <div class="timeline-post">
+                    <div class="post-header">
+                        <div class="post-avatar">M</div>
+                        <div class="post-info">
+                            <h4>Mẹ</h4>
+                            <div class="post-time">2 giờ trước</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Bữa tối gia đình hôm nay thật ấm cúng! 🍽️✨
+                    </div>
+                    <div class="post-actions">
+                        <span>❤️ 5</span>
+                        <span>💬 3</span>
+                        <span>📤 Chia sẻ</span>
+                    </div>
+                </div>
+
+                <div class="timeline-post">
+                    <div class="post-header">
+                        <div class="post-avatar">B</div>
+                        <div class="post-info">
+                            <h4>Bố</h4>
+                            <div class="post-time">5 giờ trước</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Con trai vừa ghi bàn thắng đầu tiên! ⚽🏆
+                    </div>
+                    <div class="post-actions">
+                        <span>❤️ 8</span>
+                        <span>💬 6</span>
+                        <span>📤 Chia sẻ</span>
+                    </div>
+                </div>
+
+                <div class="timeline-post">
+                    <div class="post-header">
+                        <div class="post-avatar">A</div>
+                        <div class="post-info">
+                            <h4>Anh Tuấn</h4>
+                            <div class="post-time">1 ngày trước</div>
+                        </div>
+                    </div>
+                    <div class="post-content">
+                        Chuyến picnic cuối tuần tuyệt vời! 🌳🧺
+                    </div>
+                    <div class="post-actions">
+                        <span>❤️ 12</span>
+                        <span>💬 9</span>
+                        <span>📤 Chia sẻ</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <button class="cta-button" onclick="showMessage()">
+                Bắt đầu chia sẻ khoảnh khắc
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function showMessage() {
+            alert('🎉 Chào mừng bạn đến với Timeline Kazoku! Hãy bắt đầu chia sẻ những khoảnh khắc đáng nhớ của gia đình bạn.');
+        }
+
+        // Thêm hiệu ứng parallax cho các phần tử floating
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-circle');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.3;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Thêm hiệu ứng hover cho timeline posts
+        document.querySelectorAll('.timeline-post').forEach(post => {
+            post.addEventListener('mouseenter', () => {
+                post.style.backgroundColor = '#f0f4ff';
+            });
+            
+            post.addEventListener('mouseleave', () => {
+                post.style.backgroundColor = '#f8f9ff';
+            });
+        });
+
+        // Thêm animation cho các action buttons
+        document.querySelectorAll('.post-actions span').forEach(action => {
+            action.addEventListener('click', (e) => {
+                e.target.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    e.target.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>

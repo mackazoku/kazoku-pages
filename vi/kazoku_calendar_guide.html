@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kazoku - Quản lý lịch gia đình thông minh</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .breadcrumb a {
+            text-decoration: none;
+            color: #667eea;
+        }
+        
+        main {
+            margin-top: 80px;
+            padding-bottom: 2rem;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 20px;
+            margin: 2rem 0;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .section-header h2 {
+            font-size: 2.2rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .section-content {
+            padding: 2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border: 2px solid rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .feature-card p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+        }
+        
+        .feature-list li {
+            padding: 0.3rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .demo-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+            margin: 2rem 0;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .demo-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .demo-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .demo-mockup {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #333;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            font-size: 0.85rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .calendar-mockup {
+            background: white;
+            border-radius: 8px;
+            padding: 0.5rem;
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 0.5rem;
+        }
+        
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 2px;
+            text-align: center;
+        }
+        
+        .calendar-day {
+            padding: 0.3rem;
+            border-radius: 3px;
+            font-size: 0.7rem;
+        }
+        
+        .calendar-day.header {
+            background: #667eea;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .calendar-day.event {
+            background: #e3f2fd;
+            color: #1976d2;
+            font-weight: bold;
+        }
+        
+        .calendar-day.lunar {
+            background: #fff3e0;
+            color: #f57c00;
+            font-weight: bold;
+        }
+        
+        .lunar-calendar {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .lunar-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .lunar-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .lunar-item h4 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .step-by-step {
+            background: white;
+            padding: 2rem;
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .step {
+            background: linear-gradient(135deg, #f8f9fa, #ffffff);
+            border-radius: 15px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid rgba(102, 126, 234, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .step:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .step h4 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .step p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .recurring-showcase {
+            background: linear-gradient(135deg, #e91e63, #ad1457);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .recurring-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .recurring-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .recurring-example {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+        
+        .reminder-section {
+            background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .reminder-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .reminder-type {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .tips-section {
+            background: linear-gradient(135deg, #4caf50, #388e3c);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .tip-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .tip-card h4 {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: white;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            margin: 0.5rem;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .cta-button.secondary {
+            background: linear-gradient(45deg, #4caf50, #45a049);
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+        }
+        
+        .cta-button.secondary:hover {
+            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+        }
+        
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: #333;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .features-grid,
+            .demo-grid,
+            .steps-container,
+            .lunar-features,
+            .recurring-grid,
+            .reminder-types,
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-content {
+                padding: 1rem;
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .highlight {
+            background: linear-gradient(45deg, rgba(255, 193, 7, 0.2), rgba(255, 152, 0, 0.2));
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .special-feature {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .special-feature::after {
+            content: "🌟 Đặc biệt";
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: white;
+            padding: 0.2rem 2rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(35deg);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Kazoku</div>
+            <div class="breadcrumb">
+                <a href="#home">Trang chủ</a> → 
+                <span>Quản lý lịch gia đình</span>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="fade-in">Quản lý lịch gia đình thông minh</h1>
+                <p class="fade-in">Đồng bộ mọi hoạt động gia đình - Từ lịch dương đến lịch âm, từ sự kiện nhỏ đến kỷ niệm lớn</p>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="content-section fade-in">
+                <div class="section-header">
+                    <h2>📅 Tổng quan chức năng</h2>
+                    <p>Hệ thống quản lý lịch toàn diện cho gia đình Việt</p>
+                </div>
+                <div class="section-content">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <span class="feature-icon">📊</span>
+                            <h3>Giao diện trực quan</h3>
+                            <p>Thiết kế giống Google Calendar nhưng được tối ưu cho gia đình Việt</p>
+                            <ul class="feature-list">
+                                <li>View theo ngày/tuần/tháng/năm</li>
+                                <li>Màu sắc phân loại theo thành viên</li>
+                                <li>Drag & drop để di chuyển sự kiện</li>
+                                <li>Quick view chi tiết sự kiện</li>
+                                <li>Dark mode và light mode</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">⚙️</span>
+                            <h3>Thêm sự kiện linh hoạt</h3>
+                            <p>Tùy biến cao với nhiều lựa chọn phù hợp văn hóa Việt</p>
+                            <ul class="feature-list">
+                                <li>20+ template sự kiện gia đình</li>
+                                <li>Tùy chỉnh màu sắc và icon</li>
+                                <li>Thêm địa điểm với Google Maps</li>
+                                <li>Đính kèm hình ảnh và ghi chú</li>
+                                <li>Mời khách và chia sẻ chi tiết</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">✅</span>
+                            <h3>Checklist tích hợp</h3>
+                            <p>Quản lý công việc chuẩn bị cho mỗi sự kiện</p>
+                            <ul class="feature-list">
+                                <li>Tạo checklist cho từng sự kiện</li>
+                                <li>Phân công nhiệm vụ cụ thể</li>
+                                <li>Timeline chuẩn bị chi tiết</li>
+                                <li>Theo dõi tiến độ real-time</li>
+                                <li>Template checklist cho sự kiện lặp lại</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">📸</span>
+                            <h3>Khoảnh khắc đáng nhớ</h3>
+                            <p>Biến mỗi sự kiện thành album kỷ niệm gia đình</p>
+                            <ul class="feature-list">
+                                <li>Tự động tạo album từ sự kiện</li>
+                                <li>Upload ảnh/video trực tiếp</li>
+                                <li>AI gợi ý caption và hashtag</li>
+                                <li>Tạo slideshow kỷ niệm</li>
+                                <li>Chia sẻ với người thân xa</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card special-feature">
+                            <span class="feature-icon">🌙</span>
+                            <h3>Hỗ trợ lịch âm</h3>
+                            <p>Dành riêng cho gia đình Việt Nam, Trung Quốc, Hàn Quốc</p>
+                            <ul class="feature-list">
+                                <li>Tự động chuyển đổi âm/dương</li>
+                                <li>Hiển thị ngày tết, tiết khí</li>
+                                <li>Tính toán tuổi âm lịch chính xác</li>
+                                <li>Gợi ý lễ hội truyền thống</li>
+                                <li>Tương thích 10+ quốc gia châu Á</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card special-feature">
+                            <span class="feature-icon">🔄</span>
+                            <h3>Sự kiện lặp lại thông minh</h3>
+                            <p>Bao gồm cả lặp lại theo lịch âm - độc quyền tại Kazoku</p>
+                            <ul class="feature-list">
+                                <li>Lặp theo lịch dương (hàng ngày/tuần/tháng/năm)</li>
+                                <li>Lặp theo lịch âm (giỗ chạp, sinh nhật âm)</li>
+                                <li>Tùy chỉnh pattern phức tạp</li>
+                                <li>Tự động điều chỉnh nhuận tháng</li>
+                                <li>End date và occurrence limit</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">🔔</span>
+                            <h3>Reminder thông minh</h3>
+                            <p>Không bao giờ quên sự kiện quan trọng của gia đình</p>
+                            <ul class="feature-list">
+                                <li>Multiple reminders cho 1 sự kiện</li>
+                                <li>Push notification, SMS, Email</li>
+                                <li>Location-based reminders</li>
+                                <li>Smart snooze và custom intervals</li>
+                                <li>Family group notifications</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-section fade-in">
+                <div class="container">
+                    <h2>🎯 Demo giao diện Calendar</h2>
+                    <p>Trải nghiệm giao diện trực quan được thiết kế dành riêng cho gia đình Việt</p>
+                    
+                    <div class="demo-grid">
+                        <div class="demo-item">
+                            <h4>📅 Monthly View</h4>
+                            <div class="demo-mockup">
+                                <div class="calendar-mockup">
+                                    <div class="calendar-header">
+                                        <span><strong>Tháng 8, 2024</strong></span>
+                                        <span style="font-size: 0.8rem; color: #666;">Âm lịch: Tháng 7</span>
+                                    </div>
+                                    <div class="calendar-grid">
+                                        <div class="calendar-day header">T2</div>
+                                        <div class="calendar-day header">T3</div>
+                                        <div class="calendar-day header">T4</div>
+                                        <div class="calendar-day header">T5</div>
+                                        <div class="calendar-day header">T6</div>
+                                        <div class="calendar-day header">T7</div>
+                                        <div class="calendar-day header">CN</div>
+                                        
+                                        <div class="calendar-day">29</div>
+                                        <div class="calendar-day">30</div>
+                                        <div class="calendar-day">31</div>
+                                        <div class="calendar-day">1</div>
+                                        <div class="calendar-day">2</div>
+                                        <div class="calendar-day event">3<br>🎂 SN Ba</div>
+                                        <div class="calendar-day">4</div>
+                                        
+                                        <div class="calendar-day">5</div>
+                                        <div class="calendar-day">6</div>
+                                        <div class="calendar-day">7</div>
+                                        <div class="calendar-day">8</div>
+                                        <div class="calendar-day">9</div>
+                                        <div class="calendar-day lunar">10<br>🪔 Rằm tháng 7</div>
+                                        <div class="calendar-day">11</div>
+                                        
+                                        <div class="calendar-day">12</div>
+                                        <div class="calendar-day">13</div>
+                                        <div class="calendar-day">14</div>
+                                        <div class="calendar-day event">15<br>🏥 Khám răng</div>
+                                        <div class="calendar-day">16</div>
+                                        <div class="calendar-day">17</div>
+                                        <div class="calendar-day event">18<br>🎭 Xem kịch</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="demo-item">
+                            <h4>📋 Event Details</h4>
+                            <div class="demo-mockup">
+                                <div style="text-align: left;">
+                                    <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem; padding: 0.5rem; background: #e3f2fd; border-radius: 6px;">
+                                        <span style="font-size: 1.2rem;">🎂</span>
+                                        <div>
+                                            <div style="font-weight: bold;">Sinh nhật Ba</div>
+                                            <div style="font-size: 0.8rem; color: #666;">3/8/2024 • 18:00</div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="margin: 1rem 0;">
+                                        <strong>📍 Địa điểm:</strong> Nhà hàng Sài Gòn<br>
+                                        <strong>👥 Tham gia:</strong> Cả gia đình (6 người)<br>
+                                        <strong>⏰ Nhắc nhở:</strong> 1 ngày trước, 2 giờ trước
+                                    </div>
+                                    
+                                    <div style="background: #f5f5f5; padding: 0.5rem; border-radius: 4px; margin: 0.5rem 0;">
+                                        <strong>✅ Checklist:</strong><br>
+                                        ✅ Đặt bàn nhà hàng<br>
+                                        ✅ Mua bánh sinh nhật<br>
+                                        🔄 Chuẩn bị quà<br>
+                                        ⏳ Mời anh chị em
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="demo-item">
+                            <h4>🌟 Quick Add Event</h4>
+                            <div class="demo-mockup">
+                                <div style="text-align: left;">
+                                    <div style="background: #f8f9fa; padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                                        <input type="text" placeholder="Tiêu đề sự kiện..." style="width: 100%; padding: 0.5rem; border: 1px solid #ddd; border-radius: 4px; margin-bottom: 0.5rem;">
+                                        
+                                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin: 0.5rem 0;">
+                                            <select style="padding: 0.3rem; border: 1px solid #ddd; border-radius: 4px;">
+                                                <option>🎂 Sinh nhật</option>
+                                                <option>🏥 Y tế</option>
+                                                <option>🎭 Giải trí</option>
+                                                <option>📚 Học tập</option>
+                                            </select>
+                                            <select style="padding: 0.3rem; border: 1px solid #ddd; border-radius: 4px;">
+                                                <option>📅 Lịch dương</option>
+                                                <option>🌙 Lịch âm</option>
+                                            </select>
+                                        </div>
+                                        
+                                        <div style="display: flex; gap: 0.5rem; margin: 0.5rem 0;">
+                                            <button style="flex: 1; padding: 0.3rem; background: #667eea; color: white; border: none; border-radius: 4px; font-size: 0.8rem;">+ Checklist</button>
+                                            <button style="flex: 1; padding: 0.3rem; background: #4caf50; color: white; border: none; border-radius: 4px; font-size: 0.8rem;">🔔 Reminder</button>
+                                        </div>
+                                    </div>
+                                    
+                                    <div style="text-align: center;">
+                                        <button style="padding: 0.5rem 1rem; background: linear-gradient(45deg, #667eea, #764ba2); color: white; border: none; border-radius: 20px; font-weight: bold;">Tạo sự kiện</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lunar-calendar fade-in">
+                <div class="container">
+                    <h2>🌙 Tích hợp lịch âm độc đáo</h2>
+                    <p>Duy nhất tại Kazoku - Hỗ trợ toàn diện lịch âm cho gia đình châu Á</p>
+                    
+                    <div class="lunar-features">
+                        <div class="lunar-item">
+                            <h4>🇻🇳 Việt Nam</h4>
+                            <p>Tết Nguyên Đán, Tết Trung Thu, các ngày lễ truyền thống. Tự động tính ngày giỗ chạp hàng năm.</p>
+                        </div>
+
+                        <div class="lunar-item">
+                            <h4>🇨🇳 Trung Quốc</h4>
+                            <p>Tết Xuân, Tết Trung Thu, 24 tiết khí. Hỗ trợ đầy đủ các lễ hội truyền thống Trung Hoa.</p>
+                        </div>
+
+                        <div class="lunar-item">
+                            <h4>🇰🇷 Hàn Quốc</h4>
+                            <p>Seollal, Chuseok và các ngày lễ quan trọng. Tính tuổi theo truyền thống Hàn Quốc.</p>
+                        </div>
+
+                        <div class="lunar-item">
+                            <h4>🌏 Châu Á khác</h4>
+                            <p>Thái Lan, Singapore, Malaysia... Hỗ trợ 10+ quốc gia sử dụng lịch âm.</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding: 2rem; background: rgba(255, 255, 255, 0.1); border-radius: 15px;">
+                        <h3>✨ Tính năng đặc biệt:</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                            <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🔄</div>
+                                <strong>Auto Sync</strong><br>
+                                <span style="font-size: 0.9rem;">Tự động đồng bộ âm/dương</span>
+                            </div>
+                            <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📅</div>
+                                <strong>Leap Month</strong><br>
+                                <span style="font-size: 0.9rem;">Xử lý tháng nhuận chính xác</span>
+                            </div>
+                            <div style="text-align: center; padding: 1rem; background: rgba(255, 255, 255, 0.1); border-radius: 8px;">
+                                <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎭</div>
+                                <strong>Festivals</strong><br>
+                                <span style="font-size: 0.9rem;">Gợi ý lễ hội truyền thống</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section fade-in">
+                <div class="section-header">
+                    <h2>🚀 Hướng dẫn sử dụng từng bước</h2>
+                    <p>Làm chủ hệ thống lịch gia đình chỉ trong 10 phút</p>
+                </div>
+                <div class="step-by-step">
+                    <div class="steps-container">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h4>Thiết lập lịch gia đình</h4>
+                            <p>Tạo lịch chung, mời thành viên và tùy chỉnh màu sắc cho từng người</p>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h4>Chọn hệ lịch</h4>
+                            <p>Kích hoạt lịch âm cho gia đình Việt hoặc giữ lịch dương cho phong cách quốc tế</p>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h4>Tạo sự kiện đầu tiên</h4>
+                            <p>Sử dụng template có sẵn hoặc tự tạo. Thêm checklist và phân công nhiệm vụ</p>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h4>Thiết lập reminder</h4>
+                            <p>Tùy chỉnh thông báo cho từng sự kiện - từ push notification đến SMS</p>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">5</div>
+                            <h4>Sync với các app khác</h4>
+                            <p>Kết nối Google Calendar, Outlook và các ứng dụng lịch phổ biến</p>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">6</div>
+                            <h4>Tạo khoảnh khắc</h4>
+                            <p>Biến mỗi sự kiện thành album kỷ niệm với tính năng tự động tạo slideshow</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="recurring-showcase fade-in">
+                <div class="container">
+                    <h2>🔄 Sự kiện lặp lại thông minh</h2>
+                    <p>Tính năng độc quyền: Lặp lại theo cả lịch dương và lịch âm</p>
+                    
+                    <div class="recurring-grid">
+                        <div class="recurring-item">
+                            <h4>📅 Lịch dương cơ bản</h4>
+                            <p>Các pattern lặp lại truyền thống</p>
+                            <div class="recurring-example">
+                                <strong>Ví dụ:</strong><br>
+                                • Họp gia đình: Chủ nhật hàng tuần<br>
+                                • Sinh nhật: 15/08 hàng năm<br>
+                                • Khám sức khỏe: Mỗi 6 tháng<br>
+                                • Dọn nhà tổng: Cuối tháng
+                            </div>
+                        </div>
+
+                        <div class="recurring-item">
+                            <h4>🌙 Lịch âm độc quyền</h4>
+                            <p>Lặp lại theo lịch âm - chỉ có tại Kazoku</p>
+                            <div class="recurring-example">
+                                <strong>Ví dụ:</strong><br>
+                                • Giỗ ông bà: 15/7 âm lịch hàng năm<br>
+                                • Sinh nhật âm: 8/12 âm lịch<br>
+                                • Rằm tháng: 15 âm lịch hàng tháng<br>
+                                • Tết: 1/1 âm lịch (tự động)
+                            </div>
+                        </div>
+
+                        <div class="recurring-item">
+                            <h4>⚙️ Tùy chỉnh nâng cao</h4>
+                            <p>Pattern phức tạp cho nhu cầu đặc biệt</p>
+                            <div class="recurring-example">
+                                <strong>Ví dụ:</strong><br>
+                                • Thứ 2 đầu tháng<br>
+                                • 2 tuần một lần, trừ tháng 12<br>
+                                • Mỗi quý, vào ngày 15<br>
+                                • Custom: 1,15 mỗi tháng âm
+                            </div>
+                        </div>
+
+                        <div class="recurring-item">
+                            <h4>🎯 Smart Exceptions</h4>
+                            <p>Tự động xử lý ngoại lệ và điều chỉnh</p>
+                            <div class="recurring-example">
+                                <strong>Tính năng:</strong><br>
+                                • Skip ngày lễ tự động<br>
+                                • Điều chỉnh tháng nhuận âm lịch<br>
+                                • Move to nearest weekday<br>
+                                • Tạm dừng series khi cần
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding: 2rem; background: rgba(255, 255, 255, 0.1); border-radius: 15px;">
+                        <h3>🌟 Ứng dụng thực tế:</h3>
+                        <div style="text-align: left; margin: 1rem 0;">
+                            <p style="margin: 0.5rem 0;">
+                                <span class="highlight">Giỗ chạp gia đình:</span> Tự động tạo lịch cúng giỗ hàng năm theo âm lịch, 
+                                bao gồm cả checklist chuẩn bị (mua hương, hoa quả, bánh kẹo...)
+                            </p>
+                            <p style="margin: 0.5rem 0;">
+                                <span class="highlight">Sinh nhật truyền thống:</span> Theo dõi sinh nhật âm lịch của ông bà, 
+                                tự động nhắc nhở và gợi ý quà phù hợp với tuổi tác
+                            </p>
+                            <p style="margin: 0.5rem 0;">
+                                <span class="highlight">Lễ hội văn hóa:</span> Tự động thêm Tết Nguyên Đán, Trung Thu, Rằm tháng 7... 
+                                kèm checklist chuẩn bị truyền thống
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reminder-section fade-in">
+                <div class="container">
+                    <h2>🔔 Hệ thống nhắc nhở thông minh</h2>
+                    <p>Không bao giờ lỡ hẹn với gia đình - Reminder đa dạng và linh hoạt</p>
+                    
+                    <div class="reminder-types">
+                        <div class="reminder-type">
+                            <span style="font-size: 2rem;">📱</span>
+                            <h4>Push Notification</h4>
+                            <p>Thông báo realtime trên điện thoại, có thể snooze và customize</p>
+                        </div>
+
+                        <div class="reminder-type">
+                            <span style="font-size: 2rem;">📧</span>
+                            <h4>Email Reminder</h4>
+                            <p>Gửi email chi tiết với checklist và thông tin sự kiện đầy đủ</p>
+                        </div>
+
+                        <div class="reminder-type">
+                            <span style="font-size: 2rem;">📱</span>
+                            <h4>SMS Alert</h4>
+                            <p>Tin nhắn ngắn cho sự kiện quan trọng, không cần internet</p>
+                        </div>
+
+                        <div class="reminder-type">
+                            <span style="font-size: 2rem;">📍</span>
+                            <h4>Location-based</h4>
+                            <p>Nhắc khi đến gần địa điểm sự kiện hoặc rời khỏi nhà</p>
+                        </div>
+
+                        <div class="reminder-type">
+                            <span style="font-size: 2rem;">👥</span>
+                            <h4>Family Group</h4>
+                            <p>Nhắc cả gia đình cùng lúc, có thể reply và confirm tham gia</p>
+                        </div>
+
+                        <div class="reminder-type">
+                            <span style="font-size: 2rem;">🤖</span>
+                            <h4>Smart Timing</h4>
+                            <p>AI tự động chọn thời điểm nhắc tối ưu dựa trên thói quen</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 2rem; padding: 2rem; background: rgba(255, 255, 255, 0.1); border-radius: 15px;">
+                        <h3>⚙️ Cài đặt reminder mẫu:</h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1rem 0; text-align: left;">
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px;">
+                                <strong>🎂 Sinh nhật:</strong><br>
+                                • 1 tuần trước (chuẩn bị quà)<br>
+                                • 1 ngày trước (mua bánh)<br>
+                                • 2 giờ trước (đến địa điểm)
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px;">
+                                <strong>🏥 Khám bệnh:</strong><br>
+                                • 3 ngày trước (confirm lịch hẹn)<br>
+                                • 1 ngày trước (chuẩn bị giấy tờ)<br>
+                                • 1 giờ trước (khởi hành)
+                            </div>
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px;">
+                                <strong>🕯️ Giỗ chạp:</strong><br>
+                                • 1 tuần trước (mua đồ cúng)<br>
+                                • 1 ngày trước (chuẩn bị mâm cơm)<br>
+                                • Sáng sớm ngày giỗ
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips-section fade-in">
+                <div class="container">
+                    <h2>💡 Tips & Tricks nâng cao</h2>
+                    <p>Những mẹo hay giúp bạn tận dụng tối đa sức mạnh của Kazoku Calendar</p>
+                    
+                    <div class="tips-grid">
+                        <div class="tip-card">
+                            <h4>🎨 Color Coding</h4>
+                            <p>Gán màu riêng cho từng thành viên và loại sự kiện. Ví dụ: đỏ cho y tế, xanh cho giải trí, vàng cho học tập.</p>
+                        </div>
+
+                        <div class="tip-card">
+                            <h4>📋 Template Library</h4>
+                            <p>Tạo template cho các sự kiện thường xuyên với checklist có sẵn. Tiết kiệm 80% thời gian setup.</p>
+                        </div>
+
+                        <div class="tip-card">
+                            <h4>🔗 Cross-platform Sync</h4>
+                            <p>Sync với Google Calendar công ty để tránh xung đột lịch cá nhân và công việc.</p>
+                        </div>
+
+                        <div class="tip-card">
+                            <h4>📱 Widget Integration</h4>
+                            <p>Thêm Kazoku widget lên màn hình chính để xem lịch nhanh không cần mở app.</p>
+                        </div>
+
+                        <div class="tip-card">
+                            <h4>🌙 Dual Calendar</h4>
+                            <p>Sử dụng cả lịch âm và dương trong cùng 1 view. Phù hợp cho gia đình đa văn hóa.</p>
+                        </div>
+
+                        <div class="tip-card">
+                            <h4>📊 Family Analytics</h4>
+                            <p>Xem báo cáo thống kê hoạt động gia đình theo tháng để cân bằng thời gian tốt hơn.</p>
+                        </div>
+
+                        <div class="tip-card">
+                            <h4>🎯 Smart Scheduling</h4>
+                            <p>Để AI gợi ý thời gian tối ưu cho sự kiện dựa trên lịch trống của cả gia đình.</p>
+                        </div>
+
+                        <div class="tip-card">
+                            <h4>🔄 Backup & Restore</h4>
+                            <p>Tự động backup lịch lên cloud. Khi đổi máy mới, tất cả sự kiện được khôi phục 100%.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section fade-in">
+                <h2>🚀 Bắt đầu quản lý lịch gia đình thông minh</h2>
+                <p>Trải nghiệm hệ thống lịch được thiết kế dành riêng cho gia đình Việt Nam</p>
+                
+                <div style="margin: 2rem 0;">
+                    <a href="#download" class="cta-button">Tải ứng dụng miễn phí</a>
+                    <a href="#demo" class="cta-button secondary">Xem demo trực tiếp</a>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; font-size: 0.9rem;">
+                    <div>
+                        <strong>🌙 Độc quyền lịch âm</strong><br>
+                        Duy nhất tại Việt Nam
+                    </div>
+                    <div>
+                        <strong>👨‍👩‍👧‍👦 Không giới hạn thành viên</strong><br>
+                        Miễn phí mãi mãi
+                    </div>
+                    <div>
+                        <strong>📱 Đa nền tảng</strong><br>
+                        iOS, Android, Web
+                    </div>
+                    <div>
+                        <strong>🔒 Bảo mật cao</strong><br>
+                        Dữ liệu tại Việt Nam
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #e8f5e8, #f1f8e9); padding: 2rem; border-radius: 15px; margin: 2rem 0; color: #333;">
+                    <h3 style="margin-bottom: 1rem;">🎁 Ưu đãi đặc biệt tháng 8</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">
+                        <div style="text-align: center; padding: 1rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">📅</div>
+                            <strong>FREE 60 ngày</strong><br>
+                            <span style="font-size: 0.9rem;">Thay vì 30 ngày thông thường</span>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">🎨</div>
+                            <strong>Premium Templates</strong><br>
+                            <span style="font-size: 0.9rem;">100+ mẫu sự kiện Việt Nam</span>
+                        </div>
+                        <div style="text-align: center; padding: 1rem; background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">💎</div>
+                            <strong>VIP Support</strong><br>
+                            <span style="font-size: 0.9rem;">Hỗ trợ 1-1 qua video call</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section fade-in">
+                <div class="section-header">
+                    <h2>❓ Câu hỏi thường gặp</h2>
+                    <p>Giải đáp những thắc mắc về tính năng lịch gia đình</p>
+                </div>
+                <div class="section-content">
+                    <div style="display: grid; gap: 1.5rem;">
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #667eea;">
+                            <h4 style="margin-bottom: 0.5rem; color: #333;">🌙 Lịch âm có chính xác không? Tính như thế nào?</h4>
+                            <p style="color: #666;">Kazoku sử dụng thuật toán chính thức của Viện Thiên văn học Việt Nam, độ chính xác 99.99%. Tự động xử lý tháng nhuận, múi giờ, và điều chỉnh theo từng quốc gia (VN, TQ, HQ có thể khác nhau 1-2 ngày).</p>
+                        </div>
+
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #4caf50;">
+                            <h4 style="margin-bottom: 0.5rem; color: #333;">📱 Có thể sync với Google Calendar không?</h4>
+                            <p style="color: #666;">Hoàn toàn có thể! Kazoku sync 2 chiều với Google Calendar, Outlook, Apple Calendar. Sự kiện lịch âm sẽ hiển thị rõ ràng trên các app khác với ghi chú "(Âm lịch)".</p>
+                        </div>
+
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #ff9800;">
+                            <h4 style="margin-bottom: 0.5rem; color: #333;">🔄 Sự kiện lặp lại theo lịch âm hoạt động thế nào?</h4>
+                            <p style="color: #666;">Ví dụ giỗ ông bà 15/7 âm lịch: Kazoku tự động tính ra ngày dương lịch tương ứng mỗi năm (có thể là 25/8/2024, 13/9/2025...). Hỗ trợ tất cả pattern: hàng năm, hàng tháng, hay custom.</p>
+                        </div>
+
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #e91e63;">
+                            <h4 style="margin-bottom: 0.5rem; color: #333;">📸 Tính năng tạo khoảnh khắc hoạt động ra sao?</h4>
+                            <p style="color: #666;">Mỗi sự kiện có thể có album riêng. Trong và sau sự kiện, gia đình upload ảnh/video. AI sẽ tự động tạo slideshow, gợi ý caption, và lưu thành "khoảnh khắc đáng nhớ" để xem lại sau này.</p>
+                        </div>
+
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #9c27b0;">
+                            <h4 style="margin-bottom: 0.5rem; color: #333;">💰 Chi phí sử dụng như thế nào?</h4>
+                            <p style="color: #666;">Tính năng cơ bản MIỄN PHÍ vĩnh viễn (tối đa 50 sự kiện/tháng). Gói Premium 99k/tháng cho cả gia đình: không giới hạn sự kiện, lịch âm đầy đủ, AI assistant, premium templates.</p>
+                        </div>
+
+                        <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 12px; border-left: 4px solid #795548;">
+                            <h4 style="margin-bottom: 0.5rem; color: #333;">🌍 Có hỗ trợ múi giờ khác nhau không?</h4>
+                            <p style="color: #666;">Có! Hỗ trợ đầy đủ timezone. Ví dụ gia đình có người ở Mỹ, Việt Nam - sự kiện sẽ hiển thị đúng giờ địa phương. Đặc biệt hữu ích cho video call gia đình hoặc sự kiện online.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h3>📅 Kazoku Calendar - Kết nối thời gian, gắn kết gia đình</h3>
+            <p style="margin: 1rem 0;">
+                📞 Hotline: 1900-KAZOKU | 📧 Email: calendar@kazoku.app<br>
+                🌐 Website: kazoku.app | 🏢 Địa chỉ: Tầng 15, Bitexco, Quận 1, TP.HCM
+            </p>
+            
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap;">
+                <a href="#ios" style="color: #667eea; text-decoration: none;">📱 App Store</a>
+                <a href="#android" style="color: #667eea; text-decoration: none;">🤖 Google Play</a>
+                <a href="#web" style="color: #667eea; text-decoration: none;">💻 Web App</a>
+                <a href="#guide" style="color: #667eea; text-decoration: none;">📚 Hướng dẫn chi tiết</a>
+                <a href="#community" style="color: #667eea; text-decoration: none;">👥 Cộng đồng</a>
+                <a href="#support" style="color: #667eea; text-decoration: none;">🎧 Hỗ trợ 24/7</a>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #f8f9fa, #e9ecef); padding: 1.5rem; border-radius: 12px; margin: 1rem 0; color: #333;">
+                <h4 style="margin-bottom: 1rem; color: #667eea;">🌟 Tại sao chọn Kazoku Calendar?</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: center;">
+                    <div>
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🇻🇳</div>
+                        <strong>Made in Vietnam</strong><br>
+                        <span style="font-size: 0.9rem; color: #666;">Hiểu rõ văn hóa Việt</span>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🌙</div>
+                        <strong>Lịch âm duy nhất</strong><br>
+                        <span style="font-size: 0.9rem; color: #666;">Công nghệ độc quyền</span>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">👨‍👩‍👧‍👦</div>
+                        <strong>Focus gia đình</strong><br>
+                        <span style="font-size: 0.9rem; color: #666;">Không chỉ là lịch cá nhân</span>
+                    </div>
+                    <div>
+                        <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🔒</div>
+                        <strong>An toàn 100%</strong><br>
+                        <span style="font-size: 0.9rem; color: #666;">Dữ liệu lưu tại VN</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="font-size: 0.9rem; color: #666; border-top: 1px solid #eee; padding-top: 1rem; margin-top: 1.5rem;">
+                &copy; 2024 Kazoku App - Proudly Made in Vietnam 🇻🇳<br>
+                <em>"Thời gian là món quà quý giá nhất chúng ta dành cho gia đình"</em><br><br>
+                
+                <strong>Chứng nhận:</strong> Bộ TT&TT • <strong>Đối tác:</strong> Google Cloud Vietnam, AWS • <strong>Bảo mật:</strong> ISO 27001<br>
+                <strong>Hỗ trợ:</strong> Tiếng Việt 24/7 • <strong>Thanh toán:</strong> Visa, Mastercard, QR Pay, Internet Banking
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling for internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced hover effects for cards
+        document.querySelectorAll('.feature-card, .step, .tip-card, .demo-item, .lunar-item, .recurring-item, .reminder-type').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+                this.style.transition = 'all 0.3s ease';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Interactive calendar demo
+        document.querySelectorAll('.calendar-day.event, .calendar-day.lunar').forEach(day => {
+            day.addEventListener('click', function() {
+                // Create a popup effect
+                const popup = document.createElement('div');
+                popup.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: white;
+                    padding: 1rem;
+                    border-radius: 8px;
+                    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                    z-index: 10000;
+                    max-width: 300px;
+                    text-align: center;
+                `;
+                
+                const eventText = this.innerHTML.includes('SN Ba') ? 
+                    '<strong>🎂 Sinh nhật Ba</strong><br>3/8/2024 - 18:00<br>Nhà hàng Sài Gòn<br><br>📋 Checklist:<br>✅ Đặt bàn<br>🔄 Mua bánh<br>⏳ Chuẩn bị quà' :
+                    this.innerHTML.includes('Rằm') ?
+                    '<strong>🪔 Rằm tháng 7</strong><br>10/8/2024 (Âm lịch)<br>Cúng cô hồn<br><br>📋 Chuẩn bị:<br>🕯️ Hương nến<br>🍚 Cơm, nước<br>🙏 Lễ cúng 19h' :
+                    '<strong>Chi tiết sự kiện</strong><br>Click để xem thêm...';
+                
+                popup.innerHTML = eventText + '<br><br><button onclick="this.parentElement.remove()" style="padding: 0.5rem 1rem; background: #667eea; color: white; border: none; border-radius: 4px; cursor: pointer;">Đóng</button>';
+                
+                document.body.appendChild(popup);
+                
+                // Auto remove after 5 seconds
+                setTimeout(() => {
+                    if (popup.parentElement) popup.remove();
+                }, 5000);
+            });
+        });
+
+        // Demo mockup interactions
+        document.querySelectorAll('.demo-mockup').forEach(mockup => {
+            mockup.addEventListener('click', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.boxShadow = '0 10px 25px rgba(102, 126, 234, 0.3)';
+                
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                    this.style.boxShadow = '0 5px 15px rgba(0, 0, 0, 0.1)';
+                }, 200);
+            });
+        });
+
+        // CTA buttons pulse effect
+        const ctaButtons = document.querySelectorAll('.cta-button');
+        ctaButtons.forEach(button => {
+            setInterval(() => {
+                button.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    button.style.transform = 'scale(1)';
+                }, 150);
+            }, 8000);
+        });
+
+        // Add typing effect to hero title
+        const heroTitle = document.querySelector('.hero h1');
+        if (heroTitle) {
+            const text = heroTitle.textContent;
+            heroTitle.style.opacity = '0';
+            
+            setTimeout(() => {
+                heroTitle.style.opacity = '1';
+                heroTitle.textContent = '';
+                let i = 0;
+                
+                const typeWriter = setInterval(() => {
+                    if (i < text.length) {
+                        heroTitle.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typeWriter);
+                    }
+                }, 80);
+            }, 800);
+        }
+
+        // Progress bar animation for steps
+        const steps = document.querySelectorAll('.step');
+        steps.forEach((step, index) => {
+            step.addEventListener('mouseenter', function() {
+                const progress = document.createElement('div');
+                progress.style.cssText = `
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    height: 3px;
+                    background: linear-gradient(45deg, #667eea, #764ba2);
+                    border-radius: 2px;
+                    transition: width 0.3s ease;
+                    width: 0;
+                `;
+                
+                this.style.position = 'relative';
+                this.appendChild(progress);
+                
+                setTimeout(() => {
+                    progress.style.width = '100%';
+                }, 50);
+            });
+            
+            step.addEventListener('mouseleave', function() {
+                const progress = this.querySelector('div[style*="height: 3px"]');
+                if (progress) {
+                    progress.remove();
+                }
+            });
+        });
+
+        // Interactive lunar calendar feature
+        const lunarItems = document.querySelectorAll('.lunar-item');
+        lunarItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Add a "selected" effect
+                lunarItems.forEach(i => i.style.background = 'rgba(255, 255, 255, 0.1)');
+                this.style.background = 'rgba(255, 255, 255, 0.2)';
+                this.style.transform = 'scale(1.05)';
+                
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+
+        // Recurring examples interactive demo
+        document.querySelectorAll('.recurring-example').forEach(example => {
+            example.addEventListener('click', function() {
+                this.style.background = '#e3f2fd';
+                this.style.transform = 'scale(1.02)';
+                
+                setTimeout(() => {
+                    this.style.background = 'rgba(255, 255, 255, 0.95)';
+                    this.style.transform = 'scale(1)';
+                }, 300);
+            });
+        });
+
+        // Add floating animations to special features
+        document.querySelectorAll('.special-feature').forEach(feature => {
+            let isFloating = false;
+            
+            const startFloating = () => {
+                if (isFloating) return;
+                isFloating = true;
+                
+                const animate = () => {
+                    if (!isFloating) return;
+                    feature.style.transform = 'translateY(-3px)';
+                    setTimeout(() => {
+                        if (isFloating) {
+                            feature.style.transform = 'translateY(0px)';
+                            setTimeout(animate, 2000);
+                        }
+                    }, 1000);
+                };
+                animate();
+            };
+            
+            const stopFloating = () => {
+                isFloating = false;
+                feature.style.transform = 'translateY(0px)';
+            };
+            
+            feature.addEventListener('mouseenter', startFloating);
+            feature.addEventListener('mouseleave', stopFloating);
+        });
+
+        // FAQ accordion effect
+        document.querySelectorAll('[style*="border-left: 4px solid"]').forEach(faq => {
+            faq.style.cursor = 'pointer';
+            faq.addEventListener('click', function() {
+                const content = this.querySelector('p');
+                if (content.style.display === 'none') {
+                    content.style.display = 'block';
+                    this.style.background = '#e3f2fd';
+                } else {
+                    content.style.display = content.style.display === 'none' ? 'block' : 'none';
+                    this.style.background = content.style.display === 'none' ? '#f8f9fa' : '#e3f2fd';
+                }
+            });
+        });
+
+        // Add scroll progress indicator
+        const createScrollProgress = () => {
+            const progressBar = document.createElement('div');
+            progressBar.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 0%;
+                height: 3px;
+                background: linear-gradient(45deg, #667eea, #764ba2);
+                z-index: 10000;
+                transition: width 0.1s ease;
+            `;
+            document.body.appendChild(progressBar);
+            
+            window.addEventListener('scroll', () => {
+                const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+                progressBar.style.width = scrolled + '%';
+            });
+        };
+        
+        createScrollProgress();
+
+        // Add some Easter eggs for advanced users
+        let clickCount = 0;
+        document.querySelector('.logo').addEventListener('click', function() {
+            clickCount++;
+            if (clickCount === 5) {
+                alert('🎉 Bạn đã khám phá được Easter Egg! Nhận mã giảm giá 50% cho gói Premium: KAZOKU50');
+                clickCount = 0;
+            }
+        });
+    </script>
+</body>
+</html>

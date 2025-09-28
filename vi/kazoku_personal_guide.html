@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kazoku - Quản lý hoạt động cá nhân gia đình</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        main {
+            margin-top: 80px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 20px;
+            margin: 2rem 0;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-header {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 2rem;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        
+        .section-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .section-content {
+            padding: 2rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .demo-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .demo-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .demo-mockup {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 1rem;
+            margin: 1rem 0;
+            color: #333;
+            min-height: 300px;
+            font-size: 0.9rem;
+        }
+        
+        .member-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .member-tab {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.8rem;
+        }
+        
+        .member-tab.active {
+            background: #667eea;
+            color: white;
+        }
+        
+        .member-tab:not(.active) {
+            background: #f0f0f0;
+            color: #666;
+        }
+        
+        .activity-log {
+            text-align: left;
+        }
+        
+        .activity-item {
+            background: #f8f9fa;
+            border-left: 4px solid #4caf50;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            border-radius: 8px;
+        }
+        
+        .activity-time {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 0.3rem;
+        }
+        
+        .activity-title {
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+        
+        .activity-details {
+            font-size: 0.9rem;
+            color: #555;
+        }
+        
+        .health-badge {
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+        
+        .exercise { background: #e8f5e8; color: #2e7d2e; }
+        .mood { background: #fff3e0; color: #f57c00; }
+        .nutrition { background: #fce4ec; color: #c2185b; }
+        .medical { background: #e3f2fd; color: #1976d2; }
+        .growth { background: #f3e5f5; color: #7b1fa2; }
+        
+        .chart-section {
+            background: linear-gradient(135deg, #4caf50, #388e3c);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .chart-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .chart-demo {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            border-radius: 12px;
+            padding: 1rem;
+            margin: 1rem 0;
+            min-height: 200px;
+        }
+        
+        .progress-chart {
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            height: 150px;
+            padding: 1rem;
+        }
+        
+        .progress-bar {
+            background: #667eea;
+            border-radius: 4px 4px 0 0;
+            width: 30px;
+            margin: 0 0.2rem;
+            position: relative;
+        }
+        
+        .mood-calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.3rem;
+            padding: 1rem;
+        }
+        
+        .mood-day {
+            aspect-ratio: 1;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .management-section {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .management-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .management-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .reminder-section {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+            text-align: center;
+        }
+        
+        .reminder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .reminder-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .pill-reminder {
+            background: rgba(255, 255, 255, 0.95);
+            color: #333;
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: left;
+        }
+        
+        .pill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem;
+            margin: 0.3rem 0;
+            background: #f0f0f0;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        
+        .pill-status {
+            font-size: 1.2rem;
+        }
+        
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: white;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            color: #333;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            margin: 2rem 0;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid,
+            .demo-grid,
+            .chart-grid,
+            .management-grid,
+            .reminder-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .special-feature {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .special-feature::after {
+            content: "🌟 Đặc biệt";
+            position: absolute;
+            top: 10px;
+            right: -30px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: white;
+            padding: 0.2rem 2rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(35deg);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Kazoku</div>
+            <ul class="nav-links">
+                <li><a href="#features">Tính năng</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#management">Quản lý</a></li>
+                <li><a href="#reminders">Nhắc nhở</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="fade-in">Quản lý hoạt động cá nhân gia đình</h1>
+                <p class="fade-in">Theo dõi sức khỏe, tâm trạng và phát triển của từng thành viên một cách toàn diện</p>
+                <a href="#features" class="cta-button fade-in">Khám phá ngay</a>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="content-section fade-in" id="features">
+                <div class="section-header">
+                    <h2>💪 Tổng quan chức năng</h2>
+                    <p>Hệ thống quản lý sức khỏe cá nhân toàn diện cho mọi thành viên gia đình</p>
+                </div>
+                <div class="section-content">
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <span class="feature-icon">📊</span>
+                            <h3>Lịch sử hoạt động chi tiết</h3>
+                            <p>Theo dõi mọi hoạt động hàng ngày của từng thành viên với giao diện trực quan</p>
+                            <ul class="feature-list">
+                                <li>Vận động thể chất và tập luyện</li>
+                                <li>Theo dõi tâm trạng và cảm xúc</li>
+                                <li>Chế độ ăn uống và dinh dưỡng</li>
+                                <li>Phát triển thể chất (chiều cao, cân nặng)</li>
+                                <li>Lịch sử khám bệnh và sức khỏe</li>
+                                <li>Ghi chép cá nhân và nhật ký</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card special-feature">
+                            <span class="feature-icon">👨‍👩‍👧‍👦</span>
+                            <h3>Quản lý gia đình tập trung</h3>
+                            <p>Người quản lý có thể nhập và chỉnh sửa dữ liệu cho tất cả thành viên</p>
+                            <ul class="feature-list">
+                                <li>Dashboard tập trung cho cả gia đình</li>
+                                <li>Nhập liệu nhanh cho nhiều thành viên</li>
+                                <li>Phân quyền quản lý linh hoạt</li>
+                                <li>Backup và sync dữ liệu tự động</li>
+                                <li>Export báo cáo cho bác sĩ</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">📈</span>
+                            <h3>Biểu đồ trực quan</h3>
+                            <p>Dữ liệu được hiển thị bằng charts và graphs dễ hiểu</p>
+                            <ul class="feature-list">
+                                <li>Biểu đồ tăng trưởng cho trẻ em</li>
+                                <li>Progress tracking cho mục tiêu</li>
+                                <li>Mood calendar và trend analysis</li>
+                                <li>Nutrition breakdown và BMI</li>
+                                <li>Exercise performance metrics</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">📷</span>
+                            <h3>Hỗ trợ hình ảnh</h3>
+                            <p>Upload ảnh để ghi nhận tiến trình và kỷ niệm quan trọng</p>
+                            <ul class="feature-list">
+                                <li>Progress photos cho fitness</li>
+                                <li>Ảnh món ăn và thực đơn</li>
+                                <li>Before/after transformation</li>
+                                <li>Medical records và prescriptions</li>
+                                <li>Milestone moments cho trẻ em</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card special-feature">
+                            <span class="feature-icon">💊</span>
+                            <h3>Nhắc nhở thông minh</h3>
+                            <p>Hệ thống reminder tự động cho thuốc men và lịch trình sức khỏe</p>
+                            <ul class="feature-list">
+                                <li>Nhắc uống thuốc theo giờ</li>
+                                <li>Reminder khám bệnh định kỳ</li>
+                                <li>Lịch tập thể dục cá nhân</li>
+                                <li>Nhắc nhở đo sức khỏe</li>
+                                <li>Custom reminders cho từng thành viên</li>
+                            </ul>
+                        </div>
+
+                        <div class="feature-card">
+                            <span class="feature-icon">📝</span>
+                            <h3>Ghi chép & Notes</h3>
+                            <p>Lưu giữ những ghi chú quan trọng về sức khỏe và phát triển</p>
+                            <ul class="feature-list">
+                                <li>Daily journal cho từng thành viên</li>
+                                <li>Voice notes và text memos</li>
+                                <li>Doctor's notes và toa thuốc</li>
+                                <li>Achievement milestones</li>
+                                <li>Family health history</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-section fade-in" id="demo">
+                <div class="container">
+                    <h2>📱 Demo giao diện Personal Health</h2>
+                    <p>Trải nghiệm quản lý sức khỏe cá nhân trực quan và dễ sử dụng</p>
+                    
+                    <div class="demo-grid">
+                        <div class="demo-item">
+                            <h4>👨‍👩‍👧‍👦 Family Dashboard</h4>
+                            <div class="demo-mockup">
+                                <div class="member-tabs">
+                                    <div class="member-tab active">👨 Ba (35)</div>
+                                    <div class="member-tab">👩 Mẹ (32)</div>
+                                    <div class="member-tab">👧 Bé An (8)</div>
+                                    <div class="member-tab">👦 Bé Minh (5)</div>
+                                </div>
+                                
+                                <div style="text-align: center; margin-bottom: 1rem; font-weight: bold;">
+                                    Hôm nay - 25/8/2024
+                                </div>
+                                
+                                <div class="activity-log">
+                                    <div class="activity-item">
+                                        <div class="activity-time">07:30</div>
+                                        <div class="activity-title">🏃 Chạy bộ công viên</div>
+                                        <div class="activity-details">5.2km • 28 phút • 285 calo</div>
+                                        <span class="health-badge exercise">Vận động</span>
+                                    </div>
+                                    
+                                    <div class="activity-item" style="border-left-color: #ff9800;">
+                                        <div class="activity-time">08:00</div>
+                                        <div class="activity-title">💊 Uống vitamin D</div>
+                                        <div class="activity-details">1000 IU • Sau bữa sáng</div>
+                                        <span class="health-badge medical">Y tế</span>
+                                    </div>
+                                    
+                                    <div class="activity-item" style="border-left-color: #e91e63;">
+                                        <div class="activity-time">12:30</div>
+                                        <div class="activity-title">🍽️ Bữa trưa healthy</div>
+                                        <div class="activity-details">Salad gà • 520 calo • High protein</div>
+                                        <span class="health-badge nutrition">Dinh dưỡng</span>
+                                    </div>
+                                    
+                                    <div class="activity-item" style="border-left-color: #9c27b0;">
+                                        <div class="activity-time">15:00</div>
+                                        <div class="activity-title">😊 Tâm trạng tích cực</div>
+                                        <div class="activity-details">Hoàn thành dự án • Cảm thấy hài lòng</div>
+                                        <span class="health-badge mood">Tâm trạng</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="demo-item">
+                            <h4>📊 Health Analytics</h4>
+                            <div class="demo-mockup">
+                                <div style="text-align: center; margin-bottom: 1rem;">
+                                    <h4 style="color: #667eea;">👨 Ba - Progress tuần này</h4>
+                                </div>
+                                
+                                <div class="progress-chart">
+                                    <div class="progress-bar" style="height: 80%;" title="T2: 8/10"></div>
+                                    <div class="progress-bar" style="height: 60%;" title="T3: 6/10"></div>
+                                    <div class="progress-bar" style="height: 90%;" title="T4: 9/10"></div>
+                                    <div class="progress-bar" style="height: 70%;" title="T5: 7/10"></div>
+                                    <div class="progress-bar" style="height: 85%;" title="T6: 8.5/10"></div>
+                                    <div class="progress-bar" style="height: 95%;" title="T7: 9.5/10"></div>
+                                    <div class="progress-bar" style="height: 75%;" title="CN: 7.5/10"></div>
+                                </div>
+                                
+                                <div style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                                    <strong>📈 Tuần này:</strong><br>
+                                    🏃 Cardio: 4.2h/5h (85%)<br>
+                                    💪 Strength: 3h/5h (60%)<br>
+                                    💧 Hydration: 2.7L/3L (90%)<br>
+                                    😴 Sleep: 7.2h avg (Good)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="demo-item">
+                            <h4>👧 Kids Growth Tracker</h4>
+                            <div class="demo-mockup">
+                                <div style="text-align: center; margin-bottom: 1rem;">
+                                    <h4 style="color: #667eea;">👧 Bé An (8 tuổi)</h4>
+                                </div>
+                                
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0;">
+                                    <div style="text-align: center; padding: 1rem; background: #f3e5f5; border-radius: 10px;">
+                                        <div style="font-size: 1.5rem; font-weight: bold; color: #7b1fa2;">125cm</div>
+                                        <div style="font-size: 0.9rem;">Chiều cao</div>
+                                        <div style="font-size: 0.8rem; color: #4caf50;">+2cm/3 tháng</div>
+                                    </div>
+                                    <div style="text-align: center; padding: 1rem; background: #e8f5e8; border-radius: 10px;">
+                                        <div style="font-size: 1.5rem; font-weight: bold; color: #2e7d2e;">24kg</div>
+                                        <div style="font-size: 0.9rem;">Cân nặng</div>
+                                        <div style="font-size: 0.8rem; color: #4caf50;">+0.8kg/3 tháng</div>
+                                    </div>
+                                </div>
+                                
+                                <div style="margin: 1rem 0;">
+                                    <strong style="font-size: 0.9rem;">🧠 Phát triển kỹ năng:</strong>
+                                    <div style="margin: 0.5rem 0;">
+                                        <div style="font-size: 0.8rem; color: #666;">📚 Đọc hiểu (75%)</div>
+                                        <div style="background: #e0e0e0; border-radius: 10px; height: 8px; margin: 0.2rem 0;">
+                                            <div style="background: #4caf50; width: 75%; height: 100%; border-radius: 10px;"></div>
+                                        </div>
+                                    </div>
+                                    <div style="margin: 0.5rem 0;">
+                                        <div style="font-size: 0.8rem; color: #666;">🔢 Toán học (60%)</div>
+                                        <div style="background: #e0e0e0; border-radius: 10px; height: 8px; margin: 0.2rem 0;">
+                                            <div style="background: #ff9800; width: 60%; height: 100%; border-radius: 10px;"></div>
+                                        </div>
+                                    </div>
+                                    <div style="margin: 0.5rem 0;">
+                                        <div style="font-size: 0.8rem; color: #666;">🤝 Giao tiếp (85%)</div>
+                                        <div style="background: #e0e0e0; border-radius: 10px; height: 8px; margin: 0.2rem 0;">
+                                            <div style="background: #2196f3; width: 85%; height: 100%; border-radius: 10px;"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div style="background: #fff3e0; padding: 1rem; border-radius: 8px; margin-top: 1rem;">
+                                    <div style="font-size: 0.8rem; font-weight: bold; margin-bottom: 0.3rem;">📝 Ghi chú tuần này:</div>
+                                    <div style="font-size: 0.8rem; color: #666;">"An đã đọc được 3 cuốn sách và làm toán tốt hơn. Cần khuyến khích con tự tin hơn khi thuyết trình."</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chart-section fade-in">
+                <div class="container">
+                    <h2>📊 Biểu đồ và Analytics</h2>
+                    <p>Dữ liệu được trực quan hóa để dễ theo dõi và phân tích xu hướng</p>
+                    
+                    <div class="chart-grid">
+                        <div class="chart-item">
+                            <h4>📈 Weight Progress</h4>
+                            <div class="chart-demo">
+                                <div style="text-align: center; margin-bottom: 1rem;">
+                                    <strong>👨 Ba - Cân nặng 6 tháng</strong>
+                                </div>
+                                <div style="position: relative; height: 120px; background: linear-gradient(to top, #e3f2fd 0%, #bbdefb 100%); border-radius: 8px; padding: 1rem;">
+                                    <svg style="position: absolute; top: 10px; left: 10px; width: calc(100% - 20px); height: calc(100% - 20px);">
+                                        <polyline points="0,80 50,75 100,70 150,72 200,68 250,65" 
+                                                stroke="#1976d2" stroke-width="3" fill="none"></polyline>
+                                        <circle cx="0" cy="80" r="4" fill="#1976d2"></circle>
+                                        <circle cx="250" cy="65" r="4" fill="#4caf50"></circle>
+                                    </svg>
+                                    <div style="position: absolute; bottom: 5px; left: 5px; font-size: 0.7rem;">T3</div>
+                                    <div style="position: absolute; bottom: 5px; right: 5px; font-size: 0.7rem;">T8</div>
+                                    <div style="position: absolute; top: 5px; right: 5px; background: rgba(76,175,80,0.2); padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem; color: #4caf50;">-7kg</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-item">
+                            <h4>😊 Mood Calendar</h4>
+                            <div class="chart-demo">
+                                <div style="text-align: center; margin-bottom: 1rem;">
+                                    <strong>👩 Mẹ - Tâm trạng tháng 8</strong>
+                                </div>
+                                <div class="mood-calendar">
+                                    <div style="font-size: 0.7rem; font-weight: bold;">T2</div>
+                                    <div style="font-size: 0.7rem; font-weight: bold;">T3</div>
+                                    <div style="font-size: 0.7rem; font-weight: bold;">T4</div>
+                                    <div style="font-size: 0.7rem; font-weight: bold;">T5</div>
+                                    <div style="font-size: 0.7rem; font-weight: bold;">T6</div>
+                                    <div style="font-size: 0.7rem; font-weight: bold;">T7</div>
+                                    <div style="font-size: 0.7rem; font-weight: bold;">CN</div>
+                                    
+                                    <div></div><div></div><div></div>
+                                    <div class="mood-day" style="background: #e8f5e8;">😊</div>
+                                    <div class="mood-day" style="background: #fff3e0;">😐</div>
+                                    <div class="mood-day" style="background: #e8f5e8;">😊</div>
+                                    <div class="mood-day" style="background: #e8f5e8;">🤩</div>
+                                    
+                                    <div class="mood-day" style="background: #fce4ec;">😔</div>
+                                    <div class="mood-day" style="background: #e8f5e8;">😊</div>
+                                    <div class="mood-day" style="background: #e8f5e8;">😊</div>
+                                    <div class="mood-day" style="background: #e8f5e8;">🤩</div>
+                                    <div class="mood-day" style="background: #e8f5e8;">😊</div>
+                                    <div class="mood-day" style="background: #e8f5e8;">🤩</div>
+                                    <div class="mood-day" style="background: #e8f5e8;">😊</div>
+                                </div>
+                                <div style="background: #f0f0f0; padding: 0.5rem; border-radius: 6px; font-size: 0.8rem; margin-top: 1rem;">
+                                    <strong>Insights:</strong> 80% ngày tích cực, stress giảm so với tháng trước
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="chart-item">
+                            <h4>🍎 Nutrition Analysis</h4>
+                            <div class="chart-demo">
+                                <div style="text-align: center; margin-bottom: 1rem;">
+                                    <strong>👧 Bé An - Dinh dưỡng tuần</strong>
+                                </div>
+                                <div style="position: relative; width: 120px; height: 120px; margin: 1rem auto;">
+                                    <div style="width: 100%; height: 100%; border-radius: 50%; background: conic-gradient(#4caf50 0deg 144deg, #ff9800 144deg 216deg, #2196f3 216deg 288deg, #e91e63 288deg 360deg);"></div>
+                                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem;">100%</div>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 0.3rem; font-size: 0.8rem;">
+                                    <div><span style="color: #4caf50;">●</span> Carbs 40%</div>
+                                    <div><span style="color: #ff9800;">●</span> Protein 20%</div>
+                                    <div><span style="color: #2196f3;">●</span> Fat 20%</div>
+                                    <div><span style="color: #e91e63;">●</span> Other 20%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="management-section fade-in" id="management">
+                <div class="container">
+                    <h2>👨‍👩‍👧‍👦 Quản lý gia đình tập trung</h2>
+                    <p>Người quản lý có thể dễ dàng nhập và chỉnh sửa dữ liệu cho tất cả thành viên</p>
+                    
+                    <div class="management-grid">
+                        <div class="management-item">
+                            <h4>⚡ Quick Entry Mode</h4>
+                            <p>Nhập liệu nhanh cho nhiều thành viên cùng lúc</p>
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; margin: 1rem 0; text-align: left;">
+                                <strong>Ví dụ bulk entry:</strong><br>
+                                • "Cả nhà ăn cơm trưa cùng nhau"<br>
+                                • "Ba Mẹ đi tập gym, các con ở nhà học"<br>
+                                • "Family movie night - tâm trạng vui vẻ"<br>
+                                → Tự động phân bổ cho từng thành viên
+                            </div>
+                        </div>
+
+                        <div class="management-item">
+                            <h4>📊 Family Dashboard</h4>
+                            <p>Overview toàn bộ gia đình trên một màn hình</p>
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; margin: 1rem 0; text-align: left;">
+                                <strong>Thông tin tổng hợp:</strong><br>
+                                • Health alerts và reminders<br>
+                                • Weekly/monthly summaries<br>
+                                • Goal progress cho từng thành viên<br>
+                                • Upcoming medical appointments
+                            </div>
+                        </div>
+
+                        <div class="management-item">
+                            <h4>🔄 Data Sync & Backup</h4>
+                            <p>Tự động đồng bộ và sao lưu dữ liệu</p>
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; margin: 1rem 0; text-align: left;">
+                                <strong>Tính năng:</strong><br>
+                                • Real-time sync across devices<br>
+                                • Daily automated backups<br>
+                                • Export data for doctors<br>
+                                • Import from wearable devices
+                            </div>
+                        </div>
+
+                        <div class="management-item">
+                            <h4>👥 Permission Management</h4>
+                            <p>Phân quyền linh hoạt cho từng thành viên</p>
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; margin: 1rem 0; text-align: left;">
+                                <strong>Levels quyền:</strong><br>
+                                • <strong>Admin:</strong> Full access tất cả<br>
+                                • <strong>Parent:</strong> Manage con cái<br>
+                                • <strong>Teen:</strong> Self-entry<br>
+                                • <strong>Child:</strong> Guided entry
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reminder-section fade-in" id="reminders">
+                <div class="container">
+                    <h2>💊 Hệ thống nhắc nhở thông minh</h2>
+                    <p>Never miss medication hoặc health appointments với AI-powered reminders</p>
+                    
+                    <div class="reminder-grid">
+                        <div class="reminder-item">
+                            <span style="font-size: 2rem;">💊</span>
+                            <h4>Medication Reminders</h4>
+                            <div class="pill-reminder">
+                                <div style="font-weight: bold; margin-bottom: 0.5rem;">👨 Ba - Hôm nay</div>
+                                <div class="pill-item">
+                                    <div>
+                                        <strong>Metformin 500mg</strong><br>
+                                        <span style="font-size: 0.8rem;">Sau bữa sáng</span>
+                                    </div>
+                                    <span class="pill-status" style="color: #4caf50;">✅</span>
+                                </div>
+                                <div class="pill-item">
+                                    <div>
+                                        <strong>Vitamin D 1000 IU</strong><br>
+                                        <span style="font-size: 0.8rem;">8:00 AM</span>
+                                    </div>
+                                    <span class="pill-status" style="color: #ff9800;">⏰</span>
+                                </div>
+                                <div class="pill-item">
+                                    <div>
+                                        <strong>Omega-3</strong><br>
+                                        <span style="font-size: 0.8rem;">Sau bữa tối</span>
+                                    </div>
+                                    <span class="pill-status" style="color: #666;">⏳</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="reminder-item">
+                            <span style="font-size: 2rem;">🏥</span>
+                            <h4>Medical Appointments</h4>
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; margin: 1rem 0; text-align: left;">
+                                <strong>Upcoming:</strong><br>
+                                • 👧 An - Nha sĩ (3 ngày nữa)<br>
+                                • 👨 Ba - Khám tim mạch (1 tuần)<br>
+                                • 👦 Minh - Tiêm vaccine (2 tuần)<br>
+                                • 👩 Mẹ - Gynecology checkup (1 tháng)
+                            </div>
+                        </div>
+
+                        <div class="reminder-item">
+                            <span style="font-size: 2rem;">⚖️</span>
+                            <h4>Health Measurements</h4>
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; margin: 1rem 0; text-align: left;">
+                                <strong>Scheduled:</strong><br>
+                                • Daily: Đo cân nặng (7:00 AM)<br>
+                                • Weekly: Đo huyết áp (Ba, Chủ nhật)<br>
+                                • Monthly: Đo chiều cao (các con)<br>
+                                • Quarterly: Body composition
+                            </div>
+                        </div>
+
+                        <div class="reminder-item">
+                            <span style="font-size: 2rem;">🏃</span>
+                            <h4>Activity & Exercise</h4>
+                            <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; margin: 1rem 0; text-align: left;">
+                                <strong>Personal schedules:</strong><br>
+                                • 👨 Ba: Gym T2,T4,T6 (6:30 AM)<br>
+                                • 👩 Mẹ: Yoga T3,T5 (7:00 PM)<br>
+                                • 👧 An: Bơi lội T7 (2:00 PM)<br>
+                                • 👦 Minh: Taekwondo T5 (4:00 PM)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-section fade-in">
+                <h2>💪 Bắt đầu quản lý sức khỏe gia đình thông minh</h2>
+                <p>Theo dõi, phân tích và cải thiện sức khỏe của cả gia đình với Kazoku Personal Health</p>
+                
+                <div style="margin: 2rem 0;">
+                    <a href="#download" class="cta-button">Tải ứng dụng miễn phí</a>
+                    <a href="#demo" class="cta-button" style="background: linear-gradient(45deg, #4caf50, #45a049); margin-left: 1rem;">Xem demo chi tiết</a>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 2rem 0; font-size: 0.9rem;">
+                    <div>
+                        <strong>👨‍👩‍👧‍👦 Family Focus</strong><br>
+                        Thiết kế cho cả gia đình
+                    </div>
+                    <div>
+                        <strong>📊 Visual Analytics</strong><br>
+                        Charts và insights thông minh
+                    </div>
+                    <div>
+                        <strong>💊 Smart Reminders</strong><br>
+                        Never miss medications
+                    </div>
+                    <div>
+                        <strong>🔒 Privacy First</strong><br>
+                        Data encryption cao cấp
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <h3>💪 Kazoku Personal Health - Sức khỏe gia đình trong tầm tay</h3>
+            <p style="margin: 1rem 0;">
+                📞 Hotline: 1900-HEALTH | 📧 Email: health@kazoku.app<br>
+                🌐 Website: kazoku.app/health | 🏢 Địa chỉ: Tầng 25, Keangnam Landmark, Hà Nội
+            </p>
+            
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap;">
+                <a href="#ios" style="color: #667eea; text-decoration: none;">📱 App Store</a>
+                <a href="#android" style="color: #667eea; text-decoration: none;">🤖 Google Play</a>
+                <a href="#web" style="color: #667eea; text-decoration: none;">💻 Web Dashboard</a>
+                <a href="#support" style="color: #667eea; text-decoration: none;">👨‍⚕️ Medical Support</a>
+            </div>
+            
+            <p style="font-size: 0.9rem; color: #666; border-top: 1px solid #eee; padding-top: 1rem; margin-top: 1.5rem;">
+                &copy; 2024 Kazoku Health Platform - Your Family's Health Journey 💚<br>
+                <em>"Health is not just the absence of disease, but a state of complete physical, mental and social well-being"</em><br><br>
+                
+                <strong>Medical Disclaimer:</strong> Kazoku app is for health tracking and management purposes. Not intended to replace professional medical advice.<br>
+                <strong>Data Protection:</strong> ISO 27001 • SOC 2 Type II • GDPR Compliant • Vietnam Personal Data Protection
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -30px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced hover effects
+        document.querySelectorAll('.feature-card, .demo-item, .chart-item, .management-item, .reminder-item').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+                this.style.transition = 'all 0.3s ease';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Member tab switching
+        document.querySelectorAll('.member-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.member-tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Pill reminder interactions
+        document.querySelectorAll('.pill-item').forEach(pill => {
+            pill.addEventListener('click', function() {
+                const status = this.querySelector('.pill-status');
+                
+                if (status.textContent === '⏰') {
+                    status.textContent = '✅';
+                    status.style.color = '#4caf50';
+                    this.style.background = '#e8f5e8';
+                } else if (status.textContent === '⏳') {
+                    status.textContent = '⏰';
+                    status.style.color = '#ff9800';
+                    this.style.background = '#fff3e0';
+                }
+            });
+        });
+
+        // Mood calendar interactions
+        document.querySelectorAll('.mood-day').forEach(day => {
+            day.addEventListener('click', function() {
+                const moods = ['😊', '😐', '😔', '🤩', '😴'];
+                const currentMood = this.textContent;
+                const currentIndex = moods.indexOf(currentMood);
+                const nextIndex = (currentIndex + 1) % moods.length;
+                this.textContent = moods[nextIndex];
+                
+                // Update background color based on mood
+                const colors = ['#e8f5e8', '#fff3e0', '#fce4ec', '#e8f5e8', '#e3f2fd'];
+                this.style.background = colors[nextIndex];
+            });
+        });
+
+        // Simulate notification
+        setTimeout(() => {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: linear-gradient(45deg, #4caf50, #45a049);
+                color: white;
+                padding: 1rem;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+                z-index: 10000;
+                max-width: 300px;
+                animation: slideIn 0.5s ease;
+            `;
+            
+            notification.innerHTML = `
+                <strong>💊 Nhắc nhở</strong><br>
+                <span style="font-size: 0.9rem;">Đã đến giờ uống Vitamin D của Ba!</span><br>
+                <button onclick="this.parentElement.remove()" style="margin-top: 0.5rem; padding: 0.3rem 0.8rem; background: rgba(255,255,255,0.2); color: white; border: none; border-radius: 4px; cursor: pointer;">Đã uống ✓</button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.remove();
+                }
+            }, 5000);
+        }, 3000);
+
+        // Add CSS for notification animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

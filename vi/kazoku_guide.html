@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kazoku - Ứng dụng quản lý gia đình thông minh</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #667eea;
+        }
+        
+        main {
+            margin-top: 80px;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 4rem 0;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+        
+        .features {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4caf50;
+            font-weight: bold;
+        }
+        
+        .demo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .demo h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .demo p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .demo-video {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .video-placeholder {
+            height: 300px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            border: 2px dashed rgba(255, 255, 255, 0.5);
+        }
+        
+        .steps {
+            background: white;
+            padding: 4rem 0;
+        }
+        
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .step {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            line-height: 50px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .step h3 {
+            margin-bottom: 1rem;
+            color: #333;
+        }
+        
+        .step p {
+            color: #666;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .steps-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="smooth-scroll">
+    <header>
+        <nav class="container">
+            <div class="logo">Kazoku</div>
+            <ul class="nav-links">
+                <li><a href="#features">Tính năng</a></li>
+                <li><a href="#demo">Demo</a></li>
+                <li><a href="#steps">Hướng dẫn</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1 class="fade-in">Ứng dụng Kazoku</h1>
+                <p class="fade-in">Trợ lý gia đình thông minh - Kết nối yêu thương, chia sẻ hạnh phúc cho gia đình bạn</p>
+                <a href="#features" class="cta-button fade-in">Khám phá ngay</a>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-title fade-in">Tính năng nổi bật</h2>
+                <div class="features-grid">
+                    <div class="feature-card fade-in">
+                        <span class="feature-icon">📸</span>
+                        <h3>Chia sẻ khoảnh khắc</h3>
+                        <p>Lưu giữ và chia sẻ những kỷ niệm đẹp cùng gia đình</p>
+                        <ul class="feature-list">
+                            <li>Chia sẻ ảnh, video tức thì</li>
+                            <li>Bình luận và thả tim</li>
+                            <li>Tự động sắp xếp theo thời gian</li>
+                            <li>Chia sẻ khoảnh khắc trong sự kiện gia đình hoặc hoạt động vui chơi</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card fade-in">
+                        <span class="feature-icon">🏠</span>
+                        <h3>Quản lý việc nhà</h3>
+                        <p>Phân chia và theo dõi công việc nhà một cách hiệu quả</p>
+                        <ul class="feature-list">
+                            <li>Tạo danh sách việc cần làm</li>
+                            <li>Phân công nhiệm vụ cho từng thành viên (với sự trợ giúp của Kazoku AI)</li>
+                            <li>Thiết lập lịch trình định kỳ</li>
+                            <li>Theo dõi tiến độ hoàn thành</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card fade-in">
+                        <span class="feature-icon">📅</span>
+                        <h3>Lịch gia đình</h3>
+                        <p>Quản lý và đồng bộ lịch trình của cả gia đình trên một giao diện trực quan</p>
+                        <ul class="feature-list">
+                            <li>Lịch chung cho cả gia đình</li>
+                            <li>Nhắc nhở sự kiện quan trọng</li>
+                            <li>Hỗ trợ lịch âm cho một số quốc gia Châu Á (Việt Nam, Trung Quốc, Hàn Quốc)</li>
+                            <li>Xem lịch theo tuần/tháng/danh sách, giao diện thân thiện như Google Calendar</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card fade-in">
+                        <span class="feature-icon">🏕️</span>
+                        <h3>Hoạt động vui chơi</h3>
+                        <p>Lên kế hoạch và gợi ý các hoạt động giải trí gia đình</p>
+                        <ul class="feature-list">
+                            <li>Gợi ý hoạt động phù hợp</li>
+                            <li>Lên kế hoạch du lịch, lịch trình & thông tin thời tiết</li>
+                            <li>Tìm điểm vui chơi gần nhà</li>
+                            <li>Quản lý ngân sách, công việc chuẩn bị cho chuyến du lịch</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card fade-in">
+                        <span class="feature-icon">🏃‍♀️</span>
+                        <h3>Hoạt động cá nhân</h3>
+                        <p>Theo dõi sức khỏe và thói quen cá nhân của từng thành viên</p>
+                        <ul class="feature-list">
+                            <li>Theo dõi vận động thể chất, tâm trạng hàng ngày, chia sẻ trong gia đình</li>
+                            <li>Ghi chép thực đơn dinh dưỡng hàng ngày</li>
+                            <li>Quản lý lịch khám bệnh, sự phát triển thể chất, nhắc nhở uống thuốc</li>
+                            <li>Lưu ghi chép cho từng thành viên, lưu giữ kỉ niệm & cuộc sống</li>
+                        </ul>
+                    </div>
+
+                    <div class="feature-card fade-in">
+                        <span class="feature-icon">✨</span>
+                        <h3>Kazoku AI</h3>
+                        <p>Trợ lý AI thông minh hỗ trợ quản lý gia đình</p>
+                        <ul class="feature-list">
+                            <li>Túc trực & tư vấn cho mọi hoạt động trong gia đình</li>
+                            <li>Gợi ý chế độ ăn uống cho từng thành viên</li>
+                            <li>Gợi ý phân công công việc</li>
+                            <li>Gợi ý địa điểm & kế hoạch vui chơi của gia đình</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="demo" id="demo">
+            <div class="container">
+                <h2 class="fade-in">Trải nghiệm Kazoku</h2>
+                <p class="fade-in">Xem demo ứng dụng để hiểu rõ hơn về các tính năng thú vị của kazoku</p>
+                <div class="demo-video fade-in">
+                    <div class="video-placeholder">
+                        🎥 Video demo sẽ được cập nhật sớm
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="steps" id="steps">
+            <div class="container">
+                <h2 class="section-title fade-in">Hướng dẫn sử dụng</h2>
+                <div class="steps-container">
+                    <div class="step fade-in">
+                        <div class="step-number">1</div>
+                        <h3>Tải ứng dụng</h3>
+                        <p>Tải Kazoku từ App Store hoặc Google Play. Đăng ký tài khoản và tạo gia đình của bạn.</p>
+                    </div>
+                    
+                    <div class="step fade-in">
+                        <div class="step-number">2</div>
+                        <h3>Mời thành viên</h3>
+                        <p>Gửi lời mời cho các thành viên trong gia đình qua email hoặc mã QR.</p>
+                    </div>
+                    
+                    <div class="step fade-in">
+                        <div class="step-number">3</div>
+                        <h3>Thiết lập hồ sơ</h3>
+                        <p>Cập nhật thông tin cá nhân và tùy chỉnh quyền riêng tư cho từng thành viên.</p>
+                    </div>
+                    
+                    <div class="step fade-in">
+                        <div class="step-number">4</div>
+                        <h3>Bắt đầu sử dụng</h3>
+                        <p>Khám phá các tính năng và bắt đầu quản lý gia đình một cách thông minh!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <h3>❤️ Kazoku - Gia đình hạnh phúc bắt đầu từ việc nhỏ</h3>
+                <p>📧 Email: contact@kazoku-ai.com</p>
+                <p>🌐 Website: kazoku-ai.com | 🏢 Địa chỉ: Edogawa, Tokyo, Japan</p>
+                <div style="display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap;">
+                    <a href="#" style="color: #fff; text-decoration: none;">
+                        <i class="fab fa-apple"></i> Tải iOS
+                    </a>
+                    <a href="#" style="color: #fff; text-decoration: none;">
+                        <i class="fab fa-android"></i> Tải Android
+                    </a>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-threads"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <p>&copy; 2025 Kazoku App. Tất cả quyền được bảo lưu.<br>
+                <em>"Kết nối yêu thương - Chia sẻ hạnh phúc"</em>
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add some interactive hover effects
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add floating animation to CTA button
+        const ctaButton = document.querySelector('.cta-button');
+        if (ctaButton) {
+            setInterval(() => {
+                ctaButton.style.transform = 'translateY(-2px)';
+                setTimeout(() => {
+                    ctaButton.style.transform = 'translateY(0)';
+                }, 1000);
+            }, 3000);
+        }
+
+        // Add typing effect to hero text
+        const heroTitle = document.querySelector('.hero h1');
+        if (heroTitle) {
+            const text = heroTitle.textContent;
+            heroTitle.textContent = '';
+            let i = 0;
+            
+            setTimeout(() => {
+                const typeWriter = setInterval(() => {
+                    if (i < text.length) {
+                        heroTitle.textContent += text.charAt(i);
+                        i++;
+                    } else {
+                        clearInterval(typeWriter);
+                    }
+                }, 150);
+            }, 500);
+        }
+    </script>
+</body>
+</html>

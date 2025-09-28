@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Điều khoản sử dụng - Kazoku</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 35px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #4f46e5;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #4f46e5, #7c3aed);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+            border-left: 4px solid #4f46e5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '•';
+            color: #4f46e5;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            margin-top: 30px;
+        }
+
+        .contact-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            color: #64748b;
+            font-size: 0.9em;
+        }
+
+        .footer {
+            background: #f8fafc;
+            padding: 20px 30px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.9em;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #dbeafe;
+            color: #1e40af;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .app-logo {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">🏠 Kazoku</div>
+            <div class="app-subtitle">Ứng dụng Quản lý Gia đình</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                Có hiệu lực từ: 27/09/2025
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">1. Chấp nhận Điều khoản</h2>
+                <div class="section-content">
+                    <p>Chào mừng bạn đến với Kazoku - ứng dụng quản lý gia đình thông minh. Bằng việc tải xuống, cài đặt và sử dụng ứng dụng Kazoku, bạn đồng ý tuân thủ và bị ràng buộc bởi các điều khoản và điều kiện được nêu trong tài liệu này.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>Lưu ý quan trọng:</strong> Nếu bạn không đồng ý với bất kỳ điều khoản nào được nêu ra, vui lòng không sử dụng ứng dụng Kazoku.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">2. Mô tả Dịch vụ</h2>
+                <div class="section-content">
+                    <p>Kazoku là ứng dụng di động được thiết kế để hỗ trợ các gia đình trong việc quản lý các hoạt động hàng ngày, bao gồm nhưng không giới hạn:</p>
+                    
+                    <div class="list-item">Quản lý lịch trình và sự kiện gia đình</div>
+                    <div class="list-item">Theo dõi ngân sách và chi tiêu</div>
+                    <div class="list-item">Danh sách công việc và phân công nhiệm vụ</div>
+                    <div class="list-item">Chia sẻ thông tin và giao tiếp giữa các thành viên</div>
+                    <div class="list-item">Lưu trữ và quản lý tài liệu gia đình</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">3. Quyền và Nghĩa vụ của Người dùng</h2>
+                <div class="section-content">
+                    <p><strong>Quyền của bạn:</strong></p>
+                    <div class="list-item">Sử dụng tất cả tính năng của ứng dụng theo đúng mục đích</div>
+                    <div class="list-item">Bảo mật và kiểm soát dữ liệu cá nhân của mình</div>
+                    <div class="list-item">Yêu cầu hỗ trợ kỹ thuật khi cần thiết</div>
+
+                    <p style="margin-top: 20px;"><strong>Nghĩa vụ của bạn:</strong></p>
+                    <div class="list-item">Cung cấp thông tin chính xác và cập nhật</div>
+                    <div class="list-item">Bảo mật thông tin đăng nhập cá nhân</div>
+                    <div class="list-item">Không sử dụng ứng dụng cho các mục đích bất hợp pháp</div>
+                    <div class="list-item">Tuân thủ các quy định và hướng dẫn sử dụng</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">4. Quyền riêng tư và Bảo mật</h2>
+                <div class="section-content">
+                    <p>Chúng tôi cam kết bảo vệ quyền riêng tư và dữ liệu cá nhân của bạn:</p>
+                    
+                    <div class="list-item">Dữ liệu được mã hóa và lưu trữ an toàn</div>
+                    <div class="list-item">Không chia sẻ thông tin cá nhân với bên thứ ba mà không có sự đồng ý</div>
+                    <div class="list-item">Chỉ thu thập dữ liệu cần thiết cho việc vận hành ứng dụng</div>
+                    <div class="list-item">Bạn có quyền yêu cầu xóa dữ liệu cá nhân bất cứ lúc nào</div>
+
+                    <div class="highlight-box">
+                        <p>Để biết thêm chi tiết về cách chúng tôi xử lý dữ liệu của bạn, vui lòng tham khảo <strong>Chính sách Quyền riêng tư</strong> riêng biệt.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">5. Giới hạn Trách nhiệm</h2>
+                <div class="section-content">
+                    <p>Trong phạm vi pháp luật cho phép, Kazoku không chịu trách nhiệm cho:</p>
+                    
+                    <div class="list-item">Mất mát dữ liệu do lỗi kỹ thuật hoặc sự cố bất khả kháng</div>
+                    <div class="list-item">Gián đoạn dịch vụ do bảo trì hoặc nâng cấp</div>
+                    <div class="list-item">Thiệt hại gián tiếp phát sinh từ việc sử dụng ứng dụng</div>
+                    <div class="list-item">Hành vi sử dụng không phù hợp của người dùng</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2 class="section-title">6. Cập nhật và Thay đổi</h2>
+                <div class="section-content">
+                    <p>Chúng tôi có quyền cập nhật các điều khoản này để phù hợp với:</p>
+                    
+                    <div class="list-item">Thay đổi trong quy định pháp luật</div>
+                    <div class="list-item">Cải tiến tính năng và dịch vụ</div>
+                    <div class="list-item">Phản hồi và yêu cầu từ người dùng</div>
+
+                    <p>Mọi thay đổi quan trọng sẽ được thông báo trước ít nhất 30 ngày qua ứng dụng hoặc email.</p>
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <div class="contact-title">📞 Liên hệ Hỗ trợ</div>
+                <div class="contact-info">
+                    <p>Nếu bạn có bất kỳ câu hỏi nào về các điều khoản này, vui lòng liên hệ với chúng tôi:</p>
+                    <p><strong>Email:</strong> support@kazoku.app</p>
+                    <p><strong>Hotline:</strong> 1900 - KAZOKU</p>
+                    <p><strong>Thời gian hỗ trợ:</strong> 8:00 - 22:00 (Thứ 2 - Chủ nhật)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2025 Kazoku App. Tất cả các quyền được bảo lưu.</p>
+            <p>Phiên bản điều khoản: 1.0 | Cập nhật lần cuối: 27/09/2025</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Kazoku</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-section {
+            background: #fff;
+            padding: 30px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            font-size: 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 18px;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .category-section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .category-section:nth-child(1) { animation-delay: 0.1s; }
+        .category-section:nth-child(2) { animation-delay: 0.2s; }
+        .category-section:nth-child(3) { animation-delay: 0.3s; }
+        .category-section:nth-child(4) { animation-delay: 0.4s; }
+        .category-section:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .category-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #f59e0b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #fed7aa;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-icon {
+            font-size: 1.2em;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-color: #f59e0b;
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #92400e;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        }
+
+        .faq-question.active {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+        }
+
+        .faq-toggle {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: #fff;
+        }
+
+        .faq-answer.show {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .faq-answer-content p {
+            margin-bottom: 12px;
+        }
+
+        .faq-answer-content ul {
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .faq-answer-content li {
+            margin-bottom: 6px;
+        }
+
+        .highlight-tip {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .warning-tip {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #fed7aa;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            color: #b45309;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+        }
+
+        .footer {
+            background: #f8fafc;
+            padding: 25px 30px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.9em;
+        }
+
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .quick-link {
+            color: #f59e0b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .quick-link:hover {
+            color: #d97706;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .search-section {
+                padding: 20px;
+            }
+            
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .quick-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+            display: none;
+        }
+
+        .no-results.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">❓ Kazoku</div>
+            <div class="app-subtitle">Câu hỏi Thường gặp</div>
+        </div>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Tìm kiếm câu hỏi..." id="searchInput">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="category-section" data-category="getting-started">
+                <h2 class="category-title">
+                    <span class="category-icon">🚀</span>
+                    Bắt đầu sử dụng
+                </h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Kazoku là gì và tại sao tôi nên sử dụng?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Kazoku là ứng dụng quản lý gia đình thông minh được thiết kế để giúp các gia đình tổ chức cuộc sống hàng ngày một cách hiệu quả.</p>
+                            <div class="highlight-tip">
+                                <strong>🏆 Lợi ích chính:</strong>
+                                <ul>
+                                    <li>Quản lý lịch trình chung cho cả gia đình</li>
+                                    <li>Theo dõi ngân sách và chi tiêu thông minh</li>
+                                    <li>Phân công công việc nhà công bằng</li>
+                                    <li>Chia sẻ thông tin quan trọng an toàn</li>
+                                    <li>Lưu trữ tài liệu gia đình tập trung</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Làm thế nào để tạo tài khoản và thiết lập gia đình?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Bước 1:</strong> Tải ứng dụng từ App Store hoặc Google Play</p>
+                            <p><strong>Bước 2:</strong> Đăng ký tài khoản bằng email hoặc số điện thoại</p>
+                            <p><strong>Bước 3:</strong> Tạo hồ sơ gia đình và mời các thành viên tham gia</p>
+                            <p><strong>Bước 4:</strong> Thiết lập quyền riêng tư và bảo mật</p>
+                            <div class="warning-tip">
+                                <strong>⚠️ Lưu ý:</strong> Chỉ người tạo gia đình mới có quyền quản trị. Hãy chọn cẩn thận người này!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Ứng dụng có miễn phí không? Có gói trả phí nào không?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Kazoku cung cấp cả phiên bản miễn phí và trả phí:</p>
+                            <p><strong>🆓 Gói Miễn phí:</strong></p>
+                            <ul>
+                                <li>Tối đa 4 thành viên gia đình</li>
+                                <li>Lịch trình cơ bản</li>
+                                <li>Quản lý chi tiêu đơn giản</li>
+                                <li>5GB lưu trữ tài liệu</li>
+                            </ul>
+                            <p><strong>💎 Gói Premium:</strong></p>
+                            <ul>
+                                <li>Không giới hạn thành viên</li>
+                                <li>Tính năng AI thông minh</li>
+                                <li>Phân tích chi tiêu chi tiết</li>
+                                <li>100GB lưu trữ đám mây</li>
+                                <li>Hỗ trợ ưu tiên 24/7</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section" data-category="family-management">
+                <h2 class="category-title">
+                    <span class="category-icon">👨‍👩‍👧‍👦</span>
+                    Quản lý gia đình
+                </h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Làm thế nào để thêm/xóa thành viên gia đình?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Thêm thành viên:</strong></p>
+                            <ul>
+                                <li>Vào <strong>Cài đặt → Quản lý gia đình → Thêm thành viên</strong></li>
+                                <li>Gửi lời mời qua email hoặc mã QR</li>
+                                <li>Đợi thành viên chấp nhận lời mời</li>
+                            </ul>
+                            <p><strong>Xóa thành viên:</strong></p>
+                            <ul>
+                                <li>Chỉ quản trị viên mới có quyền xóa</li>
+                                <li>Chọn thành viên → Tùy chọn → Xóa khỏi gia đình</li>
+                                <li>Xác nhận quyết định (không thể hoàn tác)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Các vai trò trong gia đình có gì khác nhau?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>👑 Quản trị viên (Admin):</strong></p>
+                            <ul>
+                                <li>Toàn quyền kiểm soát gia đình</li>
+                                <li>Thêm/xóa thành viên</li>
+                                <li>Thay đổi cài đặt chung</li>
+                                <li>Xem tất cả hoạt động</li>
+                            </ul>
+                            <p><strong>👨‍👩 Thành viên (Member):</strong></p>
+                            <ul>
+                                <li>Quản lý thông tin cá nhân</li>
+                                <li>Tham gia lịch trình chung</li>
+                                <li>Chia sẻ chi tiêu</li>
+                                <li>Truy cập tài liệu được phép</li>
+                            </ul>
+                            <p><strong>👶 Trẻ em (Child):</strong></p>
+                            <ul>
+                                <li>Quyền hạn chế theo tuổi</li>
+                                <li>Được giám sát bởi phụ huynh</li>
+                                <li>Không thể thay đổi cài đặt quan trọng</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section" data-category="features">
+                <h2 class="category-title">
+                    <span class="category-icon">⚡</span>
+                    Tính năng chính
+                </h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Làm thế nào để sử dụng lịch gia đình hiệu quả?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Lịch gia đình Kazoku giúp bạn theo dõi tất cả hoạt động:</p>
+                            <div class="highlight-tip">
+                                <strong>💡 Mẹo sử dụng hiệu quả:</strong>
+                                <ul>
+                                    <li>Tạo sự kiện định kỳ cho hoạt động thường xuyên</li>
+                                    <li>Sử dụng màu sắc khác nhau cho từng thành viên</li>
+                                    <li>Bật thông báo nhắc nhở trước 15-30 phút</li>
+                                    <li>Chia sẻ lịch với bạn bè khi cần thiết</li>
+                                    <li>Đồng bộ với lịch Google/Apple để tiện theo dõi</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Quản lý ngân sách gia đình như thế nào?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Thiết lập ngân sách:</strong></p>
+                            <ul>
+                                <li>Nhập thu nhập hàng tháng của gia đình</li>
+                                <li>Phân bổ ngân sách cho các hạng mục</li>
+                                <li>Đặt mục tiêu tiết kiệm</li>
+                            </ul>
+                            <p><strong>Theo dõi chi tiêu:</strong></p>
+                            <ul>
+                                <li>Ghi chép chi tiêu hàng ngày</li>
+                                <li>Chụp ảnh hóa đơn để lưu trữ</li>
+                                <li>Phân loại chi tiêu tự động</li>
+                                <li>Xem báo cáo chi tiết cuối tháng</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Tính năng phân công công việc hoạt động ra sao?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Tính năng này giúp phân chia công việc nhà công bằng:</p>
+                            <ul>
+                                <li><strong>Tạo danh sách công việc:</strong> Thêm các task hàng ngày/hàng tuần</li>
+                                <li><strong>Phân công tự động:</strong> Hệ thống sẽ phân bổ dựa trên lịch trình</li>
+                                <li><strong>Theo dõi tiến độ:</strong> Đánh dấu hoàn thành và đánh giá</li>
+                                <li><strong>Hệ thống điểm thưởng:</strong> Tích điểm cho trẻ em để tạo động lực</li>
+                            </ul>
+                            <div class="warning-tip">
+                                <strong>🎯 Mẹo:</strong> Nên thiết lập thời gian cụ thể và nhắc nhở để tăng hiệu quả!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section" data-category="security">
+                <h2 class="category-title">
+                    <span class="category-icon">🔒</span>
+                    Bảo mật & Quyền riêng tư
+                </h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Dữ liệu của tôi có an toàn không?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Kazoku áp dụng các biện pháp bảo mật hàng đầu:</p>
+                            <ul>
+                                <li><strong>Mã hóa dữ liệu:</strong> AES-256 cho lưu trữ, TLS 1.3 cho truyền tải</li>
+                                <li><strong>Xác thực 2 lớp:</strong> SMS hoặc ứng dụng authenticator</li>
+                                <li><strong>Sao lưu tự động:</strong> Dữ liệu được backup hàng ngày</li>
+                                <li><strong>Kiểm soát truy cập:</strong> Phân quyền chi tiết cho từng thành viên</li>
+                            </ul>
+                            <div class="highlight-tip">
+                                <strong>🛡️ Cam kết:</strong> Chúng tôi không bao giờ bán dữ liệu cá nhân cho bên thứ ba!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Làm thế nào để thiết lập quyền riêng tư?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Truy cập <strong>Cài đặt → Quyền riêng tư</strong> để:</p>
+                            <ul>
+                                <li>Kiểm soát thông tin nào được chia sẻ</li>
+                                <li>Ẩn hoạt động cá nhân khỏi thành viên khác</li>
+                                <li>Thiết lập mật khẩu cho tài liệu nhạy cảm</li>
+                                <li>Bật/tắt theo dõi vị trí</li>
+                                <li>Quản lý quyền truy cập ứng dụng</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section" data-category="troubleshooting">
+                <h2 class="category-title">
+                    <span class="category-icon">🔧</span>
+                    Khắc phục sự cố
+                </h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Ứng dụng chạy chậm hoặc bị đứng, làm thế nào?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Các bước khắc phục cơ bản:</strong></p>
+                            <ul>
+                                <li>Đóng và mở lại ứng dụng</li>
+                                <li>Kiểm tra kết nối internet</li>
+                                <li>Cập nhật lên phiên bản mới nhất</li>
+                                <li>Khởi động lại thiết bị</li>
+                                <li>Xóa cache ứng dụng (Android)</li>
+                            </ul>
+                            <div class="warning-tip">
+                                <strong>📞 Vẫn không giải quyết được?</strong> Liên hệ support với thông tin chi tiết về lỗi!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Tôi quên mật khẩu, làm thế nào để khôi phục?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Khôi phục qua email:</strong></p>
+                            <ul>
+                                <li>Nhấn "Quên mật khẩu" ở màn hình đăng nhập</li>
+                                <li>Nhập email đã đăng ký</li>
+                                <li>Kiểm tra email (kể cả spam) để lấy link khôi phục</li>
+                                <li>Tạo mật khẩu mới theo hướng dẫn</li>
+                            </ul>
+                            <p><strong>Khôi phục qua SMS:</strong></p>
+                            <ul>
+                                <li>Chọn "Khôi phục qua SMS"</li>
+                                <li>Nhập số điện thoại đã xác thực</li>
+                                <li>Nhập mã OTP nhận được</li>
+                                <li>Thiết lập mật khẩu mới</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Dữ liệu không đồng bộ giữa các thiết bị?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Kiểm tra các nguyên nhân phổ biến:</p>
+                            <ul>
+                                <li><strong>Kết nối mạng:</strong> Đảm bảo có internet ổn định</li>
+                                <li><strong>Đăng nhập:</strong> Xác nhận đang dùng cùng tài khoản</li>
+                                <li><strong>Phiên bản:</strong> Cập nhật ứng dụng trên tất cả thiết bị</li>
+                                <li><strong>Thủ công:</strong> Kéo xuống để refresh dữ liệu</li>
+                            </ul>
+                            <div class="highlight-tip">
+                                <strong>🔄 Đồng bộ thủ công:</strong> Vào Cài đặt → Đồng bộ dữ liệu → Đồng bộ ngay
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="no-results" id="noResults">
+                <h3>🔍 Không tìm thấy kết quả</h3>
+                <p>Không có câu hỏi nào phù hợp với từ khóa của bạn.</p>
+                <p>Hãy thử tìm kiếm với từ khóa khác hoặc liên hệ hỗ trợ.</p>
+            </div>
+
+            <div class="contact-section">
+                <div class="contact-title">🤝 Vẫn cần hỗ trợ?</div>
+                <div class="contact-info">
+                    <p>Đội ngũ hỗ trợ Kazoku luôn sẵn sàng giúp bạn 24/7</p>
+                    <p>Thời gian phản hồi trung bình: <strong>2 giờ</strong></p>
+                </div>
+                <div class="contact-buttons">
+                    <a href="mailto:support@kazoku.app" class="contact-btn">
+                        📧 Email hỗ trợ
+                    </a>
+                    <a href="tel:1900-KAZOKU" class="contact-btn">
+                        📞 Hotline
+                    </a>
+                    <a href="#" class="contact-btn">
+                        💬 Chat trực tuyến
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="quick-links">
+                <a href="#" class="quick-link">Điều khoản sử dụng</a>
+                <a href="#" class="quick-link">Chính sách bảo mật</a>
+                <a href="#" class="quick-link">Hướng dẫn sử dụng</a>
+                <a href="#" class="quick-link">Cộng đồng</a>
+            </div>
+            <p>© 2025 Kazoku App. Chúng tôi luôn ở đây để hỗ trợ gia đình bạn!</p>
+            <p>Cập nhật FAQ lần cuối: 27/09/2025 | Phiên bản: 3.1</p>
+        </div>
+    </div>
+
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = question.classList.contains('active');
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-question.active').forEach(openQuestion => {
+                    if (openQuestion !== question) {
+                        openQuestion.classList.remove('active');
+                        openQuestion.nextElementSibling.classList.remove('show');
+                    }
+                });
+                
+                // Toggle current FAQ
+                if (isOpen) {
+                    question.classList.remove('active');
+                    answer.classList.remove('show');
+                } else {
+                    question.classList.add('active');
+                    answer.classList.add('show');
+                }
+            });
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        const categorySection = document.querySelectorAll('.category-section');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            let hasResults = false;
+
+            if (searchTerm === '') {
+                // Show all sections
+                categorySection.forEach(section => {
+                    section.style.display = 'block';
+                    const faqItems = section.querySelectorAll('.faq-item');
+                    faqItems.forEach(item => item.style.display = 'block');
+                });
+                noResults.classList.remove('show');
+                return;
+            }
+
+            categorySection.forEach(section => {
+                const faqItems = section.querySelectorAll('.faq-item');
+                let sectionHasResults = false;
+
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer-content').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        sectionHasResults = true;
+                        hasResults = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Show/hide section based on results
+                section.style.display = sectionHasResults ? 'block' : 'none';
+            });
+
+            // Show/hide no results message
+            noResults.classList.toggle('show', !hasResults);
+        });
+
+        // Auto-expand first FAQ on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstFaq = document.querySelector('.faq-question');
+            if (firstFaq) {
+                firstFaq.click();
+            }
+        });
+    </script>
+</body>
+</html>
+                

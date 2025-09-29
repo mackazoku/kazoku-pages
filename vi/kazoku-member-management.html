@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Member Management - Kazoku Family App</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -558,6 +560,212 @@
             opacity: 0.9;
             font-size: 0.95rem;
         }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-note strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .demo-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .demo-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .demo-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .demo-tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .demo-tab.active, .demo-tab:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .demo-content {
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-tab-content {
+            display: none;
+            width: 100%;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .demo-tab-content.active {
+            display: block;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+            border: 2px dashed #667eea;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            background: linear-gradient(135deg, #e8f2ff, #f0f4ff);
+            border-color: #764ba2;
+            transform: scale(1.02);
+        }
+
+        .photo-placeholder-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .photo-placeholder-text {
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .photo-placeholder-subtext {
+            color: #8e9aaf;
+            font-size: 0.9rem;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        .feature-highlight {
+            background: #f0f4ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .feature-highlight h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-highlight p {
+            color: #6c7b8a;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -571,11 +779,6 @@
         <div class="header">
             <h1>👨‍👩‍👧‍👦 Member Management</h1>
             <p>Quản lý thành viên gia đình một cách thông minh và hiệu quả. Supervisor có toàn quyền kiểm soát việc thêm, mời và quản lý thông tin của từng thành viên, giúp Kazoku AI hiểu rõ hơn về gia đình để đưa ra những gợi ý cá nhân hóa tốt nhất cho mọi người.</p>
-        </div>
-
-        <div class="info-banner">
-            <h4>💡 Demo App Screenshots</h4>
-            <p>Khu vực bên dưới được thiết kế để hiển thị ảnh chụp màn hình thực tế của ứng dụng</p>
         </div>
 
         <div class="features-grid">
@@ -611,12 +814,75 @@
         </div>
 
         <div class="demo-section">
-            <h2>Demo Ứng dụng</h2>
-            <div class="photo-placeholder">
-                <div class="photo-placeholder-icon">👨‍👩‍👧‍👦</div>
-                <div class="photo-placeholder-text">Ảnh chụp màn hình quản lý thành viên</div>
-                <div class="photo-placeholder-subtext">
-                    Khu vực này sẽ hiển thị ảnh demo thực tế của tính năng Member Management trong ứng dụng Kazoku
+            <h2>Calendar Demo</h2>
+            
+            <div class="demo-tabs">
+                <button class="demo-tab active" data-tab="create">Tạo sự kiện</button>
+                <button class="demo-tab" data-tab="views">Chế độ xem</button>
+                <button class="demo-tab" data-tab="reminders">Nhắc nhở</button>
+                <button class="demo-tab" data-tab="sync">Đồng bộ Google</button>
+                <button class="demo-tab" data-tab="sharing">Chia sẻ gia đình</button>
+            </div>
+
+            <div class="demo-content">
+                <div class="demo-tab-content active" id="create">
+                    <div class="photo-placeholder">
+                        <div class="photo-placeholder-icon">📌</div>
+                        <div class="photo-placeholder-text">Tạo sự kiện mới</div>
+                        <div class="photo-placeholder-subtext">Dán ảnh giao diện tạo sự kiện với các trường thông tin chi tiết</div>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Lên lịch nhanh chóng</h3>
+                        <p>Nhập tên sự kiện, chọn ngày giờ, địa điểm, thêm mô tả và hình ảnh. Phân loại sự kiện và thiết lập nhắc nhở dễ dàng.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="views">
+                    <div class="photo-placeholder">
+                        <div class="photo-placeholder-icon">📆</div>
+                        <div class="photo-placeholder-text">Chế độ xem lịch</div>
+                        <div class="photo-placeholder-subtext">Dán ảnh các chế độ xem theo ngày, tuần, tháng và danh sách</div>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Xem lịch theo ý muốn</h3>
+                        <p>Chuyển đổi linh hoạt giữa chế độ xem ngày, tuần, tháng hoặc danh sách để quản lý thời gian tốt nhất.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="reminders">
+                    <div class="photo-placeholder">
+                        <div class="photo-placeholder-icon">🔔</div>
+                        <div class="photo-placeholder-text">Hệ thống nhắc nhở</div>
+                        <div class="photo-placeholder-subtext">Dán ảnh giao diện thiết lập và nhận thông báo nhắc nhở</div>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Không bỏ lỡ sự kiện quan trọng</h3>
+                        <p>Nhận thông báo push, email nhắc nhở trước 1 ngày, 1 tuần hoặc tùy chỉnh thời gian phù hợp với bạn.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="sync">
+                    <div class="photo-placeholder">
+                        <div class="photo-placeholder-icon">🔄</div>
+                        <div class="photo-placeholder-text">Đồng bộ Google Calendar</div>
+                        <div class="photo-placeholder-subtext">Dán ảnh giao diện kết nối và đồng bộ với Google Calendar</div>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Kết nối liền mạch</h3>
+                        <p>Sync 2 chiều với Google Calendar. Import/export sự kiện dễ dàng và cập nhật realtime trên mọi thiết bị.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="sharing">
+                    <div class="photo-placeholder">
+                        <div class="photo-placeholder-icon">👥</div>
+                        <div class="photo-placeholder-text">Chia sẻ với gia đình</div>
+                        <div class="photo-placeholder-subtext">Dán ảnh lịch gia đình được chia sẻ và xác nhận tham gia</div>
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Lịch chung cho cả nhà</h3>
+                        <p>Mọi người đều thấy sự kiện chung, xác nhận tham gia, bình luận và nhận cập nhật realtime từ các thành viên khác.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -739,10 +1005,58 @@
         </div>
     </div>
 
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - Trợ lý thông minh cho mọi gia đình!</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ Made with love for families, from Tokyo</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Tải iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Tải Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a hrefpagespages="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-threads"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <p>&copy; 2025 Kazoku App. Tất cả quyền được bảo lưu.<br>
+            <em>"Kết nối yêu thương - Chia sẻ hạnh phúc"</em>
+        </p>
+    </footer>
+
     <script>
         function showMessage() {
             alert('🎉 Chào mừng bạn đến với Member Management! Hãy bắt đầu xây dựng và quản lý gia đình thông minh cùng Kazoku.');
         }
+
+        // Tab functionality
+        document.querySelectorAll('.demo-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.demo-tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const targetContent = document.getElementById(tab.dataset.tab);
+                targetContent.classList.add('active');
+                
+                // Add entrance animation
+                targetContent.style.animation = 'none';
+                targetContent.offsetHeight; // Trigger reflow
+                targetContent.style.animation = 'fadeInUp 0.5s ease-out';
+            });
+        });
 
         // Parallax effect for floating elements
         window.addEventListener('scroll', () => {

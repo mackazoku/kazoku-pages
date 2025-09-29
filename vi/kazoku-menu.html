@@ -776,6 +776,7 @@
             display: flex;
             gap: 8px;
             flex-wrap: wrap;
+            justify-content: center;
             margin-top: 10px;
         }
 
@@ -1055,6 +1056,34 @@
             opacity: 0.6;
             font-size: 0.9rem;
         }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
     </style>
 </head>
 <body>
@@ -1065,8 +1094,8 @@
     </div>
 
     <div class="container">
-        <div class="header">
-            <h1>🏠 Kazoku Family App</h1>
+        <div class="header fade-in">
+            <h1>🏠 Kazoku - The Family App</h1>
             <p>Ứng dụng quản lý gia đình thông minh với đầy đủ tính năng giúp kết nối và tổ chức cuộc sống gia đình một cách hiệu quả nhất</p>
         </div>
 
@@ -1083,80 +1112,79 @@
                     <div class="feature-content">
                         <div class="feature-name">Timeline</div>
                         <div class="feature-description">
-                            Lưu giữ và chia sẻ những kỷ niệm đẹp cùng gia đình.
+                            Ghi lại và chia sẻ những khoảnh khắc đáng nhớ của gia đình. Từ những bữa ăn ấm cúng đến những chuyến du lịch vui vẻ, mọi kỷ niệm đều được lưu giữ và sắp xếp theo thời gian một cách tự động.
                         </div>
                     </div>
                     <div class="feature-arrow">→</div>
                 </a>
 
                 <!-- Tasks -->
-                <a href="kazoku_task_guide.html" class="feature-item">
+                <a href="kazoku-household-management.html" class="feature-item">
                     <div class="feature-icon">🏠</div>
                     <div class="feature-content">
                         <div class="feature-name">Quản lý việc nhà</div>
                         <div class="feature-description">
-                            Phân chia và theo dõi công việc nhà một cách hiệu quả.
+                            Tổ chức và phân công việc nhà một cách thông minh cho mọi thành viên trong gia đình. Từ việc dọn dẹp hàng ngày đến các công việc định kỳ, mọi thứ đều được lên lịch và theo dõi tiến độ để ngôi nhà luôn gọn gàng và ngăn nắp.
                         </div>
                     </div>
                     <div class="feature-arrow">→</div>
                 </a>
 
                 <!-- Events -->
-                <a href="kazoku_calendar_guide.html" class="feature-item">
+                <a href="kazoku-calendar-management.html" class="feature-item">
                     <div class="feature-icon">📅</div>
                     <div class="feature-content">
                         <div class="feature-name">Lịch gia đình</div>
                         <div class="feature-description">
-                            Quản lý và đồng bộ lịch trình của cả gia đình trên một giao diện trực quan.
+                            Tổ chức và lên lịch các sự kiện quan trọng, hoạt động vui chơi và kỷ niệm đặc biệt của gia đình. Đồng bộ với Google Calendar và nhận nhắc nhở tự động để không bao giờ bỏ lỡ những khoảnh khắc quan trọng.
                         </div>
                     </div>
                     <div class="feature-arrow">→</div>
                 </a>
 
                 <!-- Fun activities -->
-                <a href="kazoku_activities_guide.html" class="feature-item">
+                <a href="kazoku-activities-management.html" class="feature-item">
                     <div class="feature-icon">🏕️</div>
                     <div class="feature-content">
                         <div class="feature-name">Hoạt động vui chơi</div>
                         <div class="feature-description">
-                            Lên kế hoạch và tổ chức các hoạt động vui chơi cho cả gia đình.
+                            Tạo và quản lý các hoạt động vui chơi, du lịch và kỷ niệm đặc biệt của gia đình. Lên kế hoạch chi tiết, quản lý chi phí và lưu giữ những khoảnh khắc đáng nhớ cùng nhau.
                         </div>
                     </div>
                     <div class="feature-arrow">→</div>
                 </a>
 
                 <!-- Personal activities -->
-                <a href="kazoku_personal_guide.html" class="feature-item">
+                <a href="kazoku-personal-journal.html" class="feature-item">
                     <div class="feature-icon">🏃‍♀️</div>
                     <div class="feature-content">
-                        <div class="feature-name">Hoạt động cá nhân</div>
+                        <div class="feature-name">Nhật ký cá nhân</div>
                         <div class="feature-description">
-                            Theo dõi sức khỏe và thói quen cá nhân của từng thành viên.
+                            Ghi lại và theo dõi các khía cạnh quan trọng của cuộc sống hàng ngày. Từ vận động, tâm trạng, sức khỏe đến học tập và ghi chép cá nhân, mọi thứ đều được lưu trữ an toàn và riêng tư.
                         </div>
                     </div>
                     <div class="feature-arrow">→</div>
                 </a>
 
                 <!-- Kazoku AI -->
-                <a href="kazoku_activities_guide.html" class="feature-item">
+                <a href="kazoku-ai-assistant.html" class="feature-item">
                     <div class="feature-icon">✨</div>
                     <div class="feature-content">
-                        <div class="feature-name">Kazoku AI</div>
+                        <div class="feature-name">Trợ lý thông minh Kazoku AI</div>
                         <div class="feature-description">
-                            Trợ lý AI thông minh hỗ trợ quản lý gia đình.
+                            Trợ lý ảo thông minh dành riêng cho gia đình bạn. Nhận lời khuyên chuyên sâu về mọi khía cạnh của cuộc sống gia đình từ các chuyên gia AI, được cá nhân hóa dựa trên thông tin và nhu cầu riêng của từng thành viên.
                         </div>
                     </div>
                     <div class="feature-arrow">→</div>
                 </a>
 
-                <!-- Kazoku AI -->
-                <a href="kazoku-family-chat.html
-" class="feature-item">
+                <!-- Kazoku Family Chat -->
+                <a href="kazoku-family-chat.html" class="feature-item">
                     <div class="feature-icon">💬</div>
                     <div class="feature-content">
-                        <div class="feature-name">Tin nhắn</div>
+                        <div class="feature-name">Tin nhắn gia đình</div>
                         <div class="feature-description">
-                            Phòng chat riêng tư cho gia đình với chat realtime, hỗ trợ text, hình ảnh, emoji và sticker sinh động. Có typing indicator, bookmark tin nhắn và tìm kiếm thông minh.
+                            Kết nối mọi thành viên trong gia đình qua một không gian trò chuyện riêng tư và an toàn. Chia sẻ những khoảnh khắc hàng ngày, trao đổi thông tin và giữ liên lạc với nhau mọi lúc mọi nơi.
                         </div>
                     </div>
                     <div class="feature-arrow">→</div>
@@ -1168,7 +1196,7 @@
                     <div class="feature-content">
                         <div class="feature-name">Quản lý Chi tiêu</div>
                         <div class="feature-description">
-                            Thêm chi tiêu với ảnh hóa đơn, hiển thị danh sách theo thời gian và biểu đồ trực quan. Danh mục đầy đủ và liên kết với hoạt động vui chơi gia đình.
+                            Theo dõi và quản lý chi tiêu gia đình một cách thông minh và hiệu quả. Từ những khoản chi nhỏ hàng ngày đến các kế hoạch tài chính lớn, mọi thứ đều được ghi lại và phân tích chi tiết giúp gia đình kiểm soát ngân sách tốt hơn.
                         </div>
                     </div>
                     <div class="feature-arrow">→</div>
@@ -1197,6 +1225,42 @@
                     </div>
                     <div class="feature-arrow">→</div>
                 </a>
+
+                <!-- Family Management -->
+                <a href="kazoku-family-management.html" class="feature-item">
+                    <div class="feature-icon">👨‍👩‍👦</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Quản lý Gia đình</div>
+                        <div class="feature-description">
+                            Tạo mới và quản lý nhiều gia đình cùng lúc một cách linh hoạt. Từ gia đình nhỏ của bạn đến gia đình lớn với ông bà nội ngoại, tất cả đều được tổ chức và kết nối trong một ứng dụng duy nhất.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <!-- Rewards & Gift -->
+                <a href="kazoku-rewards-gifts.html" class="feature-item">
+                    <div class="feature-icon">🎁</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Điểm thưởng & Tặng quà</div>
+                        <div class="feature-description">
+                            Tạo động lực và khuyến khích các thành viên trong gia đình thông qua hệ thống điểm thưởng thông minh. Tích điểm khi hoàn thành công việc và đổi lấy những phần quà hấp dẫn, biến việc nhà thành trải nghiệm thú vị và đáng mong đợi.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <!-- Subscriptions -->
+                <a href="kazoku-subscription-plans.html" class="feature-item">
+                    <div class="feature-icon">🎁</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Gói đăng ký</div>
+                        <div class="feature-description">
+                            Chọn gói đăng ký phù hợp với nhu cầu của gia đình bạn. Từ gói tiêu chuẩn miễn phí đến các gói cao cấp với đầy đủ tính năng, linh hoạt nâng cấp và mở rộng theo thời gian.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
             </div>
 
             <div class="footer-note">
@@ -1209,7 +1273,7 @@
         <div class="video-section">
             <div class="section-header">
                 <h2>🎬 Trải nghiệm Kazoku</h2>
-                <p>Xem video demo để hiểu rõ hơn về cách Kazoku hoạt động</p>
+                <p>Xem video demo để hiểu rõ hơn về cách Kazoku hoạt động nhé</p>
             </div>
             
             <div class="video-container">
@@ -1218,8 +1282,8 @@
                         <div class="play-button" onclick="playVideo()">
                             <div class="play-icon">▶️</div>
                         </div>
-                        <h3>Demo Kazoku Family App</h3>
-                        <p>Khám phá tất cả tính năng của Kazoku trong 3 phút</p>
+                        <h3>Kazoku App</h3>
+                        <p>Khám phá tính năng chính của Kazoku trong 3 phút</p>
                         <div class="video-duration">⏱️ 3:24</div>
                     </div>
                 </div>
@@ -1229,7 +1293,7 @@
         <!-- Tutorial Section -->
         <div class="tutorial-section">
             <div class="section-header">
-                <h2>📚 Hướng dẫn sử dụng</h2>
+                <h2>📚 Bắt đầu sử dụng</h2>
                 <p>Bắt đầu với Kazoku chỉ trong 4 bước đơn giản</p>
             </div>
 
@@ -1240,8 +1304,8 @@
                         <h3>📱 Tải ứng dụng</h3>
                         <p>Tải Kazoku từ App Store hoặc Google Play. Ứng dụng hoàn toàn miễn phí và không có quảng cáo.</p>
                         <div class="step-actions">
-                            <button class="action-btn">📱 App Store</button>
-                            <button class="action-btn">🤖 Google Play</button>
+                            <button class="action-btn"><i class="fab fa-apple"></i> App Store</button>
+                            <button class="action-btn"><i class="fab fa-android"></i> Google Play</button>
                         </div>
                     </div>
                 </div>
@@ -1252,7 +1316,7 @@
                         <h3>👑 Tạo gia đình</h3>
                         <p>Đăng ký tài khoản và tạo gia đình mới. Bạn sẽ trở thành Supervisor với quyền quản lý toàn bộ gia đình.</p>
                         <div class="step-highlight">
-                            <span>💡</span> Supervisor có thể mời thành viên khác tham gia
+                            <span>💡</span> Supervisor có thể đăng ký tất cả các thành viên trong gia đình, và mời họ tham gia!
                         </div>
                     </div>
                 </div>
@@ -1263,9 +1327,9 @@
                         <h3>👨‍👩‍👧‍👦 Thêm thành viên</h3>
                         <p>Mời các thành viên gia đình qua email hoặc QR code. Điền thông tin chi tiết để AI có thể cá nhân hóa trải nghiệm.</p>
                         <div class="step-tags">
-                            <span class="tag">📧 Email</span>
-                            <span class="tag">📱 QR Code</span>
-                            <span class="tag">🤖 AI Personal</span>
+                            <span class="tag"><i class="fa-solid fa-envelope"></i> Email</span>
+                            <span class="tag"><i class="fa-solid fa-qrcode"></i> QR Code</span>
+                            <span class="tag"><i class="fa-solid fa-robot"></i> AI Personal</span>
                         </div>
                     </div>
                 </div>
@@ -1285,32 +1349,30 @@
     </div>
 
     <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <h3>❤️ Kazoku - Gia đình hạnh phúc bắt đầu từ việc nhỏ</h3>
-                <p>📧 Email: contact@kazoku-ai.com</p>
-                <p>🌐 Website: kazoku-ai.com | 🏢 Địa chỉ: Edogawa, Tokyo, Japan</p>
-                <div style="display: flex; justify-content: center; gap: 2rem; margin: 1.5rem 0; flex-wrap: wrap;">
-                    <a href="#" style="color: #fff; text-decoration: none;">
-                        <i class="fab fa-apple"></i> Tải iOS
-                    </a>
-                    <a href="#" style="color: #fff; text-decoration: none;">
-                        <i class="fab fa-android"></i> Tải Android
-                    </a>
-                </div>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-tiktok"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-threads"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </div>
+        <div class="footer-content">
+            <h3>Kazoku - Trợ lý thông minh cho mọi gia đình!</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ Made with love for families, from Tokyo</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Tải iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Tải Android
+                </a>
             </div>
-            <p>&copy; 2025 Kazoku App. Tất cả quyền được bảo lưu.<br>
-                <em>"Kết nối yêu thương - Chia sẻ hạnh phúc"</em>
-            </p>
+            <div class="social-links">
+                <a hrefpagespages="#"><i class="fab fa-tiktok"></i></a>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-threads"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
+        <p>&copy; 2025 Kazoku App. Tất cả quyền được bảo lưu.<br>
+            <em>"Kết nối yêu thương - Chia sẻ hạnh phúc"</em>
+        </p>
     </footer>
 
     <script>
@@ -1412,6 +1474,11 @@
 
         document.querySelectorAll('.stats-section').forEach(section => {
             statsObserver.observe(section);
+        });
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
         });
 
         // Video and Tutorial Functions

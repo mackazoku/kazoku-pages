@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Kazoku Family App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .search-section {
+            background: #fff;
+            padding: 30px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            font-size: 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 25px;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af;
+            font-size: 18px;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .category-section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .category-section:nth-child(1) { animation-delay: 0.1s; }
+        .category-section:nth-child(2) { animation-delay: 0.2s; }
+        .category-section:nth-child(3) { animation-delay: 0.3s; }
+        .category-section:nth-child(4) { animation-delay: 0.4s; }
+        .category-section:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .category-title {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #f59e0b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #fed7aa;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .category-icon {
+            font-size: 1.2em;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            border-color: #f59e0b;
+        }
+
+        .faq-question {
+            padding: 20px;
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: #92400e;
+            transition: all 0.3s ease;
+        }
+
+        .faq-question:hover {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+        }
+
+        .faq-question.active {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+        }
+
+        .faq-toggle {
+            font-size: 18px;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            background: #fff;
+        }
+
+        .faq-answer.show {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .faq-answer-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .faq-answer-content p {
+            margin-bottom: 12px;
+        }
+
+        .faq-answer-content ul {
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        .faq-answer-content li {
+            margin-bottom: 6px;
+        }
+
+        .highlight-tip {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .warning-tip {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 2px solid #fed7aa;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .contact-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #92400e;
+            margin-bottom: 15px;
+        }
+
+        .contact-info {
+            color: #b45309;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+        }
+
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .quick-link {
+            color: #f59e0b;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .quick-link:hover {
+            color: #d97706;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .search-section {
+                padding: 20px;
+            }
+            
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .quick-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #6b7280;
+            display: none;
+        }
+
+        .no-results.show {
+            display: block;
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-note strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">❓ Kazoku</div>
+            <div class="app-subtitle">Frequently Asked Questions</div>
+        </div>
+
+        <div class="search-section">
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="Search questions..." id="searchInput">
+                <span class="search-icon">🔍</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="category-section" data-category="getting-started">
+                <h2 class="category-title">
+                    <span class="category-icon">🚀</span>
+                    Getting Started
+                </h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What is Kazoku and why should I use it?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Kazoku is a smart family management app designed to help families organize daily life effectively.</p>
+                            <div class="highlight-tip">
+                                <strong>🏆 Key Benefits:</strong>
+                                <ul>
+                                    <li>Manage a shared schedule for the whole family</li>
+                                    <li>Track budget and smart expenses</li>
+                                    <li>Fairly assign household chores</li>
+                                    <li>Securely share important information</li>
+                                    <li>Centralized family document storage</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I create an account and set up my family?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Step 1:</strong> Tải ứng dụng từ App Store hoặc Google Play</p>
+                            <p><strong>Step 2:</strong> Đăng ký tài khoản bằng email hoặc số điện thoại</p>
+                            <p><strong>Step 3:</strong> Tạo hồ sơ gia đình và mời các thành viên tham gia</p>
+                            <p><strong>Step 4:</strong> Thiết lập quyền riêng tư và bảo mật</p>
+                            <div class="warning-tip">
+                                <strong>⚠️ Note:</strong> Only the family creator has admin rights. Choose this person carefully!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is the app free? Are there paid plans?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Kazoku offers both free and paid versions:</p>
+                            <p><strong>🆓 Free Plan:</strong></p>
+                            <ul>
+                                <li>Up to 4 family members</li>
+                                <li>Basic schedule</li>
+                                <li>Simple expense management</li>
+                                <li>5GB document storage</li>
+                            </ul>
+                            <p><strong>💎 Premium Plan:</strong></p>
+                            <ul>
+                                <li>Unlimited members</li>
+                                <li>Smart AI features</li>
+                                <li>Detailed expense analysis</li>
+                                <li>100GB cloud storage</li>
+                                <li>24/7 priority support</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section" data-category="family-management">
+                <h2 class="category-title">
+                    <span class="category-icon">👨‍👩‍👧‍👦</span>
+                    Family Management
+                </h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How to add/remove family members?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Add members:</strong></p>
+                            <ul>
+                                <li>Vào <strong>Cài đặt → Family Management → Thêm thành viên</strong></li>
+                                <li>Gửi lời mời qua email hoặc mã QR</li>
+                                <li>Đợi thành viên chấp nhận lời mời</li>
+                            </ul>
+                            <p><strong>Remove members:</strong></p>
+                            <ul>
+                                <li>Only admins can remove members</li>
+                                <li>Chọn thành viên → Tùy chọn → Xóa khỏi gia đình</li>
+                                <li>Xác nhận quyết định (không thể hoàn tác)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What are the different family roles?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>👑 Administrator (Admin):</strong></p>
+                            <ul>
+                                <li>Full control over the family</li>
+                                <li>Add/remove members</li>
+                                <li>Change general settings</li>
+                                <li>View all activities</li>
+                            </ul>
+                            <p><strong>👨‍👩 Member:</strong></p>
+                            <ul>
+                                <li>Manage personal information</li>
+                                <li>Participate in shared schedule</li>
+                                <li>Share expenses</li>
+                                <li>Access allowed documents</li>
+                            </ul>
+                            <p><strong>👶 Child:</strong></p>
+                            <ul>
+                                <li>Restricted by age</li>
+                                <li>Supervised by parents</li>
+                                <li>Cannot change important settings</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section" data-category="features">
+                <h2 class="category-title">
+                    <span class="category-icon">⚡</span>
+                    Main Features
+                </h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How to use the family calendar effectively?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Kazoku's family calendar helps you track all activities:</p>
+                            <div class="highlight-tip">
+                                <strong>💡 Tips for effective use:</strong>
+                                <ul>
+                                    <li>Create recurring events for routine activities</li>
+                                    <li>Use different colors for each member</li>
+                                    <li>Enable reminders 15-30 minutes before</li>
+                                    <li>Share the calendar with friends when needed</li>
+                                    <li>Sync with Google/Apple calendar for convenience</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How to manage the family budget?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Set a budget:</strong></p>
+                            <ul>
+                                <li>Enter the family's monthly income</li>
+                                <li>Allocate budget for categories</li>
+                                <li>Set savings goals</li>
+                            </ul>
+                            <p><strong>Track expenses:</strong></p>
+                            <ul>
+                                <li>Record daily expenses</li>
+                                <li>Take photos of receipts for storage</li>
+                                <li>Automatically categorize expenses</li>
+                                <li>View detailed end-of-month reports</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How does the task assignment feature work?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>This feature helps fairly divide household chores:</p>
+                            <ul>
+                                <li><strong>Create task list:</strong> Thêm các task hàng ngày/hàng tuần</li>
+                                <li><strong>Automatic assignment:</strong> The system assigns based on schedules</li>
+                                <li><strong>Track progress:</strong> Mark completion and rate</li>
+                                <li><strong>Reward point system:</strong> Earn points for kids as motivation</li>
+                            </ul>
+                            <div class="warning-tip">
+                                <strong>🎯 Tip:</strong> Set specific times and reminders to increase effectiveness!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section" data-category="security">
+                <h2 class="category-title">
+                    <span class="category-icon">🔒</span>
+                    Security & Privacy
+                </h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is my data safe?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Kazoku applies top security measures:</p>
+                            <ul>
+                                <li><strong>Data encryption:</strong> AES-256 cho lưu trữ, TLS 1.3 cho truyền tải</li>
+                                <li><strong>Two-factor authentication:</strong> SMS hoặc ứng dụng authenticator</li>
+                                <li><strong>Automatic backup:</strong> Dữ liệu được backup hàng ngày</li>
+                                <li><strong>Access control:</strong> Phân quyền chi tiết cho từng thành viên</li>
+                            </ul>
+                            <div class="highlight-tip">
+                                <strong>🛡️ Commitment:</strong> We never sell personal data to third parties!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How do I set up privacy settings?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Truy cập <strong>Cài đặt → Quyền riêng tư</strong> để:</p>
+                            <ul>
+                                <li>Kiểm soát thông tin nào được chia sẻ</li>
+                                <li>Ẩn hoạt động cá nhân khỏi thành viên khác</li>
+                                <li>Thiết lập mật khẩu cho tài liệu nhạy cảm</li>
+                                <li>Bật/tắt theo dõi vị trí</li>
+                                <li>Quản lý quyền truy cập ứng dụng</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="category-section" data-category="troubleshooting">
+                <h2 class="category-title">
+                    <span class="category-icon">🔧</span>
+                    Troubleshooting
+                </h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>The app is slow or frozen, what should I do?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Basic troubleshooting steps:</strong></p>
+                            <ul>
+                                <li>Close and reopen the app</li>
+                                <li>Check your internet connection</li>
+                                <li>Update to the latest version</li>
+                                <li>Restart your device</li>
+                                <li>Clear app cache (Android)</li>
+                            </ul>
+                            <div class="warning-tip">
+                                <strong>📞 Still not resolved?</strong> Contact support with detailed error information!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>I forgot my password, how can I reset it?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p><strong>Reset via email:</strong></p>
+                            <ul>
+                                <li>Tap "Forgot password" on the login screen</li>
+                                <li>Enter your registered email</li>
+                                <li>Check your email (including spam) for the reset link</li>
+                                <li>Create a new password as instructed</li>
+                            </ul>
+                            <p><strong>Reset via SMS:</strong></p>
+                            <ul>
+                                <li>Choose "Reset via SMS"</li>
+                                <li>Enter your verified phone number</li>
+                                <li>Enter the OTP received</li>
+                                <li>Set a new password</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Data not syncing across devices?</span>
+                        <span class="faq-toggle">⌄</span>
+                    </div>
+                    <div class="faq-answer">
+                        <div class="faq-answer-content">
+                            <p>Check common causes:</p>
+                            <ul>
+                                <li><strong>Network connection:</strong> Ensure a stable internet connection</li>
+                                <li><strong>Login:</strong> Confirm using the same account</li>
+                                <li><strong>App version:</strong> Update the app on all devices</li>
+                                <li><strong>Manual:</strong> Pull down to refresh data</li>
+                            </ul>
+                            <div class="highlight-tip">
+                                <strong>🔄 Manual sync:</strong> Go to Settings → Sync Data → Sync now
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="no-results" id="noResults">
+                <h3>🔍 No results found</h3>
+                <p>No questions match your keyword.</p>
+                <p>Try searching with a different keyword or contact support.</p>
+            </div>
+        </div>        
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - Smart Assistant for Every Family!</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ From Tokyo, sending love to every family</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Download iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Download Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-threads"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Terms of Service</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Privacy Policy</a>
+        </div>
+        <p>&copy; 2025 Kazoku Family App. All rights reserved.<br>
+            <em>"Connecting Love - Sharing Happiness"</em>
+        </p>
+    </footer>
+
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = question.classList.contains('active');
+                
+                // Close all other FAQs
+                document.querySelectorAll('.faq-question.active').forEach(openQuestion => {
+                    if (openQuestion !== question) {
+                        openQuestion.classList.remove('active');
+                        openQuestion.nextElementSibling.classList.remove('show');
+                    }
+                });
+                
+                // Toggle current FAQ
+                if (isOpen) {
+                    question.classList.remove('active');
+                    answer.classList.remove('show');
+                } else {
+                    question.classList.add('active');
+                    answer.classList.add('show');
+                }
+            });
+        });
+
+        // Search Functionality
+        const searchInput = document.getElementById('searchInput');
+        const categorySection = document.querySelectorAll('.category-section');
+        const noResults = document.getElementById('noResults');
+
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase().trim();
+            let hasResults = false;
+
+            if (searchTerm === '') {
+                // Show all sections
+                categorySection.forEach(section => {
+                    section.style.display = 'block';
+                    const faqItems = section.querySelectorAll('.faq-item');
+                    faqItems.forEach(item => item.style.display = 'block');
+                });
+                noResults.classList.remove('show');
+                return;
+            }
+
+            categorySection.forEach(section => {
+                const faqItems = section.querySelectorAll('.faq-item');
+                let sectionHasResults = false;
+
+                faqItems.forEach(item => {
+                    const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                    const answer = item.querySelector('.faq-answer-content').textContent.toLowerCase();
+                    
+                    if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                        item.style.display = 'block';
+                        sectionHasResults = true;
+                        hasResults = true;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Show/hide section based on results
+                section.style.display = sectionHasResults ? 'block' : 'none';
+            });
+
+            // Show/hide no results message
+            noResults.classList.toggle('show', !hasResults);
+        });
+
+        // Auto-expand first FAQ on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstFaq = document.querySelector('.faq-question');
+            if (firstFaq) {
+                firstFaq.click();
+            }
+        });
+    </script>
+</body>
+</html>
+                

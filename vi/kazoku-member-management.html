@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Member Management - Kazoku Family App</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Quản lý thành viên - Kazoku Family App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
         * {
@@ -570,6 +570,7 @@
         
         .footer-content {
             margin-bottom: 1rem;
+            line-height: 1.5;
         }
         
         .social-links {
@@ -777,15 +778,15 @@
 
     <div class="container">
         <div class="header">
-            <h1>👨‍👩‍👧‍👦 Member Management</h1>
+            <h1>👨‍👩‍👧‍👦 Quản lý thành viên</h1>
             <p>Quản lý thành viên gia đình một cách thông minh và hiệu quả. Supervisor có toàn quyền kiểm soát việc thêm, mời và quản lý thông tin của từng thành viên, giúp Kazoku AI hiểu rõ hơn về gia đình để đưa ra những gợi ý cá nhân hóa tốt nhất cho mọi người.</p>
         </div>
 
         <div class="features-grid">
             <div class="feature-card">
                 <div class="feature-icon">👑</div>
-                <h3>Quyền hạn Supervisor</h3>
-                <p>Supervisor có toàn quyền thêm, xóa, sửa đổi thông tin thành viên trong gia đình. Quản lý trạng thái hoạt động và kiểm soát quyền truy cập của từng người một cách linh hoạt.</p>
+                <h3>Quyền hạn Người quản trị gia đình</h3>
+                <p>Người quản trị gia đình có toàn quyền thêm, xóa, sửa đổi thông tin thành viên trong gia đình. Quản lý trạng thái hoạt động và kiểm soát quyền truy cập của từng người một cách linh hoạt.</p>
             </div>
 
             <div class="feature-card">
@@ -797,7 +798,7 @@
             <div class="feature-card">
                 <div class="feature-icon">📝</div>
                 <h3>Thông tin chi tiết</h3>
-                <p>Lưu trữ đầy đủ thông tin cá nhân bao gồm nickname, nhóm máu, giới tính, nơi sinh sống, sở thích để Kazoku AI có thể đưa ra gợi ý phù hợp với từng cá nhân.</p>
+                <p>Cung cấp đầy đủ thông tin cá nhân bao gồm nickname, nhóm máu, giới tính, nơi sinh sống, sở thích để Kazoku AI có thể đưa ra gợi ý phù hợp với từng cá nhân.</p>
             </div>
 
             <div class="feature-card">
@@ -814,83 +815,62 @@
         </div>
 
         <div class="demo-section">
-            <h2>Calendar Demo</h2>
+            <h2>Màn hình quản lý thành viên</h2>
             
             <div class="demo-tabs">
-                <button class="demo-tab active" data-tab="create">Tạo sự kiện</button>
-                <button class="demo-tab" data-tab="views">Chế độ xem</button>
-                <button class="demo-tab" data-tab="reminders">Nhắc nhở</button>
-                <button class="demo-tab" data-tab="sync">Đồng bộ Google</button>
-                <button class="demo-tab" data-tab="sharing">Chia sẻ gia đình</button>
+                <button class="demo-tab active" data-tab="create">Tạo thành viên</button>
+                <button class="demo-tab" data-tab="views">Danh sách thành viên</button>
+                <button class="demo-tab" data-tab="link">Liên kết thành viên</button>
+                <button class="demo-tab" data-tab="invite">Mời thành viên</button>
             </div>
 
             <div class="demo-content">
                 <div class="demo-tab-content active" id="create">
                     <div class="photo-placeholder">
-                        <div class="photo-placeholder-icon">📌</div>
-                        <div class="photo-placeholder-text">Tạo sự kiện mới</div>
-                        <div class="photo-placeholder-subtext">Dán ảnh giao diện tạo sự kiện với các trường thông tin chi tiết</div>
+
                     </div>
                     <div class="feature-highlight">
-                        <h3>Lên lịch nhanh chóng</h3>
-                        <p>Nhập tên sự kiện, chọn ngày giờ, địa điểm, thêm mô tả và hình ảnh. Phân loại sự kiện và thiết lập nhắc nhở dễ dàng.</p>
+                        <h3>Tạo thành viên</h3>
+                        <p>NTạo hồ sơ cho thành viên mới trong gia đình.</p>
                     </div>
                 </div>
 
                 <div class="demo-tab-content" id="views">
                     <div class="photo-placeholder">
-                        <div class="photo-placeholder-icon">📆</div>
-                        <div class="photo-placeholder-text">Chế độ xem lịch</div>
-                        <div class="photo-placeholder-subtext">Dán ảnh các chế độ xem theo ngày, tuần, tháng và danh sách</div>
+
                     </div>
                     <div class="feature-highlight">
-                        <h3>Xem lịch theo ý muốn</h3>
-                        <p>Chuyển đổi linh hoạt giữa chế độ xem ngày, tuần, tháng hoặc danh sách để quản lý thời gian tốt nhất.</p>
+                        <h3>Danh sách thành viên</h3>
+                        <p>Hiển thị danh sách thành viên trong gia đình, bao gồm thông tin chi tiết và trạng thái hiện tại.</p>
                     </div>
                 </div>
 
-                <div class="demo-tab-content" id="reminders">
+                <div class="demo-tab-content" id="link">
                     <div class="photo-placeholder">
-                        <div class="photo-placeholder-icon">🔔</div>
-                        <div class="photo-placeholder-text">Hệ thống nhắc nhở</div>
-                        <div class="photo-placeholder-subtext">Dán ảnh giao diện thiết lập và nhận thông báo nhắc nhở</div>
+                        
                     </div>
                     <div class="feature-highlight">
-                        <h3>Không bỏ lỡ sự kiện quan trọng</h3>
-                        <p>Nhận thông báo push, email nhắc nhở trước 1 ngày, 1 tuần hoặc tùy chỉnh thời gian phù hợp với bạn.</p>
+                        <h3>Liên kết thành viên</h3>
+                        <p>Kết nối thành viên với tài khoản đăng nhập thực tế để chuyển từ profile ảo thành thành viên thật, có thể tương tác và sử dụng đầy đủ các tính năng của hệ thống.</p>
                     </div>
                 </div>
 
-                <div class="demo-tab-content" id="sync">
+                <div class="demo-tab-content" id="invite">
                     <div class="photo-placeholder">
-                        <div class="photo-placeholder-icon">🔄</div>
-                        <div class="photo-placeholder-text">Đồng bộ Google Calendar</div>
-                        <div class="photo-placeholder-subtext">Dán ảnh giao diện kết nối và đồng bộ với Google Calendar</div>
+                        
                     </div>
                     <div class="feature-highlight">
-                        <h3>Kết nối liền mạch</h3>
-                        <p>Sync 2 chiều với Google Calendar. Import/export sự kiện dễ dàng và cập nhật realtime trên mọi thiết bị.</p>
+                        <h3>Mời thành viên</h3>
+                        <p>Gửi lời mời gia nhập gia đình thông qua email hoặc mã QR code tiện lợi, giúp việc mở rộng thành viên gia đình trở nên đơn giản và nhanh chóng.</p>
                     </div>
-                </div>
-
-                <div class="demo-tab-content" id="sharing">
-                    <div class="photo-placeholder">
-                        <div class="photo-placeholder-icon">👥</div>
-                        <div class="photo-placeholder-text">Chia sẻ với gia đình</div>
-                        <div class="photo-placeholder-subtext">Dán ảnh lịch gia đình được chia sẻ và xác nhận tham gia</div>
-                    </div>
-                    <div class="feature-highlight">
-                        <h3>Lịch chung cho cả nhà</h3>
-                        <p>Mọi người đều thấy sự kiện chung, xác nhận tham gia, bình luận và nhận cập nhật realtime từ các thành viên khác.</p>
-                    </div>
-                </div>
+                </div>                
             </div>
         </div>
 
         <div class="supervisor-section">
-            <h3>👑 Quyền hạn của Supervisor</h3>
-            <p>Supervisor là người có toàn quyền kiểm soát và quản lý mọi hoạt động trong gia đình</p>
-            
+            <h3>👑 Quyền hạn của Người quản trị</h3>
+            <p>Người quản trị là người có toàn quyền kiểm soát và quản lý mọi hoạt động trong gia đình</p>
+
             <div class="supervisor-features">
                 <div class="supervisor-feature">
                     <span style="font-size: 1.5rem;">➕</span>
@@ -898,23 +878,27 @@
                 </div>
                 <div class="supervisor-feature">
                     <span style="font-size: 1.5rem;">✏️</span>
-                    <div>Chỉnh sửa thông tin</div>
+                    <div>Chỉnh sửa thông tin thành viên</div>
                 </div>
                 <div class="supervisor-feature">
                     <span style="font-size: 1.5rem;">🗑️</span>
-                    <div>Xóa thành viên</div>
-                </div>
-                <div class="supervisor-feature">
-                    <span style="font-size: 1.5rem;">⏸️</span>
-                    <div>Tạm ngưng sử dụng</div>
+                    <div>Xóa / tạm ngưng thành viên</div>
                 </div>
                 <div class="supervisor-feature">
                     <span style="font-size: 1.5rem;">🔐</span>
                     <div>Kiểm soát quyền truy cập</div>
                 </div>
                 <div class="supervisor-feature">
-                    <span style="font-size: 1.5rem;">📊</span>
-                    <div>Theo dõi hoạt động</div>
+                    <span style="font-size: 1.5rem;">💳</span>
+                    <div>Nâng cấp / hủy bỏ gói đăng ký cho gia đình</div>
+                </div>
+                <div class="supervisor-feature">
+                    <span style="font-size: 1.5rem;">🎁</span>
+                    <div>Tạo / Phê duyệt / Trao quà</div>
+                </div>
+                <div class="supervisor-feature">
+                    <span style="font-size: 1.5rem;">📔</span>
+                    <div>Cập nhật nhật ký hoạt động hàng ngày của mọi thành viên trong gia đình</div>
                 </div>
             </div>
         </div>
@@ -924,7 +908,7 @@
             <div class="member-info-grid">
                 <div class="info-card">
                     <h4>😊 Nickname</h4>
-                    <p>Tên gọi thân mật trong gia đình, giúp tạo không khí ấm cúng và gần gũi hơn trong giao tiếp hàng ngày.</p>
+                    <p>Tên gọi thân mật trong gia đình, giúp tạo không khí ấm cúng và gần gũi hơn trong giao tiếp hàng ngày, đồng thời cũng hạn chế tiết lộ thông tin nhạy cảm như tên thật.</p>
                 </div>
 
                 <div class="info-card">
@@ -946,6 +930,11 @@
                     <h4>❤️ Sở thích</h4>
                     <p>Những điều yêu thích giúp AI đề xuất hoạt động, quà tặng và trải nghiệm phù hợp với từng cá nhân.</p>
                 </div>
+
+                <div class="info-card">
+                    <h4>❤️ Điều không thích</h4>
+                    <p>Những điều không thích giúp AI tránh đề xuất các hoạt động, quà tặng và trải nghiệm không phù hợp với từng cá nhân.</p>
+                </div>
             </div>
         </div>
 
@@ -961,10 +950,6 @@
                 <div class="ai-feature">
                     <div style="font-size: 1.5rem; margin-bottom: 8px;">🍽️</div>
                     <div>Menu ăn uống cá nhân</div>
-                </div>
-                <div class="ai-feature">
-                    <div style="font-size: 1.5rem; margin-bottom: 8px;">🎁</div>
-                    <div>Ý tưởng quà tặng</div>
                 </div>
                 <div class="ai-feature">
                     <div style="font-size: 1.5rem; margin-bottom: 8px;">📅</div>
@@ -1000,7 +985,7 @@
 
         <div class="cta-section">
             <button class="cta-button" onclick="showMessage()">
-                Bắt đầu quản lý thành viên gia đình
+                Bắt đầu quản lý thành viên
             </button>
         </div>
     </div>
@@ -1009,7 +994,7 @@
         <div class="footer-content">
             <h3>Kazoku - Trợ lý thông minh cho mọi gia đình!</h3>
             <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
-            <p>❤️ Được tạo nên với tình yêu dành cho các gia đình, từ Tokyo</p>
+            <p>❤️ Từ Tokyo, gửi tình yêu thương tới mọi gia đình</p>
             <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
                 <a href="#" style="color: #fff; text-decoration: none;">
                     <i class="fab fa-apple"></i> Tải iOS
@@ -1019,16 +1004,21 @@
                 </a>
             </div>
             <div class="social-links">
-                <a hrefpagespages="#"><i class="fab fa-tiktok"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
                 <a href="#"><i class="fab fa-threads"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
             </div>
         </div>
-        <p>&copy; 2025 Kazoku App. Tất cả quyền được bảo lưu.<br>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Điều khoản dịch vụ</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Chính sách bảo mật</a>
+        </div>
+        <p>&copy; 2025 Kazoku Family App. Tất cả quyền được bảo lưu.<br>
             <em>"Kết nối yêu thương - Chia sẻ hạnh phúc"</em>
         </p>
     </footer>

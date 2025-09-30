@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendar Management - Kazoku Family App</title>
+    <title>Lịch gia đình - Kazoku Family App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
@@ -460,6 +460,7 @@
         
         .footer-content {
             margin-bottom: 1rem;
+            line-height: 1.5;
         }
         
         .social-links {
@@ -507,7 +508,7 @@
     <div class="container">
         <div class="header">
             <h1>📅 Quản lý Lịch gia đình</h1>
-            <p>Tổ chức và lên lịch các sự kiện quan trọng, hoạt động vui chơi và kỷ niệm đặc biệt của gia đình. Đồng bộ với Google Calendar và nhận nhắc nhở tự động để không bao giờ bỏ lỡ những khoảnh khắc quan trọng.</p>
+            <p>Tổ chức và lên lịch các sự kiện quan trọng, hoạt động vui chơi và kỷ niệm đặc biệt của gia đình. Giao diện thân thiện giống như Google Calendar, đồng thời hỗ trợ lịch âm cho một số quốc gia châu Á. Nhận nhắc nhở tự động để không bao giờ bỏ lỡ những khoảnh khắc quan trọng.</p>
         </div>
 
         <div class="features-grid">
@@ -517,10 +518,10 @@
                 <p>Lên lịch các sự kiện gia đình, hoạt động vui chơi và kỷ niệm đặc biệt chỉ với vài thao tác đơn giản.</p>
                 <ul class="feature-list">
                     <li>Thêm sự kiện nhanh chóng</li>
-                    <li>Đặt ngày giờ và địa điểm</li>
-                    <li>Thêm mô tả chi tiết</li>
-                    <li>Đính kèm hình ảnh minh họa</li>
-                    <li>Phân loại theo danh mục</li>
+                    <li>Đặt ngày giờ, địa điểm, mô tả, hình ảnh, ...</li>
+                    <li>Đặt chế độ nhắc nhở</li>
+                    <li>Đặt chế độ lặp lại (hỗ trợ cả lịch âm để lên lịch cho các ngày lễ truyền thống, giỗ chạp)</li>
+                    <li>Phân loại theo danh mục như sự kiện gia đình, nhà trường, ...</li>
                 </ul>
             </div>
 
@@ -529,10 +530,8 @@
                 <h3>Nhắc nhở tự động</h3>
                 <p>Hệ thống thông báo thông minh giúp bạn không bỏ lỡ bất kỳ sự kiện quan trọng nào của gia đình.</p>
                 <ul class="feature-list">
-                    <li>Nhắc trước 1 ngày, 1 tuần</li>
+                    <li>Nhắc trước theo thời gian đã thiết lập</li>
                     <li>Thông báo push trên điện thoại</li>
-                    <li>Email nhắc nhở tự động</li>
-                    <li>Tùy chỉnh thời gian nhắc</li>
                     <li>Nhắc cho tất cả thành viên</li>
                 </ul>
             </div>
@@ -545,8 +544,7 @@
                     <li>Xem theo ngày chi tiết</li>
                     <li>Xem theo tuần tổng quan</li>
                     <li>Xem theo tháng đầy đủ</li>
-                    <li>Danh sách sự kiện sắp tới</li>
-                    <li>Lọc theo loại sự kiện</li>
+                    <li>Danh sách sự kiện</li>
                 </ul>
             </div>
 
@@ -558,55 +556,24 @@
                     <li>Sinh nhật và kỷ niệm</li>
                     <li>Du lịch và dã ngoại</li>
                     <li>Họp mặt gia đình</li>
-                    <li>Sự kiện học tập</li>
-                    <li>Tạo danh mục tùy chỉnh</li>
+                    <li>Sự kiện nhà trường</li>
+                    <li>Giỗ chạp, ngày truyền thống</li>
                 </ul>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">🔄</div>
-                <h3>Đồng bộ Google Calendar</h3>
-                <p>Kết nối liền mạch với Google Calendar để quản lý lịch cá nhân và gia đình cùng một nơi.</p>
-                <ul class="feature-list">
-                    <li>Sync 2 chiều với Google</li>
-                    <li>Import sự kiện có sẵn</li>
-                    <li>Export sang Google Calendar</li>
-                    <li>Cập nhật realtime tự động</li>
-                    <li>Quản lý từ nhiều thiết bị</li>
-                </ul>
-            </div>
-
-            <div class="feature-card">
-                <div class="feature-icon">👥</div>
-                <h3>Chia sẻ với gia đình</h3>
-                <p>Mọi thành viên đều có thể xem, tạo và tham gia các sự kiện chung của gia đình.</p>
-                <ul class="feature-list">
-                    <li>Lịch được chia sẻ cho cả nhà</li>
-                    <li>Xác nhận tham gia sự kiện</li>
-                    <li>Bình luận và thảo luận</li>
-                    <li>Gửi lời nhắc cho thành viên</li>
-                    <li>Cập nhật realtime cho mọi người</li>
-                </ul>
-            </div>
+            </div>                        
         </div>
 
         <div class="demo-section">
-            <h2>Calendar Demo</h2>
+            <h2>Màn hình Calendar</h2>
             
             <div class="demo-tabs">
                 <button class="demo-tab active" data-tab="create">Tạo sự kiện</button>
                 <button class="demo-tab" data-tab="views">Chế độ xem</button>
-                <button class="demo-tab" data-tab="reminders">Nhắc nhở</button>
-                <button class="demo-tab" data-tab="sync">Đồng bộ Google</button>
-                <button class="demo-tab" data-tab="sharing">Chia sẻ gia đình</button>
+                <button class="demo-tab" data-tab="detail">Chi tiết sự kiện</button>
             </div>
 
             <div class="demo-content">
                 <div class="demo-tab-content active" id="create">
                     <div class="photo-placeholder">
-                        <div class="photo-placeholder-icon">📌</div>
-                        <div class="photo-placeholder-text">Tạo sự kiện mới</div>
-                        <div class="photo-placeholder-subtext">Dán ảnh giao diện tạo sự kiện với các trường thông tin chi tiết</div>
                     </div>
                     <div class="feature-highlight">
                         <h3>Lên lịch nhanh chóng</h3>
@@ -616,9 +583,6 @@
 
                 <div class="demo-tab-content" id="views">
                     <div class="photo-placeholder">
-                        <div class="photo-placeholder-icon">📆</div>
-                        <div class="photo-placeholder-text">Chế độ xem lịch</div>
-                        <div class="photo-placeholder-subtext">Dán ảnh các chế độ xem theo ngày, tuần, tháng và danh sách</div>
                     </div>
                     <div class="feature-highlight">
                         <h3>Xem lịch theo ý muốn</h3>
@@ -628,39 +592,12 @@
 
                 <div class="demo-tab-content" id="reminders">
                     <div class="photo-placeholder">
-                        <div class="photo-placeholder-icon">🔔</div>
-                        <div class="photo-placeholder-text">Hệ thống nhắc nhở</div>
-                        <div class="photo-placeholder-subtext">Dán ảnh giao diện thiết lập và nhận thông báo nhắc nhở</div>
                     </div>
                     <div class="feature-highlight">
                         <h3>Không bỏ lỡ sự kiện quan trọng</h3>
                         <p>Nhận thông báo push, email nhắc nhở trước 1 ngày, 1 tuần hoặc tùy chỉnh thời gian phù hợp với bạn.</p>
                     </div>
-                </div>
-
-                <div class="demo-tab-content" id="sync">
-                    <div class="photo-placeholder">
-                        <div class="photo-placeholder-icon">🔄</div>
-                        <div class="photo-placeholder-text">Đồng bộ Google Calendar</div>
-                        <div class="photo-placeholder-subtext">Dán ảnh giao diện kết nối và đồng bộ với Google Calendar</div>
-                    </div>
-                    <div class="feature-highlight">
-                        <h3>Kết nối liền mạch</h3>
-                        <p>Sync 2 chiều với Google Calendar. Import/export sự kiện dễ dàng và cập nhật realtime trên mọi thiết bị.</p>
-                    </div>
-                </div>
-
-                <div class="demo-tab-content" id="sharing">
-                    <div class="photo-placeholder">
-                        <div class="photo-placeholder-icon">👥</div>
-                        <div class="photo-placeholder-text">Chia sẻ với gia đình</div>
-                        <div class="photo-placeholder-subtext">Dán ảnh lịch gia đình được chia sẻ và xác nhận tham gia</div>
-                    </div>
-                    <div class="feature-highlight">
-                        <h3>Lịch chung cho cả nhà</h3>
-                        <p>Mọi người đều thấy sự kiện chung, xác nhận tham gia, bình luận và nhận cập nhật realtime từ các thành viên khác.</p>
-                    </div>
-                </div>
+                </div>                
             </div>
         </div>
 
@@ -675,7 +612,7 @@
         <div class="footer-content">
             <h3>Kazoku - Trợ lý thông minh cho mọi gia đình!</h3>
             <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
-            <p>❤️ Được tạo nên với tình yêu dành cho các gia đình, từ Tokyo</p>
+            <p>❤️ Từ Tokyo, gửi tình yêu thương tới mọi gia đình</p>
             <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
                 <a href="#" style="color: #fff; text-decoration: none;">
                     <i class="fab fa-apple"></i> Tải iOS
@@ -685,16 +622,21 @@
                 </a>
             </div>
             <div class="social-links">
-                <a hrefpagespages="#"><i class="fab fa-tiktok"></i></a>
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
                 <a href="#"><i class="fab fa-threads"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
             </div>
         </div>
-        <p>&copy; 2025 Kazoku App. Tất cả quyền được bảo lưu.<br>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Điều khoản dịch vụ</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Chính sách bảo mật</a>
+        </div>
+        <p>&copy; 2025 Kazoku Family App. Tất cả quyền được bảo lưu.<br>
             <em>"Kết nối yêu thương - Chia sẻ hạnh phúc"</em>
         </p>
     </footer>

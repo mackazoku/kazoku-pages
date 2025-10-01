@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kazoku AI智能助手 - Kazoku家庭应用</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #e1e8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(360deg) scale(1.1);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #6c7b8a;
+            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-list {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            color: #333;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .feature-list li::before {
+            content: '•';
+            color: #000;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .demo-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .demo-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .demo-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .demo-tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .demo-tab.active, .demo-tab:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .demo-content {
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-tab-content {
+            display: none;
+            width: 100%;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .demo-tab-content.active {
+            display: block;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+            border: 2px dashed #667eea;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            background: linear-gradient(135deg, #e8f2ff, #f0f4ff);
+            border-color: #764ba2;
+            transform: scale(1.02);
+        }
+
+        .photo-placeholder-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .photo-placeholder-text {
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .photo-placeholder-subtext {
+            color: #8e9aaf;
+            font-size: 0.9rem;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        .feature-highlight {
+            background: #f0f4ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .feature-highlight h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-highlight p {
+            color: #6c7b8a;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 30px 25px;
+            }
+            
+            .demo-section {
+                padding: 40px 20px;
+            }
+
+            .demo-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .demo-tab {
+                width: 200px;
+                text-align: center;
+            }
+
+            .photo-placeholder {
+                height: 300px;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-note strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Kazoku AI智能助手</h1>
+            <p>专为您的家庭设计的智能虚拟助手。从AI专家那里获得有关家庭生活各个方面的深入建议，根据每个成员的信息和需求进行个性化定制。</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">💬</div>
+                <h3>深入问答</h3>
+                <p>与AI专家聊天，获得家庭生活许多重要方面的建议。</p>
+                <ul class="feature-list">
+                    <li>家庭幸福</li>
+                    <li>营养和美食</li>
+                    <li>医疗和身体健康</li>
+                    <li>心理和情感健康</li>
+                    <li>休闲和旅行</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <h3>灵活对话</h3>
+                <p>根据需要自定义聊天对象 - 整个家庭或个别成员。</p>
+                <ul class="feature-list">
+                    <li>家庭模式 - 为全家提供建议</li>
+                    <li>个人模式 - 每个成员的私密建议</li>
+                    <li>存储对话历史</li>
+                    <li>轻松在模式间切换</li>
+                    <li>分享有用的答案</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>最佳个性化</h3>
+                <p>AI通过基本信息和日常个人日记了解每个成员，提供最合适的建议。</p>
+                <ul class="feature-list">
+                    <li>分析性别和年龄</li>
+                    <li>考虑居住地</li>
+                    <li>从个人兴趣中学习</li>
+                    <li>基于日常活动日记</li>
+                    <li>随着时间提高准确性</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">✨</div>
+                <h3>智能建议</h3>
+                <p>AI主动建议并协助日常家庭生活的许多方面。</p>
+                <ul class="feature-list">
+                    <li>自动家务任务建议</li>
+                    <li>建议合适的休闲场所</li>
+                    <li>详细规划活动</li>
+                    <li>营养建议</li>
+                    <li>多样化知识查询</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🚀</div>
+                <h3>先进技术</h3>
+                <p>使用最新的AI模型，提供2个版本以适应所有用户需求。</p>
+                <ul class="feature-list">
+                    <li>基础模型 - 快速高效</li>
+                    <li>专业模型 - 更先进更智能</li>
+                    <li>持续更新模型</li>
+                    <li>优化性能和速度</li>
+                    <li>多语言支持</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>绝对安全</h3>
+                <p>建立在Google Cloud基础设施上，使用最先进的工具，确保数据安全。</p>
+                <ul class="feature-list">
+                    <li>Google Cloud Platform基础设施</li>
+                    <li>端到端数据加密</li>
+                    <li>响应高度准确</li>
+                    <li>快速处理速度</li>
+                    <li>符合国际安全标准</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Kazoku AI助手界面</h2>
+            
+            <div class="demo-tabs">
+                <button class="demo-tab active" data-tab="chat">AI问答</button>
+                <button class="demo-tab" data-tab="personalization">个性化</button>
+                <button class="demo-tab" data-tab="suggestions">智能建议</button>
+                <button class="demo-tab" data-tab="models">AI模型</button>
+                <button class="demo-tab" data-tab="security">技术与安全</button>
+            </div>
+
+            <div class="demo-content">
+                <div class="demo-tab-content active" id="chat">
+                    <div class="photo-placeholder">
+
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>与AI自然对话</h3>
+                        <p>询问有关家庭幸福、营养、医疗、心理健康或旅行的任何问题。AI将以深入且相关的建议进行回应。</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="personalization">
+                    <div class="photo-placeholder">
+
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>个性化建议</h3>
+                        <p>AI从性别、年龄、位置、兴趣和日常日记中学习，为每个成员提供最佳建议。</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="suggestions">
+                    <div class="photo-placeholder">
+
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>AI主动协助</h3>
+                        <p>接收有关家务、休闲场所、活动规划、营养和多样化知识查询的建议。</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="models">
+                    <div class="photo-placeholder">
+
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>两个灵活的AI模型</h3>
+                        <p>选择基础模型处理简单快速的问题，或选择高级专业模型进行更深入和复杂的分析。</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="security">
+                    <div class="photo-placeholder">
+
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Google Cloud安全保障</h3>
+                        <p>Kazoku AI使用Google最先进的云工具，确保高准确性、快速响应和绝对安全。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <button class="cta-button" onclick="showMessage()">
+                立即与Kazoku AI聊天
+            </button>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - 每个家庭的智能助手！</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ 来自东京，向每个家庭传递爱</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> 下载iOS版
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> 下载Android版
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-threads"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">服务条款</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">隐私政策</a>
+        </div>
+        <p>&copy; 2025 Kazoku家庭应用。保留所有权利。<br>
+            <em>"连接爱 - 分享幸福"</em>
+        </p>
+    </footer>
+
+    <script>
+        function showMessage() {
+            alert('🤖 欢迎来到Kazoku AI助手！今天就开始聊天，为您的家庭获得有用的建议。');
+        }
+
+        document.querySelectorAll('.demo-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.demo-tab-content').forEach(c => c.classList.remove('active'));
+                
+                tab.classList.add('active');
+                
+                const targetContent = document.getElementById(tab.dataset.tab);
+                targetContent.classList.add('active');
+                
+                targetContent.style.animation = 'none';
+                targetContent.offsetHeight;
+                targetContent.style.animation = 'fadeInUp 0.5s ease-out';
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-circle');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.3;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        document.querySelectorAll('.photo-placeholder').forEach(placeholder => {
+            placeholder.addEventListener('click', () => {
+                placeholder.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    placeholder.style.transform = 'scale(1)';
+                }, 200);
+                
+                const instruction = document.createElement('div');
+                instruction.textContent = '📷 在此粘贴实际应用截图';
+                instruction.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: #667eea;
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 25px;
+                    font-size: 0.9rem;
+                    z-index: 1000;
+                    animation: fadeInUp 0.3s ease-out;
+                `;
+                document.body.appendChild(instruction);
+                setTimeout(() => {
+                    instruction.remove();
+                }, 3000);
+            });
+        });
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.feature-icon');
+                icon.style.boxShadow = '0 10px 25px rgba(102, 126, 234, 0.3)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.feature-icon');
+                icon.style.boxShadow = 'none';
+            });
+        });
+
+        let currentTabIndex = 0;
+        const tabs = document.querySelectorAll('.demo-tab');
+        
+        function autoSwitchTab() {
+            currentTabIndex = (currentTabIndex + 1) % tabs.length;
+            tabs[currentTabIndex].click();
+        }
+
+        setInterval(autoSwitchTab, 8000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité - Application Familiale Kazoku</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) { animation-delay: 0.1s; }
+        .section:nth-child(2) { animation-delay: 0.2s; }
+        .section:nth-child(3) { animation-delay: 0.3s; }
+        .section:nth-child(4) { animation-delay: 0.4s; }
+        .section:nth-child(5) { animation-delay: 0.5s; }
+        .section:nth-child(6) { animation-delay: 0.6s; }
+        .section:nth-child(7) { animation-delay: 0.7s; }
+        .section:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #059669;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #059669, #10b981);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            border-left: 4px solid #059669;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '🔒';
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #059669;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #bbf7d0;
+            margin-top: 30px;
+        }
+
+        .contact-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #065f46;
+            margin-bottom: 10px;
+        }
+
+        .contact-info {
+            color: #047857;
+            font-size: 0.9em;
+        }
+
+        .footer {
+            background: #f8fafc;
+            padding: 20px 30px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            color: #64748b;
+            font-size: 0.9em;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #d1fae5;
+            color: #065f46;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th, .data-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-note strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">🔐 Kazoku - Application Familiale</div>
+            <div class="app-subtitle">Politique de Confidentialité & Protection des Données</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                En vigueur depuis : 01/10/2025
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. Introduction</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku s'engage à protéger votre vie privée et vos données personnelles. Cette politique explique comment nous collectons, utilisons, stockons et protégeons vos informations lors de l'utilisation de l'application de gestion familiale Kazoku.</p>
+                    
+                    <div class="highlight-box">
+                        <p><strong>🛡️ Notre Engagement :</strong> Les données de votre famille sont votre bien le plus précieux. Nous appliquons les mesures de sécurité les plus élevées pour garantir que vos informations sont toujours sûres et privées.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📊</span>
+                    <h2 class="section-title">2. Informations Que Nous Collectons</h2>
+                </div>
+                <div class="section-content">
+                    <table class="data-table">
+                        <tr>
+                            <th>Type d'Information</th>
+                            <th>Détails</th>
+                            <th>Objectif d'Utilisation</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Informations Personnelles</strong></td>
+                            <td>Surnom, photo de profil/avatar, date de naissance</td>
+                            <td>Créer et gérer les comptes</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Informations Familiales</strong></td>
+                            <td>Surnom du membre, date de naissance</td>
+                            <td>Organiser et gérer la famille</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Données d'Activité</strong></td>
+                            <td>Horaires, tâches, notes, dépenses</td>
+                            <td>Fournir les fonctionnalités de gestion</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Informations sur l'Appareil</strong></td>
+                            <td>Type d'appareil, système d'exploitation, ID de l'appareil</td>
+                            <td>Optimiser les performances</td>
+                        </tr>
+                    </table>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ Remarque :</strong> Nous ne collectons que les informations nécessaires pour fournir le service. Vous pouvez refuser certains types de données, mais cela peut affecter votre expérience.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🎯</span>
+                    <h2 class="section-title">3. Comment Nous Utilisons les Informations</h2>
+                </div>
+                <div class="section-content">
+                    <p>Vos données sont utilisées pour :</p>
+                    
+                    <div class="list-item">Fournir et maintenir les fonctionnalités de l'application</div>
+                    <div class="list-item">Synchroniser les données entre les appareils</div>
+                    <div class="list-item">Envoyer des notifications et des rappels comme demandé</div>
+                    <div class="list-item">Améliorer les performances et l'expérience utilisateur</div>
+                    <div class="list-item">Fournir un support technique lorsque demandé</div>
+                    <div class="list-item">Analyser les tendances d'utilisation pour développer de nouvelles fonctionnalités</div>
+
+                    <p style="margin-top: 20px;"><strong>Nous N'utilisons PAS les données pour :</strong></p>
+                    <div class="sub-list-item">Vendre ou louer des informations personnelles</div>
+                    <div class="sub-list-item">Publicité ou marketing de tiers</div>
+                    <div class="sub-list-item">Suivre les activités en dehors de l'application</div>
+                    <div class="sub-list-item">Partager avec des partenaires sans consentement</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🛡️</span>
+                    <h2 class="section-title">4. Sécurité des Données</h2>
+                </div>
+                <div class="section-content">
+                    <p>Nous appliquons plusieurs couches de sécurité pour protéger vos données :</p>
+                    
+                    <div class="list-item">
+                        <strong>Chiffrement des Données :</strong>
+                        <div class="sub-list-item">Chiffrement AES-256 pour les données stockées</div>
+                        <div class="sub-list-item">Chiffrement TLS 1.3 pour la transmission des données</div>
+                        <div class="sub-list-item">Hachage SHA-256 pour les mots de passe</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Contrôle d'Accès :</strong>
+                        <div class="sub-list-item">Authentification multifacteur (2FA)</div>
+                        <div class="sub-list-item">Contrôle d'accès basé sur les rôles</div>
+                        <div class="sub-list-item">Délais d'expiration de session</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Surveillance de la Sécurité :</strong>
+                        <div class="sub-list-item">Détection des activités anormales</div>
+                        <div class="sub-list-item">Sauvegardes régulières des données</div>
+                        <div class="sub-list-item">Audits de sécurité fréquents</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🤝</span>
+                    <h2 class="section-title">5. Partage d'Informations</h2>
+                </div>
+                <div class="section-content">
+                    <p>Nous ne partageons les informations que dans les cas suivants :</p>
+                    
+                    <div class="list-item">
+                        <strong>Au sein de la famille :</strong> Selon les paramètres de confidentialité que vous configurez
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Fournisseurs de services :</strong> Partenaires techniques sous accords de confidentialité
+                        <div class="sub-list-item">Services de stockage cloud (Google Cloud)</div>
+                        <div class="sub-list-item">Services d'analyse (Firebase Analytics)</div>
+                        <div class="sub-list-item">Services de notifications push (Firebase Cloud Messaging)</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Exigences légales :</strong> Lorsque requis par les autorités
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🔒 Assurance :</strong> Tous nos partenaires doivent se conformer à des normes de sécurité élevées et ne peuvent accéder qu'aux données nécessaires pour fournir le service.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">⚙️</span>
+                    <h2 class="section-title">6. Vos Droits</h2>
+                </div>
+                <div class="section-content">
+                    <p>Vous avez un contrôle total sur vos données personnelles :</p>
+                    
+                    <div class="list-item">
+                        <strong>Accès :</strong> Consulter toutes les données que nous stockons à votre sujet
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Modification :</strong> Mettre à jour ou modifier les informations personnelles
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Suppression des données :</strong> Demander la suppression de tout ou partie des données
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Export des données :</strong> Télécharger les données dans un format lisible
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Refus :</strong> Restreindre certaines activités de traitement des données
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Paramètres de confidentialité :</strong> Contrôler qui peut voir vos informations
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>📱 Comment faire : Configurez les paramètres de partage dans l'application.</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🍪</span>
+                    <h2 class="section-title">7. Technologies de Suivi</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku utilise les technologies suivantes pour améliorer l'expérience :</p>
+                    
+                    <table class="data-table">
+                        <tr>
+                            <th>Type</th>
+                            <th>Objectif</th>
+                            <th>Durée</th>
+                        </tr>
+                        <tr>
+                            <td>Stockage de Session</td>
+                            <td>Maintenir la session de connexion</td>
+                            <td>À la fermeture de l'application</td>
+                        </tr>
+                        <tr>
+                            <td>Stockage Local</td>
+                            <td>Enregistrer les paramètres personnels</td>
+                            <td>Jusqu'à suppression</td>
+                        </tr>
+                        <tr>
+                            <td>Analyses</td>
+                            <td>Statistiques d'utilisation</td>
+                            <td>36 mois</td>
+                        </tr>
+                        <tr>
+                            <td>Rapports de Crash</td>
+                            <td>Améliorer la stabilité</td>
+                            <td>90 jours</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📄</span>
+                    <h2 class="section-title">8. Stockage et Suppression des Données</h2>
+                </div>
+                <div class="section-content">
+                    <div class="list-item">
+                        <strong>Période de conservation :</strong>
+                        <div class="sub-list-item">Données d'activité : Pendant votre utilisation de l'application</div>
+                        <div class="sub-list-item">Données de compte : Jusqu'à ce que vous demandiez la suppression</div>
+                        <div class="sub-list-item">Journaux système : 12 mois</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Suppression automatique :</strong>
+                        <div class="sub-list-item">Comptes inactifs après 2 ans</div>
+                        <div class="sub-list-item">Données temporaires après 30 jours</div>
+                        <div class="sub-list-item">Anciens fichiers de sauvegarde après 90 jours</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🗑️ Suppression de compte :</strong> Lorsque vous supprimez votre compte, nous supprimerons toutes les données personnelles dans les 30 jours, à l'exception des informations requises à des fins légales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">👶</span>
+                    <h2 class="section-title">9. Protection des Enfants</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku accorde une attention particulière à la protection des informations des enfants :</p>
+                    
+                    <div class="list-item">Ne pas collecter d'informations personnelles sur les enfants de moins de 13 ans sans le consentement parental</div>
+                    <div class="list-item">Les fonctionnalités pour enfants sont conçues avec des niveaux de sécurité plus élevés</div>
+                    <div class="list-item">Les parents ont un contrôle total sur les données de leurs enfants</div>
+                    <div class="list-item">Ne pas afficher de publicités ou de contenu inapproprié pour les enfants</div>
+
+                    <div class="warning-box">
+                        <p><strong>👨‍👩‍👧‍👦 Pour les Parents :</strong> Les superviseurs familiaux peuvent examiner et modifier les informations fournies par les enfants.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">10. Mises à Jour de la Politique</h2>
+                </div>
+                <div class="section-content">
+                    <p>Nous pouvons mettre à jour cette politique pour :</p>
+                    
+                    <div class="list-item">Se conformer aux nouvelles réglementations légales</div>
+                    <div class="list-item">Refléter les changements dans les services</div>
+                    <div class="list-item">Améliorer la protection des données</div>
+
+                    <p>Tous les changements importants seront notifiés via :</p>
+                    <div class="sub-list-item">Notification dans l'application</div>
+                    <div class="sub-list-item">E-mail à l'adresse enregistrée</div>
+                    <div class="sub-list-item">Notifications push (si activées)</div>
+
+                    <p>La version mise à jour prendra effet 30 jours après la notification.</p>
+                </div>
+            </div>
+        </div>        
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - Assistant Intelligent pour Chaque Famille !</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ De Tokyo, envoyant de l'amour à chaque famille</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Télécharger iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Télécharger Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-threads"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Conditions d'Utilisation</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Politique de Confidentialité</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="mac-index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Société de Gestion</a>
+        </div>
+        <p>&copy; 2025 Application Familiale Kazoku. Tous droits réservés.<br>
+            <em>"Connecter l'Amour - Partager le Bonheur"</em>
+        </p>
+    </footer>
+</body>
+</html>

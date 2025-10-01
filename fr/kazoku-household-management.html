@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion du Ménage - Application Familiale Kazoku</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #e1e8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(360deg) scale(1.1);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #6c7b8a;
+            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-list {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            color: #333;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .feature-list li::before {
+            content: '•';
+            color: #000;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .demo-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .demo-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .task-demo {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .task-item {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideInLeft 0.8s ease-out forwards;
+            position: relative;
+        }
+
+        .task-item:nth-child(1) { animation-delay: 0.8s; }
+        .task-item:nth-child(2) { animation-delay: 1s; }
+        .task-item:nth-child(3) { animation-delay: 1.2s; }
+        .task-item:nth-child(4) { animation-delay: 1.4s; }
+
+        .task-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .task-item.completed {
+            background: #f0f9ff;
+            border-left-color: #10b981;
+            opacity: 0.8;
+        }
+
+        .task-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .task-info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .task-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .task-details h4 {
+            color: #2c3e50;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .task-assignee {
+            color: #8e9aaf;
+            font-size: 0.8rem;
+        }
+
+        .task-status {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .task-status.pending {
+            color: #f59e0b;
+        }
+
+        .task-status.completed {
+            color: #10b981;
+        }
+
+        .task-status.overdue {
+            color: #ef4444;
+        }
+
+        .task-description {
+            color: #4a5568;
+            line-height: 1.5;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .task-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+            color: #8e9aaf;
+        }
+
+        .task-points {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .task-checkbox {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #667eea;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-left: 10px;
+        }
+
+        .task-checkbox.checked {
+            background: #10b981;
+            border-color: #10b981;
+        }
+
+        .task-checkbox:hover {
+            transform: scale(1.1);
+        }
+
+        .progress-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f0f4ff;
+            border-radius: 15px;
+        }
+
+        .progress-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .progress-header h3 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-item {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6c7b8a;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e5e7eb;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 5px;
+            width: 0%;
+            transition: width 2s ease-out;
+            animation: progressFill 2s ease-out 2s forwards;
+        }
+
+        @keyframes progressFill {
+            to { width: 75%; }
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 30px 25px;
+            }
+            
+            .demo-section {
+                padding: 40px 25px;
+            }
+
+            .task-demo {
+                max-width: 100%;
+            }
+
+            .progress-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .reminder-popup {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-left: 4px solid #f59e0b;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.5s ease;
+            z-index: 1000;
+            max-width: 300px;
+        }
+
+        .reminder-popup.show {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reminder-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .reminder-icon {
+            font-size: 1.2rem;
+        }
+
+        .reminder-title {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 0.9rem;
+        }
+
+        .reminder-text {
+            color: #6c7b8a;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-note strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .demo-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .demo-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .demo-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .demo-tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .demo-tab.active, .demo-tab:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .demo-content {
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-tab-content {
+            display: none;
+            width: 100%;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .demo-tab-content.active {
+            display: block;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+            border: 2px dashed #667eea;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            background: linear-gradient(135deg, #e8f2ff, #f0f4ff);
+            border-color: #764ba2;
+            transform: scale(1.02);
+        }
+
+        .photo-placeholder-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .photo-placeholder-text {
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .photo-placeholder-subtext {
+            color: #8e9aaf;
+            font-size: 0.9rem;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        .feature-highlight {
+            background: #f0f4ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .feature-highlight h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-highlight p {
+            color: #6c7b8a;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🏠 Gestion du Ménage</h1>
+            <p>Organisez et assignez intelligemment les tâches ménagères pour chaque membre de la famille. Des corvées quotidiennes aux tâches périodiques, tout est planifié et suivi pour que la maison reste propre et rangée.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">➕</div>
+                <h3>Créer et Assigner des Tâches</h3>
+                <p>Créez facilement des listes de tâches ménagères et assignez-les à chaque membre avec des échéances et priorités claires.</p>
+                <ul class="feature-list">
+                    <li>Créer de nouvelles tâches avec catégorie, priorité et assignation</li>
+                    <li>Créer des tâches à partir d'une catégorie</li>
+                    <li>Créer des modèles pour les tâches récurrentes</li>
+                    <li>Créer des tâches à partir de modèles sauvegardés</li>
+                    <li>Créer des tâches à partir des suggestions de Kazoku AI</li>
+                    <li>Les utilisateurs peuvent créer des listes de contrôle pour chaque tâche</li>                                    
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3>Gestion des Tâches</h3>
+                <p>Gérez les listes de tâches ménagères avec une interface minimaliste, conviviale pour tous les membres de la famille.</p>
+                <ul class="feature-list">
+                    <li>Afficher une liste minimaliste des tâches ménagères</li>
+                    <li>Montrer clairement l'assigné, le statut et l'heure de mise à jour</li>
+                    <li>Fournir des filtres utiles pour les tâches</li>
+                    <li>Fonctionnalité de recherche de tâches</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Système de Points de Récompense</h3>
+                <p>Motivez les membres de la famille grâce à un système de points et récompenses pour l'accomplissement des tâches.</p>
+                <ul class="feature-list">
+                    <li>Attribution automatique de points lors de l'accomplissement des tâches</li>
+                    <li>Permettre des points supplémentaires pour les tâches difficiles</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔔</div>
+                <h3>Rappels Automatiques</h3>
+                <p>Des notifications intelligentes rappellent les tâches à venir ou en attente.</p>
+                <ul class="feature-list">
+                    <li>Notifications push sur mobile</li>
+                    <li>Rappels avant les échéances</li>
+                    <li>Personnaliser la fréquence et le timing</li>
+                    <li>Rappels pour l'assignateur</li>
+                </ul>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3>Intégration avec d'Autres Fonctionnalités</h3>
+                <p>La gestion des tâches est intégrée avec d'autres fonctionnalités Kazoku pour fournir des outils complets de gestion familiale.</p>
+                <ul class="feature-list">
+                    <li>Gérer les listes de tâches pour les événements familiaux</li>
+                    <li>Gérer les listes de tâches pour les activités de loisirs</li>
+                    <li>Les tâches liées aux activités sont également affichées dans une interface unifiée</li>
+                </ul>
+            </div> 
+        </div>
+
+        <div class="demo-section">
+            <h2>Écran de Gestion des Tâches</h2>
+            
+            <div class="demo-tabs">
+                <button class="demo-tab active" data-tab="create">Créer une Tâche</button>
+                <button class="demo-tab" data-tab="views">Liste des Tâches</button>
+                <button class="demo-tab" data-tab="details">Détails de la Tâche</button>
+                <button class="demo-tab" data-tab="link">Listes de Tâches Liées</button>
+            </div>
+
+            <div class="demo-content">
+                <div class="demo-tab-content active" id="create">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Créer une Tâche</h3>
+                        <p>Entrez le nom de la tâche, sélectionnez la catégorie, date/heure, lieu, ajoutez une description et des images. Catégorisez les tâches et définissez facilement des rappels.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="views">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Liste des Tâches</h3>
+                        <p>Gérez les listes de tâches ménagères avec une interface minimaliste, conviviale pour tous les membres de la famille.</p>
+                    </div>
+                </div>
+                <div class="demo-tab-content" id="details">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Détails de la Tâche</h3>
+                        <p>Consultez les détails de la tâche, le statut, l'assigné, la description et la progression. Mettez à jour le statut et ajoutez rapidement des notes.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="link">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Listes de Tâches Liées</h3>
+                        <p>Affichez les tâches liées aux événements et activités familiales. Gestion efficace des tâches dans des contextes spécifiques.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <button class="cta-button" onclick="showMessage()">
+                Commencer à Gérer les Tâches Ménagères
+            </button>
+        </div>
+    </div>
+
+    <div class="reminder-popup" id="reminderPopup">
+        <div class="reminder-header">
+            <span class="reminder-icon">🔔</span>
+            <span class="reminder-title">Rappel Ménager</span>
+        </div>
+        <div class="reminder-text">
+            Il est temps d'arroser le jardin. Papa, s'il te plaît vérifie les plantes !
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - Assistant Intelligent pour Chaque Famille !</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ De Tokyo, avec amour pour chaque famille</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Télécharger iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Télécharger Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-threads"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Conditions d'Utilisation</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Politique de Confidentialité</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="mac-index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Société Gestionnaire</a>
+        </div>
+        <p>&copy; 2025 Application Familiale Kazoku. Tous droits réservés.<br>
+            <em>"Connecter l'Amour - Partager le Bonheur"</em>
+        </p>
+    </footer>
+
+    <script>
+        function showMessage() {
+            alert('🎉 Bienvenue dans la fonctionnalité de gestion des tâches de Kazoku ! Commencez à organiser les tâches ménagères intelligemment dès aujourd\'hui.');
+        }
+
+        // Tab functionality
+        document.querySelectorAll('.demo-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.demo-tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const targetContent = document.getElementById(tab.dataset.tab);
+                targetContent.classList.add('active');
+                
+                // Add entrance animation
+                targetContent.style.animation = 'none';
+                targetContent.offsetHeight; // Trigger reflow
+                targetContent.style.animation = 'fadeInUp 0.5s ease-out';
+            });
+        });
+
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-circle');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.3;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Task checkbox interactions
+        document.querySelectorAll('.task-checkbox').forEach(checkbox => {
+            checkbox.addEventListener('click', () => {
+                if (!checkbox.classList.contains('checked')) {
+                    checkbox.classList.add('checked');
+                    checkbox.innerHTML = '✓';
+                    checkbox.style.background = '#10b981';
+                    checkbox.style.borderColor = '#10b981';
+                    
+                    // Update task status
+                    const taskItem = checkbox.closest('.task-item');
+                    const status = taskItem.querySelector('.task-status');
+                    status.className = 'task-status completed';
+                    status.innerHTML = '✅ Terminée <div class="task-checkbox checked">✓</div>';
+                    
+                    // Add completed styling
+                    taskItem.classList.add('completed');
+                    
+                    // Show success feedback
+                    showFeedback('🎉 Excellent ! Vous venez de terminer une tâche ménagère !');
+                } else {
+                    checkbox.classList.remove('checked');
+                    checkbox.innerHTML = '';
+                    checkbox.style.background = 'transparent';
+                    checkbox.style.borderColor = '#667eea';
+                    
+                    const taskItem = checkbox.closest('.task-item');
+                    const status = taskItem.querySelector('.task-status');
+                    status.className = 'task-status pending';
+                    status.innerHTML = '⏳ En Cours <div class="task-checkbox"></div>';
+                    
+                    taskItem.classList.remove('completed');
+                }
+            });
+        });
+
+        function showFeedback(message) {
+            const feedback = document.createElement('div');
+            feedback.textContent = message;
+            feedback.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: #10b981;
+                color: white;
+                padding: 15px 25px;
+                border-radius: 25px;
+                font-size: 0.9rem;
+                z-index: 1000;
+                animation: fadeInUp 0.3s ease-out;
+                box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+            `;
+            document.body.appendChild(feedback);
+            setTimeout(() => {
+                feedback.remove();
+            }, 3000);
+        }
+
+        // Show reminder notification
+        function showReminder() {
+            const popup = document.getElementById('reminderPopup');
+            popup.classList.add('show');
+            
+            setTimeout(() => {
+                popup.classList.remove('show');
+            }, 5000);
+        }
+
+        // Show reminder after 3 seconds
+        setTimeout(showReminder, 3000);
+
+        // Task hover effects
+        document.querySelectorAll('.task-item').forEach(task => {
+            task.addEventListener('mouseenter', () => {
+                task.style.backgroundColor = '#f0f4ff';
+            });
+            
+            task.addEventListener('mouseleave', () => {
+                if (task.classList.contains('completed')) {
+                    task.style.backgroundColor = '#f0f9ff';
+                } else {
+                    task.style.backgroundColor = '#f8f9ff';
+                }
+            });
+        });
+
+        // Stats animation
+        setTimeout(() => {
+            const stats = document.querySelectorAll('.stat-number');
+            stats.forEach(stat => {
+                const finalValue = parseInt(stat.textContent);
+                let currentValue = 0;
+                const increment = finalValue / 30;
+                
+                const timer = setInterval(() => {
+                    currentValue += increment;
+                    if (currentValue >= finalValue) {
+                        stat.textContent = finalValue;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(currentValue);
+                    }
+                }, 50);
+            });
+        }, 2000);
+
+        // Feature cards hover effects
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.feature-icon');
+                icon.style.boxShadow = '0 10px 25px rgba(102, 126, 234, 0.3)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.feature-icon');
+                icon.style.boxShadow = 'none';
+            });
+        });
+
+        // Auto check a task for demo
+        setTimeout(() => {
+            const pendingTask = document.querySelector('.task-item:not(.completed) .task-checkbox');
+            if (pendingTask) {
+                pendingTask.click();
+            }
+        }, 6000);
+
+        // Random reminder messages
+        const reminderMessages = [
+            "Il est temps d'arroser le jardin. Papa, s'il te plaît vérifie les plantes !",
+            "Rappel : Laver la vaisselle après le dîner. Chi, peux-tu aider maman ?",
+            "Aujourd'hui c'est le jour du nettoyage de la chambre. Es-tu prêt ?",
+            "Il est temps de passer l'aspirateur dans le salon. Qui peut aider avec ça ?"
+        ];
+
+        // Show random reminders
+        setInterval(() => {
+            const randomMessage = reminderMessages[Math.floor(Math.random() * reminderMessages.length)];
+            const popup = document.getElementById('reminderPopup');
+            popup.querySelector('.reminder-text').textContent = randomMessage;
+            
+            if (!popup.classList.contains('show')) {
+                showReminder();
+            }
+        }, 15000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion des Membres - Application Familiale Kazoku</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #e1e8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 750px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 35px 25px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(360deg) scale(1.1);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: #6c7b8a;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .demo-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .demo-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .demo-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .demo-tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .demo-tab.active, .demo-tab:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .demo-content {
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-tab-content {
+            display: none;
+            width: 100%;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .demo-tab-content.active {
+            display: block;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+            border: 2px dashed #667eea;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            background: linear-gradient(135deg, #e8f2ff, #f0f4ff);
+            border-color: #764ba2;
+            transform: scale(1.02);
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        .feature-highlight {
+            background: #f0f4ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .feature-highlight h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-highlight p {
+            color: #6c7b8a;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .supervisor-section {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(240, 147, 251, 0.3);
+        }
+
+        .supervisor-section h3 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .supervisor-section p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            margin-bottom: 25px;
+        }
+
+        .supervisor-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .supervisor-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .supervisor-feature:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+
+        .member-info-section {
+            margin: 40px 0;
+        }
+
+        .member-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: #f8f9ff;
+            padding: 25px 20px;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+            transition: all 0.3s ease;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .info-card:nth-child(1) { animation-delay: 0.5s; }
+        .info-card:nth-child(2) { animation-delay: 0.6s; }
+        .info-card:nth-child(3) { animation-delay: 0.7s; }
+        .info-card:nth-child(4) { animation-delay: 0.8s; }
+        .info-card:nth-child(5) { animation-delay: 0.9s; }
+
+        .info-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
+            background: #e6edff;
+        }
+
+        .info-card h4 {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card p {
+            color: #6c7b8a;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .ai-integration {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(34, 197, 94, 0.3);
+        }
+
+        .ai-integration h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .ai-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        .ai-feature {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .ai-feature:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.02);
+        }
+
+        .invite-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .invite-card {
+            background: white;
+            padding: 30px 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 2px solid #e1e8ed;
+            transition: all 0.3s ease;
+        }
+
+        .invite-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
+        }
+
+        .invite-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .invite-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .invite-card p {
+            color: #6c7b8a;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 30px 20px;
+            }
+            
+            .demo-section {
+                padding: 40px 20px;
+            }
+
+            .member-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .invite-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .supervisor-features {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-note strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>👨‍👩‍👧‍👦 Gestion des Membres</h1>
+            <p>Gérez les membres de la famille de manière intelligente et efficace. Les superviseurs ont un contrôle total pour ajouter, inviter et gérer les informations des membres, aidant Kazoku AI à mieux comprendre la famille pour fournir les meilleures suggestions personnalisées.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">👑</div>
+                <h3>Privilèges du Superviseur Familial</h3>
+                <p>Le superviseur familial dispose de tous les droits pour ajouter, supprimer et modifier les informations des membres. Il peut gérer le statut d'activité et contrôler l'accès de manière flexible.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔗</div>
+                <h3>Liaison de Compte</h3>
+                <p>Liez les membres avec de vrais comptes de connexion pour convertir les profils virtuels en membres réels, permettant l'interaction et l'utilisation complète des fonctionnalités du système.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📝</div>
+                <h3>Informations Détaillées</h3>
+                <p>Fournissez des informations personnelles complètes incluant surnom, groupe sanguin, sexe, résidence et loisirs pour que Kazoku AI puisse faire des suggestions adaptées à chaque individu.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>Gestion Complète</h3>
+                <p>Effectuez des opérations de gestion de base telles qu'ajouter, modifier, supprimer et suspendre des membres selon les besoins réels de la famille.</p>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">📧</div>
+                <h3>Inviter des Membres</h3>
+                <p>Envoyez des invitations pour rejoindre la famille par e-mail ou code QR pratique, rendant l'élargissement de l'adhésion familiale simple et rapide.</p>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>Écran de Gestion des Membres</h2>
+            
+            <div class="demo-tabs">
+                <button class="demo-tab active" data-tab="create">Créer un Membre</button>
+                <button class="demo-tab" data-tab="views">Liste des Membres</button>
+                <button class="demo-tab" data-tab="link">Lier un Membre</button>
+                <button class="demo-tab" data-tab="invite">Inviter des Membres</button>
+            </div>
+
+            <div class="demo-content">
+                <div class="demo-tab-content active" id="create">
+                    <div class="photo-placeholder">
+
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Créer un Membre</h3>
+                        <p>Créez un profil pour un nouveau membre de la famille.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="views">
+                    <div class="photo-placeholder">
+
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Liste des Membres</h3>
+                        <p>Affichage de la liste des membres de la famille, incluant les détails et le statut actuel.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="link">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Lier un Membre</h3>
+                        <p>Liez les membres avec de vrais comptes de connexion pour convertir les profils virtuels en membres réels, permettant l'interaction et l'utilisation complète des fonctionnalités du système.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="invite">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Inviter des Membres</h3>
+                        <p>Envoyez des invitations pour rejoindre la famille par e-mail ou code QR pratique, rendant l'élargissement de l'adhésion familiale simple et rapide.</p>
+                    </div>
+                </div>                
+            </div>
+        </div>
+
+        <div class="supervisor-section">
+            <h3>👑 Privilèges du Superviseur</h3>
+            <p>Le superviseur dispose de l'autorité complète pour contrôler et gérer toutes les activités familiales</p>
+
+            <div class="supervisor-features">
+                <div class="supervisor-feature">
+                    <span style="font-size: 1.5rem;">➕</span>
+                    <div>Ajouter un nouveau membre</div>
+                </div>
+                <div class="supervisor-feature">
+                    <span style="font-size: 1.5rem;">✏️</span>
+                    <div>Modifier les informations du membre</div>
+                </div>
+                <div class="supervisor-feature">
+                    <span style="font-size: 1.5rem;">🗑️</span>
+                    <div>Supprimer / suspendre un membre</div>
+                </div>
+                <div class="supervisor-feature">
+                    <span style="font-size: 1.5rem;">🔒</span>
+                    <div>Contrôler l'accès</div>
+                </div>
+                <div class="supervisor-feature">
+                    <span style="font-size: 1.5rem;">💳</span>
+                    <div>Mettre à niveau / annuler le forfait d'abonnement familial</div>
+                </div>
+                <div class="supervisor-feature">
+                    <span style="font-size: 1.5rem;">🎁</span>
+                    <div>Créer / Approuver / Donner des cadeaux</div>
+                </div>
+                <div class="supervisor-feature">
+                    <span style="font-size: 1.5rem;">📝</span>
+                    <div>Mettre à jour le journal d'activité quotidien de tous les membres de la famille</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="member-info-section">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">📋 Informations Détaillées du Membre</h2>
+            <div class="member-info-grid">
+                <div class="info-card">
+                    <h4>😊 Surnom</h4>
+                    <p>Un nom familier dans la famille aide à créer une atmosphère chaleureuse et proche dans la communication quotidienne, tout en limitant la divulgation d'informations sensibles telles que les vrais noms.</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>🩸 Groupe Sanguin</h4>
+                    <p>Informations médicales importantes utiles pour les urgences et les soins de santé familiaux.</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>⚥ Sexe</h4>
+                    <p>Aide l'IA à mieux comprendre les caractéristiques individuelles pour fournir des suggestions adaptées à chaque membre.</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>🏠 Résidence</h4>
+                    <p>Les informations géographiques aident à fournir des suggestions sur la météo, les activités locales et les services à proximité.</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>❤️ Loisirs</h4>
+                    <p>Les loisirs aident l'IA à suggérer des activités, des cadeaux et des expériences adaptés à chaque individu.</p>
+                </div>
+
+                <div class="info-card">
+                    <h4>❤️ Ce qu'ils n'aiment pas</h4>
+                    <p>Les aversions aident l'IA à éviter de suggérer des activités, des cadeaux et des expériences inadaptés.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ai-integration">
+            <h3>🤖 Intégration Kazoku AI</h3>
+            <p>Les informations des membres aident l'IA à mieux comprendre la famille et à fournir des suggestions personnalisées</p>
+            
+            <div class="ai-features">
+                <div class="ai-feature">
+                    <div style="font-size: 1.5rem; margin-bottom: 8px;">🎯</div>
+                    <div>Suggestions d'activités adaptées</div>
+                </div>
+                <div class="ai-feature">
+                    <div style="font-size: 1.5rem; margin-bottom: 8px;">🍽️</div>
+                    <div>Menu de repas personnalisé</div>
+                </div>
+                <div class="ai-feature">
+                    <div style="font-size: 1.5rem; margin-bottom: 8px;">📅</div>
+                    <div>Planification intelligente</div>
+                </div>
+                <div class="ai-feature">
+                    <div style="font-size: 1.5rem; margin-bottom: 8px;">💡</div>
+                    <div>Conseils pertinents</div>
+                </div>
+                <div class="ai-feature">
+                    <div style="font-size: 1.5rem; margin-bottom: 8px;">⚡</div>
+                    <div>Automatisation intelligente</div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin: 40px 0;">
+            <h2 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">📨 Méthodes d'Invitation des Membres</h2>
+            <div class="invite-methods">
+                <div class="invite-card">
+                    <span class="invite-icon">📧</span>
+                    <h4>Inviter par E-mail</h4>
+                    <p>Envoyez des invitations directement à l'adresse e-mail du membre. L'invité recevra un lien d'activation pour rejoindre la famille en toute sécurité et commodité.</p>
+                </div>
+
+                <div class="invite-card">
+                    <span class="invite-icon">📱</span>
+                    <h4>Code QR</h4>
+                    <p>Générez un code QR unique pour la famille. Les membres n'ont qu'à scanner le code pour rejoindre immédiatement, adapté pour inviter des membres à proximité.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <button class="cta-button" onclick="showMessage()">
+                Commencer à Gérer les Membres
+            </button>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - Assistant Intelligent pour Chaque Famille !</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ De Tokyo, envoyant de l'amour à chaque famille</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Télécharger iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Télécharger Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-threads"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Conditions d'Utilisation</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Politique de Confidentialité</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="mac-index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Société de Gestion</a>
+        </div>
+        <p>&copy; 2025 Application Familiale Kazoku. Tous droits réservés.<br>
+            <em>"Connecter l'Amour - Partager le Bonheur"</em>
+        </p>
+    </footer>
+
+    <script>
+        function showMessage() {
+            alert('🎉 Bienvenue dans la Gestion des Membres ! Commencez à construire et gérer votre famille intelligente avec Kazoku.');
+        }
+
+        // Tab functionality
+        document.querySelectorAll('.demo-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.demo-tab-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                const targetContent = document.getElementById(tab.dataset.tab);
+                targetContent.classList.add('active');
+                targetContent.style.animation = 'none';
+                targetContent.offsetHeight;
+                targetContent.style.animation = 'fadeInUp 0.5s ease-out';
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-circle');
+            parallaxElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.3;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.feature-icon');
+                icon.style.boxShadow = '0 10px 25px rgba(102, 126, 234, 0.3)';
+            });
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.feature-icon');
+                icon.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>가족 채팅 - Kazoku 가족 앱</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #e1e8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(360deg) scale(1.1);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #6c7b8a;
+            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-list {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            color: #333;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .feature-list li::before {
+            content: '•';
+            color: #000;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .demo-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .demo-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .demo-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .demo-tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .demo-tab.active, .demo-tab:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .demo-content {
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-tab-content {
+            display: none;
+            width: 100%;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .demo-tab-content.active {
+            display: block;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+            border: 2px dashed #667eea;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            background: linear-gradient(135deg, #e8f2ff, #f0f4ff);
+            border-color: #764ba2;
+            transform: scale(1.02);
+        }
+
+        .photo-placeholder-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .photo-placeholder-text {
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .photo-placeholder-subtext {
+            color: #8e9aaf;
+            font-size: 0.9rem;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        .feature-highlight {
+            background: #f0f4ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .feature-highlight h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-highlight p {
+            color: #6c7b8a;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 30px 25px;
+            }
+            
+            .demo-section {
+                padding: 40px 20px;
+            }
+
+            .demo-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .demo-tab {
+                width: 200px;
+                text-align: center;
+            }
+
+            .photo-placeholder {
+                height: 300px;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-note strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>💬 가족 채팅</h1>
+            <p>비공개이고 안전한 채팅 공간을 통해 모든 가족 구성원을 연결하세요. 일상의 순간을 공유하고, 정보를 교환하며, 언제 어디서나 연결된 상태를 유지하세요.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏠</div>
+                <h3>비공개 채팅방</h3>
+                <p>가족 구성원 전용 채팅방이 단 하나만 있어 안전하고 친밀한 공간을 보장합니다.</p>
+                <ul class="feature-list">
+                    <li>가족을 위한 단일 채팅방</li>
+                    <li>구성원만 참여 가능</li>
+                    <li>절대적인 개인정보 보호 및 보안</li>
+                    <li>아늑하고 친숙한 공간</li>
+                    <li>메시지 기록 저장</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>실시간 채팅</h3>
+                <p>메시지가 즉시 전송 및 수신되어 실제 생활과 같은 부드러운 채팅 경험을 제공합니다.</p>
+                <ul class="feature-list">
+                    <li>메시지 즉시 전송 및 수신</li>
+                    <li>지연 없음, 항상 연결됨</li>
+                    <li>실시간 상태 업데이트</li>
+                    <li>즉각적인 알림</li>
+                    <li>모든 기기에서 동기화</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>풍부한 콘텐츠</h3>
+                <p>텍스트, 이미지, 이모지 및 생생한 스티커를 보내 대화를 더욱 재미있고 표현력 있게 만드세요.</p>
+                <ul class="feature-list">
+                    <li>일반 텍스트 메시징</li>
+                    <li>이미지 및 동영상 전송</li>
+                    <li>풍부한 이모지 라이브러리</li>
+                    <li>다양한 생생한 스티커</li>
+                    <li>메시지에 답장 및 반응</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">✏️</div>
+                <h3>입력 중 표시</h3>
+                <p>누가 입력하고 있는지 확인하여 직접 채팅하는 것과 같은 실제 상호작용 느낌을 만듭니다.</p>
+                <ul class="feature-list">
+                    <li>누군가 입력 중일 때 표시</li>
+                    <li>누가 답장하는지 즉시 알 수 있음</li>
+                    <li>더 친밀한 느낌 생성</li>
+                    <li>중복 메시지 방지</li>
+                    <li>부드럽고 자연스러운 상호작용</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>메시지 북마크</h3>
+                <p>중요한 메시지와 필요한 정보를 표시하고 저장하여 쉽게 검색할 수 있습니다.</p>
+                <ul class="feature-list">
+                    <li>중요한 메시지 표시</li>
+                    <li>북마크된 메시지 보기</li>
+                    <li>필요한 정보에 빠른 액세스</li>
+                    <li>계획 및 알림 저장</li>
+                    <li>북마크 쉽게 관리</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🔍</div>
+                <h3>검색 및 필터</h3>
+                <p>키워드로 메시지를 검색하고 발신자 또는 시간별로 빠르게 필터링하세요.</p>
+                <ul class="feature-list">
+                    <li>키워드로 검색</li>
+                    <li>발신자별로 필터링</li>
+                    <li>시간 범위별로 필터링</li>
+                    <li>이미지가 있는 메시지 찾기</li>
+                    <li>정확하고 빠른 결과</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="demo-section">
+            <h2>채팅 화면</h2>
+            
+            <div class="demo-tabs">
+                <button class="demo-tab active" data-tab="chat-room">채팅방</button>
+                <button class="demo-tab" data-tab="media">멀티미디어</button>
+                <button class="demo-tab" data-tab="typing">입력 중 표시</button>
+                <button class="demo-tab" data-tab="bookmark">북마크</button>
+                <button class="demo-tab" data-tab="search">검색</button>
+            </div>
+
+            <div class="demo-content">
+                <div class="demo-tab-content active" id="chat-room">
+                    <div class="photo-placeholder">
+
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>자연스러운 대화</h3>
+                        <p>친근한 인터페이스를 갖춘 가족을 위한 비공개 채팅방입니다. 메시지가 즉시 전송 및 수신되어 실제 대화와 같은 친밀한 느낌을 만듭니다.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="media">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>다양한 공유</h3>
+                        <p>이모지 및 생생한 스티커와 함께 텍스트, 이미지 및 동영상을 보내세요. 감정을 풍부하게 표현하고 순간을 공유하세요.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="typing">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>누가 답장하는지 알기</h3>
+                        <p>생생한 점 효과로 구성원이 입력 중일 때 즉시 확인하세요. 자연스럽고 사실적인 상호작용 느낌을 만듭니다.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="bookmark">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>중요한 정보 저장</h3>
+                        <p>별 아이콘을 클릭하여 메시지를 북마크하세요. 저장된 메시지를 언제든지 검토하여 중요한 정보를 놓치지 마세요.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="search">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>메시지 쉽게 찾기</h3>
+                        <p>키워드로 검색하고 발신자 또는 시간 범위별로 필터링하세요. 이미지가 있는 메시지나 북마크된 메시지를 빠르게 찾으세요.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <button class="cta-button" onclick="showMessage()">
+                가족과 채팅 시작하기
+            </button>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - 모든 가족을 위한 스마트 도우미!</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ 도쿄에서 모든 가족에게 사랑을 보냅니다</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> iOS 다운로드
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Android 다운로드
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-threads"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">이용약관</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">개인정보 보호정책</a>
+        </div>
+        <p>&copy; 2025 Kazoku Family App. 모든 권리 보유.<br>
+            <em>"사랑을 연결하고 - 행복을 공유하세요"</em>
+        </p>
+    </footer>
+
+    <script>
+        function showMessage() {
+            alert('💬 Kazoku 가족 채팅에 오신 것을 환영합니다! 오늘 가족과 연결을 시작하세요.');
+        }
+
+        // Tab functionality
+        document.querySelectorAll('.demo-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.demo-tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const targetContent = document.getElementById(tab.dataset.tab);
+                targetContent.classList.add('active');
+                
+                // Add entrance animation
+                targetContent.style.animation = 'none';
+                targetContent.offsetHeight; // Trigger reflow
+                targetContent.style.animation = 'fadeInUp 0.5s ease-out';
+            });
+        });
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-circle');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.3;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Photo placeholder interaction
+        document.querySelectorAll('.photo-placeholder').forEach(placeholder => {
+            placeholder.addEventListener('click', () => {
+                placeholder.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    placeholder.style.transform = 'scale(1)';
+                }, 200);
+                
+                // Show instruction
+                const instruction = document.createElement('div');
+                instruction.textContent = '📷 여기에 실제 앱 스크린샷을 붙여넣으세요';
+                instruction.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: #667eea;
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 25px;
+                    font-size: 0.9rem;
+                    z-index: 1000;
+                    animation: fadeInUp 0.3s ease-out;
+                `;
+                document.body.appendChild(instruction);
+                setTimeout(() => {
+                    instruction.remove();
+                }, 3000);
+            });
+        });
+
+        // Feature cards hover effects
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.feature-icon');
+                icon.style.boxShadow = '0 10px 25px rgba(102, 126, 234, 0.3)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.feature-icon');
+                icon.style.boxShadow = 'none';
+            });
+        });
+
+        // Auto-cycle through tabs for demo
+        let currentTabIndex = 0;
+        const tabs = document.querySelectorAll('.demo-tab');
+        
+        function autoSwitchTab() {
+            currentTabIndex = (currentTabIndex + 1) % tabs.length;
+            tabs[currentTabIndex].click();
+        }
+
+        // Auto switch every 8 seconds
+        setInterval(autoSwitchTab, 8000);
+    </script>
+</body>
+</html>

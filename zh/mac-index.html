@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAC - 家庭生活的AI技术</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1600&h=900&fit=crop') center/cover;
+            opacity: 0.15;
+            animation: kenburns 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes kenburns {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 15s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .section-title.visible {
+            animation: fadeInScale 0.8s ease forwards;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #718096;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.3s forwards;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.6s ease forwards;
+        }
+
+        .value-card:nth-child(1) { animation-delay: 0.1s; }
+        .value-card:nth-child(2) { animation-delay: 0.2s; }
+        .value-card:nth-child(3) { animation-delay: 0.3s; }
+        .value-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .value-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+
+        .value-card:hover h3 {
+            transform: scale(1.1);
+        }
+
+        .company-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .company-image {
+            width: 100%;
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop') center/cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .company-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s;
+        }
+
+        .company-image:hover::before {
+            left: 100%;
+        }
+
+        .company-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .services {
+            background: #f7fafc;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideRight 0.6s ease forwards;
+        }
+
+        .service-item:nth-child(1) { animation-delay: 0.1s; }
+        .service-item:nth-child(2) { animation-delay: 0.2s; }
+        .service-item:nth-child(3) { animation-delay: 0.3s; }
+        .service-item:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .service-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            min-width: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover .service-icon {
+            transform: rotateY(360deg);
+        }
+
+        .product-section {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+        }
+
+        .product-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            margin: 2rem auto;
+            background: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop') center/cover;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0%, 100% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            50% {
+                transform: translate(-50%, -50%) rotate(180deg);
+            }
+        }
+
+        .product-image:hover {
+            transform: scale(1.02) rotateX(2deg);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
+        }
+
+        .product-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        .product-features {
+            list-style: none;
+        }
+
+        .product-features li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideRight 0.5s ease forwards;
+        }
+
+        .product-features li:nth-child(1) { animation-delay: 0.1s; }
+        .product-features li:nth-child(2) { animation-delay: 0.2s; }
+        .product-features li:nth-child(3) { animation-delay: 0.3s; }
+        .product-features li:nth-child(4) { animation-delay: 0.4s; }
+
+        .product-features li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.15);
+            border-left-width: 8px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: popIn 0.5s ease forwards;
+        }
+
+        .step-card:nth-child(1) { animation-delay: 0.1s; }
+        .step-card:nth-child(2) { animation-delay: 0.2s; }
+        .step-card:nth-child(3) { animation-delay: 0.3s; }
+        .step-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes popIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+            transition: all 0.3s ease;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .step-card:hover .step-number {
+            animation: none;
+            transform: rotate(360deg) scale(1.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: #f7fafc;
+            transform: translateX(10px);
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            min-width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .info-item h4 {
+            font-size: 1.1rem;
+            color: #2d3748;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-item p {
+            color: #718096;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        .form-group:nth-child(4) { animation-delay: 0.4s; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: #f7fafc;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            animation: fadeInUp 0.6s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-button:hover::before {
+            left: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-button:active {
+            transform: translateY(-1px);
+        }
+
+        .button-icon {
+            transition: transform 0.3s ease;
+            font-size: 1.3rem;
+        }
+
+        .submit-button:hover .button-icon {
+            transform: translateX(5px);
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-message.success {
+            background: #c6f6d5;
+            color: #22543d;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #fed7d7;
+            color: #742a2a;
+            display: block;
+        }
+
+        .testimonials {
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            font-style: italic;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: rotateY(-15deg);
+            animation: rotateIn 0.6s ease forwards;
+        }
+
+        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes rotateIn {
+            to {
+                opacity: 1;
+                transform: rotateY(0);
+            }
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+            border-left-width: 8px;
+        }
+
+        .testimonial-card p {
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-style: normal;
+            color: #667eea;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover .testimonial-author {
+            transform: translateX(10px);
+            display: inline-block;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .footer-section a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #4a5568;
+            text-align: center;
+            color: #a0aec0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #4a5568;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #667eea;
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .product-content,
+            .company-intro,
+            .footer-content,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .company-image,
+            .product-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MAC</div>
+            <ul class="nav-links">
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#services">服务</a></li>
+                <li><a href="#product">产品</a></li>
+                <li><a href="#contact">联系方式</a></li>
+                <li><a href="#testimonials">客户评价</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>家庭生活的AI技术</h1>
+            <p>MAC是一家总部位于日本的科技公司，专注于开发集成现代人工智能（AI）的移动应用程序。我们始终致力于创造具有人文价值的产品，服务全球家庭的日常生活。</p>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title">关于MAC</h2>
+        <p class="section-subtitle">您值得信赖的现代家庭科技伙伴</p>
+        
+        <div class="company-intro">
+            <div>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    MAC成立于日本，一直致力于开发先进的技术解决方案，使命是连接和改善家庭生活质量。我们相信科技应该服务于人类，而不是相反。
+                </p>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    凭借一支经验丰富且充满热情的工程师团队，MAC专注于创建用户友好、易于使用的应用程序，适合每个家庭成员——从老年人到儿童。
+                </p>
+                <p style="font-size: 1.1rem;">
+                    我们自豪地成为日本数千个家庭值得信赖的科技合作伙伴，并正在向国际市场扩张。
+                </p>
+            </div>
+            <div class="company-image"></div>
+        </div>
+
+        <h3 style="text-align: center; font-size: 2rem; margin: 3rem 0 2rem; color: #2d3748;">核心价值观</h3>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>🎯 以人为本</h3>
+                <p>MAC的每个产品都将人类需求和体验放在中心位置。我们倾听用户的声音，并根据真实反馈不断改进。</p>
+            </div>
+            <div class="value-card">
+                <h3>🚀 先进技术</h3>
+                <p>我们应用人工智能、机器学习和最新技术来改进每一个小细节，提供最佳的用户体验。</p>
+            </div>
+            <div class="value-card">
+                <h3>🔒 绝对安全</h3>
+                <p>用户数据始终受到现代加密技术的保护，从不与第三方共享。隐私是我们的首要任务。</p>
+            </div>
+            <div class="value-card">
+                <h3>🌏 全球视野</h3>
+                <p>致力于创造能够改善全球数百万家庭生活质量的产品，超越所有文化和地理障碍。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">我们的服务</h2>
+            <p class="section-subtitle">从概念到部署的综合解决方案</p>
+            <div class="service-item">
+                <div class="service-icon">📱</div>
+                <div>
+                    <h3>移动应用开发</h3>
+                    <p>跨平台移动应用开发（Flutter、iOS、Android），具有高性能、精美界面和流畅的用户体验。我们确保应用程序在所有设备上完美运行。</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🤖</div>
+                <div>
+                    <h3>智能AI集成</h3>
+                    <p>将人工智能（AI）集成到应用程序中：自然语言处理、图像识别、基于机器学习的智能建议。AI帮助应用程序学习并适应每个用户。</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🧩</div>
+                <div>
+                    <h3>家庭数字解决方案</h3>
+                    <p>为家庭和特定用户群体设计的综合数字解决方案。从财务管理、日程安排到笔记和分享时刻——一切都在一个平台上。</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🛠️</div>
+                <div>
+                    <h3>软件开发咨询</h3>
+                    <p>为企业提供咨询和定制软件开发。我们的专家团队随时准备陪伴您从构思和设计阶段到部署和维护。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product" class="product-section">
+        <div class="container">
+            <div class="product-hero">
+                <h2 class="section-title">特色产品：Kazoku</h2>
+                <p class="section-subtitle">集成AI的智能家庭管理应用</p>
+                <div class="product-image"></div>
+                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
+                    Kazoku是MAC的旗舰产品——一款功能齐全的综合家庭管理应用程序，以最高效的方式连接和组织家庭生活。完全免费且无广告。
+                </p>
+            </div>
+
+            <div class="product-content">
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: #2d3748;">主要功能</h3>
+                    <ul class="product-features">
+                        <li><strong>时间轴和聊天：</strong>管理和分享家庭任务、事件、健康日记和日常活动</li>
+                        <li><strong>支出：</strong>跟踪家庭支出并智能规划财务</li>
+                        <li><strong>笔记和相册：</strong>安全地存储和分享私人家庭时刻</li>
+                        <li><strong>家庭AI：</strong>通过友好的界面和学习个性化的智能AI支持连接几代人</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: #2d3748;">优势</h3>
+                    <ul class="product-features">
+                        <li><strong>节省时间：</strong>所有家庭信息集中在一个地方，易于搜索和管理</li>
+                        <li><strong>增强连接：</strong>每位成员都能及时了解并参与家庭生活</li>
+                        <li><strong>绝对安全：</strong>数据经过加密，只有您的家庭才能访问</li>
+                        <li><strong>易于使用：</strong>直观的界面适合所有年龄段，从儿童到老年人</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 2rem; color: #2d3748;">只需4个简单步骤即可开始使用Kazoku</h3>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h4 style="margin-bottom: 0.5rem;">下载应用</h4>
+                        <p>从App Store或Google Play下载Kazoku。完全免费且无广告。</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h4 style="margin-bottom: 0.5rem;">创建家庭</h4>
+                        <p>注册账户并创建新家庭。您将成为拥有完全管理权限的监督员。</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h4 style="margin-bottom: 0.5rem;">邀请成员</h4>
+                        <p>通过电子邮件或二维码邀请家庭成员。填写信息以便AI可以个性化体验。</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h4 style="margin-bottom: 0.5rem;">探索</h4>
+                        <p>探索功能：时间轴、聊天、支出、笔记。Kazoku将学习并适应您的家庭。</p>
+                    </div>
+                </div>
+                <a href="https://www.kazoku-ai.com/en/kazoku-menu.html" class="cta-button" target="_blank">
+                    了解更多关于Kazoku →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">联系我们</h2>
+            <p class="section-subtitle">我们随时准备倾听并支持您</p>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: #2d3748;">联系信息</h3>
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div>
+                            <h4>地址</h4>
+                            <p>日本东京</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📧</div>
+                        <div>
+                            <h4>电子邮件</h4>
+                            <p>info@mac-tech.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div>
+                            <h4>电话</h4>
+                            <p>+81-3-XXXX-XXXX</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">🕐</div>
+                        <div>
+                            <h4>营业时间</h4>
+                            <p>周一至周五：9:00 - 18:00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">姓名 <span style="color: #e53e3e;">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="输入您的全名">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">电子邮件 <span style="color: #e53e3e;">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="email@example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">电话号码</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+81 123 456 789">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">留言 <span style="color: #e53e3e;">*</span></label>
+                        <textarea id="message" name="message" rows="5" required placeholder="与我们分享您的项目、问题或请求..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">
+                        <span>发送消息</span>
+                        <span class="button-icon">→</span>
+                    </button>
+                    
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">客户评价</h2>
+            <p class="section-subtitle">数千个家庭信任并喜爱MAC产品</p>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>"Kazoku是第一款帮助我全家每天更好地联系的应用程序。孩子和父母都可以轻松使用。"</p>
+                    <div class="testimonial-author">— Hanako女士，东京</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"我对这款应用的流畅性和安全性印象深刻。感谢MAC创造了如此出色的产品！"</p>
+                    <div class="testimonial-author">— Sato先生，大阪</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"家庭AI功能对于有年幼孩子的家庭非常有用。它智能地提醒和建议要做的事情。"</p>
+                    <div class="testimonial-author">— Yuki女士，埼玉</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>MAC</h3>
+                <p style="margin-bottom: 1rem;">一家专注于开发集成现代AI的移动应用程序的科技公司，服务家庭生活。</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Twitter">𝕏</a>
+                    <a href="#" title="LinkedIn">in</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>产品</h3>
+                <ul>
+                    <li><a href="https://www.kazoku-ai.com/en/kazoku-menu.html" target="_blank">Kazoku应用</a></li>
+                    <li><a href="#">功能</a></li>
+                    <li><a href="#">指南</a></li>
+                    <li><a href="#">更新</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>公司</h3>
+                <ul>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#services">服务</a></li>
+                    <li><a href="#">职业机会</a></li>
+                    <li><a href="#">新闻</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>支持</h3>
+                <ul>
+                    <li><a href="#">联系方式</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MAC公司。保留所有权利。</p>
+            <p style="margin-top: 0.5rem;">总部：日本东京 | 电子邮件：info@mac-tech.com | 电话：+81-3-XXXX-XXXX</p>
+        </div>
+    </footer>
+
+    <script>
+        // 处理表单提交
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formMessage = document.getElementById('formMessage');
+            const submitButton = this.querySelector('.submit-button');
+            
+            // 提交期间禁用按钮
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span>发送中...</span>';
+            
+            // 模拟表单提交（替换为实际的API调用）
+            setTimeout(() => {
+                formMessage.className = 'form-message success';
+                formMessage.textContent = '✓ 感谢您联系我们！我们将尽快回复。';
+                
+                // 重置表单
+                this.reset();
+                
+                // 重新启用按钮
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<span>发送消息</span><span class="button-icon">→</span>';
+                
+                // 5秒后隐藏消息
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }, 1500);
+        });
+
+        // 为导航链接添加平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

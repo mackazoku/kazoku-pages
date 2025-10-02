@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAC - Technologie IA pour la vie de famille</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.5s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 2rem 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?w=1600&h=900&fit=crop') center/cover;
+            opacity: 0.15;
+            animation: kenburns 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes kenburns {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.1);
+            }
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 15s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2d3748;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+        }
+
+        .section-title.visible {
+            animation: fadeInScale 0.8s ease forwards;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #718096;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 1s ease 0.3s forwards;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 0.6s ease forwards;
+        }
+
+        .value-card:nth-child(1) { animation-delay: 0.1s; }
+        .value-card:nth-child(2) { animation-delay: 0.2s; }
+        .value-card:nth-child(3) { animation-delay: 0.3s; }
+        .value-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .value-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            transition: all 0.3s;
+        }
+
+        .value-card:hover h3 {
+            transform: scale(1.1);
+        }
+
+        .company-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 3rem;
+        }
+
+        .company-image {
+            width: 100%;
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop') center/cover;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .company-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.7s;
+        }
+
+        .company-image:hover::before {
+            left: 100%;
+        }
+
+        .company-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .services {
+            background: #f7fafc;
+        }
+
+        .service-item {
+            display: flex;
+            align-items: start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-30px);
+            animation: slideRight 0.6s ease forwards;
+        }
+
+        .service-item:nth-child(1) { animation-delay: 0.1s; }
+        .service-item:nth-child(2) { animation-delay: 0.2s; }
+        .service-item:nth-child(3) { animation-delay: 0.3s; }
+        .service-item:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes slideRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .service-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 2rem;
+            min-width: 50px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover .service-icon {
+            transform: rotateY(360deg);
+        }
+
+        .product-section {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+        }
+
+        .product-hero {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .product-image {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            margin: 2rem auto;
+            background: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop') center/cover;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transition: all 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            animation: shine 3s ease-in-out infinite;
+        }
+
+        @keyframes shine {
+            0%, 100% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            50% {
+                transform: translate(-50%, -50%) rotate(180deg);
+            }
+        }
+
+        .product-image:hover {
+            transform: scale(1.02) rotateX(2deg);
+            box-shadow: 0 25px 50px rgba(102, 126, 234, 0.3);
+        }
+
+        .product-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+            margin-bottom: 3rem;
+        }
+
+        .product-features {
+            list-style: none;
+        }
+
+        .product-features li {
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateX(-20px);
+            animation: slideRight 0.5s ease forwards;
+        }
+
+        .product-features li:nth-child(1) { animation-delay: 0.1s; }
+        .product-features li:nth-child(2) { animation-delay: 0.2s; }
+        .product-features li:nth-child(3) { animation-delay: 0.3s; }
+        .product-features li:nth-child(4) { animation-delay: 0.4s; }
+
+        .product-features li:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.15);
+            border-left-width: 8px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .step-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: popIn 0.5s ease forwards;
+        }
+
+        .step-card:nth-child(1) { animation-delay: 0.1s; }
+        .step-card:nth-child(2) { animation-delay: 0.2s; }
+        .step-card:nth-child(3) { animation-delay: 0.3s; }
+        .step-card:nth-child(4) { animation-delay: 0.4s; }
+
+        @keyframes popIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .step-card:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+            transition: all 0.3s ease;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .step-card:hover .step-number {
+            animation: none;
+            transform: rotate(360deg) scale(1.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .info-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .info-item:hover {
+            background: #f7fafc;
+            transform: translateX(10px);
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            min-width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .info-item h4 {
+            font-size: 1.1rem;
+            color: #2d3748;
+            margin-bottom: 0.3rem;
+        }
+
+        .info-item p {
+            color: #718096;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+        }
+
+        .contact-form:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .form-group:nth-child(1) { animation-delay: 0.1s; }
+        .form-group:nth-child(2) { animation-delay: 0.2s; }
+        .form-group:nth-child(3) { animation-delay: 0.3s; }
+        .form-group:nth-child(4) { animation-delay: 0.4s; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: #2d3748;
+            font-size: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            background: #f7fafc;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-button {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            animation: fadeInUp 0.6s ease 0.5s forwards;
+            opacity: 0;
+        }
+
+        .submit-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-button:hover::before {
+            left: 100%;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .submit-button:active {
+            transform: translateY(-1px);
+        }
+
+        .button-icon {
+            transition: transform 0.3s ease;
+            font-size: 1.3rem;
+        }
+
+        .submit-button:hover .button-icon {
+            transform: translateX(5px);
+        }
+
+        .form-message {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-message.success {
+            background: #c6f6d5;
+            color: #22543d;
+            display: block;
+        }
+
+        .form-message.error {
+            background: #fed7d7;
+            color: #742a2a;
+            display: block;
+        }
+
+        .testimonials {
+            background: white;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            font-style: italic;
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: rotateY(-15deg);
+            animation: rotateIn 0.6s ease forwards;
+        }
+
+        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+
+        @keyframes rotateIn {
+            to {
+                opacity: 1;
+                transform: rotateY(0);
+            }
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+            border-left-width: 8px;
+        }
+
+        .testimonial-card p {
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-style: normal;
+            color: #667eea;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .testimonial-card:hover .testimonial-author {
+            transform: translateX(10px);
+            display: inline-block;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .footer-section a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid #4a5568;
+            text-align: center;
+            color: #a0aec0;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: #4a5568;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #667eea;
+            transform: translateY(-5px) rotate(360deg);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .product-content,
+            .company-intro,
+            .footer-content,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .company-image,
+            .product-image {
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MAC</div>
+            <ul class="nav-links">
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#product">Produit</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#testimonials">Témoignages</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Technologie IA pour la vie de famille</h1>
+            <p>MAC est une entreprise technologique basée au Japon, spécialisée dans le développement d'applications mobiles intégrant l'intelligence artificielle (IA) moderne. Nous visons toujours à créer des produits à valeur humaine, au service de la vie quotidienne des familles du monde entier.</p>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title">À propos de MAC</h2>
+        <p class="section-subtitle">Votre partenaire technologique de confiance pour les familles modernes</p>
+        
+        <div class="company-intro">
+            <div>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    Fondée au Japon, MAC a continuellement développé des solutions technologiques avancées avec pour mission de connecter et d'améliorer la qualité de vie des familles. Nous croyons que la technologie doit servir les gens, et non l'inverse.
+                </p>
+                <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                    Avec une équipe d'ingénieurs expérimentés et passionnés, MAC se concentre sur la création d'applications conviviales et faciles à utiliser pour chaque membre de la famille - des personnes âgées aux enfants.
+                </p>
+                <p style="font-size: 1.1rem;">
+                    Nous sommes fiers d'être le partenaire technologique de confiance de milliers de familles au Japon et nous nous développons sur les marchés internationaux.
+                </p>
+            </div>
+            <div class="company-image"></div>
+        </div>
+
+        <h3 style="text-align: center; font-size: 2rem; margin: 3rem 0 2rem; color: #2d3748;">Valeurs fondamentales</h3>
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>🎯 Centré sur l'humain</h3>
+                <p>Chaque produit MAC place les besoins et les expériences humaines au centre. Nous écoutons les utilisateurs et nous améliorons continuellement en fonction des retours réels.</p>
+            </div>
+            <div class="value-card">
+                <h3>🚀 Technologie avancée</h3>
+                <p>Nous appliquons l'IA, l'apprentissage automatique et les dernières technologies pour améliorer chaque détail, offrant la meilleure expérience utilisateur.</p>
+            </div>
+            <div class="value-card">
+                <h3>🔒 Sécurité absolue</h3>
+                <p>Les données des utilisateurs sont toujours protégées par une technologie de cryptage moderne et ne sont jamais partagées avec des tiers. La confidentialité est notre priorité absolue.</p>
+            </div>
+            <div class="value-card">
+                <h3>🌍 Vision globale</h3>
+                <p>Visant à créer des produits qui améliorent la qualité de vie de millions de familles dans le monde, transcendant toutes les barrières culturelles et géographiques.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Nos services</h2>
+            <p class="section-subtitle">Solutions complètes du concept au déploiement</p>
+            <div class="service-item">
+                <div class="service-icon">📱</div>
+                <div>
+                    <h3>Développement d'applications mobiles</h3>
+                    <p>Développement d'applications mobiles multiplateformes (Flutter, iOS, Android) avec des performances élevées, une belle interface et une expérience utilisateur fluide. Nous garantissons que les applications fonctionnent parfaitement sur tous les appareils.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🤖</div>
+                <div>
+                    <h3>Intégration IA intelligente</h3>
+                    <p>Intégration de l'intelligence artificielle (IA) dans les applications : traitement du langage naturel, reconnaissance d'images, suggestions intelligentes basées sur l'apprentissage automatique. L'IA aide les applications à apprendre et à s'adapter à chaque utilisateur.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🧩</div>
+                <div>
+                    <h3>Solutions numériques pour familles</h3>
+                    <p>Solutions numériques complètes conçues pour les familles et les groupes d'utilisateurs spécifiques. De la gestion financière, de la planification, aux notes et au partage de moments - tout dans une seule plateforme.</p>
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-icon">🛠️</div>
+                <div>
+                    <h3>Conseil en développement logiciel</h3>
+                    <p>Conseil et développement logiciel sur mesure pour les entreprises. Notre équipe d'experts est prête à vous accompagner de la phase d'idéation et de conception au déploiement et à la maintenance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="product" class="product-section">
+        <div class="container">
+            <div class="product-hero">
+                <h2 class="section-title">Produit phare : Kazoku</h2>
+                <p class="section-subtitle">Application intelligente de gestion familiale avec IA</p>
+                <div class="product-image"></div>
+                <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
+                    Kazoku est le produit phare de MAC - une application complète de gestion familiale avec toutes les fonctionnalités pour connecter et organiser la vie familiale de la manière la plus efficace. Entièrement gratuit et sans publicité.
+                </p>
+            </div>
+
+            <div class="product-content">
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: #2d3748;">Fonctionnalités principales</h3>
+                    <ul class="product-features">
+                        <li><strong>Timeline & Chat :</strong> Gérer et partager les tâches ménagères, événements, journaux de santé et activités quotidiennes</li>
+                        <li><strong>Dépenses :</strong> Suivre les dépenses familiales et planifier intelligemment les finances</li>
+                        <li><strong>Notes & Albums :</strong> Stocker et partager en toute sécurité les moments privés de la famille</li>
+                        <li><strong>Family AI :</strong> Connecter les générations grâce à une interface conviviale et un support IA intelligent qui apprend et se personnalise</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: #2d3748;">Avantages</h3>
+                    <ul class="product-features">
+                        <li><strong>Gain de temps :</strong> Toutes les informations familiales en un seul endroit, faciles à rechercher et à gérer</li>
+                        <li><strong>Connexion accrue :</strong> Chaque membre reste informé et participe à la vie familiale</li>
+                        <li><strong>Sécurité absolue :</strong> Les données sont cryptées et seule votre famille y a accès</li>
+                        <li><strong>Facile à utiliser :</strong> Interface intuitive adaptée à tous les âges, des enfants aux personnes âgées</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 2rem; color: #2d3748;">Commencez avec Kazoku en 4 étapes simples</h3>
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h4 style="margin-bottom: 0.5rem;">Télécharger l'application</h4>
+                        <p>Téléchargez Kazoku depuis l'App Store ou Google Play. Entièrement gratuit et sans publicité.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h4 style="margin-bottom: 0.5rem;">Créer une famille</h4>
+                        <p>Inscrivez-vous et créez une nouvelle famille. Vous deviendrez superviseur avec tous les droits de gestion.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h4 style="margin-bottom: 0.5rem;">Inviter des membres</h4>
+                        <p>Invitez les membres de la famille par e-mail ou code QR. Remplissez les informations pour que l'IA puisse personnaliser l'expérience.</p>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <h4 style="margin-bottom: 0.5rem;">Explorer</h4>
+                        <p>Explorez les fonctionnalités : Timeline, Chat, Dépenses, Notes. Kazoku apprendra et s'adaptera à votre famille.</p>
+                    </div>
+                </div>
+                <a href="https://pages.kazoku-ai.com/en/kazoku-menu.html" class="cta-button" target="_blank">
+                    En savoir plus sur Kazoku →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Contactez-nous</h2>
+            <p class="section-subtitle">Nous sommes toujours prêts à vous écouter et à vous soutenir</p>
+            
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: #2d3748;">Informations de contact</h3>
+                    <div class="info-item">
+                        <div class="info-icon">📍</div>
+                        <div>
+                            <h4>Adresse</h4>
+                            <p>Tokyo, Japon</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📧</div>
+                        <div>
+                            <h4>E-mail</h4>
+                            <p>info@mac-tech.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">📞</div>
+                        <div>
+                            <h4>Téléphone</h4>
+                            <p>+81-3-XXXX-XXXX</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-icon">🕐</div>
+                        <div>
+                            <h4>Heures d'ouverture</h4>
+                            <p>Lundi - Vendredi : 9h00 - 18h00</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nom complet <span style="color: #e53e3e;">*</span></label>
+                        <input type="text" id="name" name="name" required placeholder="Entrez votre nom complet">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">E-mail <span style="color: #e53e3e;">*</span></label>
+                        <input type="email" id="email" name="email" required placeholder="email@exemple.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Numéro de téléphone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="+81 123 456 789">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message <span style="color: #e53e3e;">*</span></label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Partagez avec nous votre projet, questions ou demandes..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-button">
+                        <span>Envoyer le message</span>
+                        <span class="button-icon">→</span>
+                    </button>
+                    
+                    <div class="form-message" id="formMessage"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Ce que disent nos clients</h2>
+            <p class="section-subtitle">Des milliers de familles ont fait confiance et adoré les produits MAC</p>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p>« Kazoku est la première application qui aide toute ma famille à mieux se connecter chaque jour. Les enfants et les parents peuvent l'utiliser facilement. »</p>
+                    <div class="testimonial-author">— Mme Hanako, Tokyo</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>« Je suis impressionné par la fluidité et la sécurité de l'application. Merci à MAC d'avoir créé un produit aussi formidable ! »</p>
+                    <div class="testimonial-author">— M. Sato, Osaka</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>« La fonctionnalité Family AI est vraiment utile pour les familles avec de jeunes enfants. Elle rappelle et suggère intelligemment les choses à faire. »</p>
+                    <div class="testimonial-author">— Mme Yuki, Saitama</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>MAC</h3>
+                <p style="margin-bottom: 1rem;">Une entreprise technologique spécialisée dans le développement d'applications mobiles avec IA moderne, au service de la vie familiale.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook">f</a>
+                    <a href="#" title="Twitter">𝕏</a>
+                    <a href="#" title="LinkedIn">in</a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Produits</h3>
+                <ul>
+                    <li><a href="https://pages.kazoku-ai.com/en/kazoku-menu.html" target="_blank">Application Kazoku</a></li>
+                    <li><a href="#">Fonctionnalités</a></li>
+                    <li><a href="#">Guide</a></li>
+                    <li><a href="#">Mises à jour</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Entreprise</h3>
+                <ul>
+                    <li><a href="#about">À propos</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#">Carrières</a></li>
+                    <li><a href="#">Actualités</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Support</h3>
+                <ul>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MAC Corporation. Tous droits réservés.</p>
+            <p style="margin-top: 0.5rem;">Siège social : Tokyo, Japon | E-mail : info@mac-tech.com | Tél : +81-3-XXXX-XXXX</p>
+        </div>
+    </footer>
+
+    <script>
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formMessage = document.getElementById('formMessage');
+            const submitButton = this.querySelector('.submit-button');
+            
+            // Disable button during submission
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<span>Envoi en cours...</span>';
+            
+            // Simulate form submission (replace with actual API call)
+            setTimeout(() => {
+                formMessage.className = 'form-message success';
+                formMessage.textContent = '✓ Merci de nous avoir contactés ! Nous vous répondrons dans les plus brefs délais.';
+                
+                // Reset form
+                this.reset();
+                
+                // Re-enable button
+                submitButton.disabled = false;
+                submitButton.innerHTML = '<span>Envoyer le message</span><span class="button-icon">→</span>';
+                
+                // Hide message after 5 seconds
+                setTimeout(() => {
+                    formMessage.style.display = 'none';
+                }, 5000);
+            }, 1500);
+        });
+
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

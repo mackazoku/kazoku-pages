@@ -1,0 +1,19 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "com.mac.kazoku.dev",
+        "paths": [ "/profile/*", "/messages/*" ]
+      },
+      {
+        "appID": "com.mac.kazoku.staging",
+        "paths": [ "/profile/*", "/messages/*" ]
+      },
+      {
+        "appID": "com.mac.kazoku",
+        "paths": [ "/profile/*", "/messages/*" ]
+      }
+    ]
+  }
+}

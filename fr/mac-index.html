@@ -311,6 +311,148 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
+        .ceo-letter-section {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            position: relative;
+        }
+
+        .ceo-letter-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .ceo-image-container {
+            position: sticky;
+            top: 120px;
+        }
+
+        .ceo-image {
+            width: 100%;
+            height: 450px;
+            background: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=900&fit=crop') center/cover;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transition: all 0.5s ease;
+        }
+
+        .ceo-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.25);
+        }
+
+        .ceo-info {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .ceo-info h4 {
+            font-size: 1.3rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .ceo-info p {
+            color: #718096;
+            font-size: 1rem;
+        }
+
+        .ceo-letter-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .ceo-letter-content h3 {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #667eea;
+            padding-left: 1rem;
+        }
+
+        .ceo-letter-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #4a5568;
+            text-align: justify;
+        }
+
+        .ceo-letter-content .quote {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            font-style: italic;
+            color: #2d3748;
+        }
+
+        .timeline-container {
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 40px;
+            bottom: -40px;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-dot {
+            min-width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .timeline-content h4 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
         .services {
             background: #f7fafc;
         }
@@ -1036,7 +1178,7 @@
                         <p>Explorez les fonctionnalités : Timeline, Chat, Dépenses, Notes. Kazoku apprendra et s'adaptera à votre famille.</p>
                     </div>
                 </div>
-                <a href="https://pages.kazoku-ai.com/fr/kazoku-menu.html" class="cta-button" target="_blank">
+                <a href="https://www.kazoku-ai.com/fr/kazoku-menu.html" class="cta-button" target="_blank">
                     En savoir plus sur Kazoku →
                 </a>
             </div>
@@ -1134,6 +1276,145 @@
         </div>
     </section>
 
+    <section id="ceo-letter" class="ceo-letter-section">
+        <div class="container">
+            <h2 class="section-title">Message du PDG</h2>
+            <p class="section-subtitle">Un voyage pour mettre la technologie au service du bonheur familial</p>
+    
+            <div class="ceo-letter-wrapper">
+                <div class="ceo-image-container">
+                    <div class="ceo-image"></div>
+                    <div class="ceo-info">
+                        <h4>Takeshi Yamamoto</h4>
+                        <p>Fondateur et PDG, MAC Corporation</p>
+                    </div>
+                </div>
+    
+                <div class="ceo-letter-content">
+                    <h3>Un souhait d'apporter la technologie pour prendre soin du bonheur familial</h3>
+                    
+                    <p>
+                        Chers lecteurs,
+                    </p>
+    
+                    <p>
+                        Avant de raconter l'histoire de MAC, je voudrais partager un petit secret : MAC n'est pas seulement le nom de l'entreprise—c'est aussi l'acronyme des noms de mes trois enfants bien-aimés : <strong>M</strong>inh, <strong>A</strong>nh et <strong>C</strong>hi. Chaque fois que je vois ce nom, je me rappelle pourquoi j'ai commencé ce voyage : pour la famille, pour l'amour et pour le désir de créer un monde meilleur pour mes enfants.
+                    </p>
+    
+                    <p>
+                        L'idée de Kazoku a commencé par un moment simple il y a environ 1 à 2 ans. À cette époque, notre famille était extrêmement occupée—le travail était constant, les enfants avaient l'école, et nous avions manqué de nombreux projets familiaux. Prenant conscience de cela, j'étais déterminé à organiser un voyage à la plage ensemble—un moment précieux pour toute la famille de se réunir.
+                    </p>
+    
+                    <p>
+                        Pourtant, même pendant ce voyage, j'ai remarqué que nous faisions toujours face à des défis. Ma mère âgée ne pouvait pas suivre les messages sur son téléphone, les enfants manquaient les notifications sur les activités à venir, et ma femme jonglait avec des dizaines d'applications différentes. Debout sur la plage, regardant mes trois enfants jouer, je me suis demandé : "Pourquoi la technologie est-elle si compliquée ? Pourquoi ne peut-elle pas être plus simple, plus chaleureuse et vraiment servir notre bonheur ?" C'est à ce moment que Kazoku a été conçu dans mon esprit.
+                    </p>
+    
+                    <p>
+                        Pour être honnête, je voyageais fréquemment pour le travail loin de la maison. Bien que j'aime profondément Minh, Anh et Chi, je connaissais à peine leurs horaires de repas et d'études. Je ne me souvenais que vaguement de leurs indicateurs de développement physique—taille, poids—ces chiffres secs. Mais les petits moments quotidiens ? Leurs repas préférés ? Les matières avec lesquelles ils avaient du mal ? Les petits rêves qu'ils partageaient avec leur mère ? J'en avais manqué bien trop.
+                    </p>
+    
+                    <p>
+                        C'était une douleur silencieuse dans mon cœur. Et c'est aussi pourquoi j'étais déterminé à construire Kazoku. J'espère que personne d'autre ne sera comme moi—des parents occupés qui peuvent encore se souvenir de chaque petit moment de leurs enfants. Kazoku n'est pas seulement une application de gestion, mais un trésor qui préserve les souvenirs quotidiens. Pour que des années plus tard, quand nous regardons en arrière, nous ne voyons pas seulement des chiffres, mais tout un voyage d'amour rempli de moments significatifs.
+                    </p>
+    
+                    <div class="quote">
+                        "La technologie n'a de sens que lorsqu'elle apporte des sourires aux personnes que nous aimons. C'est pourquoi MAC est né."
+                    </div>
+    
+                    <h3>Le voyage de la vision à la réalité</h3>
+    
+                    <p>
+                        L'idée de Kazoku—une application intelligente de gestion familiale—a commencé avec un petit carnet que je portais avec moi. Chaque fois que je voyais un membre de la famille avoir du mal avec la technologie, je le notais. Ces pages sont progressivement devenues la fondation de Kazoku.
+                    </p>
+    
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-content">
+                                <h4>2023 - Le début de l'idée</h4>
+                                <p>Lors d'un voyage à la plage en famille, au milieu de nos vies occupées et de nos plans manqués, j'ai réalisé que ma famille avait besoin d'une vraie solution. L'idée d'une application familiale vraiment facile à utiliser et chaleureuse a été conçue sur cette plage même.</p>
+                            </div>
+                        </div>
+    
+                        <div class="timeline-item">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-content">
+                                <h4>2024 - Construction et développement</h4>
+                                <p>Avec une conviction forte, j'ai rassemblé une équipe d'ingénieurs partageant la même vision. Nous n'avons pas seulement codé—nous avons étudié la psychologie familiale, la culture multigénérationnelle et intégré l'IA pour que l'application comprenne vraiment chaque famille.</p>
+                            </div>
+                        </div>
+    
+                        <div class="timeline-item">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-content">
+                                <h4>2025 - Lancement au Japon</h4>
+                                <p>Kazoku a été officiellement lancé sur le marché japonais. Les premiers retours des utilisateurs—les sourires des mères, la satisfaction des personnes âgées lorsqu'elles se connectent facilement avec leurs familles—sont devenus notre plus grande motivation pour continuer à perfectionner le produit.</p>
+                            </div>
+                        </div>
+    
+                        <div class="timeline-item">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-content">
+                                <h4>Présent</h4>
+                                <p>Nous nous concentrons maintenant sur la construction d'une communauté d'utilisateurs solide au Japon, l'écoute des retours et l'amélioration continue de Kazoku. Chaque nouvelle famille qui rejoint est une motivation pour nous faire mieux chaque jour.</p>
+                            </div>
+                        </div>
+    
+                        <div class="timeline-item">
+                            <div class="timeline-dot">5</div>
+                            <div class="timeline-content">
+                                <h4>Futur - Expansion mondiale</h4>
+                                <p>Après que Kazoku devienne populaire et aimé au Japon, nous apporterons le produit aux familles en Asie, en Europe, en Amérique et dans de nombreux autres pays. Chaque nouveau marché est une opportunité pour nous d'apprendre et de nous adapter aux cultures locales.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <h3>Le bonheur du matin</h3>
+    
+                    <p>
+                        Beaucoup de gens me demandent : "N'êtes-vous pas fatigué de travailler autant ?" Honnêtement, chaque matin quand je me réveille pour écrire du code pour Kazoku, je ne sens pas du tout que c'est un travail épuisant. Au contraire, c'est mon plus grand bonheur.
+                    </p>
+    
+                    <p>
+                        Quand je m'assois devant mon ordinateur à l'aube, je pense à mes trois enfants bien-aimés—MAC. Je pense aux familles utilisant Kazoku à travers le Japon—de Tokyo à Osaka, de Kyoto à Sapporo. J'imagine un grand-père regardant la photo nouvellement partagée de son petit-enfant, une mère rappelée d'emmener son enfant pour la vaccination, une famille planifiant son voyage de week-end. Et je rêve du jour où Kazoku apportera ces moments aux familles du monde entier—de Hanoi à Séoul, de Bangkok aux endroits lointains. Ces pensées remplissent mon cœur de bonheur.
+                    </p>
+    
+                    <div class="quote">
+                        "Écrire Kazoku n'est pas un travail épuisant, mais un grand bonheur. Parce que chaque ligne de code que j'écris est un autre fil qui connecte une famille."
+                    </div>
+    
+                    <h3>Vision pour l'avenir</h3>
+    
+                    <p>
+                        Actuellement, nous nous consacrons pleinement au marché japonais. Nous croyons que pour apporter Kazoku au monde, nous devons d'abord construire une base solide là où nous vivons. Chaque retour d'utilisateurs japonais, chaque histoire de moments familiaux connectés grâce à Kazoku, nous aide à perfectionner le produit chaque jour davantage.
+                    </p>
+    
+                    <p>
+                        Dans les 3 à 5 prochaines années, lorsque Kazoku deviendra une partie indispensable de la vie de millions de familles japonaises, nous nous étendrons aux marchés internationaux. Je rêve d'un monde où la technologie n'est plus un obstacle mais un pont—où une grand-mère de 80 ans peut facilement passer un appel vidéo avec son petit-fils à l'étranger juste avec sa voix, où les parents occupés ne manquent toujours aucun moment important de leurs enfants, où chaque famille, qu'elle soit au Vietnam, en Corée, en Thaïlande ou ailleurs, se sent connectée et aimée.
+                    </p>
+    
+                    <p>
+                        MAC n'est pas seulement une entreprise technologique. Nous sommes des gardiens du bonheur familial. Chaque ligne de code que nous écrivons, chaque fonctionnalité que nous développons, vient de l'amour et du désir d'apporter le meilleur à votre famille—tout comme notre propre famille.
+                    </p>
+    
+                    <div class="quote">
+                        "La technologie continuera d'évoluer, mais la valeur de l'amour familial est immuable. Notre mission est d'utiliser le premier pour servir le second."
+                    </div>
+    
+                    <p>
+                        Merci d'avoir pris le temps de lire ces mots. Si notre histoire touche votre cœur, veuillez nous donner l'opportunité de servir votre famille. Et si vous avez des retours ou des suggestions, n'hésitez pas à les partager—car vous êtes l'inspiration qui nous maintient sur ce voyage.
+                    </p>
+    
+                    <p style="margin-top: 2rem; font-weight: 600;">
+                        Avec la plus profonde gratitude,<br>
+                        <span style="color: #667eea; font-size: 1.2rem;">Takeshi Yamamoto</span><br>
+                        <span style="font-size: 0.95rem; color: #718096;">Fondateur et PDG, MAC Corporation</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -1148,7 +1429,7 @@
             <div class="footer-section">
                 <h3>Produits</h3>
                 <ul>
-                    <li><a href="https://pages.kazoku-ai.com/fr/kazoku-menu.html" target="_blank">Application Kazoku</a></li>
+                    <li><a href="https://www.kazoku-ai.com/fr/kazoku-menu.html" target="_blank">Application Kazoku</a></li>
                     <li><a href="#">Fonctionnalités</a></li>
                     <li><a href="#">Guide</a></li>
                     <li><a href="#">Mises à jour</a></li>

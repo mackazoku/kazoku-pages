@@ -12,7 +12,7 @@
         }
 
         body {
-            font-family: 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, メイリオ, 'MS Gothic', 'Segoe UI', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
             overflow-x: hidden;
@@ -1011,7 +1011,8 @@
             .product-content,
             .company-intro,
             .footer-content,
-            .contact-wrapper {
+            .contact-wrapper,
+            .ceo-letter-wrapper {
                 grid-template-columns: 1fr;
             }
 
@@ -1020,8 +1021,14 @@
             }
 
             .company-image,
-            .product-image {
+            .product-image,
+            .ceo-image {
                 height: 250px;
+            }
+
+            .ceo-image-container {
+                position: relative;
+                top: 0;
             }
         }
     </style>

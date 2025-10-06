@@ -311,6 +311,148 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
 
+        .ceo-letter-section {
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            position: relative;
+        }
+
+        .ceo-letter-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .ceo-image-container {
+            position: sticky;
+            top: 120px;
+        }
+
+        .ceo-image {
+            width: 100%;
+            height: 450px;
+            background: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=900&fit=crop') center/cover;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transition: all 0.5s ease;
+        }
+
+        .ceo-image:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.25);
+        }
+
+        .ceo-info {
+            text-align: center;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .ceo-info h4 {
+            font-size: 1.3rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+
+        .ceo-info p {
+            color: #718096;
+            font-size: 1rem;
+        }
+
+        .ceo-letter-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .ceo-letter-content h3 {
+            font-size: 1.8rem;
+            color: #667eea;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #667eea;
+            padding-left: 1rem;
+        }
+
+        .ceo-letter-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #4a5568;
+            text-align: justify;
+        }
+
+        .ceo-letter-content .quote {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid #667eea;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            font-style: italic;
+            color: #2d3748;
+        }
+
+        .timeline-container {
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 19px;
+            top: 40px;
+            bottom: -40px;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-dot {
+            min-width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .timeline-content h4 {
+            color: #667eea;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: #4a5568;
+            line-height: 1.6;
+        }
+
         .services {
             background: #f7fafc;
         }
@@ -1036,7 +1178,7 @@
                         <p>タイムライン、チャット、支出管理、メモの機能を探索。Kazokuがあなたの家族に学習し、適応します。</p>
                     </div>
                 </div>
-                <a href="https://pages.kazoku-ai.com/ja/kazoku-menu.html" class="cta-button" target="_blank">
+                <a href="https://www.kazoku-ai.com/ja/kazoku-menu.html" class="cta-button" target="_blank">
                     Kazokuについてもっと知る →
                 </a>
             </div>
@@ -1134,6 +1276,145 @@
         </div>
     </section>
 
+    <section id="ceo-letter" class="ceo-letter-section">
+        <div class="container">
+            <h2 class="section-title">CEOからのメッセージ</h2>
+            <p class="section-subtitle">テクノロジーで家族の幸せを支える旅</p>
+    
+            <div class="ceo-letter-wrapper">
+                <div class="ceo-image-container">
+                    <div class="ceo-image"></div>
+                    <div class="ceo-info">
+                        <h4>山本 武志</h4>
+                        <p>創業者兼CEO、MAC株式会社</p>
+                    </div>
+                </div>
+    
+                <div class="ceo-letter-content">
+                    <h3>家族の幸せを守るテクノロジーへの願い</h3>
+                    
+                    <p>
+                        親愛なる読者の皆様へ、
+                    </p>
+    
+                    <p>
+                        MACの物語をお話しする前に、小さな秘密を共有したいと思います。MACは単なる会社名ではなく、私の愛する3人の子供たち—<strong>M</strong>inh、<strong>A</strong>nh、<strong>C</strong>hiの名前の頭文字でもあります。この名前を見るたびに、なぜこの旅を始めたのかを思い出します。家族のため、愛のため、そして子供たちのためにより良い世界を創りたいという願いのためです。
+                    </p>
+    
+                    <p>
+                        Kazokuのアイデアは、1〜2年前のシンプルな瞬間から始まりました。当時、私たち家族は非常に忙しく、仕事は続き、子供たちは学校があり、多くの家族の計画を逃していました。これに気づいた私は、家族全員で海へ行く旅行を計画しました。家族が再会するための貴重な時間でした。
+                    </p>
+    
+                    <p>
+                        しかし、その旅行中でさえ、まだ課題があることに気づきました。年老いた母は携帯電話のメッセージについていけず、子供たちは今後の活動の通知を見逃し、妻は何十もの異なるアプリと格闘していました。ビーチに立ち、3人の子供たちが遊ぶのを見ながら、私は自問しました。「なぜテクノロジーはこんなに複雑なのか？もっとシンプルで、温かく、本当に私たちの幸せに役立つものにできないのか？」その瞬間、Kazokuが私の心の中で生まれました。
+                    </p>
+    
+                    <p>
+                        正直に言うと、以前は頻繁に出張で家を離れていました。Minh、Anh、Chiを深く愛していましたが、彼らの食事や勉強のスケジュールをほとんど把握していませんでした。身体発育の数値—身長、体重—そんな無味乾燥な数字しか覚えていませんでした。でも、日々の小さな瞬間は？好きな食事は？苦手な科目は？母親に共有した小さな夢は？あまりにも多くのことを見逃していました。
+                    </p>
+    
+                    <p>
+                        それは私の心の中で静かな痛みでした。そしてそれこそが、Kazokuを作ろうと決心した理由です。私のような人が二度と現れないことを願っています—忙しい親でも、子供たちの小さな瞬間をすべて覚えていられるように。Kazokuは単なる管理アプリではなく、日々の思い出を保存する宝物です。何年後かに振り返ったとき、数字だけでなく、意味のある瞬間に満ちた愛の旅全体が見えるように。
+                    </p>
+    
+                    <div class="quote">
+                        「テクノロジーは、愛する人に笑顔をもたらすときにのみ意味を持ちます。それがMACが生まれた理由です。」
+                    </div>
+    
+                    <h3>ビジョンから現実への旅</h3>
+    
+                    <p>
+                        Kazoku—インテリジェントな家族管理アプリ—のアイデアは、私が持ち歩いていた小さなノートから始まりました。家族の誰かがテクノロジーに苦労しているのを目撃するたびに、書き留めていました。それらのページが徐々にKazokuの基盤となりました。
+                    </p>
+    
+                    <div class="timeline-container">
+                        <div class="timeline-item">
+                            <div class="timeline-dot">1</div>
+                            <div class="timeline-content">
+                                <h4>2023年 - アイデアの始まり</h4>
+                                <p>家族での海辺旅行中、忙しい生活と逃した計画の中で、家族に本当の解決策が必要だと気づきました。本当に使いやすく温かい家族向けアプリのアイデアが、そのビーチで生まれました。</p>
+                            </div>
+                        </div>
+    
+                        <div class="timeline-item">
+                            <div class="timeline-dot">2</div>
+                            <div class="timeline-content">
+                                <h4>2024年 - 構築と開発</h4>
+                                <p>強い信念を持って、同じビジョンを共有するエンジニアチームを集めました。私たちは単にコーディングするだけでなく、家族心理学、多世代文化を研究し、AIを統合して、アプリが各家族を本当に理解できるようにしました。</p>
+                            </div>
+                        </div>
+    
+                        <div class="timeline-item">
+                            <div class="timeline-dot">3</div>
+                            <div class="timeline-content">
+                                <h4>2025年 - 日本でのローンチ</h4>
+                                <p>Kazokuは日本市場で正式にローンチされました。ユーザーからの最初のフィードバック—母親の笑顔、家族と簡単につながれる高齢者の満足—が、製品を完璧にし続ける最大のモチベーションとなりました。</p>
+                            </div>
+                        </div>
+    
+                        <div class="timeline-item">
+                            <div class="timeline-dot">4</div>
+                            <div class="timeline-content">
+                                <h4>現在</h4>
+                                <p>現在、日本で強力なユーザーコミュニティを構築し、フィードバックを聞き、Kazokuを継続的に改善することに注力しています。参加する新しい家族ごとに、毎日より良くなるモチベーションとなっています。</p>
+                            </div>
+                        </div>
+    
+                        <div class="timeline-item">
+                            <div class="timeline-dot">5</div>
+                            <div class="timeline-content">
+                                <h4>未来 - グローバル展開</h4>
+                                <p>Kazokuが日本で人気を博し愛されるようになった後、アジア、ヨーロッパ、アメリカ、その他多くの国の家族に製品を届けます。新しい市場ごとに、地域文化を学び適応する機会となります。</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <h3>朝の幸せ</h3>
+    
+                    <p>
+                        多くの人が私に尋ねます。「そんなに働いて疲れませんか？」正直に言うと、毎朝目覚めてKazokuのコードを書くとき、それが疲れる仕事だとは全く感じません。むしろ、それは私の最大の幸せです。
+                    </p>
+    
+                    <p>
+                        夜明けにコンピューターの前に座ると、愛する3人の子供たち—MACのことを考えます。日本全国でKazokuを使用している家族のことを考えます—東京から大阪、京都から札幌まで。孫の新しく共有された写真を見ている祖父、予防接種に子供を連れて行くよう思い出される母親、週末旅行を計画している家族を想像します。そしてKazokuが世界中の家族にこれらの瞬間をもたらす日を夢見ています—ハノイからソウル、バンコクから遠く離れた場所まで。これらの考えが私の心を幸せで満たします。
+                    </p>
+    
+                    <div class="quote">
+                        「Kazokuを書くことは疲れる労働ではなく、大きな幸せです。なぜなら、私が書くコードの一行一行が、家族を結ぶもう一本の糸だからです。」
+                    </div>
+    
+                    <h3>未来のビジョン</h3>
+    
+                    <p>
+                        現在、私たちは日本市場に全力を注いでいます。Kazokuを世界に届けるには、まず私たちが住んでいる場所で強固な基盤を築く必要があると信じています。日本のユーザーからのフィードバック、Kazokuを通じて家族の瞬間がつながったという話、それらすべてが毎日製品をより完璧にするのに役立っています。
+                    </p>
+    
+                    <p>
+                        今後3〜5年で、Kazokuが何百万もの日本の家族の生活に欠かせない一部となったとき、国際市場に拡大します。私は、テクノロジーが障壁ではなく架け橋となる世界を夢見ています—80歳の祖母が声だけで海外にいる孫とビデオ通話できる場所、忙しい親が子供の重要な瞬間を見逃さない場所、ベトナム、韓国、タイ、またはどこにいても、すべての家族がつながりと愛を感じられる場所を。
+                    </p>
+    
+                    <p>
+                        MACは単なるテクノロジー企業ではありません。私たちは家族の幸せの守護者です。私たちが書くコードの一行一行、開発する機能の一つ一つは、愛と、あなたの家族に最高のものをもたらしたいという願いから来ています—私たち自身の家族と同じように。
+                    </p>
+    
+                    <div class="quote">
+                        「テクノロジーは進化し続けますが、家族愛の価値は不変です。私たちの使命は、前者を使って後者に奉仕することです。」
+                    </div>
+    
+                    <p>
+                        これらの言葉を読むために時間を割いていただきありがとうございます。私たちの物語があなたの心に触れたら、あなたの家族にサービスを提供する機会を与えてください。そして、フィードバックや提案がある場合は、遠慮なく共有してください—あなたこそが、私たちがこの旅を続けるインスピレーションだからです。
+                    </p>
+    
+                    <p style="margin-top: 2rem; font-weight: 600;">
+                        心から感謝を込めて、<br>
+                        <span style="color: #667eea; font-size: 1.2rem;">山本 武志</span><br>
+                        <span style="font-size: 0.95rem; color: #718096;">創業者兼CEO、MAC株式会社</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-section">
@@ -1148,7 +1429,7 @@
             <div class="footer-section">
                 <h3>製品</h3>
                 <ul>
-                    <li><a href="https://pages.kazoku-ai.com/ja/kazoku-menu.html" target="_blank">Kazoku アプリ</a></li>
+                    <li><a href="https://www.kazoku-ai.com/ja/kazoku-menu.html" target="_blank">Kazoku アプリ</a></li>
                     <li><a href="#">機能</a></li>
                     <li><a href="#">ガイド</a></li>
                     <li><a href="#">アップデート</a></li>

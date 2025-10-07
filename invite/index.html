@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#667eea" />
   <title>Opening Kazoku App...</title>
   <style>
     body {
@@ -29,22 +30,10 @@
       animation: spin 1s linear infinite;
       margin: 0 auto 1.5rem;
     }
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-    h2 {
-      font-size: 1.5rem;
-      margin: 0 0 0.5rem;
-      font-weight: 600;
-    }
-    p {
-      font-size: 1rem;
-      margin: 0;
-      opacity: 0.9;
-    }
-    .links {
-      margin-top: 2rem;
-    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    h2 { font-size: 1.5rem; margin: 0 0 0.5rem; font-weight: 600; }
+    p { font-size: 1rem; margin: 0; opacity: 0.9; }
+    .links { margin-top: 2rem; }
     .links a {
       display: inline-block;
       background: rgba(255, 255, 255, 0.2);
@@ -56,46 +45,53 @@
       transition: background 0.3s;
       backdrop-filter: blur(10px);
     }
-    .links a:hover {
-      background: rgba(255, 255, 255, 0.3);
-    }
+    .links a:hover { background: rgba(255, 255, 255, 0.3); }
   </style>
   <script>
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-    // Store URLs
     const iosStore = "https://apps.apple.com/app/id1234567890";
-    const androidStore = "https://play.google.com/store/apps/details?id=com.kazoku.app";
-
-    // Construct app link (Universal/App Link)
+    const androidStore = "https://play.google.com/store/apps/details?id=com.mac.kazoku";
     const link = "https://kazoku-ai.com" + window.location.pathname;
 
     function openApp() {
       const isAndroid = /android/i.test(userAgent);
-      const isIOS = /iPad|iPhone|iPod/.test(userAgent);
+      const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+      const isInAppBrowser = /FBAN|FBAV|Line|Instagram|Twitter/i.test(userAgent);
+
+      if (isInAppBrowser) {
+        document.querySelector('.container').innerHTML = `
+          <h2>Open Kazoku App</h2>
+          <p>Tap a button below to open manually</p>
+          <div class="links">
+            <a href="${link}">Open App</a>
+            <a href="${iosStore}" target="_blank">App Store</a>
+            <a href="${androidStore}" target="_blank">Google Play</a>
+          </div>`;
+        return;
+      }
 
       if (isAndroid || isIOS) {
+
         // Try to open the app
         window.location.href = link;
 
         // If it fails, redirect to store after 1.5s
         setTimeout(() => {
-          window.location.href = isIOS ? iosStore : androidStore;
+          const storeUrl = isIOS ? iosStore : androidStore;
+          window.open(storeUrl, "_blank");
         }, 1500);
       } else {
-        // Desktop fallback: show website or App Store links
         document.querySelector('.container').innerHTML = `
           <h2>Download Kazoku App</h2>
           <p>Get the app on your mobile device</p>
           <div class="links">
             <a href="${iosStore}" target="_blank">📱 App Store</a>
             <a href="${androidStore}" target="_blank">🤖 Google Play</a>
-          </div>
-        `;
+          </div>`;
       }
     }
 
-    window.onload = openApp;
+    window.onload = () => setTimeout(openApp, 100);
   </script>
 </head>
 <body>

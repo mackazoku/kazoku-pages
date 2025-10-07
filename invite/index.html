@@ -30,10 +30,22 @@
       animation: spin 1s linear infinite;
       margin: 0 auto 1.5rem;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    h2 { font-size: 1.5rem; margin: 0 0 0.5rem; font-weight: 600; }
-    p { font-size: 1rem; margin: 0; opacity: 0.9; }
-    .links { margin-top: 2rem; }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin: 0 0 0.5rem;
+      font-weight: 600;
+    }
+    p {
+      font-size: 1rem;
+      margin: 0;
+      opacity: 0.9;
+    }
+    .links {
+      margin-top: 2rem;
+    }
     .links a {
       display: inline-block;
       background: rgba(255, 255, 255, 0.2);
@@ -45,13 +57,20 @@
       transition: background 0.3s;
       backdrop-filter: blur(10px);
     }
-    .links a:hover { background: rgba(255, 255, 255, 0.3); }
+    .links a:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
   </style>
   <script>
     const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    // Store URLs
+    // TODO(): Update with real app url after app submit to store
     const iosStore = "https://apps.apple.com/app/id1234567890";
     const androidStore = "https://play.google.com/store/apps/details?id=com.mac.kazoku";
-    const link = "https://kazoku-ai.com" + window.location.pathname;
+
+    // Deep link scheme
+    const deepLink = "kazoku-ai://kazoku-ai.com" + window.location.pathname;
 
     function openApp() {
       const isAndroid = /android/i.test(userAgent);
@@ -70,29 +89,43 @@
         return;
       }
 
-      if (isAndroid || isIOS) {
+      if (isAndroid || isIOS || isInAppBrowser) {
+        // Track if user leaves the page (app opened)
+        let appOpened = false;
+        
+        // Detect if app opened (user left the page)
+        const handleVisibilityChange = () => {
+          if (document.hidden) {
+            appOpened = true;
+          }
+        };
+        document.addEventListener('visibilitychange', handleVisibilityChange);
 
-        // Try to open the app
-        // TODO(): redirect to the app by custom URL scheme (kazoku://) — not HTTPS link. Try to test with different app link
-        window.location.href = 'https://kazoku-ai.com/setting';
+        // Try to open the app with deep link
+        window.location.href = deepLink;
 
-        // If it fails, redirect to store after 1.5s
+        // If app doesn't open after 2 seconds, redirect to store
         setTimeout(() => {
-          const storeUrl = isIOS ? iosStore : androidStore;
-          window.open(storeUrl, "_blank");
-        }, 1500);
+          document.removeEventListener('visibilitychange', handleVisibilityChange);
+          
+          if (!appOpened && !document.hidden) {
+            window.location.href = isIOS ? iosStore : androidStore;
+          }
+        }, 2000);
       } else {
+        // Desktop fallback: show website or App Store links
         document.querySelector('.container').innerHTML = `
           <h2>Download Kazoku App</h2>
           <p>Get the app on your mobile device</p>
           <div class="links">
             <a href="${iosStore}" target="_blank">📱 App Store</a>
             <a href="${androidStore}" target="_blank">🤖 Google Play</a>
-          </div>`;
+          </div>
+        `;
       }
     }
 
-    window.onload = () => setTimeout(openApp, 100);
+    window.onload = openApp;
   </script>
 </head>
 <body>

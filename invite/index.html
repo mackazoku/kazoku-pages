@@ -73,7 +73,8 @@
       if (isAndroid || isIOS) {
 
         // Try to open the app
-        window.location.href = link;
+        // TODO(): redirect to the app by custom URL scheme (kazoku://) — not HTTPS link. Try to test with different app link
+        window.location.href = 'https://kazoku-ai.com/setting';
 
         // If it fails, redirect to store after 1.5s
         setTimeout(() => {

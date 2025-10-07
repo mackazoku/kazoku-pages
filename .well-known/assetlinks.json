@@ -1,0 +1,36 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mac.kazoku.dev",
+      "sha256_cert_fingerprints": [
+        "D0:95:FF:B1:DE:9B:4E:E0:A3:E6:9C:E5:BA:36:3C:1B:02:2C:E6:07:BC:1C:71:A0:69:71:3D:99:29:30:50:98"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mac.kazoku.staging",
+      "sha256_cert_fingerprints": [
+        "D0:95:FF:B1:DE:9B:4E:E0:A3:E6:9C:E5:BA:36:3C:1B:02:2C:E6:07:BC:1C:71:A0:69:71:3D:99:29:30:50:98",
+        "7E:82:5B:04:3E:C4:3A:78:AD:95:FF:F3:F3:FC:66:D3:10:F2:5F:F4:92:20:78:12:00:E8:9E:33:9D:A1:17:DD"
+      ]
+    }
+  },
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.mac.kazoku",
+      "sha256_cert_fingerprints": [
+        "D0:95:FF:B1:DE:9B:4E:E0:A3:E6:9C:E5:BA:36:3C:1B:02:2C:E6:07:BC:1C:71:A0:69:71:3D:99:29:30:50:98",
+        "7E:82:5B:04:3E:C4:3A:78:AD:95:FF:F3:F3:FC:66:D3:10:F2:5F:F4:92:20:78:12:00:E8:9E:33:9D:A1:17:DD"
+      ]
+    }
+  }
+]

@@ -4,15 +4,15 @@
     "details": [
       {
         "appID": "QTZ25QWRG7.com.mac.kazoku.dev",
-        "paths": [ "/profile/*", "/messages/*" ]
+        "paths": [ "/invite/*", "/setting/*" ]
       },
       {
         "appID": "QTZ25QWRG7.com.mac.kazoku.staging",
-        "paths": [ "/profile/*", "/messages/*" ]
+        "paths": [ "/invite/*", "/setting/*" ]
       },
       {
         "appID": "QTZ25QWRG7.com.mac.kazoku",
-        "paths": [ "/profile/*", "/messages/*" ]
+        "paths": [ "/invite/*", "/setting/*" ]
       }
     ]
   }

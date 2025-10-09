@@ -256,10 +256,9 @@
         setTimeout(() => {
           const content = document.getElementById('content');
           content.innerHTML = `
-            <h2>Open Kazoku App</h2>
-            <p>Tap the button below to open the app</p>
+            <h2>Get invitation code?</h2>
+            <p>Tap the button below to open app and enter this code to join new family.</p>
             <button class="btn" id="openAppBtn">Open App</button>
-
           `;
 
           const btn = document.getElementById("openAppBtn");
@@ -269,7 +268,7 @@
         }, 800);
       } else {
         document.getElementById('content').innerHTML = `
-          <h2>Download Kazoku App</h2>
+          <h2>Get invitation code?</h2>
           <p>Get the app on your mobile device</p>
           <div class="store-links">
             <a href="${iosStore}" class="store-link">📱 App Store</a>

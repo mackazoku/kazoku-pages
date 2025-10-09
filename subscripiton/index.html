@@ -235,23 +235,12 @@
     // Construct your app link (Universal/App Link)
     const link = "https://kazoku-ai.com" + window.location.pathname;
 
-    function tryOpenApp(deepLink, fallbackUrl, isIOS) {
+    function tryOpenApp(deepLink, fallbackUrl, isIOS) { 
       const start = Date.now();
-      
-      if (isIOS) {
-        // Using iframe for avoid error dialog when app links cannot open
-        const iframe = document.createElement('iframe');
-        iframe.style.display = 'none';
-        iframe.src = deepLink;
-        document.body.appendChild(iframe);
-        
-        setTimeout(() => {
-          document.body.removeChild(iframe);
-        }, 1000);
-      } else {
-        window.location.href = deepLink;
-      }
 
+      window.location.href = deepLink;
+
+      // If app not opened, redirect to fallbackUrl
       setTimeout(() => {
         if (!document.hidden && Date.now() - start < 2500) {
           window.location.href = fallbackUrl;

@@ -4,15 +4,15 @@
     "details": [
       {
         "appID": "QTZ25QWRG7.com.mac.kazoku.dev",
-        "paths": [ "/invite/*", "/subcription/*" ]
+        "paths": [ "/invite/*", "/subscription/*" ]
       },
       {
         "appID": "QTZ25QWRG7.com.mac.kazoku.staging",
-        "paths": [ "/invite/*", "/subcription/*" ]
+        "paths": [ "/invite/*", "/subscription/*" ]
       },
       {
         "appID": "QTZ25QWRG7.com.mac.kazoku",
-        "paths": [ "/invite/*", "/subcription/*" ]
+        "paths": [ "/invite/*", "/subscription/*" ]
       }
     ]
   }

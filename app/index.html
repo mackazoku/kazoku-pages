@@ -80,7 +80,7 @@
     .card {
       background: #F5F5F7;
       border-radius: 24px;
-      padding: 48px 32px;
+      padding: 24px 32px;
       max-width: 500px;
       width: 100%;
       text-align: center;
@@ -197,7 +197,7 @@
       }
 
       .card {
-        padding: 32px 24px;
+        padding: 24px 24px;
       }
 
       .store-links {
@@ -235,19 +235,6 @@
     // Construct your app link (Universal/App Link)
     const link = "https://kazoku-ai.com" + window.location.pathname;
 
-    function tryOpenApp(deepLink, fallbackUrl, isIOS) { 
-      const start = Date.now();
-
-      window.location.href = deepLink;
-
-      // If app not opened, redirect to fallbackUrl
-      setTimeout(() => {
-        if (!document.hidden && Date.now() - start < 2500) {
-          window.location.href = fallbackUrl;
-        }
-      }, 2000);
-    }
-
     function openApp() {
       const isAndroid = /android/i.test(userAgent);
       const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
@@ -256,15 +243,37 @@
         setTimeout(() => {
           const content = document.getElementById('content');
           content.innerHTML = `
-            <h2>Open Kazoku App</h2>
-            <p>Tap the button below to open the app</p>
-            <button class="btn" id="openAppBtn">Open App</button>
+           <div style="margin-bottom: 32px;">
+              <div style="font-size: 48px; margin-bottom: 16px;">🏠</div>
+              <h2>Welcome to Kazoku!</h2>
+              <p style="margin-bottom: 24px;">Let's open the app and get started</p>
+              <button class="btn" id="openAppBtn" style="background: linear-gradient(135deg, #7B8CDE, #6A7BCD); margin-bottom: 0;">
+                <span style="font-size: 18px; margin-right: 8px;">🚀</span>
+                Open Kazoku App
+              </button>
+            </div>
+            
+            <div style="position: relative; margin: 32px 0;">
+              <div style="position: absolute; top: 50%; left: 0; right: 0; height: 1px; background: #E0E0E5;"></div>
+              <div style="position: relative; background: #F5F5F7; padding: 0 16px; display: inline-block; color: #6C6C70; font-size: 14px;">
+                Don't have the app yet?
+              </div>
+            </div>
+            
+            <div>
+              <h3 style="font-size: 18px; color: #2C2C2E; margin: 0 0 16px 0; font-weight: 600;">Get Kazoku App</h3>
+              <p style="font-size: 14px; color: #6C6C70; margin-bottom: 20px;">Download now and start organizing your family life</p>
+              <a href="${isIOS ? iosStore : androidStore}" class="store-link" style="background: linear-gradient(135deg, #28a745, #20c997); color: white; border: none; box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);">
+                <span style="font-size: 20px; margin-right: 8px;">${isIOS ? '📱' : '🤖'}</span>
+                ${isIOS ? 'Download from App Store' : 'Download from Google Play'}
+              </a>
+            </div>
           `;
 
-          const btn = document.getElementById("openAppBtn");
-          btn.addEventListener("click", () => {
-            tryOpenApp(link, isIOS ? iosStore : androidStore, isIOS);
-          });
+          const openAppBtn = document.getElementById("openAppBtn");
+          const installAppBtn = document.getElementById("installAppBtn");
+          openAppBtn.addEventListener("click", () => window.location.href = link);
+          installAppBtn.addEventListener("click", () => window.location.href = isIOS ? iosStore : androidStore);
         }, 800);
       } else {
         document.getElementById('content').innerHTML = `

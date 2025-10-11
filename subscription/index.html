@@ -80,7 +80,7 @@
     .card {
       background: #F5F5F7;
       border-radius: 24px;
-      padding: 24x 32px;
+      padding: 24px 32px;
       max-width: 500px;
       width: 100%;
       text-align: center;
@@ -277,8 +277,9 @@
         }, 800);
       } else {
         document.getElementById('content').innerHTML = `
-          <h2>Upgrade your plan?</h2>
-          <p>Get the app on your mobile device</p>
+          <div style="font-size: 48px; margin-bottom: 16px;">🏠</div>
+            <h2>Upgrade your plan?</h2>
+            <p style="margin-bottom: 24px;">Get the app on your mobile device</p>
           <div class="store-links">
             <a href="${iosStore}" class="store-link">📱 App Store</a>
             <a href="${androidStore}" class="store-link">🤖 Google Play</a>

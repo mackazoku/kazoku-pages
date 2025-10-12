@@ -240,8 +240,8 @@
     const iosStore = "https://apps.apple.com/app/id1234567890";
     const androidStore = "https://play.google.com/store/apps/details?id=com.mac.kazoku";
     
-    // Construct your app link (Universal/App Link)
-    const link = "https://kazoku-ai.com" + window.location.pathname;
+    // Construct your deep link (Deep Link/Custom scheme)
+    const link = "kazoku-ai://kazoku-ai.com" + window.location.pathname;
 
     function openApp() {
       const isAndroid = /android/i.test(userAgent);
@@ -279,9 +279,7 @@
           `;
 
         const openAppBtn = document.getElementById("openAppBtn");
-          const installAppBtn = document.getElementById("installAppBtn");
           openAppBtn.addEventListener("click", () => window.location.href = link);
-          installAppBtn.addEventListener("click", () => window.location.href = isIOS ? iosStore : androidStore);
         }, 800);
       } else {
         document.getElementById('content').innerHTML = `

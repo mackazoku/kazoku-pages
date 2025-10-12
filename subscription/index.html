@@ -13,6 +13,11 @@
       box-sizing: border-box;
     }
 
+    html {
+      overflow-x: hidden;
+      width: 100%;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
       background: linear-gradient(180deg, #7B8CDE 0%, #8B9DE8 100%);
@@ -21,9 +26,12 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      padding: 20px;
+      padding: 40px 20px;
       position: relative;
-      overflow: hidden;
+      overflow-x: hidden;
+      overflow-y: auto;
+      width: 100%;
+      max-width: 100vw;
     }
 
     /* Decorative circles like in your design */

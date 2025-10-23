@@ -1,10 +1,1437 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="refresh" content="0; url=/en/kazoku-menu.html">
-    <title>Redirecting...</title>
-  </head>
-  <body>
-    <p>Redirecting to <a href="/en/kazoku-menu.html">/en/kazoku-menu.html</a></p>
-  </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kazoku - Where Family Connects with Love</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="images/logo.png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Top Banner */
+        .banner {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .banner::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+            z-index: 0;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            50% {
+                transform: translate(20px, 20px) scale(1.1);
+            }
+        }
+
+        .banner-image {
+            flex-shrink: 0;
+            width: 300px;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .banner-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.6s ease-in-out;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .banner-image .image-default {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .banner-image .image-hover {
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .banner-image:hover .image-default {
+            opacity: 0;
+        }
+
+        .banner-image:hover .image-hover {
+            opacity: 1;
+        }
+
+        .banner-image:hover {
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(1.02);
+        }
+
+        .banner-content {
+            flex: 1;
+            z-index: 2;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .logo-text {
+            font-size: 48px;
+            font-weight: 800;
+            color: white;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: 3px;
+        }
+
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.3));
+            border-radius: 12px;
+        }
+
+        .tagline {
+            font-size: 28px;
+            color: white;
+            font-weight: 600;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            line-height: 1.4;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+
+        .tagline-text {
+            opacity: 0;
+            animation: fadeInOut 5s infinite;
+        }
+
+        .subtitle {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            max-width: 600px;
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle-text {
+            opacity: 0;
+            animation: fadeInOut 5s infinite;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translateY(10px); }
+            10%, 90% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Screenshots Carousel Section */
+        .carousel-section {
+            background: white;
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .carousel-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .carousel-title {
+            font-size: 32px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .carousel-language {
+            font-size: 18px;
+            color: #718096;
+            font-weight: 500;
+        }
+
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .carousel-page {
+            min-width: 100%;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            padding: 10px;
+        }
+
+        .screenshot-card {
+            background: #f7fafc;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        .screenshot-card .img-container {
+            position: relative;
+            width: 100%;
+            height: 0;
+            padding-bottom: 216.67%; /* iPhone 14 Plus ratio: 2796/1290 = 2.167 or 19.5:9 */
+            overflow: hidden;
+        }
+
+        .screenshot-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .screenshot-label {
+            padding: 12px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* Fullscreen Image Overlay */
+        .image-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-overlay.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .overlay-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            animation: zoomIn 0.3s ease;
+        }
+
+        .overlay-image {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .overlay-close {
+            position: absolute;
+            top: -50px;
+            right: 0;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            font-size: 32px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            line-height: 1;
+        }
+
+        .overlay-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: rotate(90deg);
+        }
+
+        .overlay-label {
+            position: absolute;
+            bottom: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            white-space: nowrap;
+        }
+
+        @keyframes zoomIn {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Carousel Indicators */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 24px;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #cbd5e0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            width: 30px;
+            border-radius: 5px;
+        }
+
+        /* Progress Bar */
+        .progress-bar-container {
+            width: 100%;
+            height: 4px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            margin-top: 20px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            animation: progress 10s linear infinite;
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+
+        /* Footer Download Section */
+        .download-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 50px 40px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 7s ease-in-out infinite;
+        }
+
+        .download-section::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: 10%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 9s ease-in-out infinite reverse;
+        }
+
+        .download-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-subtitle {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.95);
+            margin-bottom: 40px;
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .store-button {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            min-width: 200px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .store-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.9);
+        }
+
+        .store-button.google-play {
+            background: linear-gradient(135deg, rgba(66, 133, 244, 0.9) 0%, rgba(52, 168, 83, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .store-button.google-play:hover {
+            background: linear-gradient(135deg, rgba(66, 133, 244, 1) 0%, rgba(52, 168, 83, 1) 100%);
+        }
+
+        .store-icon {
+            font-size: 36px;
+        }
+
+        .store-text {
+            text-align: left;
+        }
+
+        .store-text-small {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+
+        .store-text-large {
+            font-size: 18px;
+            font-weight: 700;
+        }
+
+        .qr-code {
+            width: 150px;
+            height: 150px;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 12px;
+            padding: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .qr-label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Language Selection Section */
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .language-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .language-card {
+            background: white;
+            border-radius: 16px;
+            padding: 32px 24px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .language-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+
+        .language-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .language-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .language-flag {
+            font-size: 48px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .language-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .language-subtitle {
+            font-size: 16px;
+            color: #718096;
+            line-height: 1.5;
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-note strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .banner {
+                flex-direction: column;
+                padding: 40px 24px;
+            }
+
+            .banner-image {
+                width: 100%;
+                height: 250px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            .logo-text {
+                font-size: 36px;
+            }
+
+            .logo-image {
+                width: 45px;
+                height: 45px;
+            }
+
+            .tagline {
+                font-size: 22px;
+                min-height: 100px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .language-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .carousel-page {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 12px;
+            }
+
+            .download-container {
+                gap: 40px;
+            }
+
+            .download-title {
+                font-size: 28px;
+            }
+        }
+
+        /* Loading Animation */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Top Banner -->
+        <div class="banner">
+            <div class="banner-image">
+                <img class="image-default" src="images/family.jpg" alt="Kazoku Family">
+                <img class="image-hover" src="images/family1.jpg" alt="Kazoku Family Connection">
+            </div>
+            <div class="banner-content">
+                <div class="logo">
+                    <img class="logo-image" src="images/logo.png" alt="Kazoku Logo">
+                    <span class="logo-text">KAZOKU - The Family app</span>
+                </div>
+                <div class="tagline">
+                    <span class="tagline-text" id="taglineText"></span>
+                </div>
+                <div class="subtitle">
+                    <span class="subtitle-text" id="subtitleText"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screenshots Carousel -->
+        <div class="carousel-section">
+            <div class="carousel-header">
+                <h2 class="carousel-title">Explore the Kazoku App</h2>
+                <p class="carousel-language" id="carouselLanguage">English</p>
+            </div>
+            
+            <div class="carousel-container">
+                <div class="carousel-wrapper" id="carouselWrapper">
+                    <!-- English Page -->
+                    <div class="carousel-page">
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/timeline_en.png" alt="Family Timeline" data-label="Family Timeline">
+                            </div>
+                            <div class="screenshot-label">Family Timeline</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/task_en.png" alt="Family Tasks" data-label="Family Tasks">
+                            </div>
+                            <div class="screenshot-label">Family Tasks</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/calendar_en.png" alt="Family Events" data-label="Family Events">
+                            </div>
+                            <div class="screenshot-label">Family Events</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/chat_en.png" alt="Family Chat" data-label="Family Chat">
+                            </div>
+                            <div class="screenshot-label">Family Chat</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/fun_en.png" alt="Family Fun" data-label="Family Fun">
+                            </div>
+                            <div class="screenshot-label">Family Fun Activities</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/journal_en.png" alt="Journal" data-label="Journal">
+                            </div>
+                            <div class="screenshot-label">Journal</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/kazokuai_en.png" alt="Kazoku AI" data-label="Kazoku AI">
+                            </div>
+                            <div class="screenshot-label">Kazoku AI</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/expenses_en.png" alt="Family Expenses" data-label="Family Expenses">
+                            </div>
+                            <div class="screenshot-label">Family Expenses</div>
+                        </div>
+                    </div>
+
+                    <!-- Vietnamese Page -->
+                    <div class="carousel-page">
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/timeline_vi.png" alt="Dòng thời gian" data-label="Dòng thời gian">
+                            </div>
+                            <div class="screenshot-label">Dòng thời gian</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/task_vi.png" alt="Việc nhà" data-label="Việc nhà">
+                            </div>
+                            <div class="screenshot-label">Việc nhà</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/calendar_vi.png" alt="Lịch gia đình" data-label="Lịch gia đình">
+                            </div>
+                            <div class="screenshot-label">Lịch gia đình</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/chat_vi.png" alt="Nhắn tin" data-label="Nhắn tin">
+                            </div>
+                            <div class="screenshot-label">Nhắn tin</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/fun_vi.png" alt="Vui chơi" data-label="Vui chơi">
+                            </div>
+                            <div class="screenshot-label">Vui chơi</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/journal_vi.png" alt="Nhật ký" data-label="Nhật ký">
+                            </div>
+                            <div class="screenshot-label">Nhật ký</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/kazokuai_vi.png" alt="Kazoku AI" data-label="Kazoku AI">
+                            </div>
+                            <div class="screenshot-label">Kazoku AI</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/expenses_vi.png" alt="Chi Tiêu Gia Đình" data-label="Chi Tiêu Gia Đình">
+                            </div>
+                            <div class="screenshot-label">Chi tiêu gia đình</div>
+                        </div>
+                    </div>
+
+                    <!-- Japanese Page -->
+                    <div class="carousel-page">
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/timeline_ja.png" alt="家族のタイムライン" data-label="家族のタイムライン">
+                            </div>
+                            <div class="screenshot-label">家族のタイムライン</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/task_ja.png" alt="家族のタスク" data-label="家族のタスク">
+                            </div>
+                            <div class="screenshot-label">家族のタスク</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/calendar_ja.png" alt="家族のイベント" data-label="家族のイベント">
+                            </div>
+                            <div class="screenshot-label">家族のイベント</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/chat_ja.png" alt="家族チャット" data-label="家族チャット">
+                            </div>
+                            <div class="screenshot-label">家族チャット</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/fun_ja.png" alt="家族の楽しみ" data-label="家族の楽しみ">
+                            </div>
+                            <div class="screenshot-label">家族の楽しいアクティビティ</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/journal_ja.png" alt="日記" data-label="日記">
+                            </div>
+                            <div class="screenshot-label">日記</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/kazokuai_ja.png" alt="Kazoku AI" data-label="Kazoku AI">
+                            </div>
+                            <div class="screenshot-label">Kazoku AI</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/expenses_ja.png" alt="家計簿" data-label="家計簿">
+                            </div>
+                            <div class="screenshot-label">家計簿</div>
+                        </div>
+                    </div>
+
+                    <!-- Thai Page -->
+                    <div class="carousel-page">
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/timeline_th.png" alt="ไทม์ไลน์ครอบครัว" data-label="ไทม์ไลน์ครอบครัว">
+                            </div>
+                            <div class="screenshot-label">ไทม์ไลน์ครอบครัว</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/task_th.png" alt="งานของครอบครัว" data-label="งานของครอบครัว">
+                            </div>
+                            <div class="screenshot-label">งานของครอบครัว</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/calendar_th.png" alt="กิจกรรมครอบครัว" data-label="กิจกรรมครอบครัว">
+                            </div>
+                            <div class="screenshot-label">กิจกรรมครอบครัว</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/chat_th.png" alt="แชทครอบครัว" data-label="แชทครอบครัว">
+                            </div>
+                            <div class="screenshot-label">แชทครอบครัว</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/fun_th.png" alt="ความสนุกสนานของครอบครัว" data-label="ความสนุกสนานของครอบครัว">
+                            </div>
+                            <div class="screenshot-label">กิจกรรมสนุกสนานของครอบครัว</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/journal_th.png" alt="บันทึกประจำวัน" data-label="บันทึกประจำวัน">
+                            </div>
+                            <div class="screenshot-label">บันทึกประจำวัน</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/kazokuai_th.png" alt="Kazoku AI" data-label="Kazoku AI">
+                            </div>
+                            <div class="screenshot-label">Kazoku AI</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/expenses_th.png" alt="ค่าใช้จ่ายครอบครัว" data-label="ค่าใช้จ่ายครอบครัว">
+                            </div>
+                            <div class="screenshot-label">ค่าใช้จ่ายครอบครัว</div>
+                        </div>
+                    </div>
+
+                    <!-- French Page -->
+                    <div class="carousel-page">
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/timeline_fr.png" alt="Chronologie Familiale" data-label="Chronologie Familiale">
+                            </div>
+                            <div class="screenshot-label">Chronologie Familiale</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/task_fr.png" alt="Tâches Familiales" data-label="Tâches Familiales">
+                            </div>
+                            <div class="screenshot-label">Tâches Familiales</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/calendar_fr.png" alt="Événements Familiaux" data-label="Événements Familiaux">
+                            </div>
+                            <div class="screenshot-label">Événements Familiaux</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/chat_fr.png" alt="Chat Familial" data-label="Chat Familial">
+                            </div>
+                            <div class="screenshot-label">Chat Familial</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/fun_fr.png" alt="Divertissement Familial" data-label="Divertissement Familial">
+                            </div>
+                            <div class="screenshot-label">Activités Amusantes en Famille</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/journal_fr.png" alt="Journal" data-label="Journal">
+                            </div>
+                            <div class="screenshot-label">Journal</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/kazokuai_fr.png" alt="Kazoku AI" data-label="Kazoku AI">
+                            </div>
+                            <div class="screenshot-label">Kazoku AI</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/expenses_fr.png" alt="Dépenses Familiales" data-label="Dépenses Familiales">
+                            </div>
+                            <div class="screenshot-label">Dépenses Familiales</div>
+                        </div>
+                    </div>
+
+                    <!-- Chinese Page -->
+                    <div class="carousel-page">
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/timeline_zh.png" alt="家庭时间线" data-label="家庭时间线">
+                            </div>
+                            <div class="screenshot-label">家庭时间线</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/task_zh.png" alt="家庭任务" data-label="家庭任务">
+                            </div>
+                            <div class="screenshot-label">家庭任务</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/calendar_zh.png" alt="家庭活动" data-label="家庭活动">
+                            </div>
+                            <div class="screenshot-label">家庭活动</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/chat_zh.png" alt="家庭聊天" data-label="家庭聊天">
+                            </div>
+                            <div class="screenshot-label">家庭聊天</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/fun_zh.png" alt="家庭娱乐" data-label="家庭娱乐">
+                            </div>
+                            <div class="screenshot-label">家庭趣味活动</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/journal_zh.png" alt="日记" data-label="日记">
+                            </div>
+                            <div class="screenshot-label">日记</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/kazokuai_zh.png" alt="Kazoku AI" data-label="Kazoku AI">
+                            </div>
+                            <div class="screenshot-label">Kazoku AI</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/expenses_zh.png" alt="家庭开支" data-label="家庭开支">
+                            </div>
+                            <div class="screenshot-label">家庭开支</div>
+                        </div>
+                    </div>
+
+                    <!-- Korean Page -->
+                    <div class="carousel-page">
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/timeline_kr.png" alt="가족 타임라인" data-label="가족 타임라인">
+                            </div>
+                            <div class="screenshot-label">가족 타임라인</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/task_kr.png" alt="가족 작업" data-label="가족 작업">
+                            </div>
+                            <div class="screenshot-label">가족 작업</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/calendar_kr.png" alt="가족 이벤트" data-label="가족 이벤트">
+                            </div>
+                            <div class="screenshot-label">가족 이벤트</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/chat_kr.png" alt="가족 채팅" data-label="가족 채팅">
+                            </div>
+                            <div class="screenshot-label">가족 채팅</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/fun_kr.png" alt="가족 즐거움" data-label="가족 즐거움">
+                            </div>
+                            <div class="screenshot-label">가족 재미 활동</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/journal_kr.png" alt="일기" data-label="일기">
+                            </div>
+                            <div class="screenshot-label">일기</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/kazokuai_kr.png" alt="Kazoku AI" data-label="Kazoku AI">
+                            </div>
+                            <div class="screenshot-label">Kazoku AI</div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/expenses_kr.png" alt="가족 지출" data-label="가족 지출">
+                            </div>
+                            <div class="screenshot-label">가족 지출</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progressBar"></div>
+            </div>
+
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators" id="carouselIndicators"></div>
+        </div>
+
+        <!-- Language Selection Section -->
+        <h2 class="section-title">How to Use the Kazoku App</h2>
+        <div class="language-grid">
+            <div class="language-card" onclick="selectLanguage('en')">
+                <span class="language-flag">🇬🇧</span>
+                <div class="language-title">English</div>
+                <div class="language-subtitle">Get started with Kazoku in English</div>
+            </div>
+
+            <div class="language-card" onclick="selectLanguage('vi')">
+                <span class="language-flag">🇻🇳</span>
+                <div class="language-title">Tiếng Việt</div>
+                <div class="language-subtitle">Bắt đầu với Kazoku bằng tiếng Việt</div>
+            </div>
+
+            <div class="language-card" onclick="selectLanguage('ja')">
+                <span class="language-flag">🇯🇵</span>
+                <div class="language-title">日本語</div>
+                <div class="language-subtitle">Kazokuを日本語で始めましょう</div>
+            </div>
+
+            <div class="language-card" onclick="selectLanguage('th')">
+                <span class="language-flag">🇹🇭</span>
+                <div class="language-title">ภาษาไทย</div>
+                <div class="language-subtitle">เริ่มต้นใช้งาน Kazoku ด้วยภาษาไทย</div>
+            </div>
+
+            <div class="language-card" onclick="selectLanguage('fr')">
+                <span class="language-flag">🇫🇷</span>
+                <div class="language-title">Français</div>
+                <div class="language-subtitle">Commencez avec Kazoku en français</div>
+            </div>
+
+            <div class="language-card" onclick="selectLanguage('zh')">
+                <span class="language-flag">🇨🇳</span>
+                <div class="language-title">中文</div>
+                <div class="language-subtitle">使用中文开始使用 Kazoku</div>
+            </div>
+
+            <div class="language-card" onclick="selectLanguage('ko')">
+                <span class="language-flag">🇰🇷</span>
+                <div class="language-title">한국어</div>
+                <div class="language-subtitle">한국어로 Kazoku를 시작하세요</div>
+            </div>
+        </div>
+
+        <!-- Download Section -->
+        <div class="download-section">
+            <h2 class="download-title">Download the Kazoku App</h2>
+            <p class="download-subtitle">Connect with family anytime, anywhere. Click below link or scan the QR code to get started.</p>
+
+            <div class="download-container">
+                <!-- App Store -->
+                <div class="download-item">
+                    <a href="#" class="store-button">
+                        <div class="store-icon fab fa-apple"></div>
+                        <div class="store-text">
+                            <div class="store-text-small">Download on the</div>
+                            <div class="store-text-large">App Store</div>
+                        </div>
+                    </a>
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://apps.apple.com/app/kazoku" alt="App Store QR Code">
+                    </div>
+                </div>
+
+                <!-- Google Play -->
+                <div class="download-item">
+                    <a href="#" class="store-button google-play">
+                        <div class="store-icon fab fa-android"></div>
+                        <div class="store-text">
+                            <div class="store-text-small">GET IT ON</div>
+                            <div class="store-text-large">Google Play</div>
+                        </div>
+                    </a>
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://play.google.com/store/apps/details?id=com.kazoku" alt="Google Play QR Code">
+                    </div>
+                </div>
+            </div>
+        </div>        
+
+        <!-- Image Overlay Modal -->
+        <div class="image-overlay" id="imageOverlay" onclick="closeImageOverlay(event)">
+            <div class="overlay-content">
+                <button class="overlay-close" onclick="closeImageOverlay(event)">×</button>
+                <img class="overlay-image" id="overlayImage" src="" alt="">
+                <div class="overlay-label" id="overlayLabel"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - Smart Assistant for Every Family!</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ From Tokyo, sending love to every family</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Download iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Download Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-threads"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="en/kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Terms of Service</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="en/kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Privacy Policy</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="en/mac-index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Managing Company</a>
+        </div>
+        <p>&copy; 2025 Kazoku Family App. All rights reserved.<br>
+            <em>"Connecting Love - Sharing Happiness"</em>
+        </p>
+    </footer>
+
+    <script>
+        // Multilingual taglines
+        const taglines = [
+            { lang: 'vi', text: 'Nơi gia đình kết nối yêu thương' },
+            { lang: 'en', text: 'Where families connect with love' },
+            { lang: 'ja', text: '家族が愛で繋がる場所' },
+            { lang: 'th', text: 'ที่ซึ่งครอบครัวเชื่อมโยงด้วยความรัก' },
+            { lang: 'fr', text: 'Où les familles se connectent avec amour' },
+            { lang: 'zh', text: '家庭以爱相连的地方' },
+            { lang: 'ko', text: '가족이 사랑으로 연결되는 곳' }
+        ];
+
+        // Multilingual subtitles
+        const subtitles = [
+            { lang: 'vi', text: 'Trợ lý thông minh giúp gia đình quản lý lịch trình, chia sẻ khoảnh khắc và kết nối mọi người thân yêu mọi lúc, mọi nơi' },
+            { lang: 'en', text: 'Your smart family assistant for managing schedules, sharing moments, and keeping loved ones connected anytime, anywhere' },
+            { lang: 'ja', text: 'スケジュール管理、思い出の共有、大切な人とのつながりをサポートするスマート家族アシスタント' },
+            { lang: 'th', text: 'ผู้ช่วยอัจฉริยะสำหรับครอบครัว จัดการตารางเวลา แชร์ช่วงเวลาดีๆ และเชื่อมโยงคนที่คุณรักได้ทุกที่ทุกเวลา' },
+            { lang: 'fr', text: 'Votre assistant familial intelligent pour gérer les emplois du temps, partager des moments et rester connecté à tout moment' },
+            { lang: 'zh', text: '智能家庭助手，帮助管理日程、分享美好时刻，让亲人随时随地保持联系' },
+            { lang: 'ko', text: '일정 관리, 순간 공유, 소중한 사람들과의 연결을 돕는 스마트 가족 도우미' }
+        ];
+
+        // Language names for carousel
+        const languageNames = [
+            'English',
+            'Tiếng Việt',
+            '日本語',
+            'ภาษาไทย',
+            'Français',
+            '中文',
+            '한국어'
+        ];
+
+        let currentIndex = 0;
+        let carouselIndex = 0;
+        const taglineElement = document.getElementById('taglineText');
+        const subtitleElement = document.getElementById('subtitleText');
+        const carouselWrapper = document.getElementById('carouselWrapper');
+        const carouselLanguage = document.getElementById('carouselLanguage');
+        const carouselIndicators = document.getElementById('carouselIndicators');
+        const progressBar = document.getElementById('progressBar');
+        const totalPages = 7;
+
+        // Initialize carousel indicators
+        function initCarouselIndicators() {
+            for (let i = 0; i < totalPages; i++) {
+                const indicator = document.createElement('div');
+                indicator.className = 'indicator' + (i === 0 ? ' active' : '');
+                indicator.addEventListener('click', () => goToSlide(i));
+                carouselIndicators.appendChild(indicator);
+            }
+        }
+
+        // Update carousel indicators
+        function updateIndicators() {
+            const indicators = carouselIndicators.querySelectorAll('.indicator');
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === carouselIndex);
+            });
+        }
+
+        // Go to specific slide
+        function goToSlide(index) {
+            carouselIndex = index;
+            const offset = -index * 100;
+            carouselWrapper.style.transform = `translateX(${offset}%)`;
+            carouselLanguage.textContent = languageNames[index];
+            updateIndicators();
+            
+            // Reset progress bar animation
+            progressBar.style.animation = 'none';
+            setTimeout(() => {
+                progressBar.style.animation = 'progress 10s linear infinite';
+            }, 50);
+        }
+
+        // Auto scroll carousel
+        function autoScrollCarousel() {
+            carouselIndex = (carouselIndex + 1) % totalPages;
+            goToSlide(carouselIndex);
+        }
+
+        // Update tagline and subtitle
+        function updateTagline() {
+            taglineElement.style.animation = 'none';
+            subtitleElement.style.animation = 'none';
+            
+            setTimeout(() => {
+                taglineElement.textContent = taglines[currentIndex].text;
+                subtitleElement.textContent = subtitles[currentIndex].text;
+                taglineElement.style.animation = 'fadeInOut 5s';
+                subtitleElement.style.animation = 'fadeInOut 5s';
+            }, 50);
+
+            currentIndex = (currentIndex + 1) % taglines.length;
+        }
+
+        // Initialize
+        initCarouselIndicators();
+        updateTagline();
+        
+        // Set intervals - carousel changes every 10 seconds
+        setInterval(updateTagline, 5000);
+        setInterval(autoScrollCarousel, 10000);
+
+        // Language selection handler
+        function selectLanguage(langCode) {
+            const card = event.currentTarget;
+            card.style.transform = 'scale(0.95)';
+            
+            setTimeout(() => {
+                window.location.href = `${langCode}/kazoku-menu.html`;
+            }, 200);
+        }
+
+        // Language card hover effects
+        document.querySelectorAll('.language-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#f7fafc';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.backgroundColor = 'white';
+            });
+        });
+
+        // Image Overlay Functions
+        function openImageOverlay(cardElement) {
+            const img = cardElement.querySelector('img');
+            const label = img.getAttribute('data-label') || img.alt;
+            const overlay = document.getElementById('imageOverlay');
+            const overlayImage = document.getElementById('overlayImage');
+            const overlayLabel = document.getElementById('overlayLabel');
+            
+            overlayImage.src = img.src;
+            overlayImage.alt = img.alt;
+            overlayLabel.textContent = label;
+            
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageOverlay(event) {
+            if (event.target.id === 'imageOverlay' || event.target.classList.contains('overlay-close')) {
+                const overlay = document.getElementById('imageOverlay');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Close overlay with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                const overlay = document.getElementById('imageOverlay');
+                if (overlay.classList.contains('active')) {
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+    </script>
+</body>
 </html>

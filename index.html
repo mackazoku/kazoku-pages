@@ -190,38 +190,71 @@
 
         /* Screenshots Carousel Section */
         .carousel-section {
-            background: white;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 24px;
             padding: 40px;
             margin-bottom: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-section::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 7s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .carousel-section::after {
+            content: '';
+            position: absolute;
+            bottom: -25%;
+            left: -5%;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 9s ease-in-out infinite reverse;
+            z-index: 0;
         }
 
         .carousel-header {
             text-align: center;
             margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
         }
 
         .carousel-title {
             font-size: 32px;
             font-weight: 700;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: white;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
             margin-bottom: 10px;
         }
 
         .carousel-language {
             font-size: 18px;
-            color: #718096;
+            color: rgba(255, 255, 255, 0.9);
             font-weight: 500;
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
         }
 
         .carousel-container {
             position: relative;
             overflow: hidden;
             border-radius: 16px;
+            z-index: 1;
         }
 
         .carousel-wrapper {
@@ -268,14 +301,6 @@
             position: absolute;
             top: 0;
             left: 0;
-        }
-
-        .screenshot-label {
-            padding: 12px;
-            text-align: center;
-            font-size: 14px;
-            font-weight: 600;
-            color: #2d3748;
         }
 
         /* Fullscreen Image Overlay */
@@ -342,18 +367,6 @@
             transform: rotate(90deg);
         }
 
-        .overlay-label {
-            position: absolute;
-            bottom: -45px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: white;
-            font-size: 16px;
-            font-weight: 600;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-            white-space: nowrap;
-        }
-
         @keyframes zoomIn {
             from {
                 transform: scale(0.8);
@@ -371,6 +384,8 @@
             justify-content: center;
             gap: 8px;
             margin-top: 24px;
+            position: relative;
+            z-index: 1;
         }
 
         .indicator {
@@ -392,10 +407,12 @@
         .progress-bar-container {
             width: 100%;
             height: 4px;
-            background: #e2e8f0;
+            background: rgba(255, 255, 255, 0.2);
             border-radius: 2px;
             margin-top: 20px;
             overflow: hidden;
+            position: relative;
+            z-index: 1;
         }
 
         .progress-bar {
@@ -775,49 +792,41 @@
                             <div class="img-container">
                                 <img src="images/timeline_en.png" alt="Family Timeline" data-label="Family Timeline">
                             </div>
-                            <div class="screenshot-label">Family Timeline</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/task_en.png" alt="Family Tasks" data-label="Family Tasks">
                             </div>
-                            <div class="screenshot-label">Family Tasks</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/calendar_en.png" alt="Family Events" data-label="Family Events">
                             </div>
-                            <div class="screenshot-label">Family Events</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/chat_en.png" alt="Family Chat" data-label="Family Chat">
                             </div>
-                            <div class="screenshot-label">Family Chat</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/fun_en.png" alt="Family Fun" data-label="Family Fun">
                             </div>
-                            <div class="screenshot-label">Family Fun Activities</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/journal_en.png" alt="Journal" data-label="Journal">
                             </div>
-                            <div class="screenshot-label">Journal</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/kazokuai_en.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
-                            <div class="screenshot-label">Kazoku AI</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/expenses_en.png" alt="Family Expenses" data-label="Family Expenses">
                             </div>
-                            <div class="screenshot-label">Family Expenses</div>
                         </div>
                     </div>
 
@@ -827,49 +836,41 @@
                             <div class="img-container">
                                 <img src="images/timeline_vi.png" alt="Dòng thời gian" data-label="Dòng thời gian">
                             </div>
-                            <div class="screenshot-label">Dòng thời gian</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/task_vi.png" alt="Việc nhà" data-label="Việc nhà">
                             </div>
-                            <div class="screenshot-label">Việc nhà</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/calendar_vi.png" alt="Lịch gia đình" data-label="Lịch gia đình">
                             </div>
-                            <div class="screenshot-label">Lịch gia đình</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/chat_vi.png" alt="Nhắn tin" data-label="Nhắn tin">
                             </div>
-                            <div class="screenshot-label">Nhắn tin</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/fun_vi.png" alt="Vui chơi" data-label="Vui chơi">
                             </div>
-                            <div class="screenshot-label">Vui chơi</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/journal_vi.png" alt="Nhật ký" data-label="Nhật ký">
                             </div>
-                            <div class="screenshot-label">Nhật ký</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/kazokuai_vi.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
-                            <div class="screenshot-label">Kazoku AI</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/expenses_vi.png" alt="Chi Tiêu Gia Đình" data-label="Chi Tiêu Gia Đình">
                             </div>
-                            <div class="screenshot-label">Chi tiêu gia đình</div>
                         </div>
                     </div>
 
@@ -879,49 +880,41 @@
                             <div class="img-container">
                                 <img src="images/timeline_ja.png" alt="家族のタイムライン" data-label="家族のタイムライン">
                             </div>
-                            <div class="screenshot-label">家族のタイムライン</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/task_ja.png" alt="家族のタスク" data-label="家族のタスク">
                             </div>
-                            <div class="screenshot-label">家族のタスク</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/calendar_ja.png" alt="家族のイベント" data-label="家族のイベント">
                             </div>
-                            <div class="screenshot-label">家族のイベント</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/chat_ja.png" alt="家族チャット" data-label="家族チャット">
                             </div>
-                            <div class="screenshot-label">家族チャット</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/fun_ja.png" alt="家族の楽しみ" data-label="家族の楽しみ">
                             </div>
-                            <div class="screenshot-label">家族の楽しいアクティビティ</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/journal_ja.png" alt="日記" data-label="日記">
                             </div>
-                            <div class="screenshot-label">日記</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/kazokuai_ja.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
-                            <div class="screenshot-label">Kazoku AI</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/expenses_ja.png" alt="家計簿" data-label="家計簿">
                             </div>
-                            <div class="screenshot-label">家計簿</div>
                         </div>
                     </div>
 
@@ -931,49 +924,41 @@
                             <div class="img-container">
                                 <img src="images/timeline_th.png" alt="ไทม์ไลน์ครอบครัว" data-label="ไทม์ไลน์ครอบครัว">
                             </div>
-                            <div class="screenshot-label">ไทม์ไลน์ครอบครัว</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/task_th.png" alt="งานของครอบครัว" data-label="งานของครอบครัว">
                             </div>
-                            <div class="screenshot-label">งานของครอบครัว</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/calendar_th.png" alt="กิจกรรมครอบครัว" data-label="กิจกรรมครอบครัว">
                             </div>
-                            <div class="screenshot-label">กิจกรรมครอบครัว</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/chat_th.png" alt="แชทครอบครัว" data-label="แชทครอบครัว">
                             </div>
-                            <div class="screenshot-label">แชทครอบครัว</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/fun_th.png" alt="ความสนุกสนานของครอบครัว" data-label="ความสนุกสนานของครอบครัว">
                             </div>
-                            <div class="screenshot-label">กิจกรรมสนุกสนานของครอบครัว</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/journal_th.png" alt="บันทึกประจำวัน" data-label="บันทึกประจำวัน">
                             </div>
-                            <div class="screenshot-label">บันทึกประจำวัน</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/kazokuai_th.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
-                            <div class="screenshot-label">Kazoku AI</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/expenses_th.png" alt="ค่าใช้จ่ายครอบครัว" data-label="ค่าใช้จ่ายครอบครัว">
                             </div>
-                            <div class="screenshot-label">ค่าใช้จ่ายครอบครัว</div>
                         </div>
                     </div>
 
@@ -983,49 +968,41 @@
                             <div class="img-container">
                                 <img src="images/timeline_fr.png" alt="Chronologie Familiale" data-label="Chronologie Familiale">
                             </div>
-                            <div class="screenshot-label">Chronologie Familiale</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/task_fr.png" alt="Tâches Familiales" data-label="Tâches Familiales">
                             </div>
-                            <div class="screenshot-label">Tâches Familiales</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/calendar_fr.png" alt="Événements Familiaux" data-label="Événements Familiaux">
                             </div>
-                            <div class="screenshot-label">Événements Familiaux</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/chat_fr.png" alt="Chat Familial" data-label="Chat Familial">
                             </div>
-                            <div class="screenshot-label">Chat Familial</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/fun_fr.png" alt="Divertissement Familial" data-label="Divertissement Familial">
                             </div>
-                            <div class="screenshot-label">Activités Amusantes en Famille</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/journal_fr.png" alt="Journal" data-label="Journal">
                             </div>
-                            <div class="screenshot-label">Journal</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/kazokuai_fr.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
-                            <div class="screenshot-label">Kazoku AI</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/expenses_fr.png" alt="Dépenses Familiales" data-label="Dépenses Familiales">
                             </div>
-                            <div class="screenshot-label">Dépenses Familiales</div>
                         </div>
                     </div>
 
@@ -1035,49 +1012,41 @@
                             <div class="img-container">
                                 <img src="images/timeline_zh.png" alt="家庭时间线" data-label="家庭时间线">
                             </div>
-                            <div class="screenshot-label">家庭时间线</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/task_zh.png" alt="家庭任务" data-label="家庭任务">
                             </div>
-                            <div class="screenshot-label">家庭任务</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/calendar_zh.png" alt="家庭活动" data-label="家庭活动">
                             </div>
-                            <div class="screenshot-label">家庭活动</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/chat_zh.png" alt="家庭聊天" data-label="家庭聊天">
                             </div>
-                            <div class="screenshot-label">家庭聊天</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/fun_zh.png" alt="家庭娱乐" data-label="家庭娱乐">
                             </div>
-                            <div class="screenshot-label">家庭趣味活动</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/journal_zh.png" alt="日记" data-label="日记">
                             </div>
-                            <div class="screenshot-label">日记</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/kazokuai_zh.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
-                            <div class="screenshot-label">Kazoku AI</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/expenses_zh.png" alt="家庭开支" data-label="家庭开支">
                             </div>
-                            <div class="screenshot-label">家庭开支</div>
                         </div>
                     </div>
 
@@ -1087,49 +1056,41 @@
                             <div class="img-container">
                                 <img src="images/timeline_kr.png" alt="가족 타임라인" data-label="가족 타임라인">
                             </div>
-                            <div class="screenshot-label">가족 타임라인</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/task_kr.png" alt="가족 작업" data-label="가족 작업">
                             </div>
-                            <div class="screenshot-label">가족 작업</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/calendar_kr.png" alt="가족 이벤트" data-label="가족 이벤트">
                             </div>
-                            <div class="screenshot-label">가족 이벤트</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/chat_kr.png" alt="가족 채팅" data-label="가족 채팅">
                             </div>
-                            <div class="screenshot-label">가족 채팅</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/fun_kr.png" alt="가족 즐거움" data-label="가족 즐거움">
                             </div>
-                            <div class="screenshot-label">가족 재미 활동</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/journal_kr.png" alt="일기" data-label="일기">
                             </div>
-                            <div class="screenshot-label">일기</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/kazokuai_kr.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
-                            <div class="screenshot-label">Kazoku AI</div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
                                 <img src="images/expenses_kr.png" alt="가족 지출" data-label="가족 지출">
                             </div>
-                            <div class="screenshot-label">가족 지출</div>
                         </div>
                     </div>
                 </div>
@@ -1231,7 +1192,6 @@
             <div class="overlay-content">
                 <button class="overlay-close" onclick="closeImageOverlay(event)">×</button>
                 <img class="overlay-image" id="overlayImage" src="" alt="">
-                <div class="overlay-label" id="overlayLabel"></div>
             </div>
         </div>
     </div>
@@ -1401,14 +1361,11 @@
         // Image Overlay Functions
         function openImageOverlay(cardElement) {
             const img = cardElement.querySelector('img');
-            const label = img.getAttribute('data-label') || img.alt;
             const overlay = document.getElementById('imageOverlay');
             const overlayImage = document.getElementById('overlayImage');
-            const overlayLabel = document.getElementById('overlayLabel');
             
             overlayImage.src = img.src;
             overlayImage.alt = img.alt;
-            overlayLabel.textContent = label;
             
             overlay.classList.add('active');
             document.body.style.overflow = 'hidden';

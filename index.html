@@ -188,6 +188,117 @@
             10%, 90% { opacity: 1; transform: translateY(0); }
         }
 
+        /* Features Section */
+        .features-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 24px;
+            padding: 50px 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: -20%;
+            left: -5%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite;
+            z-index: 0;
+        }
+
+        .features-section::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: float 10s ease-in-out infinite reverse;
+            z-index: 0;
+        }
+
+        .features-title {
+            text-align: center;
+            font-size: 36px;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-radius: 20px;
+            padding: 30px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 56px;
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .feature-card:nth-child(1) .feature-icon { animation-delay: 0s; }
+        .feature-card:nth-child(2) .feature-icon { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) .feature-icon { animation-delay: 0.4s; }
+        .feature-card:nth-child(4) .feature-icon { animation-delay: 0.6s; }
+        .feature-card:nth-child(5) .feature-icon { animation-delay: 0.8s; }
+        .feature-card:nth-child(6) .feature-icon { animation-delay: 1s; }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .feature-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 12px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-description {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+        }
+
         /* Screenshots Carousel Section */
         .carousel-section {
             background: rgba(255, 255, 255, 0.1);
@@ -726,6 +837,18 @@
                 font-size: 14px;
             }
 
+            .features-title {
+                font-size: 28px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .feature-icon {
+                font-size: 48px;
+            }
+
             .section-title {
                 font-size: 28px;
             }
@@ -773,6 +896,48 @@
                 </div>
                 <div class="subtitle">
                     <span class="subtitle-text" id="subtitleText"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <h2 class="features-title">Key Features</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-name">Timeline (FNS)</div>
+                    <div class="feature-description">Private social network for families - Family Network Service. Connect and share moments exclusively with your loved ones.</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">✓</div>
+                    <div class="feature-name">Household Tasks</div>
+                    <div class="feature-description">Smart and friendly task management for household chores. Help family members share responsibilities together.</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📅</div>
+                    <div class="feature-name">Family Calendar</div>
+                    <div class="feature-description">Manage shared schedules intuitively like Google Calendar. Sync everyone's activities with ease.</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🎉</div>
+                    <div class="feature-name">Activity History</div>
+                    <div class="feature-description">Plan and preserve memories of family outings. Every moment is captured effectively and easily.</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <div class="feature-name">Daily Journal</div>
+                    <div class="feature-description">Track daily activities: exercise, sleep, meals, health, personal diary, and much more.</div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <div class="feature-name">Kazoku AI</div>
+                    <div class="feature-description">Smart assistant like a friendly companion, always ready to help and provide insights based on your family's daily activities.</div>
                 </div>
             </div>
         </div>
@@ -1093,6 +1258,138 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Spanish Page -->
+                    <div class="carousel-page">
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/timeline_es.png" alt="Línea de Tiempo Familiar" data-label="Línea de Tiempo Familiar">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/task_es.png" alt="Tareas Familiares" data-label="Tareas Familiares">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/calendar_es.png" alt="Eventos Familiares" data-label="Eventos Familiares">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/chat_es.png" alt="Chat Familiar" data-label="Chat Familiar">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/fun_es.png" alt="Diversión Familiar" data-label="Diversión Familiar">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/journal_es.png" alt="Diario" data-label="Diario">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/kazokuai_es.png" alt="Kazoku AI" data-label="Kazoku AI">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/expenses_es.png" alt="Gastos Familiares" data-label="Gastos Familiares">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Portuguese Page -->
+                    <div class="carousel-page">
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/timeline_pt.png" alt="Linha do Tempo da Família" data-label="Linha do Tempo da Família">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/task_pt.png" alt="Tarefas Familiares" data-label="Tarefas Familiares">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/calendar_pt.png" alt="Eventos Familiares" data-label="Eventos Familiares">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/chat_pt.png" alt="Chat da Família" data-label="Chat da Família">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/fun_pt.png" alt="Diversão Familiar" data-label="Diversão Familiar">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/journal_pt.png" alt="Diário" data-label="Diário">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/kazokuai_pt.png" alt="Kazoku AI" data-label="Kazoku AI">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/expenses_pt.png" alt="Despesas Familiares" data-label="Despesas Familiares">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hindi Page -->
+                    <div class="carousel-page">
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/timeline_hi.png" alt="पारिवारिक टाइमलाइन" data-label="पारिवारिक टाइमलाइन">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/task_hi.png" alt="पारिवारिक कार्य" data-label="पारिवारिक कार्य">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/calendar_hi.png" alt="पारिवारिक कार्यक्रम" data-label="पारिवारिक कार्यक्रम">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/chat_hi.png" alt="पारिवारिक चैट" data-label="पारिवारिक चैट">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/fun_hi.png" alt="पारिवारिक मनोरंजन" data-label="पारिवारिक मनोरंजन">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/journal_hi.png" alt="डायरी" data-label="डायरी">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/kazokuai_hi.png" alt="Kazoku AI" data-label="Kazoku AI">
+                            </div>
+                        </div>
+                        <div class="screenshot-card" onclick="openImageOverlay(this)">
+                            <div class="img-container">
+                                <img src="images/expenses_hi.png" alt="पारिवारिक खर्च" data-label="पारिवारिक खर्च">
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1148,6 +1445,24 @@
                 <span class="language-flag">🇰🇷</span>
                 <div class="language-title">한국어</div>
                 <div class="language-subtitle">한국어로 Kazoku를 시작하세요</div>
+            </div>
+
+            <div class="language-card" onclick="selectLanguage('es')">
+                <span class="language-flag">🇪🇸</span>
+                <div class="language-title">Español</div>
+                <div class="language-subtitle">Comienza con Kazoku en español</div>
+            </div>
+
+            <div class="language-card" onclick="selectLanguage('pt')">
+                <span class="language-flag">🇵🇹</span>
+                <div class="language-title">Português</div>
+                <div class="language-subtitle">Comece com Kazoku em português</div>
+            </div>
+
+            <div class="language-card" onclick="selectLanguage('hi')">
+                <span class="language-flag">🇮🇳</span>
+                <div class="language-title">हिन्दी</div>
+                <div class="language-subtitle">Kazoku के साथ हिंदी में शुरुआत करें</div>
             </div>
         </div>
 
@@ -1240,7 +1555,10 @@
             { lang: 'th', text: 'ที่ซึ่งครอบครัวเชื่อมโยงด้วยความรัก' },
             { lang: 'fr', text: 'Où les familles se connectent avec amour' },
             { lang: 'zh', text: '家庭以爱相连的地方' },
-            { lang: 'ko', text: '가족이 사랑으로 연결되는 곳' }
+            { lang: 'ko', text: '가족이 사랑으로 연결되는 곳' },
+            { lang: 'es', text: 'Donde las familias se conectan con amor' },
+            { lang: 'pt', text: 'Onde as famílias se conectam com amor' },
+            { lang: 'hi', text: 'जहाँ परिवार प्यार से जुड़ते हैं' }
         ];
 
         // Multilingual subtitles
@@ -1251,7 +1569,10 @@
             { lang: 'th', text: 'ผู้ช่วยอัจฉริยะสำหรับครอบครัว จัดการตารางเวลา แชร์ช่วงเวลาดีๆ และเชื่อมโยงคนที่คุณรักได้ทุกที่ทุกเวลา' },
             { lang: 'fr', text: 'Votre assistant familial intelligent pour gérer les emplois du temps, partager des moments et rester connecté à tout moment' },
             { lang: 'zh', text: '智能家庭助手，帮助管理日程、分享美好时刻，让亲人随时随地保持联系' },
-            { lang: 'ko', text: '일정 관리, 순간 공유, 소중한 사람들과의 연결을 돕는 스마트 가족 도우미' }
+            { lang: 'ko', text: '일정 관리, 순간 공유, 소중한 사람들과의 연결을 돕는 스마트 가족 도우미' },
+            { lang: 'es', text: 'Tu asistente familiar inteligente para gestionar horarios, compartir momentos y mantener a tus seres queridos conectados en cualquier momento y lugar' },
+            { lang: 'pt', text: 'Seu assistente familiar inteligente para gerenciar horários, compartilhar momentos e manter seus entes queridos conectados a qualquer hora, em qualquer lugar' },
+            { lang: 'hi', text: 'आपका स्मार्ट परिवार सहायक जो शेड्यूल प्रबंधित करने, पलों को साझा करने और प्रियजनों को हर समय, हर जगह जुड़े रखने में मदद करता है' }
         ];
 
         // Language names for carousel
@@ -1262,7 +1583,10 @@
             'ภาษาไทย',
             'Français',
             '中文',
-            '한국어'
+            '한국어',
+            'Español',
+            'Português',
+            'हिन्दी'
         ];
 
         let currentIndex = 0;
@@ -1273,7 +1597,7 @@
         const carouselLanguage = document.getElementById('carouselLanguage');
         const carouselIndicators = document.getElementById('carouselIndicators');
         const progressBar = document.getElementById('progressBar');
-        const totalPages = 7;
+        const totalPages = 10;
 
         // Initialize carousel indicators
         function initCarouselIndicators() {

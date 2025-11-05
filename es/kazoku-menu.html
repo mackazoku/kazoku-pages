@@ -1,0 +1,1647 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplicación Kazoku - Asistente Inteligente para Familias</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 30px 0;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #e1e8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .features-menu {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 40px 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out 0.4s both;
+        }
+
+        .menu-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .menu-header h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .menu-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .menu-header p {
+            color: #6c7b8a;
+            font-size: 1rem;
+        }
+
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            padding: 25px 20px;
+            background: #f8f9ff;
+            border-radius: 18px;
+            border-left: 5px solid #667eea;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: inherit;
+            animation: slideInLeft 0.6s ease-out both;
+        }
+
+        .feature-item:nth-child(1) { animation-delay: 0.5s; }
+        .feature-item:nth-child(2) { animation-delay: 0.6s; }
+        .feature-item:nth-child(3) { animation-delay: 0.7s; }
+        .feature-item:nth-child(4) { animation-delay: 0.8s; }
+        .feature-item:nth-child(5) { animation-delay: 0.9s; }
+
+        .feature-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(10px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.2);
+            background: #e6edff;
+            border-left-color: #764ba2;
+        }
+
+        .feature-item:hover::before {
+            left: 100%;
+        }
+
+        .feature-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-right: 20px;
+            transition: all 0.4s ease;
+            flex-shrink: 0;
+        }
+
+        .feature-item:hover .feature-icon {
+            transform: rotate(360deg) scale(1.1);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .feature-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .feature-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .feature-item:hover .feature-name {
+            color: #667eea;
+        }
+
+        .feature-description {
+            color: #6c7b8a;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .feature-arrow {
+            font-size: 1.5rem;
+            color: #667eea;
+            margin-left: 15px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .feature-item:hover .feature-arrow {
+            transform: translateX(5px);
+            color: #764ba2;
+        }
+
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e1e8ed;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px 15px;
+            background: linear-gradient(135deg, #f8f9ff, #e6edff);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #6c7b8a;
+            font-size: 0.9rem;
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-note strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header p {
+                font-size: 1rem;
+            }
+            
+            .features-menu {
+                padding: 30px 20px;
+            }
+
+            .feature-item {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px 15px;
+            }
+
+            .feature-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+
+            .feature-arrow {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .stats-section {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+
+            /* Video Section Mobile */
+            .video-section, .tutorial-section {
+                padding: 30px 20px;
+            }
+
+            .video-placeholder {
+                height: 300px;
+            }
+
+            .play-button {
+                width: 60px;
+                height: 60px;
+            }
+
+            .play-icon {
+                font-size: 1.5rem;
+            }
+
+            .video-placeholder h3 {
+                font-size: 1.3rem;
+            }
+
+            .video-features {
+                grid-template-columns: 1fr;
+            }
+
+            /* Tutorial Section Mobile */
+            .tutorial-step {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .tutorial-step:not(:last-child)::after {
+                display: none;
+            }
+
+            .step-content {
+                padding-top: 0;
+            }
+
+            .step-actions {
+                justify-content: center;
+            }
+
+            .tutorial-help {
+                grid-template-columns: 1fr;
+            }
+
+            footer {
+                background: transparent;
+                color: white;
+                text-align: center;
+                padding: 2rem 0;
+            }
+            
+            .footer-content {
+                margin-bottom: 1rem;
+                line-height: 1.5;
+            }
+            
+            .social-links {
+                display: flex;
+                justify-content: center;
+                gap: 1rem;
+                margin: 1rem 0;
+            }
+            
+            .social-links a {
+                color: white;
+                font-size: 1.5rem;
+                text-decoration: none;
+                transition: color 0.3s ease;
+            }
+            
+            .social-links a:hover {
+                color: #667eea;
+            }
+
+            /* Footer Mobile */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-bottom-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .footer-bottom-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .download-buttons {
+                max-width: 250px;
+                margin: 0 auto 25px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                max-width: 250px;
+                margin: 0 auto;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Ripple effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(102, 126, 234, 0.3);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Video Section Styles */
+        .video-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .section-header h2 {
+            color: #2c3e50;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            color: #6c7b8a;
+            font-size: 1rem;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-placeholder:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .video-placeholder-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .play-icon {
+            font-size: 2rem;
+            margin-left: 3px;
+        }
+
+        .video-placeholder h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .video-placeholder p {
+            opacity: 0.8;
+            margin-bottom: 15px;
+        }
+
+        .video-duration {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .video-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .video-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .video-feature-item:hover {
+            background: #e6edff;
+            transform: translateY(-2px);
+        }
+
+        .video-feature-icon {
+            font-size: 1.5rem;
+        }
+
+        .video-feature-text strong {
+            display: block;
+            color: #2c3e50;
+            margin-bottom: 2px;
+        }
+
+        .video-feature-text small {
+            color: #6c7b8a;
+        }
+
+        /* Tutorial Section Styles */
+        .tutorial-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            animation: fadeInUp 1s ease-out 0.8s both;
+        }
+
+        .tutorial-steps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .tutorial-step {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .tutorial-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 25px;
+            top: 60px;
+            bottom: -40px;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+            opacity: 0.3;
+        }
+
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .step-content {
+            flex: 1;
+            padding-top: 5px;
+        }
+
+        .step-content h3 {
+            color: #2c3e50;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .step-content p {
+            color: #6c7b8a;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .step-actions {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .action-btn {
+            padding: 8px 16px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .step-highlight {
+            background: #e6edff;
+            padding: 10px 15px;
+            border-radius: 10px;
+            border-left: 3px solid #667eea;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .step-highlight span {
+            margin-right: 8px;
+        }
+
+        .step-tags {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background: #f0f4ff;
+            color: #667eea;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            border: 1px solid #e1e8ed;
+        }
+
+        .step-success {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .step-success span {
+            margin-right: 8px;
+        }
+
+        .tutorial-help {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #e1e8ed;
+        }
+
+        .help-card {
+            background: #f8f9ff;
+            padding: 25px 20px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid #e1e8ed;
+            transition: all 0.3s ease;
+        }
+
+        .help-card:hover {
+            border-color: #667eea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.15);
+        }
+
+        .help-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .help-card p {
+            color: #6c7b8a;
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+        }
+
+        .help-btn {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .help-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(74, 222, 128, 0.3);
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .footer-section h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .footer-section h5 {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .footer-section p {
+            opacity: 0.8;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 8px;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .footer-links a:hover {
+            color: #667eea;
+            transform: translateX(5px);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .social-link:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .download-icon {
+            font-size: 1.5rem;
+        }
+
+        .download-text small {
+            display: block;
+            opacity: 0.7;
+            font-size: 0.8rem;
+        }
+
+        .download-text strong {
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 8px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 10px 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .newsletter-form button {
+            padding: 10px 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .newsletter-form button:hover {
+            background: #764ba2;
+        }
+
+        .footer-bottom {
+            background: rgba(0, 0, 0, 0.2);
+            margin-top: 40px;
+            padding: 20px 0;
+        }
+
+        .footer-bottom-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-bottom-links a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-bottom p {
+            margin: 0;
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa726);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <div class="header fade-in">
+            <h1>🏠 Kazoku - La Aplicación Familiar</h1>
+            <p>Una aplicación inteligente de gestión familiar con funciones completas para conectar y organizar la vida familiar de la manera más efectiva</p>
+        </div>
+
+        <div class="features-menu">
+            <div class="menu-header">
+                <h2>✨ Funciones Principales</h2>
+                <p>Descubre las potentes funciones de Kazoku</p>
+            </div>
+
+            <div class="features-list">
+                <a href="kazoku-timeline-page.html" class="feature-item">
+                    <div class="feature-icon">📸</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Línea de Tiempo (Timeline)</div>
+                        <div class="feature-description">
+                            Captura y comparte momentos familiares memorables. Desde comidas acogedoras hasta viajes alegres, cada recuerdo se guarda y organiza automáticamente por tiempo.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <a href="kazoku-household-management.html" class="feature-item">
+                    <div class="feature-icon">🏠</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Gestión del Hogar</div>
+                        <div class="feature-description">
+                            Organiza y asigna tareas del hogar de manera inteligente para cada miembro de la familia. Desde tareas diarias hasta tareas periódicas, todo se programa y rastrea para que el hogar se mantenga ordenado y pulcro.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <a href="kazoku-calendar-management.html" class="feature-item">
+                    <div class="feature-icon">📅</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Calendario Familiar</div>
+                        <div class="feature-description">
+                            Organiza y programa eventos familiares importantes, actividades divertidas y aniversarios especiales. Una interfaz amigable como Google Calendar, que también admite calendarios lunares para algunos países asiáticos. Recibe recordatorios automáticos para que nunca te pierdas momentos importantes.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <a href="kazoku-activities-management.html" class="feature-item">
+                    <div class="feature-icon">🏕️</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Actividades de Ocio</div>
+                        <div class="feature-description">
+                            Crea y gestiona actividades de ocio familiar, viajes y recuerdos especiales. Planifica detalles, gestiona costes y conserva momentos preciados juntos.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <a href="kazoku-personal-journal.html" class="feature-item">
+                    <div class="feature-icon">🏃‍♀️</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Diario Personal</div>
+                        <div class="feature-description">
+                            Registra y rastrea aspectos importantes de la vida diaria. Desde ejercicio, estado de ánimo, salud, hasta estudio y notas personales, todo se almacena de forma segura y privada.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <a href="kazoku-ai-assistant.html" class="feature-item">
+                    <div class="feature-icon">✨</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Asistente Inteligente Kazoku AI</div>
+                        <div class="feature-description">
+                            Un asistente virtual inteligente diseñado para tu familia. Obtén consejos detallados sobre cada aspecto de la vida familiar de expertos en IA, personalizados según la información y las necesidades de cada miembro.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <a href="kazoku-family-chat.html" class="feature-item">
+                    <div class="feature-icon">💬</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Chat Familiar</div>
+                        <div class="feature-description">
+                            Conecta a todos los miembros de la familia a través de un espacio de chat privado y seguro. Comparte momentos diarios, intercambia información y mantente en contacto en cualquier momento y lugar.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <a href="kazoku-expense-management.html" class="feature-item">
+                    <div class="feature-icon">💰</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Gestión de Gastos</div>
+                        <div class="feature-description">
+                            Rastrea y gestiona los gastos familiares de forma inteligente y efectiva. Desde pequeños gastos diarios hasta grandes planes financieros, todo se registra y analiza en detalle para ayudar a las familias a controlar mejor los presupuestos.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <a href="kazoku-family-notes.html" class="feature-item">
+                    <div class="feature-icon">📝</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Notas Familiares</div>
+                        <div class="feature-description">
+                            El cuaderno compartido de la familia: un lugar para preservar conocimientos, experiencias y recuerdos valiosos. Desde diarios, información de cuentas importantes hasta consejos de vida, todo se comparte y se almacena de forma segura para toda la familia.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <a href="kazoku-member-management.html" class="feature-item">
+                    <div class="feature-icon">👨‍👩‍👧‍👦</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Gestión de Miembros</div>
+                        <div class="feature-description">
+                            Gestiona a los miembros de la familia de forma inteligente y efectiva. Los Supervisores tienen control total para agregar, invitar y gestionar la información de los miembros, ayudando a Kazoku AI a comprender mejor a la familia para proporcionar las mejores sugerencias personalizadas.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <a href="kazoku-family-management.html" class="feature-item">
+                    <div class="feature-icon">👨‍👩‍👦</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Gestión Familiar</div>
+                        <div class="feature-description">
+                            Crea y gestiona múltiples familias a la vez de forma flexible. Desde tu pequeña familia hasta grandes familias extendidas con abuelos, todo se organiza y conecta en una sola aplicación.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <a href="kazoku-rewards-gifts.html" class="feature-item">
+                    <div class="feature-icon">🎁</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Recompensas y Regalos</div>
+                        <div class="feature-description">
+                            Motiva y anima a los miembros de la familia a través de un sistema de recompensas inteligente. Gana puntos al completar tareas y canjea regalos atractivos, convirtiendo las tareas del hogar en una experiencia divertida y gratificante.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+
+                <a href="kazoku-subscription-plans.html" class="feature-item">
+                    <div class="feature-icon">💎</div>
+                    <div class="feature-content">
+                        <div class="feature-name">Planes de Suscripción</div>
+                        <div class="feature-description">
+                            Elige el plan de suscripción que se adapte a las necesidades de tu familia. Desde planes estándar gratuitos hasta paquetes premium con todas las funciones, actualiza y amplía de forma flexible con el tiempo.
+                        </div>
+                    </div>
+                    <div class="feature-arrow">→</div>
+                </a>
+            </div>
+
+            <div class="footer-note">
+                <strong>🚀 ¿Listo para Empezar?</strong>
+                ¡Descarga Kazoku hoy y empieza a experimentar una vida familiar más inteligente!
+            </div>
+        </div>
+
+        <div class="video-section">
+            <div class="section-header">
+                <h2>🎬 Experimenta Kazoku</h2>
+                <p>Mira el video de demostración para entender mejor cómo funciona Kazoku</p>
+            </div>
+            
+            <div class="video-container">
+                <div class="video-placeholder">
+                    <div class="video-placeholder-content">
+                        <div class="play-button" onclick="playVideo()">
+                            <div class="play-icon">▶️</div>
+                        </div>
+                        <h3>Aplicación Kazoku</h3>
+                        <p>Descubre las principales funciones de Kazoku en 3 minutos</p>
+                        <div class="video-duration">⏱️ 3:24</div>
+                    </div>
+                </div>
+            </div>            
+        </div>
+
+        <div class="tutorial-section">
+            <div class="section-header">
+                <h2>📚 Cómo Empezar</h2>
+                <p>Empieza a usar Kazoku en solo 4 sencillos pasos</p>
+            </div>
+
+            <div class="tutorial-steps">
+                <div class="tutorial-step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>📱 Descarga la Aplicación</h3>
+                        <p>Descarga Kazoku desde App Store o Google Play. La aplicación es completamente gratuita y no tiene anuncios.</p>
+                        <div class="step-actions">
+                            <button class="action-btn"><i class="fab fa-apple"></i> App Store</button>
+                            <button class="action-btn"><i class="fab fa-android"></i> Google Play</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutorial-step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>👑 Crea una Familia</h3>
+                        <p>Registra una cuenta y crea una nueva familia. Te convertirás en el Supervisor con plenos derechos de gestión sobre toda la familia.</p>
+                        <div class="step-highlight">
+                            <span>💡</span> ¡Los Supervisores pueden registrar a todos los miembros de la familia e invitarlos a unirse!
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutorial-step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>👨‍👩‍👧‍👦 Agrega Miembros</h3>
+                        <p>Invita a miembros de la familia por correo electrónico o código QR. Rellena los detalles para que la IA pueda personalizar la experiencia.</p>
+                        <div class="step-tags">
+                            <span class="tag"><i class="fa-solid fa-envelope"></i> Correo Electrónico</span>
+                            <span class="tag"><i class="fa-solid fa-qrcode"></i> Código QR</span>
+                            <span class="tag"><i class="fa-solid fa-robot"></i> IA Personal</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tutorial-step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>🎉 Empieza a Usar</h3>
+                        <p>Explora las funciones: Línea de Tiempo, Chat, Gastos, Notas y más. Kazoku aprenderá y se adaptará a tu familia.</p>
+                        <div class="step-success">
+                            <span>✨</span> ¡Felicidades! Tu familia está lista con Kazoku
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - ¡Asistente Inteligente para Cada Familia!</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ Desde Tokio, enviando amor a cada familia</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Descargar iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Descargar Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-threads"></i></a>
+                <a href="#"><i class="fab fa-x"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Términos de Servicio</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Política de Privacidad</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="mac-index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Empresa Gestora</a>
+        </div>
+        <p>&copy; 2025 Aplicación Familiar Kazoku. Todos los derechos reservados.<br>
+            <em>"Conectando Amor - Compartiendo Felicidad"</em>
+        </p>
+    </footer>
+
+    <script>
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-circle');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.3;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateX(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-item').forEach(item => {
+            observer.observe(item);
+        });
+
+        // Add keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            const items = document.querySelectorAll('.feature-item');
+            const focused = document.activeElement;
+            const currentIndex = Array.from(items).indexOf(focused);
+            
+            if (e.key === 'ArrowDown' && currentIndex < items.length - 1) {
+                e.preventDefault();
+                items[currentIndex + 1].focus();
+            } else if (e.key === 'ArrowUp' && currentIndex > 0) {
+                e.preventDefault();
+                items[currentIndex - 1].focus();
+            } else if (e.key === 'Enter' && focused.classList.contains('feature-item')) {
+                e.preventDefault();
+                focused.click();
+            }
+        });
+
+        // Add focus styles for accessibility
+        document.querySelectorAll('.feature-item').forEach(item => {
+            item.addEventListener('focus', () => {
+                item.style.outline = '3px solid #667eea';
+                item.style.outlineOffset = '2px';
+            });
+            
+            item.addEventListener('blur', () => {
+                item.style.outline = 'none';
+            });
+        });
+
+        // Stats animation on scroll
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const numbers = entry.target.querySelectorAll('.stat-number');
+                    numbers.forEach(number => {
+                        const value = number.textContent;
+                        number.textContent = '0';
+                        
+                        if (value.includes('%')) {
+                            animateNumber(number, 0, parseInt(value), '%');
+                        } else if (!isNaN(value)) {
+                            animateNumber(number, 0, parseInt(value));
+                        } else {
+                            number.textContent = value;
+                        }
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        function animateNumber(element, start, end, suffix = '') {
+            const duration = 1000;
+            const increment = (end - start) / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current) + suffix;
+            }, 16);
+        }
+
+        document.querySelectorAll('.stats-section').forEach(section => {
+            statsObserver.observe(section);
+        });
+
+        // Observe all elements with fade-in class
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Video and Tutorial Functions
+        function playVideo() {
+            alert('🎬 ¡Se reproducirá el video de demostración!\n\nEn realidad, este sería el video de presentación de la Aplicación Familiar Kazoku con una demostración completa de todas las funciones.');
+        }
+
+        function showSupport() {
+            alert('💬 ¡Contacta con soporte!\n\n📧 Correo Electrónico: support@kazoku.app\n📞 Línea Directa: 1900-KAZOKU\n💬 Chat en Vivo: 24/7 en el sitio web');
+        }
+
+        function showDocs() {
+            alert('📖 ¡Documentación de ayuda!\n\nSerás redirigido a la página de documentación detallada con:\n• Guía paso a paso\n• Tutoriales en video\n• Preguntas frecuentes (FAQ)\n• Consejos y trucos');
+        }
+
+        function subscribeNewsletter() {
+            const email = document.querySelector('.newsletter-form input').value;
+            if (email) {
+                alert(`✅ ¡Suscripción exitosa!\n\nCorreo Electrónico: ${email}\n\nRecibirás notificaciones sobre nuevas funciones y actualizaciones de Kazoku.`);
+                document.querySelector('.newsletter-form input').value = '';
+            } else {
+                alert('⚠️ ¡Por favor, introduce una dirección de correo electrónico!');
+            }
+        }
+
+        // Enhanced scroll animations for new sections
+        const newSectionObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    
+                    // Special animation for tutorial steps
+                    if (entry.target.classList.contains('tutorial-step')) {
+                        const stepNumber = entry.target.querySelector('.step-number');
+                        stepNumber.style.transform = 'scale(1.1)';
+                        setTimeout(() => {
+                            stepNumber.style.transform = 'scale(1)';
+                        }, 300);
+                    }
+                }
+            });
+        }, { threshold: 0.2 });
+
+        document.querySelectorAll('.tutorial-step').forEach(step => {
+            newSectionObserver.observe(step);
+        });
+
+        // Interactive tutorial steps
+        document.querySelectorAll('.tutorial-step').forEach((step, index) => {
+            step.addEventListener('click', () => {
+                const stepNumber = index + 1;
+                const stepTitle = step.querySelector('h3').textContent;
+                
+                // Visual feedback
+                step.style.background = '#f0f4ff';
+                setTimeout(() => {
+                    step.style.background = 'transparent';
+                }, 500);
+                
+                console.log(`Clicked on step ${stepNumber}: ${stepTitle}`);
+            });
+        });
+
+        // Footer links interactivity
+        document.querySelectorAll('.footer-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const linkText = link.textContent;
+                alert(`🔗 Redirigiendo a: ${linkText}\n\nEn la aplicación real, serás dirigido a la página correspondiente.`);
+            });
+        });
+
+        // Social media links
+        document.querySelectorAll('.social-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const platform = link.textContent.split(' ')[1];
+                alert(`📱 ¡Abrir ${platform}!\n\nSigue a Kazoku en ${platform} para las últimas noticias.`);
+            });
+        });
+
+        // Download buttons
+        document.querySelectorAll('.download-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const store = btn.querySelector('strong').textContent;
+                alert(`📱 ¡Descargar desde ${store}!\n\nSerás redirigido a ${store} para descargar la Aplicación Familiar Kazoku.`);
+            });
+        });
+
+        // Enhanced mobile responsiveness
+        function handleResize() {
+            const isMobile = window.innerWidth <= 768;
+            const tutorialSteps = document.querySelectorAll('.tutorial-step');
+            
+            tutorialSteps.forEach(step => {
+                if (isMobile) {
+                    step.style.flexDirection = 'column';
+                    step.style.textAlign = 'center';
+                } else {
+                    step.style.flexDirection = 'row';
+                    step.style.textAlign = 'left';
+                }
+            });
+        }
+
+        window.addEventListener('resize', handleResize);
+        handleResize(); // Initial call
+
+        // Smooth scroll for footer links
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Newsletter form validation
+        document.querySelector('.newsletter-form input').addEventListener('input', (e) => {
+            const email = e.target.value;
+            const button = document.querySelector('.newsletter-form button');
+            
+            if (email.includes('@') && email.includes('.')) {
+                button.style.background = '#4ade80';
+                button.textContent = 'Suscribirse';
+            } else {
+                button.style.background = '#667eea';
+                button.textContent = 'Suscribirse';
+            }
+        });
+
+        // Add loading animation to video
+        document.querySelector('.play-button').addEventListener('click', () => {
+            const playButton = document.querySelector('.play-button');
+            const originalContent = playButton.innerHTML;
+            
+            playButton.innerHTML = '<div style="font-size: 1.5rem;">⏳</div>';
+            playButton.style.animation = 'spin 1s linear infinite';
+            
+            setTimeout(() => {
+                playButton.innerHTML = originalContent;
+                playButton.style.animation = 'none';
+                playVideo();
+            }, 1500);
+        });
+
+        // Add spin animation for loading
+        const spinStyle = document.createElement('style');
+        spinStyle.textContent = `
+            @keyframes spin {
+                from { transform: rotate(0deg); }
+                to { transform: rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(spinStyle);
+    </script>
+</body>
+</html>

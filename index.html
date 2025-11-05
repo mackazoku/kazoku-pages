@@ -158,6 +158,15 @@
             font-family: 'Playfair Display', Georgia, serif;
         }
 
+        .main-subtitle {
+            font-size: 16px;
+            color: #5a5a5a;
+            font-weight: 400;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            max-width: 500px;
+        }
+
         .website-link {
             font-size: 20px;
             color: #5a5a5a;
@@ -900,6 +909,8 @@
                                 
                 <div class="main-tagline" id="mainTagline">Smart family assistant with Kazoku-AI</div>
                 
+                <div class="main-subtitle" id="mainSubtitle">Your smart family assistant for managing schedules, sharing moments, and keeping loved ones connected anytime, anywhere</div>
+                
                 <div class="website-link">
                     <a href="https://kazoku-ai.com" target="_blank">https://kazoku-ai.com</a>
                 </div>
@@ -1457,46 +1468,84 @@
     </footer>
 
     <script>
-        // Main tagline translations
-        const mainTaglines = [
-            { lang: 'en', text: 'Smart family assistant with Kazoku-AI' },
-            { lang: 'vi', text: 'Trợ lý gia đình thông minh với Kazoku-AI' },
-            { lang: 'ja', text: 'Kazoku-AIによるスマート家族アシスタント' },
-            { lang: 'ko', text: 'Kazoku-AI를 활용한 스마트 가족 도우미' },
-            { lang: 'zh', text: '使用 Kazoku-AI 的智能家庭助手' },
-            { lang: 'fr', text: 'Assistant familial intelligent avec Kazoku-AI' },
-            { lang: 'th', text: 'ผู้ช่วยครอบครัวอัจฉริยะด้วย Kazoku-AI' },
-            { lang: 'es', text: 'Asistente familiar inteligente con Kazoku-AI' },
-            { lang: 'pt', text: 'Assistente familiar inteligente com Kazoku-AI' }
+        // Main tagline and subtitle translations
+        const mainContent = [
+            { 
+                lang: 'en', 
+                tagline: 'Where families connect with love',
+                subtitle: 'Your smart family assistant for managing schedules, sharing moments, and keeping loved ones connected anytime, anywhere'
+            },
+            { 
+                lang: 'vi', 
+                tagline: 'Nơi gia đình kết nối yêu thương',
+                subtitle: 'Trợ lý thông minh giúp gia đình quản lý lịch trình, chia sẻ khoảnh khắc và kết nối mọi người thân yêu mọi lúc, mọi nơi'
+            },
+            { 
+                lang: 'ja', 
+                tagline: '家族が愛で繋がる場所',
+                subtitle: 'スケジュール管理、思い出の共有、大切な人とのつながりをサポートするスマート家族アシスタント'
+            },
+            { 
+                lang: 'ko', 
+                tagline: '가족이 사랑으로 연결되는 곳',
+                subtitle: '일정 관리, 순간 공유, 소중한 사람들과의 연결을 돕는 스마트 가족 도우미'
+            },
+            { 
+                lang: 'zh', 
+                tagline: '家庭以爱相连的地方',
+                subtitle: '智能家庭助手，帮助管理日程、分享美好时刻，让亲人随时随地保持联系'
+            },
+            { 
+                lang: 'fr', 
+                tagline: 'Où les familles se connectent avec amour',
+                subtitle: 'Votre assistant familial intelligent pour gérer les emplois du temps, partager des moments et rester connecté à tout moment'
+            },
+            { 
+                lang: 'es', 
+                tagline: 'Donde las familias se conectan con amor',
+                subtitle: 'Tu asistente familiar inteligente para gestionar horarios, compartir momentos y mantener a tus seres queridos conectados en cualquier momento y lugar'
+            },
+            { 
+                lang: 'pt', 
+                tagline: 'Onde as famílias se conectam com amor',
+                subtitle: 'Seu assistente familiar inteligente para gerenciar horários, compartilhar momentos e manter seus entes queridos conectados a qualquer hora, em qualquer lugar'
+            }
         ];
 
         let currentTaglineIndex = 0;
         const mainTaglineElement = document.getElementById('mainTagline');
+        const mainSubtitleElement = document.getElementById('mainSubtitle');
 
-        // Function to update main tagline
-        function updateMainTagline() {
+        // Function to update main tagline and subtitle
+        function updateMainContent() {
             // Fade out
             mainTaglineElement.style.opacity = '0';
             mainTaglineElement.style.transform = 'translateY(10px)';
+            mainSubtitleElement.style.opacity = '0';
+            mainSubtitleElement.style.transform = 'translateY(10px)';
             
             setTimeout(() => {
                 // Change text
-                mainTaglineElement.textContent = mainTaglines[currentTaglineIndex].text;
+                mainTaglineElement.textContent = mainContent[currentTaglineIndex].tagline;
+                mainSubtitleElement.textContent = mainContent[currentTaglineIndex].subtitle;
                 
                 // Fade in
                 mainTaglineElement.style.opacity = '1';
                 mainTaglineElement.style.transform = 'translateY(0)';
+                mainSubtitleElement.style.opacity = '1';
+                mainSubtitleElement.style.transform = 'translateY(0)';
                 
                 // Move to next language
-                currentTaglineIndex = (currentTaglineIndex + 1) % mainTaglines.length;
+                currentTaglineIndex = (currentTaglineIndex + 1) % mainContent.length;
             }, 500);
         }
 
         // Add CSS transition
         mainTaglineElement.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        mainSubtitleElement.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
 
-        // Change tagline every 5 seconds
-        setInterval(updateMainTagline, 5000);
+        // Change content every 5 seconds
+        setInterval(updateMainContent, 5000);
 
         // Multilingual taglines
         const taglines = [

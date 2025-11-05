@@ -29,15 +29,16 @@
         }
 
         /* Top Banner */
+        /* Top Banner - Inspired by kazoku_feature_graphic_en.png */
         .banner {
-            background: rgba(255, 255, 255, 0.1);
+            background: linear-gradient(135deg, rgba(255, 192, 227, 0.7) 0%, rgba(248, 199, 221, 0.7) 25%, rgba(230, 197, 230, 0.7) 50%, rgba(212, 194, 230, 0.7) 75%, rgba(221, 199, 240, 0.7) 100%);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 32px;
             padding: 60px 40px;
             margin-bottom: 40px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.5);
             position: relative;
             overflow: hidden;
             display: flex;
@@ -48,26 +49,26 @@
         .banner::before {
             content: '';
             position: absolute;
-            top: -50%;
+            top: -20%;
             right: -10%;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.4) 0%, transparent 70%);
             border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            animation: float 8s ease-in-out infinite;
             z-index: 0;
         }
 
         .banner::after {
             content: '';
             position: absolute;
-            bottom: -30%;
-            left: -5%;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            bottom: -20%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
             border-radius: 50%;
-            animation: float 8s ease-in-out infinite reverse;
+            animation: float 10s ease-in-out infinite reverse;
             z-index: 0;
         }
 
@@ -76,19 +77,24 @@
                 transform: translate(0, 0) scale(1);
             }
             50% {
-                transform: translate(20px, 20px) scale(1.1);
+                transform: translate(30px, 30px) scale(1.05);
             }
+        }
+
+        .banner-content {
+            z-index: 2;
+            position: relative;
         }
 
         .banner-image {
             flex-shrink: 0;
-            width: 300px;
-            height: 300px;
-            border-radius: 20px;
+            width: 50%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 24px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
             position: relative;
-            cursor: pointer;
             z-index: 2;
         }
 
@@ -96,73 +102,59 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: opacity 0.6s ease-in-out;
-            position: absolute;
-            top: 0;
-            left: 0;
-        }
-
-        .banner-image .image-default {
-            opacity: 1;
-            z-index: 2;
-        }
-
-        .banner-image .image-hover {
-            opacity: 0;
-            z-index: 1;
-        }
-
-        .banner-image:hover .image-default {
-            opacity: 0;
-        }
-
-        .banner-image:hover .image-hover {
-            opacity: 1;
-        }
-
-        .banner-image:hover {
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            transform: scale(1.02);
-        }
-
-        .banner-content {
-            flex: 1;
-            z-index: 2;
+            display: block;
         }
 
         .logo {
             display: flex;
             align-items: center;
             gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .logo-text {
-            font-size: 48px;
-            font-weight: 800;
-            color: white;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-            letter-spacing: 3px;
+            margin-bottom: 30px;
         }
 
         .logo-image {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             object-fit: contain;
-            filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.3));
-            border-radius: 12px;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.2));
+        }
+
+        .logo-text-container {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .logo-text {
+            font-size: 44px;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: 3px;
+            line-height: 1;
+        }
+
+        .logo-subtitle {
+            font-size: 17px;
+            color: #5a5a5a;
+            font-weight: 400;
+            letter-spacing: 0.3px;
+            text-transform: none;
+        }
+
+        .quote-icon {
+            font-size: 60px;
+            color: rgba(193, 148, 120, 0.5);
+            line-height: 1;
+            margin-bottom: 15px;
         }
 
         .tagline {
-            font-size: 28px;
-            color: white;
-            font-weight: 600;
-            min-height: 80px;
-            display: flex;
-            align-items: center;
-            line-height: 1.4;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-            margin-bottom: 15px;
+            font-size: 18px;
+            color: #1a1a1a;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', 'Georgia', serif;
         }
 
         .tagline-text {
@@ -170,22 +162,213 @@
             animation: fadeInOut 5s infinite;
         }
 
-        .subtitle {
-            font-size: 16px;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
-            max-width: 600px;
-            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+        .website-link {
+            font-size: 18px;
+            color: #4a4a4a;
+            font-style: italic;
+            margin-top: 20px;
         }
 
-        .subtitle-text {
-            opacity: 0;
-            animation: fadeInOut 5s infinite;
+        .website-link a {
+            color: #4a4a4a;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .website-link a:hover {
+            color: #1a1a1a;
+        }
+
+        .banner-image-container {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .phone-mockup {
+            position: relative;
+            width: 320px;
+            height: 650px;
+            perspective: 1000px;
+            animation: floatPhone 6s ease-in-out infinite;
+        }
+
+        @keyframes floatPhone {
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        .phone-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            border-radius: 45px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            box-sizing: border-box;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 28px;
+            background: #1a1a1a;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 38px;
+            overflow: hidden;
+            background: linear-gradient(180deg, #ffc9e5 0%, #ffd5e8 100%);
+            position: relative;
+        }
+
+        .phone-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px 20px;
+        }
+
+        .app-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+        }
+
+        .app-title {
+            font-size: 42px;
+            font-weight: 800;
+            color: #3b5bdb;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .app-tagline {
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .app-preview {
+            width: 90%;
+            height: 200px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .app-features {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: #3b5bdb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(59, 91, 219, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .feature-labels {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+            font-size: 11px;
+            color: #e74c3c;
+            font-weight: 600;
+            flex-wrap: wrap;
         }
 
         @keyframes fadeInOut {
             0%, 100% { opacity: 0; transform: translateY(10px); }
             10%, 90% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design for Banner */
+        @media (max-width: 968px) {
+            .banner {
+                grid-template-columns: 1fr;
+                padding: 60px 40px;
+                gap: 40px;
+            }
+
+            .phone-mockup {
+                width: 280px;
+                height: 570px;
+            }
+
+            .tagline {
+                font-size: 36px;
+            }
+
+            .logo-text {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .banner {
+                padding: 40px 20px;
+            }
+
+            .tagline {
+                font-size: 28px;
+            }
+
+            .logo-text {
+                font-size: 28px;
+            }
+
+            .phone-mockup {
+                width: 240px;
+                height: 490px;
+            }
         }
 
         /* Features Section */
@@ -812,7 +995,7 @@
 
             .banner-image {
                 width: 100%;
-                height: 250px;
+                max-width: 100%;
             }
 
             .logo {
@@ -884,12 +1067,14 @@
         <div class="banner">
             <div class="banner-image">
                 <img class="image-default" src="images/family.jpg" alt="Kazoku Family">
-                <img class="image-hover" src="images/family1.jpg" alt="Kazoku Family Connection">
             </div>
             <div class="banner-content">
                 <div class="logo">
                     <img class="logo-image" src="images/logo.png" alt="Kazoku Logo">
-                    <span class="logo-text">KAZOKU - the family app</span>
+                    <div class="logo-text-container">
+                        <div class="logo-text">KAZOKU</div>
+                        <div class="logo-subtitle">the family assistant</div>
+                    </div>
                 </div>
                 <div class="tagline">
                     <span class="tagline-text" id="taglineText"></span>
@@ -905,7 +1090,7 @@
             <h2 class="features-title">Key Features</h2>
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">📱</div>
+                    <div class="feature-icon">📸</div>
                     <div class="feature-name">Timeline (FNS)</div>
                     <div class="feature-description">Private social network for families - Family Network Service. Connect and share moments exclusively with your loved ones.</div>
                 </div>
@@ -923,19 +1108,19 @@
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🎉</div>
+                    <div class="feature-icon">🏖️</div>
                     <div class="feature-name">Activity History</div>
                     <div class="feature-description">Plan and preserve memories of family outings. Every moment is captured effectively and easily.</div>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">📝</div>
+                    <div class="feature-icon">📔</div>
                     <div class="feature-name">Daily Journal</div>
                     <div class="feature-description">Track daily activities: exercise, sleep, meals, health, personal diary, and much more.</div>
                 </div>
 
                 <div class="feature-card">
-                    <div class="feature-icon">🤖</div>
+                    <div class="feature-icon">✨</div>
                     <div class="feature-name">Kazoku AI</div>
                     <div class="feature-description">Smart assistant like a friendly companion, always ready to help and provide insights based on your family's daily activities.</div>
                 </div>
@@ -1404,7 +1589,63 @@
 
         <!-- Image Overlay Modal -->
         <div class="image-overlay" id="imageOverlay" onclick="closeImageOverlay(event)">
-            <div class="overlay-content">
+<body>
+    <div class="container">
+        <!-- Top Banner Section -->
+        <div class="banner">
+            <div class="banner-content">
+                <div class="logo">
+                    <img src="images/logo.png" alt="Kazoku Logo" class="logo-image">
+                    <div class="logo-text-container">
+                        <div class="logo-text">KAZOKU</div>
+                        <div class="logo-subtitle">The family assistant</div>
+                    </div>
+                </div>
+                
+                <div class="quote-icon">"</div>
+                
+                <div class="tagline">
+                    <span id="taglineText" class="tagline-text">Smart family assistant with Kazoku-AI</span>
+                </div>
+                
+                <div class="website-link">
+                    <a href="https://kazoku-ai.com" target="_blank">https://kazoku-ai.com</a>
+                </div>
+            </div>
+
+            <div class="banner-image-container">
+                <div class="phone-mockup">
+                    <div class="phone-frame">
+                        <div class="phone-notch"></div>
+                        <div class="phone-screen">
+                            <div class="phone-content">
+                                <img src="images/logo.png" alt="Kazoku" class="app-logo">
+                                <div class="app-title">KAZOKU</div>
+                                <div class="app-tagline">Where families<br>connect with love</div>
+                                
+                                <div class="app-preview">
+                                    <img src="images/banner-left.png" alt="Family" class="preview-image">
+                                </div>
+                                
+                                <div class="app-features">
+                                    <div class="feature-icon"><i class="fas fa-calendar"></i></div>
+                                    <div class="feature-icon"><i class="fas fa-bell"></i></div>
+                                    <div class="feature-icon"><i class="fas fa-gift"></i></div>
+                                    <div class="feature-icon"><i class="fas fa-chart-bar"></i></div>
+                                    <div class="feature-icon"><i class="fas fa-users"></i></div>
+                                </div>
+                                
+                                <div class="feature-labels">
+                                    <span>Chores • Events • Fun</span>
+                                    <span>Memories</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
                 <button class="overlay-close" onclick="closeImageOverlay(event)">×</button>
                 <img class="overlay-image" id="overlayImage" src="" alt="">
             </div>

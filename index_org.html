@@ -142,31 +142,35 @@
         }
 
         .quote-icon {
-            font-size: 80px;
+            font-size: 60px;
             color: rgba(193, 148, 120, 0.5);
             line-height: 1;
             margin-bottom: 15px;
-            font-family: Georgia, serif;
         }
 
-        .main-tagline {
-            font-size: 26px;
+        .tagline {
+            font-size: 18px;
             color: #1a1a1a;
             font-weight: 700;
-            line-height: 1.1;
+            line-height: 1.2;
             margin-bottom: 20px;
-            font-family: 'Playfair Display', Georgia, serif;
+            font-family: 'Playfair Display', 'Georgia', serif;
+        }
+
+        .tagline-text {
+            opacity: 0;
+            animation: fadeInOut 5s infinite;
         }
 
         .website-link {
-            font-size: 20px;
-            color: #5a5a5a;
+            font-size: 18px;
+            color: #4a4a4a;
             font-style: italic;
             margin-top: 20px;
         }
 
         .website-link a {
-            color: #5a5a5a;
+            color: #4a4a4a;
             text-decoration: none;
             transition: color 0.3s ease;
         }
@@ -175,32 +179,195 @@
             color: #1a1a1a;
         }
 
-        /* Phone Mockup */
-        .phone-mockup-container {
+        .banner-image-container {
             position: relative;
             z-index: 2;
-            flex-shrink: 0;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            height: 100%;
         }
 
-        .phone-image {
-            /* width: 50%; */
-            height: auto;
-            max-width: 500px;
-            object-fit: cover;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        .phone-mockup {
+            position: relative;
+            width: 320px;
+            height: 650px;
+            perspective: 1000px;
             animation: floatPhone 6s ease-in-out infinite;
         }
 
         @keyframes floatPhone {
             0%, 100% {
-                transform: translateY(0px);
+                transform: translateY(0px) rotate(0deg);
             }
             50% {
-                transform: translateY(-15px);
+                transform: translateY(-20px) rotate(2deg);
+            }
+        }
+
+        .phone-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            border-radius: 45px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3);
+            padding: 12px;
+            box-sizing: border-box;
+        }
+
+        .phone-notch {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 28px;
+            background: #1a1a1a;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 38px;
+            overflow: hidden;
+            background: linear-gradient(180deg, #ffc9e5 0%, #ffd5e8 100%);
+            position: relative;
+        }
+
+        .phone-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px 20px;
+        }
+
+        .app-logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 15px;
+            filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+        }
+
+        .app-title {
+            font-size: 42px;
+            font-weight: 800;
+            color: #3b5bdb;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .app-tagline {
+            font-size: 16px;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            text-align: center;
+            line-height: 1.4;
+        }
+
+        .app-preview {
+            width: 90%;
+            height: 200px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            margin-bottom: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .app-features {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: #3b5bdb;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            box-shadow: 0 4px 12px rgba(59, 91, 219, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .feature-labels {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+            font-size: 11px;
+            color: #e74c3c;
+            font-weight: 600;
+            flex-wrap: wrap;
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0; transform: translateY(10px); }
+            10%, 90% { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive Design for Banner */
+        @media (max-width: 968px) {
+            .banner {
+                grid-template-columns: 1fr;
+                padding: 60px 40px;
+                gap: 40px;
+            }
+
+            .phone-mockup {
+                width: 280px;
+                height: 570px;
+            }
+
+            .tagline {
+                font-size: 36px;
+            }
+
+            .logo-text {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .banner {
+                padding: 40px 20px;
+            }
+
+            .tagline {
+                font-size: 28px;
+            }
+
+            .logo-text {
+                font-size: 28px;
+            }
+
+            .phone-mockup {
+                width: 240px;
+                height: 490px;
             }
         }
 
@@ -826,13 +993,13 @@
                 padding: 40px 24px;
             }
 
-            .phone-image {
-                width: 80%;
-                max-width: 320px;
+            .banner-image {
+                width: 100%;
+                max-width: 100%;
             }
 
-            .main-tagline {
-                font-size: 32px;
+            .logo {
+                font-size: 36px;
             }
 
             .logo-text {
@@ -840,8 +1007,17 @@
             }
 
             .logo-image {
-                width: 50px;
-                height: 50px;
+                width: 45px;
+                height: 45px;
+            }
+
+            .tagline {
+                font-size: 22px;
+                min-height: 100px;
+            }
+
+            .subtitle {
+                font-size: 14px;
             }
 
             .features-title {
@@ -889,24 +1065,23 @@
     <div class="container">
         <!-- Top Banner -->
         <div class="banner">
+            <div class="banner-image">
+                <img class="image-default" src="images/family.png" alt="Kazoku Family">
+            </div>
             <div class="banner-content">
                 <div class="logo">
                     <img class="logo-image" src="images/logo.png" alt="Kazoku Logo">
                     <div class="logo-text-container">
                         <div class="logo-text">KAZOKU</div>
-                        <div class="logo-subtitle">The Family Assistant</div>
+                        <div class="logo-subtitle">the family assistant</div>
                     </div>
                 </div>
-                                
-                <div class="main-tagline" id="mainTagline">Smart family assistant with Kazoku-AI</div>
-                
-                <div class="website-link">
-                    <a href="https://kazoku-ai.com" target="_blank">https://kazoku-ai.com</a>
+                <div class="tagline">
+                    <span class="tagline-text" id="taglineText"></span>
                 </div>
-            </div>
-
-            <div class="phone-mockup-container">
-                <img src="images/family.png" alt="Kazoku App" class="phone-image">
+                <div class="subtitle">
+                    <span class="subtitle-text" id="subtitleText"></span>
+                </div>
             </div>
         </div>
 
@@ -1457,47 +1632,6 @@
     </footer>
 
     <script>
-        // Main tagline translations
-        const mainTaglines = [
-            { lang: 'en', text: 'Smart family assistant with Kazoku-AI' },
-            { lang: 'vi', text: 'Trợ lý gia đình thông minh với Kazoku-AI' },
-            { lang: 'ja', text: 'Kazoku-AIによるスマート家族アシスタント' },
-            { lang: 'ko', text: 'Kazoku-AI를 활용한 스마트 가족 도우미' },
-            { lang: 'zh', text: '使用 Kazoku-AI 的智能家庭助手' },
-            { lang: 'fr', text: 'Assistant familial intelligent avec Kazoku-AI' },
-            { lang: 'th', text: 'ผู้ช่วยครอบครัวอัจฉริยะด้วย Kazoku-AI' },
-            { lang: 'es', text: 'Asistente familiar inteligente con Kazoku-AI' },
-            { lang: 'pt', text: 'Assistente familiar inteligente com Kazoku-AI' }
-        ];
-
-        let currentTaglineIndex = 0;
-        const mainTaglineElement = document.getElementById('mainTagline');
-
-        // Function to update main tagline
-        function updateMainTagline() {
-            // Fade out
-            mainTaglineElement.style.opacity = '0';
-            mainTaglineElement.style.transform = 'translateY(10px)';
-            
-            setTimeout(() => {
-                // Change text
-                mainTaglineElement.textContent = mainTaglines[currentTaglineIndex].text;
-                
-                // Fade in
-                mainTaglineElement.style.opacity = '1';
-                mainTaglineElement.style.transform = 'translateY(0)';
-                
-                // Move to next language
-                currentTaglineIndex = (currentTaglineIndex + 1) % mainTaglines.length;
-            }, 500);
-        }
-
-        // Add CSS transition
-        mainTaglineElement.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-
-        // Change tagline every 5 seconds
-        setInterval(updateMainTagline, 5000);
-
         // Multilingual taglines
         const taglines = [
             { lang: 'vi', text: 'Nơi gia đình kết nối yêu thương' },

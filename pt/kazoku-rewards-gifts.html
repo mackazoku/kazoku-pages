@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recompensas e Presentes - Aplicativo Familiar Kazoku</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding: 40px 0;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fff, #e1e8ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: left 0.8s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: rotate(360deg) scale(1.1);
+            background: linear-gradient(135deg, #764ba2, #667eea);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #6c7b8a;
+            line-height: 1.6;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .feature-list {
+            text-align: left;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .feature-list li {
+            color: #333;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .feature-list li::before {
+            content: '•';
+            color: #000;
+            font-size: 1.2rem;
+            position: absolute;
+            left: 0;
+            top: -2px;
+        }
+
+        .demo-section {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: fadeInUp 1s ease-out 0.6s both;
+        }
+
+        .demo-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .demo-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .demo-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .demo-tab {
+            padding: 12px 24px;
+            background: transparent;
+            border: 2px solid #667eea;
+            border-radius: 25px;
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .demo-tab.active, .demo-tab:hover {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .demo-content {
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .demo-tab-content {
+            display: none;
+            width: 100%;
+            animation: fadeInUp 0.5s ease-out;
+        }
+
+        .demo-tab-content.active {
+            display: block;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            background: linear-gradient(135deg, #f8f9ff, #e8f2ff);
+            border: 2px dashed #667eea;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .photo-placeholder:hover {
+            background: linear-gradient(135deg, #e8f2ff, #f0f4ff);
+            border-color: #764ba2;
+            transform: scale(1.02);
+        }
+
+        .photo-placeholder-icon {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+
+        .photo-placeholder-text {
+            color: #667eea;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 8px;
+        }
+
+        .photo-placeholder-subtext {
+            color: #8e9aaf;
+            font-size: 0.9rem;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .photo-placeholder::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(102, 126, 234, 0.05), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+        }
+
+        .feature-highlight {
+            background: #f0f4ff;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .feature-highlight h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-highlight p {
+            color: #6c7b8a;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+        }
+
+        .cta-button:hover::before {
+            left: 100%;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+            
+            .header p {
+                font-size: 1.1rem;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 30px 25px;
+            }
+            
+            .demo-section {
+                padding: 40px 20px;
+            }
+
+            .demo-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .demo-tab {
+                width: 200px;
+                text-align: center;
+            }
+
+            .photo-placeholder {
+                height: 300px;
+            }
+        }
+
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-circle:nth-child(1) {
+            width: 60px;
+            height: 60px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-circle:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-circle:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            border-radius: 15px;
+            font-size: 0.95rem;
+        }
+
+        .footer-note strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+        <div class="floating-circle"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🎁 Recompensas e Presentes</h1>
+            <p>Motive e incentive os membros da família através de um sistema inteligente de recompensas. Ganhe pontos completando tarefas e resgate presentes atraentes, transformando tarefas domésticas em uma experiência divertida e recompensadora.</p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">⭐</div>
+                <h3>Acúmulo Automático de Pontos</h3>
+                <p>Ganhe pontos de recompensa instantaneamente ao completar tarefas domésticas, com um sistema de pontos flexível e justo.</p>
+                <ul class="feature-list">
+                    <li>Ganhe pontos automaticamente ao completar tarefas ou atualizar logs diários</li>
+                    <li>Pontos padrão por tipo de tarefa</li>
+                    <li>Pontos bônus para tarefas especiais</li>
+                    <li>Pontos bônus por conclusão antecipada (se o bônus estiver definido)</li>                    
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">⚙️</div>
+                <h3>Gestão de Recompensas</h3>
+                <p>Supervisores têm controle total para definir e ajustar pontos de recompensa para cada atividade e tarefa.</p>
+                <ul class="feature-list">
+                    <li>Defina pontos para cada tipo de tarefa</li>
+                    <li>Personalize pontos por dificuldade</li>
+                    <li>Adicione pontos bônus flexíveis</li>
+                    <li>Ajuste pontos ao longo do tempo</li>
+                    <li>Histórico detalhado de acúmulo de pontos de cada membro</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎁</div>
+                <h3>Loja de Presentes Diversificada</h3>
+                <p>Crie uma lista rica de presentes, desde dinheiro até itens, adequada para todas as idades da família.</p>
+                <ul class="feature-list">
+                    <li>Supervisores familiares registram presentes destinados como recompensas para membros</li>
+                    <li>Defina pontos necessários para cada presente</li>
+                    <li>Presentes podem ser dinheiro ou itens</li>
+                    <li>Adicione imagens e descrições detalhadas</li>
+                    <li>Gerencie o status do presente (disponível ou resgatado)</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Resgatar Pontos por Presentes</h3>
+                <p>Os membros podem usar facilmente os pontos acumulados para resgatar presentes favoritos da loja de presentes (recebidos do supervisor da família).</p>
+                <ul class="feature-list">
+                    <li>Veja a lista de presentes resgatáveis</li>
+                    <li>Verifique os pontos atuais</li>
+                    <li>Crie solicitações simples de resgate de presentes</li>
+                    <li>Adicione notas à solicitação</li>
+                    <li>Acompanhe o status da solicitação</li>
+                </ul>
+            </div>
+
+            <div class="feature-card">
+                <div class="feature-icon">✅</div>
+                <h3>Sistema de Aprovação</h3>
+                <p>Um processo de aprovação claro ajuda os supervisores a controlar e lidar com solicitações de resgate de presentes de forma eficaz.</p>
+                <ul class="feature-list">
+                    <li>Supervisores receberão notificações de novos resgates de presentes</li>
+                    <li>Veja detalhes da solicitação de resgate de presente</li>
+                    <li>Aprove ou rejeite com motivo</li>
+                    <li>Registre o horário de entrega do presente</li>
+                    <li>Entregue presentes e atualize o status</li>
+                    <li>Salve histórico completo de transações</li>
+                </ul>
+            </div>            
+        </div>
+
+        <!-- <div class="demo-section">
+            <h2>Tela de Recompensas e Presentes</h2>
+            
+            <div class="demo-tabs">
+                <button class="demo-tab active" data-tab="earn-points">Ganhar Pontos</button>
+                <button class="demo-tab" data-tab="manage-points">Gerenciar Pontos</button>
+                <button class="demo-tab" data-tab="gift-store">Loja de Presentes</button>
+                <button class="demo-tab" data-tab="redeem">Resgatar Presentes</button>
+                <button class="demo-tab" data-tab="approval">Gerenciar Solicitações</button>
+            </div>
+
+            <div class="demo-content">
+                <div class="demo-tab-content active" id="earn-points">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Ganhe pontos ao completar tarefas</h3>
+                        <p>Sempre que uma tarefa doméstica é concluída, os membros ganham automaticamente pontos de recompensa, incluindo pontos padrão e quaisquer pontos bônus.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="manage-points">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Gestão do Sistema de Pontos</h3>
+                        <p>Supervisores podem definir pontos padrão para cada tipo de tarefa e adicionar pontos bônus especiais para tarefas importantes.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="gift-store">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Variedade de Presentes</h3>
+                        <p>Supervisores registram recompensas (dinheiro ou itens) com pontos necessários. Membros visualizam e escolhem presentes de acordo com seus pontos.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="redeem">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Processo de Resgate Simples</h3>
+                        <p>Membros selecionam presentes para resgatar, criam uma solicitação e aguardam aprovação. O sistema exibe claramente os pontos atuais e necessários.</p>
+                    </div>
+                </div>
+
+                <div class="demo-tab-content" id="approval">
+                    <div class="photo-placeholder">
+                        
+                    </div>
+                    <div class="feature-highlight">
+                        <h3>Aprovação e Entrega de Presentes</h3>
+                        <p>Supervisores recebem notificações sobre novas solicitações, revisam detalhes e decidem aprovar ou rejeitar. O histórico de transações é totalmente armazenado.</p>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+
+        <div class="cta-section">
+            <button class="cta-button" onclick="showMessage()">
+                Comece a Ganhar Pontos e Receber Presentes
+            </button>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - Assistente Inteligente para Cada Família!</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ De Tóquio, enviando amor para cada família</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Baixar iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Baixar Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.com/@kazoku.mac"><i class="fab fa-threads"></i></a>
+                <a href="https://x.com/KazokuMac"><i class="fab fa-x"></i></a>
+                <a href="https://www.instagram.com/kazoku.mac"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Termos de Serviço</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Política de Privacidade</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="mac-index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Empresa Gestora</a>
+        </div>
+        <p>&copy; 2025 Aplicativo Familiar Kazoku. Todos os direitos reservados.<br>
+            <em>"Conectando Amor - Compartilhando Felicidade"</em>
+        </p>
+    </footer>
+
+    <script>
+        function showMessage() {
+            // alert('🎁 Welcome to Kazoku Rewards & Gifts system! Start earning points and redeem gifts today.');
+            window.location.href="https://kazoku-ai.com/app";
+        }
+
+        // Tab functionality
+        document.querySelectorAll('.demo-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.demo-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.demo-tab-content').forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                // Show corresponding content
+                const targetContent = document.getElementById(tab.dataset.tab);
+                targetContent.classList.add('active');
+                
+                // Add entrance animation
+                targetContent.style.animation = 'none';
+                targetContent.offsetHeight; // Trigger reflow
+                targetContent.style.animation = 'fadeInUp 0.5s ease-out';
+            });
+        });
+
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.floating-circle');
+            
+            parallaxElements.forEach((element, index) => {
+                const speed = (index + 1) * 0.3;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Photo placeholder interaction
+        document.querySelectorAll('.photo-placeholder').forEach(placeholder => {
+            placeholder.addEventListener('click', () => {
+                placeholder.style.transform = 'scale(1.05)';
+                setTimeout(() => {
+                    placeholder.style.transform = 'scale(1)';
+                }, 200);
+                
+                // Show instruction
+                const instruction = document.createElement('div');
+                instruction.textContent = '📷 Paste an actual app screenshot here';
+                instruction.style.cssText = `
+                    position: fixed;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    background: #667eea;
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 25px;
+                    font-size: 0.9rem;
+                    z-index: 1000;
+                    animation: fadeInUp 0.3s ease-out;
+                `;
+                document.body.appendChild(instruction);
+                setTimeout(() => {
+                    instruction.remove();
+                }, 3000);
+            });
+        });
+
+        // Feature cards hover effects
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                const icon = card.querySelector('.feature-icon');
+                icon.style.boxShadow = '0 10px 25px rgba(102, 126, 234, 0.3)';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                const icon = card.querySelector('.feature-icon');
+                icon.style.boxShadow = 'none';
+            });
+        });
+
+        // Auto-cycle through tabs for demo
+        let currentTabIndex = 0;
+        const tabs = document.querySelectorAll('.demo-tab');
+        
+        function autoSwitchTab() {
+            currentTabIndex = (currentTabIndex + 1) % tabs.length;
+            tabs[currentTabIndex].click();
+        }
+
+        // Auto switch every 8 seconds
+        setInterval(autoSwitchTab, 8000);
+    </script>
+</body>
+</html>

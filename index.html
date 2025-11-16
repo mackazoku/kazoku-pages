@@ -906,14 +906,18 @@
 
         /* Responsive Design */
         @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
             .banner {
                 flex-direction: column;
-                padding: 40px 24px;
+                padding: 24px 16px;
             }
 
             .phone-image {
-                width: 80%;
-                max-width: 320px;
+                width: 95%;
+                max-width: none;
             }
 
             .main-tagline {
@@ -935,12 +939,18 @@
                 height: 50px;
             }
 
+            .features-section {
+                padding: 24px 16px;
+            }
+
             .features-title {
                 font-size: 28px;
+                margin-bottom: 24px;
             }
 
             .features-grid {
                 grid-template-columns: 1fr;
+                gap: 16px;
             }
 
             .feature-icon {
@@ -949,15 +959,34 @@
 
             .section-title {
                 font-size: 28px;
+                margin-bottom: 24px;
             }
 
             .language-grid {
                 grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .carousel-section {
+                padding: 20px 12px;
+            }
+
+            .carousel-header {
+                margin-bottom: 20px;
+            }
+
+            .carousel-title {
+                font-size: 28px;
             }
 
             .carousel-page {
                 grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
+                gap: 6px;
+                padding: 2px;
+            }
+
+            .download-section {
+                padding: 30px 20px;
             }
 
             .download-container {
@@ -968,6 +997,7 @@
                 font-size: 28px;
             }
         }
+
 
         /* Loading Animation */
         @keyframes pulse {
@@ -991,7 +1021,7 @@
                                 
                 <div class="main-tagline" id="mainTagline">Where families connect with love</div>
                 
-                <div class="main-subtitle" id="mainSubtitle">Your smart family assistant for managing schedules, sharing moments, and keeping loved ones connected anytime, anywhere</div>
+                <div class="main-subtitle" id="mainSubtitle">A smart assistant that helps families manage schedules, share moments, and stay connected with loved ones anytime, anywhere. This is the first and most complete family assistant that integrates AI into every function supporting family life.</div>
             </div>
 
             <div class="phone-mockup-container">
@@ -1553,42 +1583,42 @@
             { 
                 lang: 'en', 
                 tagline: 'Where families connect with love',
-                subtitle: 'Your smart family assistant for managing schedules, sharing moments, and keeping loved ones connected anytime, anywhere'
+                subtitle: 'A smart assistant that helps families manage schedules, share moments, and stay connected with loved ones anytime, anywhere. This is the first and most complete family assistant that integrates AI into every function supporting family life.'
             },
             { 
                 lang: 'vi', 
                 tagline: 'Nơi gia đình kết nối yêu thương',
-                subtitle: 'Trợ lý thông minh giúp gia đình quản lý lịch trình, chia sẻ khoảnh khắc và kết nối mọi người thân yêu mọi lúc, mọi nơi'
+                subtitle: 'Trợ lý thông minh giúp gia đình quản lý lịch trình, chia sẻ khoảnh khắc và kết nối mọi người thân yêu mọi lúc, mọi nơi. Đây là trợ lý gia đình đầu tiên và hoàn thiện nhất tích hợp AI vào mọi chức năng hỗ trợ cuộc sống gia đình.'
             },
             { 
                 lang: 'ja', 
                 tagline: '家族が愛で繋がる場所',
-                subtitle: 'スケジュール管理、思い出の共有、大切な人とのつながりをサポートするスマート家族アシスタント'
+                subtitle: '家族のスケジュール管理、思い出の共有、そして大切な人とのつながりをいつでもどこでもサポートするスマートアシスタントです。AIをあらゆる家庭サポート機能に統合した、初めてで最も完成度の高いファミリーアシスタントです。'
             },
             { 
                 lang: 'ko', 
                 tagline: '가족이 사랑으로 연결되는 곳',
-                subtitle: '일정 관리, 순간 공유, 소중한 사람들과의 연결을 돕는 스마트 가족 도우미'
+                subtitle: '가족의 일정 관리, 순간 공유, 사랑하는 사람들과의 연결을 언제 어디서나 도와주는 스마트한 도우미입니다. 가정의 모든 기능에 AI를 통합한 최초이자 가장 완성도 높은 패밀리 어시스턴트입니다.'
             },
             { 
                 lang: 'zh', 
                 tagline: '家庭以爱相连的地方',
-                subtitle: '智能家庭助手，帮助管理日程、分享美好时刻，让亲人随时随地保持联系'
+                subtitle: '智能助手帮助家庭管理日程、分享瞬间，并随时随地与亲人保持联系。它是首个也是最完善的家庭助手，将AI融入所有家庭生活支持功能。'
             },
             { 
                 lang: 'fr', 
                 tagline: 'Où les familles se connectent avec amour',
-                subtitle: 'Votre assistant familial intelligent pour gérer les emplois du temps, partager des moments et rester connecté à tout moment'
+                subtitle: 'Un assistant intelligent qui aide la famille à gérer les emplois du temps, partager des moments précieux et rester connectée où que vous soyez. Il s’agit du premier et du plus complet assistant familial intégrant l’IA dans toutes les fonctionnalités de soutien à la vie de famille.'
             },
             { 
                 lang: 'es', 
                 tagline: 'Donde las familias se conectan con amor',
-                subtitle: 'Tu asistente familiar inteligente para gestionar horarios, compartir momentos y mantener a tus seres queridos conectados en cualquier momento y lugar'
+                subtitle: 'Un asistente inteligente que ayuda a la familia a gestionar horarios, compartir momentos y conectar a los seres queridos en todo momento y desde cualquier lugar. Es el primer y más completo asistente familiar que integra IA en todas las funciones de apoyo a la vida familiar.'
             },
             { 
                 lang: 'pt', 
                 tagline: 'Onde as famílias se conectam com amor',
-                subtitle: 'Seu assistente familiar inteligente para gerenciar horários, compartilhar momentos e manter seus entes queridos conectados a qualquer hora, em qualquer lugar'
+                subtitle: 'Um assistente inteligente que ajuda a família a gerir agendas, partilhar momentos e manter todos conectados a qualquer hora e em qualquer lugar. Este é o primeiro e mais completo assistente familiar que integra IA em todas as funcionalidades de apoio à vida familiar.'
             }
         ];
 
@@ -1626,30 +1656,6 @@
 
         // Change content every 5 seconds
         setInterval(updateMainContent, 5000);
-
-        // Multilingual taglines
-        const taglines = [
-            { lang: 'vi', text: 'Nơi gia đình kết nối yêu thương' },
-            { lang: 'en', text: 'Where families connect with love' },
-            { lang: 'ja', text: '家族が愛で繋がる場所' },
-            { lang: 'fr', text: 'Où les familles se connectent avec amour' },
-            { lang: 'zh', text: '家庭以爱相连的地方' },
-            { lang: 'ko', text: '가족이 사랑으로 연결되는 곳' },
-            { lang: 'es', text: 'Donde las familias se conectan con amor' },
-            { lang: 'pt', text: 'Onde as famílias se conectam com amor' }
-        ];
-
-        // Multilingual subtitles
-        const subtitles = [
-            { lang: 'vi', text: 'Trợ lý thông minh giúp gia đình quản lý lịch trình, chia sẻ khoảnh khắc và kết nối mọi người thân yêu mọi lúc, mọi nơi' },
-            { lang: 'en', text: 'Your smart family assistant for managing schedules, sharing moments, and keeping loved ones connected anytime, anywhere' },
-            { lang: 'ja', text: 'スケジュール管理、思い出の共有、大切な人とのつながりをサポートするスマート家族アシスタント' },
-            { lang: 'fr', text: 'Votre assistant familial intelligent pour gérer les emplois du temps, partager des moments et rester connecté à tout moment' },
-            { lang: 'zh', text: '智能家庭助手，帮助管理日程、分享美好时刻，让亲人随时随地保持联系' },
-            { lang: 'ko', text: '일정 관리, 순간 공유, 소중한 사람들과의 연결을 돕는 스마트 가족 도우미' },
-            { lang: 'es', text: 'Tu asistente familiar inteligente para gestionar horarios, compartir momentos y mantener a tus seres queridos conectados en cualquier momento y lugar' },
-            { lang: 'pt', text: 'Seu assistente familiar inteligente para gerenciar horários, compartilhar momentos e manter seus entes queridos conectados a qualquer hora, em qualquer lugar' }
-        ];
 
         // Language names for carousel
         const languageNames = [

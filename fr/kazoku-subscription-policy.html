@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Policy - Kazoku Family App</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .section:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #8b5cf6;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5cf6, #a855f7);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            border-left: 4px solid #8b5cf6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '✓';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #f3e8ff;
+            color: #6b21a8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">📱 Kazoku - Politique d’Abonnement</div>
+            <div class="app-subtitle">Conditions générales pour les services d’abonnement</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                En vigueur à partir du : 1 janvier 2025
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. Introduction</h2>
+                </div>
+                <div class="section-content">
+                    <p>La présente Politique d’Abonnement (« Politique ») régit votre utilisation des services
+                        d’abonnement premium de Kazoku. En vous abonnant aux fonctionnalités premium de Kazoku, vous
+                        acceptez
+                        d’être lié par cette Politique, nos Conditions d’utilisation et notre Politique de
+                        confidentialité.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 Conformité App Store & Play Store :</strong> Cette politique est conforme aux
+                            exigences
+                            d’abonnement de l’Apple App Store et du Google Play Store, incluant les prix clairs, les
+                            conditions de renouvellement automatique, les procédures d’annulation et les politiques de
+                            remboursement.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💎</span>
+                    <h2 class="section-title">2. Formules d’Abonnement et Tarification</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku propose plusieurs formules d’abonnement avec différentes fonctionnalités et tarifs :</p>
+
+                    <div class="list-item">
+                        <strong>Abonnement Mensuel :</strong> Facturé mensuellement, renouvellement automatique chaque
+                        mois
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Abonnement Annuel :</strong> Facturé annuellement, renouvellement automatique chaque
+                        année
+                        (économies par rapport au plan mensuel)
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Essai Gratuit :</strong> Certains plans peuvent proposer une période d'essai gratuite
+                        avant le début de la facturation
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>💰 Informations sur la tarification :</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Tous les prix sont affichés dans votre devise locale</li>
+                            <li>Les prix peuvent varier selon la région et inclure les taxes applicables</li>
+                            <li>Les prix sont susceptibles de changer avec un préavis de 30 jours</li>
+                            <li>Les abonnés actuels seront informés des changements de prix avant leur entrée en vigueur
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>📱 Où consulter les tarifs :</strong> Les formules d’abonnement et tarifs actuels
+                            sont disponibles dans les paramètres d’abonnement de l’application et sur notre site Web.
+                            Les prix sont également affichés dans l’App Store et le Play Store.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">3. Renouvellement Automatique et Facturation</h2>
+                </div>
+                <div class="section-content">
+                    <p><strong>Renouvellement automatique :</strong></p>
+                    <p>Votre abonnement se renouvelle automatiquement à la fin de chaque période de facturation sauf si
+                        vous l’annulez avant la date de renouvellement. En vous abonnant, vous nous autorisez à débiter
+                        votre moyen de paiement pour la période suivante.</p>
+
+                    <div class="list-item">
+                        <strong>Cycle de Facturation :</strong>
+                        <div class="sub-list-item">Les abonnements mensuels se renouvellent tous les 30 jours</div>
+                        <div class="sub-list-item">Les abonnements annuels se renouvellent tous les 365 jours</div>
+                        <div class="sub-list-item">Le renouvellement a lieu le même jour du mois/de l’année que la date
+                            d’abonnement initiale</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Traitement du Paiement :</strong>
+                        <div class="sub-list-item">Les paiements sont traités via l’Apple App Store (iOS) ou Google Play
+                            Store (Android)</div>
+                        <div class="sub-list-item">Le paiement est débité du moyen de paiement associé à votre compte
+                            App Store ou Play Store</div>
+                        <div class="sub-list-item">Vous êtes responsable de maintenir vos informations de paiement à
+                            jour</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Notifications de Renouvellement :</strong>
+                        <div class="sub-list-item">Nous vous enverrons un rappel avant chaque renouvellement
+                            (généralement 24 à 48 heures avant)</div>
+                        <div class="sub-list-item">Vous recevrez un e-mail de confirmation après chaque renouvellement
+                            réussi</div>
+                        <div class="sub-list-item">Des notifications de paiement échoué seront envoyées si le
+                            renouvellement ne peut pas être traité</div>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ Important :</strong> En cas d’échec de paiement, votre abonnement peut être
+                            suspendu ou annulé. Nous tenterons de prélever à nouveau, mais vous devez mettre à jour
+                            votre moyen de paiement s’il expire ou devient invalide.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">❌</span>
+                    <h2 class="section-title">4. Politique d’Annulation</h2>
+                </div>
+                <div class="section-content">
+                    <p>Vous pouvez annuler votre abonnement à tout moment. L’annulation prend effet à la fin de votre
+                        période de facturation en cours.</p>
+
+                    <div class="list-item">
+                        <strong>Comment Annuler :</strong>
+                        <div class="sub-list-item"><strong>iOS (Apple) :</strong> Accédez à Réglages → [Votre Nom] →
+                            Abonnements → Kazoku → Annuler l’abonnement</div>
+                        <div class="sub-list-item"><strong>Android (Google) :</strong> Accédez au Google Play Store →
+                            Abonnements → Kazoku → Annuler l’abonnement</div>
+                        <div class="sub-list-item"><strong>Dans l’Application :</strong> Vous pouvez également annuler
+                            via les paramètres d’abonnement de l’app</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Effets de l’Annulation :</strong>
+                        <div class="sub-list-item">Vous conservez l’accès aux fonctionnalités premium jusqu'à la fin de
+                            la période en cours</div>
+                        <div class="sub-list-item">Aucun remboursement n’est accordé pour la période en cours</div>
+                        <div class="sub-list-item">Votre abonnement ne sera pas renouvelé après la fin de la période
+                        </div>
+                        <div class="sub-list-item">Vous perdrez l’accès aux fonctionnalités premium à l’expiration de
+                            l’abonnement</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 Annulation Immédiate :</strong> Si vous annulez immédiatement, vous conserverez
+                            quand même l’accès jusqu’à la fin de la période déjà payée. Aucun remboursement au prorata
+                            n’est appliqué.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💰</span>
+                    <h2 class="section-title">5. Politique de Remboursement</h2>
+                </div>
+                <div class="section-content">
+                    <p><strong>Politique Standard de Remboursement :</strong></p>
+                    <p>Les remboursements des abonnements sont effectués conformément aux politiques de l’Apple App
+                        Store et du Google Play Store :</p>
+
+                    <div class="list-item">
+                        <strong>Apple App Store (iOS) :</strong>
+                        <div class="sub-list-item">Les demandes de remboursement doivent être soumises via le processus
+                            de remboursement d’Apple</div>
+                        <div class="sub-list-item">Apple gère toutes les décisions de remboursement pour les abonnements
+                            iOS</div>
+                        <div class="sub-list-item">Contactez l’assistance Apple pour toute demande</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Google Play Store (Android) :</strong>
+                        <div class="sub-list-item">Les demandes doivent être soumises via le processus de remboursement
+                            Google Play</div>
+                        <div class="sub-list-item">Google gère toutes les décisions de remboursement pour les
+                            abonnements Android</div>
+                        <div class="sub-list-item">Contactez l’assistance Google Play pour toute demande</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Notre Politique :</strong>
+                        <div class="sub-list-item">Nous ne fournissons pas de remboursements directement — tous les
+                            remboursements sont gérés par les stores respectifs</div>
+                        <div class="sub-list-item">Les remboursements sont généralement possibles dans un délai limité
+                            après l’achat (souvent 48 heures à 14 jours selon le store)</div>
+                        <div class="sub-list-item">Les remboursements peuvent ne pas être disponibles si vous avez
+                            utilisé intensivement les fonctionnalités premium</div>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ Important :</strong> Une fois qu’une période d’abonnement est utilisée, les
+                            remboursements ne sont généralement plus possibles. Les périodes d’essai gratuit peuvent
+                            être annulées à tout moment sans frais.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🎁</span>
+                    <h2 class="section-title">6. Essais Gratuits</h2>
+                </div>
+                <div class="section-content">
+                    <p>Certaines formules peuvent inclure une période d’essai gratuite :</p>
+
+                    <div class="list-item">
+                        <strong>Conditions de l’Essai :</strong>
+                        <div class="sub-list-item">La durée de l’essai gratuit sera clairement indiquée lors de votre
+                            inscription</div>
+                        <div class="sub-list-item">Aucun paiement n’est prélevé pendant la période d’essai</div>
+                        <div class="sub-list-item">Vous pouvez annuler à tout moment pendant l’essai sans frais</div>
+                        <div class="sub-list-item">Si vous n’annulez pas, l’abonnement devient payant automatiquement à
+                            la fin de l’essai</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Limitations de l’Essai :</strong>
+                        <div class="sub-list-item">Un seul essai gratuit par utilisateur et par formule</div>
+                        <div class="sub-list-item">Les essais peuvent ne pas être disponibles dans toutes les régions
+                        </div>
+                        <div class="sub-list-item">Nous nous réservons le droit de modifier ou de supprimer l’essai à
+                            tout moment</div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>📱 Gestion des Essais :</strong> Vous pouvez annuler votre période d’essai via les
+                            paramètres d’abonnement de votre appareil. L’annulation avant la fin de l’essai garantit que
+                            vous ne serez pas facturé.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">7. Modifications et Mise à Niveau des Abonnements</h2>
+                </div>
+                <div class="section-content">
+                    <p>Vous pouvez modifier votre formule d’abonnement à tout moment :</p>
+
+                    <div class="list-item">
+                        <strong>Mise à Niveau :</strong>
+                        <div class="sub-list-item">Vous pouvez passer à une formule supérieure à tout moment</div>
+                        <div class="sub-list-item">La mise à niveau prend effet immédiatement</div>
+                        <div class="sub-list-item">Vous pouvez recevoir un crédit au prorata pour la partie inutilisée
+                            de votre formule actuelle</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Rétrogradation :</strong>
+                        <div class="sub-list-item">Vous pouvez passer à une formule inférieure</div>
+                        <div class="sub-list-item">La rétrogradation prend effet à la fin de la période de facturation
+                            en cours</div>
+                        <div class="sub-list-item">Vous conservez l’accès complet jusqu’à la fin de la période</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Changement de Formule :</strong>
+                        <div class="sub-list-item">Vous pouvez passer d’un abonnement mensuel à annuel ou inversement
+                        </div>
+                        <div class="sub-list-item">Les modifications peuvent entraîner des frais ou crédits au prorata
+                        </div>
+                        <div class="sub-list-item">Toutes les modifications sont traitées via l’App Store ou Play Store
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">⚖️</span>
+                    <h2 class="section-title">8. Disponibilité du Service et Modifications</h2>
+                </div>
+                <div class="section-content">
+                    <p>Nous nous réservons le droit de modifier, suspendre ou interrompre les services d’abonnement :
+                    </p>
+
+                    <div class="list-item">Nous pouvons ajouter, modifier ou supprimer des fonctionnalités</div>
+                    <div class="list-item">Nous pouvons modifier les prix avec un préavis de 30 jours</div>
+                    <div class="list-item">Nous pouvons interrompre certaines formules (les abonnés existants seront
+                        maintenus ou recevront une alternative)</div>
+                    <div class="list-item">Le service peut être indisponible temporairement pour maintenance ou
+                        problèmes techniques</div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 Notification des Modifications :</strong> Nous vous informerons des modifications
+                            importantes via e-mail ou notifications in-app au moins 30 jours à l’avance lorsque
+                            possible.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📞</span>
+                    <h2 class="section-title">9. Support Client</h2>
+                </div>
+                <div class="section-content">
+                    <p>Pour toute question ou assistance liée aux abonnements :</p>
+
+                    <div class="list-item">
+                        <strong>Informations de Contact :</strong>
+                        <div class="sub-list-item">Email : contact@kazoku-ai.com</div>
+                        <div class="sub-list-item">Site Web : kazoku-ai.com</div>
+                        <div class="sub-list-item">Délai de réponse : Nous visons une réponse sous 48 heures</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Sujets d’Assistance :</strong>
+                        <div class="sub-list-item">Questions sur la gestion des abonnements</div>
+                        <div class="sub-list-item">Questions liées à la facturation</div>
+                        <div class="sub-list-item">Problèmes techniques avec les fonctionnalités premium</div>
+                        <div class="sub-list-item">Problèmes liés au compte</div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>📱 Assistance App Store :</strong> Pour les paiements et les remboursements, veuillez
+                            contacter directement l’Apple App Store (iOS) ou Google Play (Android), car ils gèrent tout
+                            le traitement des paiements.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">10. Mises à Jour de la Politique</h2>
+                </div>
+                <div class="section-content">
+                    <p>Nous pouvons mettre à jour la présente Politique d’Abonnement afin de :</p>
+
+                    <div class="list-item">Refléter les changements dans nos services d’abonnement</div>
+                    <div class="list-item">Respecter les exigences de l’App Store et du Play Store</div>
+                    <div class="list-item">Répondre aux changements légaux ou réglementaires</div>
+                    <div class="list-item">Améliorer la clarté et la compréhension pour les utilisateurs</div>
+
+                    <p style="margin-top: 20px;">Les changements importants seront communiqués via :</p>
+                    <div class="sub-list-item">E-mail envoyé à votre adresse enregistrée</div>
+                    <div class="sub-list-item">Notifications dans l’application</div>
+                    <div class="sub-list-item">Mise à jour de cette page de politique</div>
+
+                    <p style="margin-top: 20px;">Le fait de continuer à utiliser nos services d’abonnement après une
+                        mise à jour vaut acceptation des nouvelles conditions.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - Assistant Intelligent pour Chaque Famille !</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ Depuis Tokyo, avec amour pour chaque famille</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Télécharger iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Télécharger Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.com/@kazoku.mac"><i class="fab fa-threads"></i></a>
+                <a href="https://x.com/KazokuMac"><i class="fab fa-x"></i></a>
+                <a href="https://www.instagram.com/kazoku.mac"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'"
+                onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Conditions
+                d’Utilisation</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Politique
+                de Confidentialité</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-subscription-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'"
+                onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Confidentialité des Abonnements</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="mac-index.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Société
+                Gestionnaire</a>
+        </div>
+        <p>&copy; 2025 Kazoku Family App. Tous droits réservés.<br>
+            <em>"Relier l’Amour - Partager le Bonheur"</em>
+        </p>
+    </footer>
+</body>
+
+
+
+</html>

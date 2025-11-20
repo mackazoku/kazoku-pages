@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Política de Privacidade de Assinaturas - Kazoku Family App</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #f59e0b;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '💳';
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #f59e0b;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">💳 Kazoku - Privacidade da Assinatura</div>
+            <div class="app-subtitle">Política de privacidade para serviços de assinatura</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                Vigente a partir de: 1º de janeiro de 2025
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. Introdução</h2>
+                </div>
+                <div class="section-content">
+                    <p>Esta Política de Privacidade de Assinaturas explica como a Kazoku (“nós”) coleta, usa, armazena e
+                        protege suas informações pessoais quando você contrata nossos serviços premium. Ela complementa a
+                        Política de Privacidade principal e trata especificamente dos dados relacionados às assinaturas.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>🛡️ Nosso compromisso:</strong> Protegemos suas informações de pagamento e dados de
+                            assinatura com os mais altos padrões de segurança. Suas informações financeiras são
+                            processadas com segurança e nunca são armazenadas em nossos servidores.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💳</span>
+                    <h2 class="section-title">2. Coleta de informações de pagamento</h2>
+                </div>
+                <div class="section-content">
+                    <p>Ao assinar os serviços premium da Kazoku, coletamos as seguintes informações:</p>
+
+                    <table class="data-table">
+                        <tr>
+                            <th>Tipo de informação</th>
+                            <th>Detalhes</th>
+                            <th>Finalidade</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Método de pagamento</strong></td>
+                            <td>Cartão de crédito, débito ou conta de pagamento</td>
+                            <td>Processar o pagamento da assinatura</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dados de faturamento</strong></td>
+                            <td>Nome, endereço de cobrança, e-mail</td>
+                            <td>Emitir faturas e recibos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dados da transação</strong></td>
+                            <td>Data de compra, valor, plano, ID da transação</td>
+                            <td>Gerenciar assinaturas e oferecer suporte</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Status da assinatura</strong></td>
+                            <td>Ativa, cancelada, expirada ou em avaliação</td>
+                            <td>Garantir acesso e gerenciar renovações</td>
+                        </tr>
+                    </table>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ Importante:</strong> NÃO armazenamos os números completos dos cartões, códigos CVV
+                            ou outras credenciais. Todos os pagamentos são processados por terceiros seguros (Apple App
+                            Store, Google Play Store, Stripe) em conformidade com o PCI DSS.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔐</span>
+                    <h2 class="section-title">3. Parceiros de processamento de pagamento</h2>
+                </div>
+                <div class="section-content">
+                    <p>Utilizamos os seguintes processadores de pagamento para as transações de assinatura:</p>
+
+                    <div class="list-item">
+                        <strong>Apple App Store (iOS):</strong>
+                        <div class="sub-list-item">Processa todas as assinaturas em dispositivos iOS</div>
+                        <div class="sub-list-item">Armazena as informações de pagamento nos servidores da Apple</div>
+                        <div class="sub-list-item">Segue os padrões de segurança e privacidade da Apple</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Google Play Store (Android):</strong>
+                        <div class="sub-list-item">Processa pagamentos em dispositivos Android</div>
+                        <div class="sub-list-item">Mantém os dados de pagamento nos servidores do Google</div>
+                        <div class="sub-list-item">Cumpre os padrões de privacidade e segurança do Google</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Stripe (Web/Alternativa):</strong>
+                        <div class="sub-list-item">Processador certificado PCI DSS Nível 1</div>
+                        <div class="sub-list-item">Transmissão criptografada dos dados de pagamento</div>
+                        <div class="sub-list-item">Armazenamento tokenizado das informações sensíveis</div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>🔒 Segurança:</strong> Todos os processadores utilizados são certificados e cumprem
+                            padrões internacionais, incluindo PCI DSS, GDPR e regulamentos regionais de proteção de
+                            dados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📊</span>
+                    <h2 class="section-title">4. Como usamos os dados da assinatura</h2>
+                </div>
+                <div class="section-content">
+                    <p>Utilizamos suas informações de assinatura para:</p>
+
+                    <div class="list-item">Processar e administrar seus pagamentos</div>
+                    <div class="list-item">Liberar recursos premium conforme seu plano</div>
+                    <div class="list-item">Enviar notificações de renovação e confirmações de pagamento</div>
+                    <div class="list-item">Emitir faturas e recibos</div>
+                    <div class="list-item">Detectar e prevenir transações fraudulentas</div>
+                    <div class="list-item">Oferecer suporte ao cliente sobre assinaturas</div>
+                    <div class="list-item">Cumprir obrigações legais e fiscais</div>
+                    <div class="list-item">Analisar tendências para melhorar nossos serviços</div>
+
+                    <p style="margin-top: 20px;"><strong>Não usamos os dados de assinatura para:</strong></p>
+                    <div class="sub-list-item">Vender suas informações de pagamento</div>
+                    <div class="sub-list-item">Compartilhar dados de cobrança com anunciantes</div>
+                    <div class="sub-list-item">Utilizar dados de pagamento para marketing sem consentimento</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">5. Renovação e renovação automática</h2>
+                </div>
+                <div class="section-content">
+                    <p>As assinaturas da Kazoku se renovam automaticamente, a menos que sejam canceladas. Gerenciamos
+                        esses dados da seguinte forma:</p>
+
+                    <div class="list-item">
+                        <strong>Informações de auto-renovação:</strong>
+                        <div class="sub-list-item">Mantemos suas preferências de renovação</div>
+                        <div class="sub-list-item">Acompanhamos as datas e ciclos de cobrança</div>
+                        <div class="sub-list-item">Os métodos de pagamento ficam armazenados com segurança pelos
+                            processadores</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Notificações de renovação:</strong>
+                        <div class="sub-list-item">Enviamos lembretes antes de cada ciclo</div>
+                        <div class="sub-list-item">Enviamos confirmações após renovações bem-sucedidas</div>
+                        <div class="sub-list-item">Alertamos em caso de falha no pagamento</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 Gerenciamento:</strong> Você pode desativar a auto-renovação a qualquer momento nas
+                            configurações da App Store, Play Store ou diretamente no app.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🗑️</span>
+                    <h2 class="section-title">6. Retenção e exclusão de dados</h2>
+                </div>
+                <div class="section-content">
+                    <p>Os dados de assinatura são mantidos conforme os cenários abaixo:</p>
+
+                    <div class="list-item">
+                        <strong>Assinaturas ativas:</strong>
+                        <div class="sub-list-item">Os dados são retidos enquanto a assinatura estiver ativa</div>
+                        <div class="sub-list-item">O histórico de cobrança é preservado para seu registro</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Assinaturas canceladas:</strong>
+                        <div class="sub-list-item">Registros de transações ficam guardados por 7 anos para fins fiscais</div>
+                        <div class="sub-list-item">O status da assinatura é mantido no histórico</div>
+                        <div class="sub-list-item">Métodos de pagamento são excluídos dos nossos sistemas (podem ser
+                            retidos pelos processadores conforme suas políticas)</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Exclusão de conta:</strong>
+                        <div class="sub-list-item">Ao excluir a conta, os dados de assinatura são anonimizados</div>
+                        <div class="sub-list-item">Registros financeiros podem ser mantidos para cumprir obrigações legais</div>
+                        <div class="sub-list-item">Você pode solicitar a exclusão dos dados, sujeita às exigências legais</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🌍</span>
+                    <h2 class="section-title">7. Transferências internacionais de dados</h2>
+                </div>
+                <div class="section-content">
+                    <p>Os dados de assinatura podem ser processados ou armazenados em diferentes países:</p>
+
+                    <div class="list-item">Processadores podem usar centros de dados regionais</div>
+                    <div class="list-item">Nossos servidores podem estar em outros países para otimizar o serviço</div>
+                    <div class="list-item">Todas as transferências seguem as leis aplicáveis de proteção de dados</div>
+                    <div class="list-item">Utilizamos cláusulas contratuais padrão e salvaguardas adequadas</div>
+
+                    <div class="info-box">
+                        <p><strong>🌐 Conformidade com o GDPR:</strong> Para usuários do EEE, garantimos que todas as
+                            transferências estejam alinhadas ao GDPR e protegidas por salvaguardas adequadas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">⚖️</span>
+                    <h2 class="section-title">8. Seus direitos sobre os dados de assinatura</h2>
+                </div>
+                <div class="section-content">
+                    <p>Você tem os seguintes direitos em relação aos seus dados de assinatura:</p>
+
+                    <div class="list-item">
+                        <strong>Acesso:</strong> Solicitar uma cópia do histórico de assinaturas e pagamentos
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Correção:</strong> Atualizar informações de cobrança e preferências de pagamento
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Exclusão:</strong> Solicitar a exclusão dos dados (sujeito às obrigações legais)
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Portabilidade:</strong> Exportar os dados em formato legível por máquina
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Objeção:</strong> Opor-se a determinados tratamentos de dados
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Restrição:</strong> Pedir a limitação do processamento em certas situações
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📧 Contato:</strong> Para exercer seus direitos, envie uma solicitação para
+                            <strong>contact@kazoku-ai.com</strong>. Respondemos em até 30 dias.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">9. Atualizações desta política</h2>
+                </div>
+                <div class="section-content">
+                    <p>Podemos atualizar esta Política de Privacidade de Assinaturas para:</p>
+
+                    <div class="list-item">Refletir mudanças nos serviços de assinatura</div>
+                    <div class="list-item">Cumprir novos requisitos legais</div>
+                    <div class="list-item">Melhorar nossas práticas de proteção de dados</div>
+                    <div class="list-item">Responder ao feedback dos usuários</div>
+
+                    <p style="margin-top: 20px;">Alterações significativas serão comunicadas via:</p>
+                    <div class="sub-list-item">Notificações no aplicativo</div>
+                    <div class="sub-list-item">E-mail enviado ao endereço cadastrado</div>
+                    <div class="sub-list-item">Atualizações nesta página</div>
+
+                    <p style="margin-top: 20px;">A política atualizada entra em vigor 30 dias após a notificação, ou
+                        imediatamente se exigido por lei.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - O assistente inteligente para todas as famílias!</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ De Tóquio, com carinho para cada família</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Baixar iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Baixar Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.com/@kazoku.mac"><i class="fab fa-threads"></i></a>
+                <a href="https://x.com/KazokuMac"><i class="fab fa-x"></i></a>
+                <a href="https://www.instagram.com/kazoku.mac"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Termos de
+                Uso</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Política de
+                Privacidade</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-subscription-policy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Política de
+                Assinaturas</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="mac-index.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Empresa
+                gestora</a>
+        </div>
+        <p>&copy; 2025 Kazoku Family App. Todos os direitos reservados.<br>
+            <em>"Conectando amor - Compartilhando felicidade"</em>
+        </p>
+    </footer>
+</body>
+
+</html>
+

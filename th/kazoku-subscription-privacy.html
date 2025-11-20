@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>นโยบายความเป็นส่วนตัวของการสมัครสมาชิก - Kazoku Family App</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #f59e0b;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '💳';
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #f59e0b;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">💳 Kazoku - ความเป็นส่วนตัวของการสมัครสมาชิก</div>
+            <div class="app-subtitle">นโยบายความเป็นส่วนตัวสำหรับบริการสมัครสมาชิก</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                มีผลตั้งแต่: 1 มกราคม 2025
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. บทนำ</h2>
+                </div>
+                <div class="section-content">
+                    <p>นโยบายความเป็นส่วนตัวนี้อธิบายวิธีที่ Kazoku (“เรา”) เก็บรวบรวม ใช้ เก็บรักษา และปกป้องข้อมูลส่วนบุคคลของคุณเมื่อสมัครใช้บริการพรีเมียม ซึ่งเป็นภาคผนวกจากนโยบายความเป็นส่วนตัวหลักและเน้นข้อมูลที่เกี่ยวข้องกับการสมัครสมาชิกโดยเฉพาะ</p>
+
+                    <div class="highlight-box">
+                        <p><strong>🛡️ คำมั่นของเรา:</strong> เราปกป้องข้อมูลการชำระเงินและการสมัครสมาชิกของคุณตามมาตรฐานสูงสุด ข้อมูลทางการเงินจะถูกประมวลผลอย่างปลอดภัยและไม่เก็บไว้บนเซิร์ฟเวอร์ของเรา</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💳</span>
+                    <h2 class="section-title">2. ข้อมูลการชำระเงินที่เก็บรวบรวม</h2>
+                </div>
+                <div class="section-content">
+                    <p>เมื่อคุณสมัครบริการพรีเมียมของ Kazoku เราจะเก็บข้อมูลดังต่อไปนี้:</p>
+
+                    <table class="data-table">
+                        <tr>
+                            <th>ประเภทข้อมูล</th>
+                            <th>รายละเอียด</th>
+                            <th>วัตถุประสงค์</th>
+                        </tr>
+                        <tr>
+                            <td><strong>วิธีการชำระเงิน</strong></td>
+                            <td>บัตรเครดิต เดบิต หรือบัญชีการชำระเงิน</td>
+                            <td>ประมวลผลการชำระค่าบริการ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ข้อมูลการออกใบแจ้งหนี้</strong></td>
+                            <td>ชื่อ ที่อยู่สำหรับใบแจ้งหนี้ อีเมล</td>
+                            <td>ออกใบแจ้งหนี้และใบเสร็จ</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ข้อมูลธุรกรรม</strong></td>
+                            <td>วันที่ซื้อ จำนวนเงิน แผนบริการ รหัสธุรกรรม</td>
+                            <td>จัดการสมาชิกและให้การสนับสนุน</td>
+                        </tr>
+                        <tr>
+                            <td><strong>สถานะการสมัคร</strong></td>
+                            <td>ใช้งาน ยกเลิก หมดอายุ หรือทดลองใช้</td>
+                            <td>ควบคุมการเข้าถึงและการต่ออายุ</td>
+                        </tr>
+                    </table>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ สำคัญ:</strong> เรา “ไม่” เก็บหมายเลขบัตรเต็ม รหัส CVV หรือข้อมูลการชำระเงินครบถ้วน การชำระเงินทั้งหมดดำเนินการโดยผู้ให้บริการที่ปลอดภัยและเป็นไปตามมาตรฐาน PCI DSS (Apple App Store, Google Play Store, Stripe)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔐</span>
+                    <h2 class="section-title">3. พันธมิตรประมวลผลการชำระเงิน</h2>
+                </div>
+                <div class="section-content">
+                    <p>เราทำงานร่วมกับผู้ให้บริการดังต่อไปนี้:</p>
+
+                    <div class="list-item">
+                        <strong>Apple App Store (iOS):</strong>
+                        <div class="sub-list-item">ดูแลการชำระเงินบนอุปกรณ์ iOS ทั้งหมด</div>
+                        <div class="sub-list-item">เก็บข้อมูลการชำระเงินไว้อย่างปลอดภัยบนเซิร์ฟเวอร์ของ Apple</div>
+                        <div class="sub-list-item">ปฏิบัติตามมาตรฐานความปลอดภัยและความเป็นส่วนตัวของ Apple</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Google Play Store (Android):</strong>
+                        <div class="sub-list-item">จัดการการชำระเงินบนอุปกรณ์ Android</div>
+                        <div class="sub-list-item">จัดเก็บข้อมูลบนเซิร์ฟเวอร์ของ Google</div>
+                        <div class="sub-list-item">ปฏิบัติตามมาตรฐานความปลอดภัยของ Google</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Stripe (เว็บ/ช่องทางอื่น):</strong>
+                        <div class="sub-list-item">ได้รับการรับรองระดับ PCI DSS ระดับ 1</div>
+                        <div class="sub-list-item">ส่งข้อมูลการชำระเงินแบบเข้ารหัส</div>
+                        <div class="sub-list-item">จัดเก็บข้อมูลแบบ tokenized</div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>🔒 ความปลอดภัย:</strong> ผู้ประมวลผลการชำระเงินทั้งหมดปฏิบัติตามมาตรฐาน PCI DSS, GDPR และกฎระเบียบปกป้องข้อมูลในแต่ละภูมิภาค</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📊</span>
+                    <h2 class="section-title">4. การใช้ข้อมูลการสมัคร</h2>
+                </div>
+                <div class="section-content">
+                    <p>เรานำข้อมูลการสมัครสมาชิกไปใช้เพื่อ:</p>
+
+                    <div class="list-item">ประมวลผลและบริหารการชำระเงิน</div>
+                    <div class="list-item">จัดให้เข้าถึงฟีเจอร์พรีเมียมตามแผนของคุณ</div>
+                    <div class="list-item">ส่งการแจ้งเตือนการต่ออายุและยืนยันการชำระเงิน</div>
+                    <div class="list-item">ออกใบแจ้งหนี้และใบเสร็จ</div>
+                    <div class="list-item">ตรวจจับและป้องกันธุรกรรมที่ผิดปกติ</div>
+                    <div class="list-item">ให้การสนับสนุนลูกค้าเกี่ยวกับการสมัครสมาชิก</div>
+                    <div class="list-item">ปฏิบัติตามข้อกำหนดด้านกฎหมายและภาษี</div>
+                    <div class="list-item">วิเคราะห์แนวโน้มการใช้งานเพื่อพัฒนาบริการ</div>
+
+                    <p style="margin-top: 20px;"><strong>เราไม่ใช้ข้อมูลเพื่อ:</strong></p>
+                    <div class="sub-list-item">ขายข้อมูลการชำระเงินให้บุคคลที่สาม</div>
+                    <div class="sub-list-item">แชร์ข้อมูลออกใบแจ้งหนี้กับผู้ลงโฆษณา</div>
+                    <div class="sub-list-item">ทำการตลาดโดยไม่ได้รับความยินยอม</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">5. การต่ออายุและการต่ออัตโนมัติ</h2>
+                </div>
+                <div class="section-content">
+                    <p>การสมัคร Kazoku จะต่ออายุอัตโนมัติหากไม่ถูกยกเลิก โดยเราจะจัดการข้อมูลดังนี้:</p>
+
+                    <div class="list-item">
+                        <strong>ข้อมูลการต่ออัตโนมัติ:</strong>
+                        <div class="sub-list-item">บันทึกการตั้งค่าการต่ออายุของคุณ</div>
+                        <div class="sub-list-item">ติดตามวันและรอบการเรียกเก็บเงิน</div>
+                        <div class="sub-list-item">ข้อมูลการชำระเงินถูกเก็บไว้กับผู้ประมวลผลที่ปลอดภัย</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>การแจ้งเตือน:</strong>
+                        <div class="sub-list-item">แจ้งเตือนก่อนรอบการเรียกเก็บเงิน</div>
+                        <div class="sub-list-item">ยืนยันเมื่อการต่ออายุสำเร็จ</div>
+                        <div class="sub-list-item">แจ้งเมื่อการชำระเงินล้มเหลว</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 การจัดการ:</strong> คุณสามารถปิดการต่ออายุอัตโนมัติได้ตลอดเวลาใน App Store, Play Store หรือในการตั้งค่าแอป</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🗑️</span>
+                    <h2 class="section-title">6. การเก็บรักษาและการลบข้อมูล</h2>
+                </div>
+                <div class="section-content">
+                    <p>ข้อมูลการสมัครจะถูกเก็บไว้ตามสถานการณ์ต่อไปนี้:</p>
+
+                    <div class="list-item">
+                        <strong>สมาชิกที่ใช้งานอยู่:</strong>
+                        <div class="sub-list-item">เก็บข้อมูลไว้ตราบใดที่บริการยังใช้งาน</div>
+                        <div class="sub-list-item">บันทึกประวัติการเรียกเก็บเงินไว้สำหรับอ้างอิง</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>สมาชิกที่ยกเลิก:</strong>
+                        <div class="sub-list-item">เก็บประวัติธุรกรรม 7 ปีเพื่อจุดประสงค์ทางกฎหมาย/ภาษี</div>
+                        <div class="sub-list-item">บันทึกสถานะการสมัครสำหรับประวัติบัญชี</div>
+                        <div class="sub-list-item">ข้อมูลการชำระเงินถูกลบออกจากระบบของเรา (ผู้ประมวลผลอาจเก็บตามนโยบายของตน)</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>การลบบัญชี:</strong>
+                        <div class="sub-list-item">ข้อมูลการสมัครจะถูกทำให้ไม่ระบุตัวตน</div>
+                        <div class="sub-list-item">อาจเก็บเอกสารทางการเงินตามข้อกำหนดกฎหมาย</div>
+                        <div class="sub-list-item">สามารถยื่นคำขอให้ลบข้อมูลได้ตามเงื่อนไขทางกฎหมาย</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🌍</span>
+                    <h2 class="section-title">7. การโอนย้ายข้อมูลระหว่างประเทศ</h2>
+                </div>
+                <div class="section-content">
+                    <p>ข้อมูลการสมัครอาจถูกประมวลผลและจัดเก็บในหลายประเทศ:</p>
+
+                    <div class="list-item">ผู้ประมวลผลอาจใช้ศูนย์ข้อมูลในภูมิภาคต่าง ๆ</div>
+                    <div class="list-item">เซิร์ฟเวอร์ของเราอาจตั้งอยู่ในหลายประเทศเพื่อเพิ่มประสิทธิภาพ</div>
+                    <div class="list-item">ทุกการโอนข้อมูลปฏิบัติตามกฎหมายคุ้มครองข้อมูล</div>
+                    <div class="list-item">ใช้สัญญามาตรฐานและมาตรการป้องกันที่เหมาะสม</div>
+
+                    <div class="info-box">
+                        <p><strong>🌐 การปฏิบัติตาม GDPR:</strong> สำหรับผู้ใช้งานใน EEA เรารับประกันว่าการโอนข้อมูลทั้งหมดสอดคล้องกับ GDPR และมีมาตรฐานป้องกันที่เพียงพอ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">⚖️</span>
+                    <h2 class="section-title">8. สิทธิของคุณเกี่ยวกับข้อมูลการสมัคร</h2>
+                </div>
+                <div class="section-content">
+                    <p>คุณมีสิทธิ์ดังต่อไปนี้เกี่ยวกับข้อมูลของคุณ:</p>
+
+                    <div class="list-item">
+                        <strong>การเข้าถึง:</strong> ขอสำเนาประวัติการสมัครและการชำระเงิน
+                    </div>
+
+                    <div class="list-item">
+                        <strong>การแก้ไข:</strong> อัปเดตข้อมูลการออกใบแจ้งหนี้หรือการชำระเงิน
+                    </div>
+
+                    <div class="list-item">
+                        <strong>การลบ:</strong> ขอให้ลบข้อมูล (ตามข้อกำหนดทางกฎหมาย)</div>
+
+                    <div class="list-item">
+                        <strong>การพกพาข้อมูล:</strong> ขอข้อมูลในรูปแบบที่เครื่องอ่านได้</div>
+
+                    <div class="list-item">
+                        <strong>การคัดค้าน:</strong> คัดค้านการประมวลผลบางประเภท</div>
+
+                    <div class="list-item">
+                        <strong>จำกัดการประมวลผล:</strong> ขอจำกัดการใช้งานในบางกรณี</div>
+
+                    <div class="highlight-box">
+                        <p><strong>📧 ติดต่อเรา:</strong> หากต้องการใช้สิทธิ์ โปรดส่งอีเมลถึง <strong>contact@kazoku-ai.com</strong> เราจะตอบกลับภายใน 30 วัน</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">9. การปรับปรุงนโยบาย</h2>
+                </div>
+                <div class="section-content">
+                    <p>เรามีสิทธิ์ปรับปรุงนโยบายนี้เพื่อ:</p>
+
+                    <div class="list-item">สะท้อนการเปลี่ยนแปลงของบริการสมัครสมาชิก</div>
+                    <div class="list-item">ปฏิบัติตามข้อเรียกร้องทางกฎหมายใหม่</div>
+                    <div class="list-item">ยกระดับการปกป้องข้อมูล</div>
+                    <div class="list-item">ตอบสนองข้อเสนอแนะจากผู้ใช้</div>
+
+                    <p style="margin-top: 20px;">การเปลี่ยนแปลงสำคัญจะแจ้งให้ทราบผ่าน:</p>
+                    <div class="sub-list-item">การแจ้งเตือนในแอป</div>
+                    <div class="sub-list-item">อีเมลไปยังที่อยู่ที่ลงทะเบียน</div>
+                    <div class="sub-list-item">การอัปเดตในหน้านโยบายนี้</div>
+
+                    <p style="margin-top: 20px;">นโยบายใหม่จะมีผล 30 วันหลังจากแจ้งเตือน หรือทันทีหากจำเป็นต้องปฏิบัติตามกฎหมาย</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - ผู้ช่วยอัจฉริยะสำหรับทุกครอบครัว</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ ส่งความรักจากโตเกียวถึงทุกครอบครัว</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> ดาวน์โหลด iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> ดาวน์โหลด Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.com/@kazoku.mac"><i class="fab fa-threads"></i></a>
+                <a href="https://x.com/KazokuMac"><i class="fab fa-x"></i></a>
+                <a href="https://www.instagram.com/kazoku.mac"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">เงื่อนไขการให้บริการ</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">นโยบายความเป็นส่วนตัว</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-subscription-policy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">นโยบายการสมัครสมาชิก</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="mac-index.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">บริษัทผู้ดูแล</a>
+        </div>
+        <p>&copy; 2025 Kazoku Family App. สงวนลิขสิทธิ์.<br>
+            <em>“เชื่อมความรัก แบ่งปันความสุข”</em>
+        </p>
+    </footer>
+</body>
+
+</html>
+

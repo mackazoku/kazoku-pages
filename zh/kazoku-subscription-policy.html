@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Policy - Kazoku Family App</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .section:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #8b5cf6;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5cf6, #a855f7);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            border-left: 4px solid #8b5cf6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '✓';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #f3e8ff;
+            color: #6b21a8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">📱 Kazoku - 订阅政策</div>
+            <div class="app-subtitle">订阅服务条款和条件</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                生效日期: 2025年1月1日
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. 介绍</h2>
+                </div>
+                <div class="section-content">
+                    <p>本订阅政策（“政策”）管理您使用 Kazoku 高级订阅服务。通过订阅 Kazoku 高级功能，您同意遵守本政策、我们的服务条款和隐私政策。</p>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 App Store & Play Store 合规：</strong> 本政策符合 Apple App Store 和 Google Play Store
+                            的订阅要求，包括清晰的价格、自动续订条款、取消流程和退款政策。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💎</span>
+                    <h2 class="section-title">2. 订阅计划和价格</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku 提供多种订阅计划，具有不同的功能和价格：</p>
+
+                    <div class="list-item">
+                        <strong>按月订阅：</strong> 每月收费，每月自动续订
+                    </div>
+
+                    <div class="list-item">
+                        <strong>按年订阅：</strong> 每年收费，每年自动续订（相比按月计划节省费用）
+                    </div>
+
+                    <div class="list-item">
+                        <strong>免费试用：</strong> 部分计划在开始收费前可能提供免费试用期
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>💰 价格信息：</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>所有价格以您当地货币显示</li>
+                            <li>价格可能因地区而异，并受适用税收影响</li>
+                            <li>价格可能会在提前30天通知后变更</li>
+                            <li>现有订阅者将在价格变动生效前收到通知</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>📱 查看价格的位置：</strong> 当前订阅计划和价格可在应用订阅设置和我们的网站中查看。价格也显示在 App Store 和 Play Store 中。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">3. 自动续订与收费</h2>
+                </div>
+                <div class="section-content">
+                    <p><strong>自动续订：</strong></p>
+                    <p>除非您在续订日期前取消订阅，否则订阅将在每个计费周期结束时自动续订。订阅即表示您授权我们向您的付款方式收取续订周期费用。</p>
+
+                    <div class="list-item">
+                        <strong>计费周期：</strong>
+                        <div class="sub-list-item">按月订阅每30天续订</div>
+                        <div class="sub-list-item">按年订阅每365天续订</div>
+                        <div class="sub-list-item">续订日期与您首次订阅日期的月份/年份相同</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>支付处理：</strong>
+                        <div class="sub-list-item">付款通过 Apple App Store（iOS）或 Google Play Store（Android）处理</div>
+                        <div class="sub-list-item">费用将从您的 App Store 或 Play Store 账户关联的支付方式扣除</div>
+                        <div class="sub-list-item">您有责任维护有效的支付信息</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>续订通知：</strong>
+                        <div class="sub-list-item">我们将在每次续订前发送提醒（通常提前24–48小时）</div>
+                        <div class="sub-list-item">每次续订成功后，您将收到确认邮件</div>
+                        <div class="sub-list-item">如果续订无法处理，将发送支付失败通知</div>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ 重要提示：</strong> 如果付款失败，您的订阅可能会被暂停或取消。我们会尝试再次扣款，但您需要在付款方式过期或无效时更新支付信息。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">❌</span>
+                    <h2 class="section-title">4. 取消政策</h2>
+                </div>
+                <div class="section-content">
+                    <p>您可以随时取消订阅。取消将在当前计费周期结束时生效。</p>
+
+                    <div class="list-item">
+                        <strong>如何取消：</strong>
+                        <div class="sub-list-item"><strong>iOS（Apple）：</strong> 设置 → [您的姓名] → 订阅 → Kazoku → 取消订阅</div>
+                        <div class="sub-list-item"><strong>Android（Google）：</strong> Google Play Store → 订阅 → Kazoku →
+                            取消订阅</div>
+                        <div class="sub-list-item"><strong>应用内：</strong> 您也可以通过应用的订阅设置取消</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>取消后的效果：</strong>
+                        <div class="sub-list-item">您仍可使用高级功能直到当前计费周期结束</div>
+                        <div class="sub-list-item">当前计费周期不退款</div>
+                        <div class="sub-list-item">订阅在当前周期结束后不会续订</div>
+                        <div class="sub-list-item">订阅到期后将无法继续使用高级功能</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 立即取消：</strong> 如果您立即取消，您仍可使用已支付周期的功能至周期结束。我们不提供部分周期的按比例退款。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

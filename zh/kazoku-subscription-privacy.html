@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kazoku Family App - 订阅隐私政策</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #f59e0b;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '💳';
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #f59e0b;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">💳 Kazoku - 订阅隐私</div>
+            <div class="app-subtitle">订阅服务隐私政策</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                生效日期：2025年1月1日
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. 引言</h2>
+                </div>
+                <div class="section-content">
+                    <p>本订阅隐私政策说明 Kazoku（“我们”）在您订阅高级服务时如何收集、使用、存储和保护您的个人信息。该政策补充我们的主隐私政策，专门介绍与订阅有关的数据处理。</p>
+
+                    <div class="highlight-box">
+                        <p><strong>🛡️ 我们的承诺：</strong> 我们以最高安全标准保护您的付款与订阅数据。您的金融信息会被安全处理，不会存储在我们的服务器上。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💳</span>
+                    <h2 class="section-title">2. 收集的付款信息</h2>
+                </div>
+                <div class="section-content">
+                    <p>当您订阅 Kazoku 的高级服务时，我们会收集以下信息：</p>
+
+                    <table class="data-table">
+                        <tr>
+                            <th>信息类型</th>
+                            <th>内容</th>
+                            <th>用途</th>
+                        </tr>
+                        <tr>
+                            <td><strong>付款方式</strong></td>
+                            <td>信用卡、借记卡或支付账户信息</td>
+                            <td>处理订阅付款</td>
+                        </tr>
+                        <tr>
+                            <td><strong>账单信息</strong></td>
+                            <td>姓名、账单地址、电子邮箱</td>
+                            <td>生成发票和收据</td>
+                        </tr>
+                        <tr>
+                            <td><strong>交易数据</strong></td>
+                            <td>购买日期、金额、套餐、交易编号</td>
+                            <td>管理订阅并提供支持</td>
+                        </tr>
+                        <tr>
+                            <td><strong>订阅状态</strong></td>
+                            <td>活跃、已取消、已过期或试用中</td>
+                            <td>控制服务访问并管理续订</td>
+                        </tr>
+                    </table>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ 重要：</strong> 我们不会存储您的完整卡号、CVV 或完整支付凭据。所有支付由符合 PCI DSS 标准的第三方（Apple App Store、Google Play Store、Stripe）安全处理。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔐</span>
+                    <h2 class="section-title">3. 支付处理合作伙伴</h2>
+                </div>
+                <div class="section-content">
+                    <p>我们使用以下安全的支付处理商：</p>
+
+                    <div class="list-item">
+                        <strong>Apple App Store（iOS）：</strong>
+                        <div class="sub-list-item">负责所有 iOS 订阅付款</div>
+                        <div class="sub-list-item">将付款信息安全存储在 Apple 服务器</div>
+                        <div class="sub-list-item">符合 Apple 的隐私与安全要求</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Google Play Store（Android）：</strong>
+                        <div class="sub-list-item">处理所有 Android 订阅付款</div>
+                        <div class="sub-list-item">在 Google 服务器安全存储付款信息</div>
+                        <div class="sub-list-item">符合 Google 的隐私与安全标准</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Stripe（网页/其他）：</strong>
+                        <div class="sub-list-item">通过 PCI DSS 一级认证</div>
+                        <div class="sub-list-item">加密传输付款数据</div>
+                        <div class="sub-list-item">采用令牌化方式存储信息</div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>🔒 安全：</strong> 所有合作伙伴均通过认证，并符合 PCI DSS、GDPR 及各地区的数据保护法规。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📊</span>
+                    <h2 class="section-title">4. 我们如何使用订阅数据</h2>
+                </div>
+                <div class="section-content">
+                    <p>我们将您的订阅信息用于：</p>
+
+                    <div class="list-item">处理并管理订阅付款</div>
+                    <div class="list-item">根据订阅计划开放高级功能</div>
+                    <div class="list-item">发送续订提醒和付款确认</div>
+                    <div class="list-item">生成发票和收据</div>
+                    <div class="list-item">检测并防止欺诈交易</div>
+                    <div class="list-item">提供订阅相关的客户支持</div>
+                    <div class="list-item">遵守法律与税务义务</div>
+                    <div class="list-item">分析订阅趋势以改进服务</div>
+
+                    <p style="margin-top: 20px;"><strong>我们不会将数据用于：</strong></p>
+                    <div class="sub-list-item">出售您的付款信息</div>
+                    <div class="sub-list-item">与广告商共享账单数据</div>
+                    <div class="sub-list-item">未经同意用于市场营销</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">5. 续订与自动续订</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku 订阅默认自动续订，除非您取消。我们对续订数据的处理如下：</p>
+
+                    <div class="list-item">
+                        <strong>自动续订信息：</strong>
+                        <div class="sub-list-item">记录您的续订偏好</div>
+                        <div class="sub-list-item">跟踪续订日期和计费周期</div>
+                        <div class="sub-list-item">付款方式由支付处理方安全保存</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>续订通知：</strong>
+                        <div class="sub-list-item">在每个计费周期前发送提醒</div>
+                        <div class="sub-list-item">续订成功后发送确认</div>
+                        <div class="sub-list-item">若续订失败会及时通知</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 管理续订：</strong> 您可随时在 App Store、Play Store 或应用设置中关闭自动续订。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🗑️</span>
+                    <h2 class="section-title">6. 数据保留与删除</h2>
+                </div>
+                <div class="section-content">
+                    <p>我们按照以下方式保留订阅数据：</p>
+
+                    <div class="list-item">
+                        <strong>活跃订阅：</strong>
+                        <div class="sub-list-item">在订阅有效期内保存数据</div>
+                        <div class="sub-list-item">保留账单记录以供查询</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>已取消订阅：</strong>
+                        <div class="sub-list-item">为符合法律税务要求保留交易记录 7 年</div>
+                        <div class="sub-list-item">保留订阅状态用于账户历史</div>
+                        <div class="sub-list-item">支付方式会从我们的系统删除（支付方可能按其政策保留）</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>删除账户：</strong>
+                        <div class="sub-list-item">账户删除后将订阅数据匿名化</div>
+                        <div class="sub-list-item">财务记录可能因法律需要保留</div>
+                        <div class="sub-list-item">您可在符合法律的前提下提出删除请求</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🌍</span>
+                    <h2 class="section-title">7. 跨境数据传输</h2>
+                </div>
+                <div class="section-content">
+                    <p>订阅数据可能在不同国家处理或存储：</p>
+
+                    <div class="list-item">支付处理商可能使用其区域数据中心</div>
+                    <div class="list-item">我们的服务器可能部署在多个国家以优化服务</div>
+                    <div class="list-item">所有数据传输均遵守适用的数据保护法律</div>
+                    <div class="list-item">我们采用标准合同条款与其他保障措施</div>
+
+                    <div class="info-box">
+                        <p><strong>🌐 GDPR 合规：</strong> 对于欧洲经济区用户，我们确保所有跨境传输符合 GDPR 要求，并采用适当的保护措施。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">⚖️</span>
+                    <h2 class="section-title">8. 您的订阅数据权利</h2>
+                </div>
+                <div class="section-content">
+                    <p>您对订阅数据拥有以下权利：</p>
+
+                    <div class="list-item">
+                        <strong>访问：</strong> 请求订阅与付款历史副本
+                    </div>
+
+                    <div class="list-item">
+                        <strong>更正：</strong> 更新账单信息和付款偏好
+                    </div>
+
+                    <div class="list-item">
+                        <strong>删除：</strong> 在符合法律要求的前提下请求删除数据
+                    </div>
+
+                    <div class="list-item">
+                        <strong>可携带性：</strong> 以机器可读格式导出数据
+                    </div>
+
+                    <div class="list-item">
+                        <strong>反对：</strong> 反对某些数据处理活动
+                    </div>
+
+                    <div class="list-item">
+                        <strong>限制：</strong> 在特定情况下要求限制处理
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📧 联系我们：</strong> 如需行使权利，请发送邮件至 <strong>contact@kazoku-ai.com</strong>，我们将在 30 天内回复。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">9. 政策更新</h2>
+                </div>
+                <div class="section-content">
+                    <p>我们可能在以下情况下更新本政策：</p>
+
+                    <div class="list-item">反映订阅服务的变化</div>
+                    <div class="list-item">遵守新的法律法规</div>
+                    <div class="list-item">提升数据保护实践</div>
+                    <div class="list-item">回应用户反馈</div>
+
+                    <p style="margin-top: 20px;">重大变更将通过以下方式通知：</p>
+                    <div class="sub-list-item">应用内通知</div>
+                    <div class="sub-list-item">发送至注册邮箱的电子邮件</div>
+                    <div class="sub-list-item">本政策页面的公告</div>
+
+                    <p style="margin-top: 20px;">更新后的政策将在通知 30 天后生效，或在法律要求时立即生效。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - 为每个家庭提供智能助手！</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ 来自东京的温暖问候</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> 下载 iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> 下载 Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.com/@kazoku.mac"><i class="fab fa-threads"></i></a>
+                <a href="https://x.com/KazokuMac"><i class="fab fa-x"></i></a>
+                <a href="https://www.instagram.com/kazoku.mac"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">服务条款</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">隐私政策</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-subscription-policy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">订阅政策</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="mac-index.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">管理公司</a>
+        </div>
+        <p>&copy; 2025 Kazoku Family App. 保留所有权利。<br>
+            <em>“连接爱 · 分享幸福”</em>
+        </p>
+    </footer>
+</body>
+
+</html>
+

@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Privacy Policy - Kazoku Family App</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #f59e0b;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '💳';
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #f59e0b;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">💳 Kazoku - Subscription Privacy</div>
+            <div class="app-subtitle">Privacy Policy for Subscription Services</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                Effective from: January 1, 2025
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. Introduction</h2>
+                </div>
+                <div class="section-content">
+                    <p>This Subscription Privacy Policy explains how Kazoku ("we," "our," or "us") collects, uses,
+                        stores, and protects your personal information when you subscribe to our premium services. This
+                        policy supplements our main Privacy Policy and specifically addresses subscription-related data
+                        handling.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>🛡️ Our Commitment:</strong> We are committed to protecting your payment information
+                            and subscription data with the highest security standards. Your financial information is
+                            processed securely and never stored on our servers.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💳</span>
+                    <h2 class="section-title">2. Payment Information Collection</h2>
+                </div>
+                <div class="section-content">
+                    <p>When you subscribe to Kazoku premium services, we collect the following information:</p>
+
+                    <table class="data-table">
+                        <tr>
+                            <th>Information Type</th>
+                            <th>Details</th>
+                            <th>Purpose</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Payment Method</strong></td>
+                            <td>Credit card, debit card, or payment account information</td>
+                            <td>Process subscription payments</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Billing Information</strong></td>
+                            <td>Name, billing address, email address</td>
+                            <td>Generate invoices and receipts</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Transaction Data</strong></td>
+                            <td>Purchase date, amount, subscription plan, transaction ID</td>
+                            <td>Manage subscriptions and provide support</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Subscription Status</strong></td>
+                            <td>Active, cancelled, expired, trial status</td>
+                            <td>Provide service access and manage renewals</td>
+                        </tr>
+                    </table>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ Important:</strong> We do NOT store your full credit card numbers, CVV codes, or
+                            complete payment credentials. All payment processing is handled by secure third-party
+                            payment processors (Apple App Store, Google Play Store, Stripe) that comply with PCI DSS
+                            standards.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔐</span>
+                    <h2 class="section-title">3. Payment Processing Partners</h2>
+                </div>
+                <div class="section-content">
+                    <p>We use the following secure payment processors to handle subscription transactions:</p>
+
+                    <div class="list-item">
+                        <strong>Apple App Store (iOS):</strong>
+                        <div class="sub-list-item">Processes all iOS subscription payments</div>
+                        <div class="sub-list-item">Stores payment information securely on Apple's servers</div>
+                        <div class="sub-list-item">Complies with Apple's privacy and security standards</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Google Play Store (Android):</strong>
+                        <div class="sub-list-item">Processes all Android subscription payments</div>
+                        <div class="sub-list-item">Stores payment information securely on Google's servers</div>
+                        <div class="sub-list-item">Complies with Google's privacy and security standards</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Stripe (Web/Alternative):</strong>
+                        <div class="sub-list-item">PCI DSS Level 1 certified payment processor</div>
+                        <div class="sub-list-item">Encrypted payment data transmission</div>
+                        <div class="sub-list-item">Tokenized payment storage</div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>🔒 Security:</strong> All payment processors we use are certified and comply with
+                            international security standards including PCI DSS, GDPR, and regional data protection
+                            regulations.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📊</span>
+                    <h2 class="section-title">4. How We Use Subscription Data</h2>
+                </div>
+                <div class="section-content">
+                    <p>We use your subscription information to:</p>
+
+                    <div class="list-item">Process and manage your subscription payments</div>
+                    <div class="list-item">Provide access to premium features based on your subscription plan</div>
+                    <div class="list-item">Send subscription-related notifications (renewal reminders, payment
+                        confirmations)</div>
+                    <div class="list-item">Generate invoices and receipts for your records</div>
+                    <div class="list-item">Detect and prevent fraudulent transactions</div>
+                    <div class="list-item">Provide customer support for subscription issues</div>
+                    <div class="list-item">Comply with legal and tax obligations</div>
+                    <div class="list-item">Analyze subscription trends to improve our services</div>
+
+                    <p style="margin-top: 20px;"><strong>We DO NOT use subscription data to:</strong></p>
+                    <div class="sub-list-item">Sell your payment information to third parties</div>
+                    <div class="sub-list-item">Share billing details with advertisers</div>
+                    <div class="sub-list-item">Use payment data for marketing purposes without consent</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">5. Subscription Renewal and Auto-Renewal</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku subscriptions automatically renew unless cancelled. Here's how we handle renewal data:</p>
+
+                    <div class="list-item">
+                        <strong>Auto-Renewal Information:</strong>
+                        <div class="sub-list-item">We store your subscription renewal preferences</div>
+                        <div class="sub-list-item">Renewal dates and billing cycles are tracked</div>
+                        <div class="sub-list-item">Payment method information is stored securely by payment processors
+                        </div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Renewal Notifications:</strong>
+                        <div class="sub-list-item">We send renewal reminders before each billing cycle</div>
+                        <div class="sub-list-item">Payment confirmations are sent after successful renewals</div>
+                        <div class="sub-list-item">Failed payment notifications are sent if renewal fails</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 Managing Renewals:</strong> You can manage your subscription and turn off
+                            auto-renewal at any time through your device's App Store or Play Store settings, or through
+                            our app settings.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🗑️</span>
+                    <h2 class="section-title">6. Data Retention and Deletion</h2>
+                </div>
+                <div class="section-content">
+                    <p>We retain subscription-related data as follows:</p>
+
+                    <div class="list-item">
+                        <strong>Active Subscriptions:</strong>
+                        <div class="sub-list-item">Data is retained while your subscription is active</div>
+                        <div class="sub-list-item">Billing history is maintained for your records</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Cancelled Subscriptions:</strong>
+                        <div class="sub-list-item">Transaction records are retained for 7 years for tax and legal
+                            compliance</div>
+                        <div class="sub-list-item">Subscription status is retained for account history</div>
+                        <div class="sub-list-item">Payment method information is deleted from our systems (retained by
+                            payment processors per their policies)</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Account Deletion:</strong>
+                        <div class="sub-list-item">Upon account deletion, subscription data is anonymized</div>
+                        <div class="sub-list-item">Financial records may be retained for legal compliance</div>
+                        <div class="sub-list-item">You can request data deletion, subject to legal requirements</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🌍</span>
+                    <h2 class="section-title">7. International Data Transfers</h2>
+                </div>
+                <div class="section-content">
+                    <p>Subscription data may be processed and stored in different countries:</p>
+
+                    <div class="list-item">Payment processors may store data in their regional data centers</div>
+                    <div class="list-item">Our servers may be located in different countries for service optimization
+                    </div>
+                    <div class="list-item">All data transfers comply with applicable data protection laws</div>
+                    <div class="list-item">We use standard contractual clauses and safeguards for international
+                        transfers</div>
+
+                    <div class="info-box">
+                        <p><strong>🌐 GDPR Compliance:</strong> For users in the European Economic Area (EEA), we ensure
+                            that all international data transfers comply with GDPR requirements and use appropriate
+                            safeguards.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">⚖️</span>
+                    <h2 class="section-title">8. Your Rights Regarding Subscription Data</h2>
+                </div>
+                <div class="section-content">
+                    <p>You have the following rights regarding your subscription data:</p>
+
+                    <div class="list-item">
+                        <strong>Access:</strong> Request a copy of your subscription and payment history
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Correction:</strong> Update your billing information and payment preferences
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Deletion:</strong> Request deletion of subscription data (subject to legal retention
+                        requirements)
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Portability:</strong> Export your subscription data in a machine-readable format
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Objection:</strong> Object to certain processing of your subscription data
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Restriction:</strong> Request restriction of processing in certain circumstances
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📧 Contact Us:</strong> To exercise any of these rights, please contact us at
+                            <strong>contact@kazoku-ai.com</strong> with your request. We will respond within 30 days.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">9. Policy Updates</h2>
+                </div>
+                <div class="section-content">
+                    <p>We may update this Subscription Privacy Policy to:</p>
+
+                    <div class="list-item">Reflect changes in our subscription services</div>
+                    <div class="list-item">Comply with new legal requirements</div>
+                    <div class="list-item">Improve data protection practices</div>
+                    <div class="list-item">Respond to user feedback</div>
+
+                    <p style="margin-top: 20px;">Significant changes will be communicated through:</p>
+                    <div class="sub-list-item">In-app notifications</div>
+                    <div class="sub-list-item">Email to your registered address</div>
+                    <div class="sub-list-item">Updates to this policy page</div>
+
+                    <p style="margin-top: 20px;">The updated policy will take effect 30 days after notification, or
+                        immediately for legal compliance requirements.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - Smart Assistant for Every Family!</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ From Tokyo, sending love to every family</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Download iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Download Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.com/@kazoku.mac"><i class="fab fa-threads"></i></a>
+                <a href="https://x.com/KazokuMac"><i class="fab fa-x"></i></a>
+                <a href="https://www.instagram.com/kazoku.mac"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Terms of
+                Service</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Privacy
+                Policy</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-subscription-policy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'"
+                onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Subscription Policy</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="mac-index.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Managing
+                Company</a>
+        </div>
+        <p>&copy; 2025 Kazoku Family App. All rights reserved.<br>
+            <em>"Connecting Love - Sharing Happiness"</em>
+        </p>
+    </footer>
+</body>
+
+</html>

@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Policy - Kazoku Family App</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .section:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #8b5cf6;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5cf6, #a855f7);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            border-left: 4px solid #8b5cf6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '✓';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #f3e8ff;
+            color: #6b21a8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">📱 Kazoku - Subscription Policy</div>
+            <div class="app-subtitle">Terms and Conditions for Subscription Services</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                Effective from: January 1, 2025
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. Introduction</h2>
+                </div>
+                <div class="section-content">
+                    <p>This Subscription Policy ("Policy") governs your use of Kazoku's premium subscription services.
+                        By subscribing to Kazoku premium features, you agree to be bound by this Policy, our Terms of
+                        Service, and our Privacy Policy.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 App Store & Play Store Compliance:</strong> This policy complies with Apple App
+                            Store and Google Play Store subscription requirements, including clear pricing, auto-renewal
+                            terms, cancellation procedures, and refund policies.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💎</span>
+                    <h2 class="section-title">2. Subscription Plans and Pricing</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku offers various subscription plans with different features and pricing:</p>
+
+                    <div class="list-item">
+                        <strong>Monthly Subscription:</strong> Billed monthly, renews automatically each month
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Annual Subscription:</strong> Billed annually, renews automatically each year (offers
+                        savings compared to monthly plans)
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Free Trial:</strong> Some plans may offer a free trial period before billing begins
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>💰 Pricing Information:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>All prices are displayed in your local currency</li>
+                            <li>Prices may vary by region and are subject to applicable taxes</li>
+                            <li>Prices are subject to change with 30 days' notice</li>
+                            <li>Current subscribers will be notified of price changes before they take effect</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>📱 Where to View Pricing:</strong> Current subscription plans and pricing are
+                            available in the app's subscription settings and on our website. Prices are also displayed
+                            in the App Store and Play Store.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">3. Auto-Renewal and Billing</h2>
+                </div>
+                <div class="section-content">
+                    <p><strong>Automatic Renewal:</strong></p>
+                    <p>Your subscription will automatically renew at the end of each billing period unless you cancel it
+                        before the renewal date. By subscribing, you authorize us to charge your payment method for the
+                        renewal period.</p>
+
+                    <div class="list-item">
+                        <strong>Billing Cycle:</strong>
+                        <div class="sub-list-item">Monthly subscriptions renew every 30 days</div>
+                        <div class="sub-list-item">Annual subscriptions renew every 365 days</div>
+                        <div class="sub-list-item">Renewal occurs on the same day of the month/year as your original
+                            subscription date</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Payment Processing:</strong>
+                        <div class="sub-list-item">Payments are processed through Apple App Store (iOS) or Google Play
+                            Store (Android)</div>
+                        <div class="sub-list-item">Payment is charged to the payment method associated with your App
+                            Store or Play Store account</div>
+                        <div class="sub-list-item">You are responsible for maintaining valid payment information</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Renewal Notifications:</strong>
+                        <div class="sub-list-item">We will send you a reminder before each renewal (typically 24-48
+                            hours before)</div>
+                        <div class="sub-list-item">You will receive a confirmation email after each successful renewal
+                        </div>
+                        <div class="sub-list-item">Failed payment notifications will be sent if renewal cannot be
+                            processed</div>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ Important:</strong> If payment fails, your subscription may be suspended or
+                            cancelled. We will attempt to retry the payment, but you are responsible for updating your
+                            payment method if it expires or becomes invalid.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">❌</span>
+                    <h2 class="section-title">4. Cancellation Policy</h2>
+                </div>
+                <div class="section-content">
+                    <p>You may cancel your subscription at any time. Cancellation takes effect at the end of your
+                        current billing period.</p>
+
+                    <div class="list-item">
+                        <strong>How to Cancel:</strong>
+                        <div class="sub-list-item"><strong>iOS (Apple):</strong> Go to Settings → [Your Name] →
+                            Subscriptions → Kazoku → Cancel Subscription</div>
+                        <div class="sub-list-item"><strong>Android (Google):</strong> Go to Google Play Store →
+                            Subscriptions → Kazoku → Cancel Subscription</div>
+                        <div class="sub-list-item"><strong>In-App:</strong> You can also cancel through the app's
+                            subscription settings</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Cancellation Effects:</strong>
+                        <div class="sub-list-item">You will continue to have access to premium features until the end of
+                            your current billing period</div>
+                        <div class="sub-list-item">No refunds are provided for the current billing period</div>
+                        <div class="sub-list-item">Your subscription will not renew after the current period ends</div>
+                        <div class="sub-list-item">You will lose access to premium features when the subscription
+                            expires</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 Immediate Cancellation:</strong> If you cancel immediately, you will still have
+                            access until the end of the period you've already paid for. We do not provide prorated
+                            refunds for partial periods.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💰</span>
+                    <h2 class="section-title">5. Refund Policy</h2>
+                </div>
+                <div class="section-content">
+                    <p><strong>Standard Refund Policy:</strong></p>
+                    <p>Refunds for subscriptions are handled according to the policies of Apple App Store and Google
+                        Play Store:</p>
+
+                    <div class="list-item">
+                        <strong>Apple App Store (iOS):</strong>
+                        <div class="sub-list-item">Refund requests must be submitted through Apple's refund process
+                        </div>
+                        <div class="sub-list-item">Apple handles all refund decisions for iOS subscriptions</div>
+                        <div class="sub-list-item">Contact Apple Support for refund requests</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Google Play Store (Android):</strong>
+                        <div class="sub-list-item">Refund requests must be submitted through Google Play's refund
+                            process</div>
+                        <div class="sub-list-item">Google handles all refund decisions for Android subscriptions</div>
+                        <div class="sub-list-item">Contact Google Play Support for refund requests</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Our Refund Policy:</strong>
+                        <div class="sub-list-item">We do not provide direct refunds - all refunds are processed through
+                            the respective app stores</div>
+                        <div class="sub-list-item">Refunds are typically only available within a limited time after
+                            purchase (usually 48 hours to 14 days, depending on the store)</div>
+                        <div class="sub-list-item">Refunds may not be available if you have used premium features
+                            extensively</div>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ Important:</strong> Once a subscription period has been used, refunds are
+                            generally not available. Free trial periods can be cancelled at any time without charge.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🎁</span>
+                    <h2 class="section-title">6. Free Trials</h2>
+                </div>
+                <div class="section-content">
+                    <p>Some subscription plans may offer a free trial period:</p>
+
+                    <div class="list-item">
+                        <strong>Trial Terms:</strong>
+                        <div class="sub-list-item">Free trial duration will be clearly stated when you subscribe</div>
+                        <div class="sub-list-item">You will not be charged during the trial period</div>
+                        <div class="sub-list-item">You can cancel anytime during the trial without being charged</div>
+                        <div class="sub-list-item">If you don't cancel, your subscription will automatically convert to
+                            a paid subscription at the end of the trial</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Trial Limitations:</strong>
+                        <div class="sub-list-item">One free trial per user per subscription plan</div>
+                        <div class="sub-list-item">Trials may not be available in all regions</div>
+                        <div class="sub-list-item">We reserve the right to modify or discontinue free trials at any time
+                        </div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>📱 Managing Trials:</strong> You can cancel your free trial at any time through your
+                            device's subscription settings. Cancellation before the trial ends ensures you won't be
+                            charged.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">7. Subscription Changes and Upgrades</h2>
+                </div>
+                <div class="section-content">
+                    <p>You can change your subscription plan at any time:</p>
+
+                    <div class="list-item">
+                        <strong>Upgrading:</strong>
+                        <div class="sub-list-item">You can upgrade to a higher-tier plan at any time</div>
+                        <div class="sub-list-item">Upgrades take effect immediately</div>
+                        <div class="sub-list-item">You may receive a prorated credit for the unused portion of your
+                            current plan</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Downgrading:</strong>
+                        <div class="sub-list-item">You can downgrade to a lower-tier plan</div>
+                        <div class="sub-list-item">Downgrades take effect at the end of your current billing period
+                        </div>
+                        <div class="sub-list-item">You will continue to have access to your current plan's features
+                            until the period ends</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Switching Plans:</strong>
+                        <div class="sub-list-item">You can switch between monthly and annual plans</div>
+                        <div class="sub-list-item">Changes may result in prorated charges or credits</div>
+                        <div class="sub-list-item">All changes are processed through the App Store or Play Store</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">⚖️</span>
+                    <h2 class="section-title">8. Service Availability and Modifications</h2>
+                </div>
+                <div class="section-content">
+                    <p>We reserve the right to modify, suspend, or discontinue subscription services:</p>
+
+                    <div class="list-item">We may add, modify, or remove features from subscription plans</div>
+                    <div class="list-item">We may change subscription pricing with 30 days' notice</div>
+                    <div class="list-item">We may discontinue certain subscription plans (existing subscribers will be
+                        grandfathered or offered alternatives)</div>
+                    <div class="list-item">Service may be temporarily unavailable due to maintenance or technical issues
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 Notice of Changes:</strong> We will notify you of significant changes to your
+                            subscription service via email or in-app notifications at least 30 days in advance, when
+                            possible.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📞</span>
+                    <h2 class="section-title">9. Customer Support</h2>
+                </div>
+                <div class="section-content">
+                    <p>For subscription-related inquiries and support:</p>
+
+                    <div class="list-item">
+                        <strong>Contact Information:</strong>
+                        <div class="sub-list-item">Email: contact@kazoku-ai.com</div>
+                        <div class="sub-list-item">Website: kazoku-ai.com</div>
+                        <div class="sub-list-item">Response Time: We aim to respond within 48 hours</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Support Topics:</strong>
+                        <div class="sub-list-item">Subscription management questions</div>
+                        <div class="sub-list-item">Billing inquiries</div>
+                        <div class="sub-list-item">Technical issues with premium features</div>
+                        <div class="sub-list-item">Account-related problems</div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>📱 App Store Support:</strong> For payment and refund issues, please contact Apple
+                            App Store Support (iOS) or Google Play Support (Android) directly, as they handle all
+                            payment processing.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">10. Policy Updates</h2>
+                </div>
+                <div class="section-content">
+                    <p>We may update this Subscription Policy to:</p>
+
+                    <div class="list-item">Reflect changes in our subscription services</div>
+                    <div class="list-item">Comply with App Store and Play Store requirements</div>
+                    <div class="list-item">Respond to legal or regulatory changes</div>
+                    <div class="list-item">Improve clarity and user understanding</div>
+
+                    <p style="margin-top: 20px;">Significant changes will be communicated through:</p>
+                    <div class="sub-list-item">Email notification to your registered address</div>
+                    <div class="sub-list-item">In-app notifications</div>
+                    <div class="sub-list-item">Updates to this policy page</div>
+
+                    <p style="margin-top: 20px;">Continued use of our subscription services after policy changes
+                        constitutes acceptance of the updated terms.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - Smart Assistant for Every Family!</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ From Tokyo, sending love to every family</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Download iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Download Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.com/@kazoku.mac"><i class="fab fa-threads"></i></a>
+                <a href="https://x.com/KazokuMac"><i class="fab fa-x"></i></a>
+                <a href="https://www.instagram.com/kazoku.mac"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Terms of
+                Service</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Privacy
+                Policy</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-subscription-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'"
+                onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Subscription Privacy</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="mac-index.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Managing
+                Company</a>
+        </div>
+        <p>&copy; 2025 Kazoku Family App. All rights reserved.<br>
+            <em>"Connecting Love - Sharing Happiness"</em>
+        </p>
+    </footer>
+</body>
+
+</html>

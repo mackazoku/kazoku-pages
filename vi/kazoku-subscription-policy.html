@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Policy - Kazoku Family App</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .section:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #8b5cf6;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5cf6, #a855f7);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            border-left: 4px solid #8b5cf6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '✓';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #f3e8ff;
+            color: #6b21a8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">📱 Kazoku - Chính sách đăng ký</div>
+            <div class="app-subtitle">Điều khoản và điều kiện cho dịch vụ đăng ký</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                Có hiệu lực từ: 1 tháng 1, 2025
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. Giới thiệu</h2>
+                </div>
+                <div class="section-content">
+                    <p>Chính sách đăng ký này ("Chính sách") điều chỉnh việc bạn sử dụng các dịch vụ đăng ký cao cấp của
+                        Kazoku. Bằng việc đăng ký các tính năng cao cấp của Kazoku, bạn đồng ý tuân thủ Chính sách này,
+                        Điều khoản Dịch vụ và Chính sách Bảo mật của chúng tôi.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 Tuân thủ App Store & Play Store:</strong> Chính sách này tuân thủ các yêu cầu về
+                            đăng ký của Apple App Store và Google Play Store, bao gồm việc hiển thị giá rõ ràng, điều
+                            khoản tự động gia hạn, quy trình hủy và chính sách hoàn tiền.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💎</span>
+                    <h2 class="section-title">2. Các gói đăng ký và giá</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku cung cấp nhiều gói đăng ký với các tính năng và mức giá khác nhau:</p>
+
+                    <div class="list-item">
+                        <strong>Đăng ký hàng tháng:</strong> Tính phí hàng tháng, tự động gia hạn mỗi tháng
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Đăng ký hàng năm:</strong> Tính phí hàng năm, tự động gia hạn mỗi năm (tiết kiệm so với
+                        gói hàng tháng)
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Dùng thử miễn phí:</strong> Một số gói có thể cung cấp thời gian dùng thử trước khi bắt
+                        đầu tính phí
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>💰 Thông tin giá:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Tất cả giá hiển thị theo đơn vị tiền tệ địa phương của bạn</li>
+                            <li>Giá có thể khác nhau theo khu vực và áp dụng thuế theo quy định</li>
+                            <li>Giá có thể thay đổi với thông báo trước 30 ngày</li>
+                            <li>Người đăng ký hiện tại sẽ được thông báo trước khi giá mới có hiệu lực</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>📱 Nơi xem giá:</strong> Các gói và giá hiện tại có thể xem trong cài đặt đăng ký của
+                            ứng dụng và trên website. Giá cũng hiển thị trên App Store và Play Store.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">3. Gia hạn tự động và thanh toán</h2>
+                </div>
+                <div class="section-content">
+                    <p><strong>Gia hạn tự động:</strong></p>
+                    <p>Đăng ký của bạn sẽ tự động gia hạn khi kết thúc mỗi chu kỳ thanh toán, trừ khi bạn hủy trước ngày
+                        gia hạn. Bằng việc đăng ký, bạn cho phép chúng tôi tính phí phương thức thanh toán của bạn cho
+                        chu kỳ tiếp theo.</p>
+
+                    <div class="list-item">
+                        <strong>Chu kỳ thanh toán:</strong>
+                        <div class="sub-list-item">Đăng ký hàng tháng: gia hạn mỗi 30 ngày</div>
+                        <div class="sub-list-item">Đăng ký hàng năm: gia hạn mỗi 365 ngày</div>
+                        <div class="sub-list-item">Gia hạn vào cùng ngày trong tháng/năm như ngày đăng ký ban đầu</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Xử lý thanh toán:</strong>
+                        <div class="sub-list-item">Thanh toán qua Apple App Store (iOS) hoặc Google Play Store (Android)
+                        </div>
+                        <div class="sub-list-item">Thanh toán được tính vào phương thức thanh toán liên kết với tài
+                            khoản App Store hoặc Play Store</div>
+                        <div class="sub-list-item">Bạn chịu trách nhiệm duy trì thông tin thanh toán hợp lệ</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Thông báo gia hạn:</strong>
+                        <div class="sub-list-item">Chúng tôi sẽ gửi nhắc nhở trước mỗi lần gia hạn (thường 24–48 giờ
+                            trước)</div>
+                        <div class="sub-list-item">Bạn sẽ nhận email xác nhận sau mỗi lần gia hạn thành công</div>
+                        <div class="sub-list-item">Thông báo thất bại sẽ được gửi nếu không thể xử lý gia hạn</div>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ Quan trọng:</strong> Nếu thanh toán thất bại, đăng ký của bạn có thể bị tạm ngưng
+                            hoặc hủy. Chúng tôi sẽ thử tính phí lại, nhưng bạn phải cập nhật phương thức thanh toán nếu
+                            hết hạn hoặc không hợp lệ.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">❌</span>
+                    <h2 class="section-title">4. Chính sách hủy</h2>
+                </div>
+                <div class="section-content">
+                    <p>Bạn có thể hủy đăng ký bất cứ lúc nào. Việc hủy có hiệu lực khi kết thúc chu kỳ thanh toán hiện
+                        tại.</p>
+
+                    <div class="list-item">
+                        <strong>Cách hủy:</strong>
+                        <div class="sub-list-item"><strong>iOS (Apple):</strong> Cài đặt → [Tên của bạn] → Đăng ký →
+                            Kazoku → Hủy đăng ký</div>
+                        <div class="sub-list-item"><strong>Android (Google):</strong> Google Play Store → Đăng ký →
+                            Kazoku → Hủy đăng ký</div>
+                        <div class="sub-list-item"><strong>Trong ứng dụng:</strong> Bạn cũng có thể hủy trong cài đặt
+                            đăng ký của ứng dụng</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Hiệu lực sau hủy:</strong>
+                        <div class="sub-list-item">Bạn vẫn được truy cập các tính năng cao cấp cho đến hết chu kỳ hiện
+                            tại</div>
+                        <div class="sub-list-item">Không hoàn tiền cho chu kỳ hiện tại</div>
+                        <div class="sub-list-item">Đăng ký sẽ không gia hạn sau khi kết thúc chu kỳ</div>
+                        <div class="sub-list-item">Bạn sẽ mất quyền truy cập các tính năng cao cấp khi đăng ký hết hạn
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 Hủy ngay lập tức:</strong> Nếu bạn hủy ngay, bạn vẫn có quyền truy cập cho đến hết
+                            chu kỳ đã trả. Chúng tôi không hoàn tiền theo tỷ lệ cho chu kỳ chưa sử dụng đầy đủ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+</html>

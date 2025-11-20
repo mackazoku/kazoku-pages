@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chính Sách Quyền Riêng Tư Gói Đăng Ký - Kazoku Family App</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #f59e0b;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #f59e0b, #f97316);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '💳';
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #f59e0b;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #f59e0b 0%, #f97316 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">💳 Kazoku - Quyền Riêng Tư Đăng Ký</div>
+            <div class="app-subtitle">Chính sách quyền riêng tư cho dịch vụ đăng ký</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                Hiệu lực: 1/1/2025
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. Giới thiệu</h2>
+                </div>
+                <div class="section-content">
+                    <p>Chính sách này giải thích cách Kazoku (“chúng tôi”) thu thập, sử dụng, lưu trữ và bảo vệ thông tin
+                        cá nhân của bạn khi đăng ký dịch vụ cao cấp. Đây là phần bổ sung cho Chính Sách Quyền Riêng Tư
+                        chính, tập trung vào dữ liệu liên quan đến đăng ký.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>🛡️ Cam kết của chúng tôi:</strong> Chúng tôi bảo vệ thông tin thanh toán và dữ liệu
+                            đăng ký của bạn bằng các chuẩn bảo mật cao nhất. Dữ liệu tài chính được xử lý an toàn và
+                            không lưu trên máy chủ của chúng tôi.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💳</span>
+                    <h2 class="section-title">2. Thông tin thanh toán được thu thập</h2>
+                </div>
+                <div class="section-content">
+                    <p>Khi đăng ký dịch vụ Kazoku, chúng tôi thu thập các thông tin sau:</p>
+
+                    <table class="data-table">
+                        <tr>
+                            <th>Loại thông tin</th>
+                            <th>Chi tiết</th>
+                            <th>Mục đích</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Phương thức thanh toán</strong></td>
+                            <td>Thẻ tín dụng, thẻ ghi nợ hoặc tài khoản thanh toán</td>
+                            <td>Xử lý phí đăng ký</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Thông tin xuất hóa đơn</strong></td>
+                            <td>Họ tên, địa chỉ thanh toán, email</td>
+                            <td>Phát hành hóa đơn, biên nhận</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dữ liệu giao dịch</strong></td>
+                            <td>Ngày mua, số tiền, gói đăng ký, mã giao dịch</td>
+                            <td>Quản lý đăng ký và hỗ trợ khách hàng</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Trạng thái đăng ký</strong></td>
+                            <td>Đang hoạt động, đã hủy, hết hạn, đang dùng thử</td>
+                            <td>Kiểm soát truy cập và gia hạn</td>
+                        </tr>
+                    </table>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ Quan trọng:</strong> Chúng tôi KHÔNG lưu số thẻ đầy đủ, mã CVV hay thông tin thanh
+                            toán hoàn chỉnh. Mọi giao dịch được xử lý bởi các đối tác đạt chuẩn PCI DSS (Apple App Store,
+                            Google Play Store, Stripe).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔐</span>
+                    <h2 class="section-title">3. Đối tác xử lý thanh toán</h2>
+                </div>
+                <div class="section-content">
+                    <p>Chúng tôi hợp tác với các đơn vị sau để xử lý giao dịch:</p>
+
+                    <div class="list-item">
+                        <strong>Apple App Store (iOS):</strong>
+                        <div class="sub-list-item">Xử lý mọi thanh toán trên iOS</div>
+                        <div class="sub-list-item">Lưu trữ dữ liệu trên máy chủ của Apple</div>
+                        <div class="sub-list-item">Tuân thủ chính sách bảo mật của Apple</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Google Play Store (Android):</strong>
+                        <div class="sub-list-item">Xử lý thanh toán trên Android</div>
+                        <div class="sub-list-item">Lưu giữ thông tin trên máy chủ của Google</div>
+                        <div class="sub-list-item">Tuân thủ tiêu chuẩn bảo mật của Google</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Stripe (Web/Khác):</strong>
+                        <div class="sub-list-item">Đạt chứng nhận PCI DSS cấp độ 1</div>
+                        <div class="sub-list-item">Mã hóa dữ liệu thanh toán khi truyền</div>
+                        <div class="sub-list-item">Lưu trữ bằng token an toàn</div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>🔒 Bảo mật:</strong> Tất cả đối tác đều tuân thủ PCI DSS, GDPR và quy định bảo vệ dữ
+                            liệu tại các khu vực hoạt động.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📊</span>
+                    <h2 class="section-title">4. Cách chúng tôi sử dụng dữ liệu</h2>
+                </div>
+                <div class="section-content">
+                    <p>Thông tin đăng ký được sử dụng để:</p>
+
+                    <div class="list-item">Xử lý và quản lý thanh toán</div>
+                    <div class="list-item">Cung cấp tính năng cao cấp theo gói đăng ký</div>
+                    <div class="list-item">Gửi thông báo gia hạn, xác nhận thanh toán</div>
+                    <div class="list-item">Phát hành hóa đơn, biên lai</div>
+                    <div class="list-item">Phát hiện, ngăn chặn gian lận</div>
+                    <div class="list-item">Hỗ trợ khách hàng về đăng ký</div>
+                    <div class="list-item">Tuân thủ quy định pháp lý và thuế</div>
+                    <div class="list-item">Phân tích xu hướng để cải thiện dịch vụ</div>
+
+                    <p style="margin-top: 20px;"><strong>Chúng tôi KHÔNG:</strong></p>
+                    <div class="sub-list-item">Bán dữ liệu thanh toán cho bên thứ ba</div>
+                    <div class="sub-list-item">Chia sẻ thông tin hóa đơn cho quảng cáo</div>
+                    <div class="sub-list-item">Dùng dữ liệu thanh toán cho marketing khi chưa có phép</div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">5. Gia hạn và tự động gia hạn</h2>
+                </div>
+                <div class="section-content">
+                    <p>Gói Kazoku sẽ tự gia hạn trừ khi bạn hủy. Chúng tôi xử lý dữ liệu gia hạn như sau:</p>
+
+                    <div class="list-item">
+                        <strong>Thông tin tự động gia hạn:</strong>
+                        <div class="sub-list-item">Lưu tùy chọn gia hạn của bạn</div>
+                        <div class="sub-list-item">Theo dõi ngày và chu kỳ thanh toán</div>
+                        <div class="sub-list-item">Phương thức thanh toán được lưu an toàn bởi đối tác</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Thông báo gia hạn:</strong>
+                        <div class="sub-list-item">Gửi nhắc trước mỗi kỳ thanh toán</div>
+                        <div class="sub-list-item">Gửi xác nhận sau khi gia hạn thành công</div>
+                        <div class="sub-list-item">Thông báo nếu thanh toán thất bại</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 Quản lý:</strong> Bạn có thể tắt tự động gia hạn tại App Store/Play Store hoặc trong cài đặt ứng dụng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🗑️</span>
+                    <h2 class="section-title">6. Lưu trữ và xóa dữ liệu</h2>
+                </div>
+                <div class="section-content">
+                    <p>Dữ liệu đăng ký được lưu trữ theo các trường hợp:</p>
+
+                    <div class="list-item">
+                        <strong>Đăng ký đang hoạt động:</strong>
+                        <div class="sub-list-item">Giữ dữ liệu trong suốt thời gian đăng ký</div>
+                        <div class="sub-list-item">Lưu lịch sử thanh toán phục vụ tra cứu</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Đăng ký đã hủy:</strong>
+                        <div class="sub-list-item">Lưu nhật ký giao dịch 7 năm để tuân thủ thuế</div>
+                        <div class="sub-list-item">Giữ trạng thái đăng ký cho lịch sử tài khoản</div>
+                        <div class="sub-list-item">Xóa phương thức thanh toán khỏi hệ thống (đối tác có thể giữ theo chính sách riêng)</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Xóa tài khoản:</strong>
+                        <div class="sub-list-item">Ẩn danh dữ liệu đăng ký khi tài khoản bị xóa</div>
+                        <div class="sub-list-item">Có thể giữ hồ sơ tài chính để đáp ứng luật định</div>
+                        <div class="sub-list-item">Bạn có thể yêu cầu xóa dữ liệu (theo điều kiện pháp luật)</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🌍</span>
+                    <h2 class="section-title">7. Chuyển dữ liệu quốc tế</h2>
+                </div>
+                <div class="section-content">
+                    <p>Dữ liệu đăng ký có thể được xử lý và lưu ở nhiều quốc gia:</p>
+
+                    <div class="list-item">Đối tác thanh toán dùng trung tâm dữ liệu khu vực</div>
+                    <div class="list-item">Máy chủ của chúng tôi có thể đặt tại các quốc gia khác để tối ưu dịch vụ</div>
+                    <div class="list-item">Mọi chuyển giao tuân thủ luật bảo vệ dữ liệu áp dụng</div>
+                    <div class="list-item">Sử dụng điều khoản hợp đồng tiêu chuẩn và biện pháp bảo vệ phù hợp</div>
+
+                    <div class="info-box">
+                        <p><strong>🌐 Tuân thủ GDPR:</strong> Người dùng Khu vực Kinh tế Châu Âu được bảo đảm rằng mọi chuyển dữ liệu đều phù hợp với GDPR và có biện pháp bảo vệ cần thiết.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">⚖️</span>
+                    <h2 class="section-title">8. Quyền của bạn với dữ liệu đăng ký</h2>
+                </div>
+                <div class="section-content">
+                    <p>Bạn có các quyền sau:</p>
+
+                    <div class="list-item">
+                        <strong>Quyền truy cập:</strong> Yêu cầu bản sao lịch sử đăng ký và thanh toán
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Quyền chỉnh sửa:</strong> Cập nhật thông tin thanh toán và hóa đơn
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Quyền xóa:</strong> Yêu cầu xóa dữ liệu (theo yêu cầu pháp lý)
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Quyền di chuyển dữ liệu:</strong> Nhận dữ liệu ở dạng máy đọc được
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Quyền phản đối:</strong> Phản đối một số hình thức xử lý dữ liệu</div>
+
+                    <div class="list-item">
+                        <strong>Quyền hạn chế:</strong> Yêu cầu giới hạn xử lý trong những trường hợp nhất định</div>
+
+                    <div class="highlight-box">
+                        <p><strong>📧 Liên hệ:</strong> Gửi yêu cầu đến <strong>contact@kazoku-ai.com</strong>. Chúng tôi phản hồi trong vòng 30 ngày.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">9. Cập nhật chính sách</h2>
+                </div>
+                <div class="section-content">
+                    <p>Chúng tôi có thể cập nhật chính sách này để:</p>
+
+                    <div class="list-item">Phản ánh thay đổi của dịch vụ đăng ký</div>
+                    <div class="list-item">Tuân thủ yêu cầu pháp lý mới</div>
+                    <div class="list-item">Cải thiện cách bảo vệ dữ liệu</div>
+                    <div class="list-item">Đáp ứng phản hồi từ người dùng</div>
+
+                    <p style="margin-top: 20px;">Thay đổi quan trọng sẽ được thông báo qua:</p>
+                    <div class="sub-list-item">Thông báo trong ứng dụng</div>
+                    <div class="sub-list-item">Email gửi đến địa chỉ đã đăng ký</div>
+                    <div class="sub-list-item">Cập nhật trực tiếp trên trang chính sách</div>
+
+                    <p style="margin-top: 20px;">Chính sách sửa đổi có hiệu lực sau 30 ngày kể từ khi thông báo, hoặc ngay lập tức nếu luật yêu cầu.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - Trợ lý thông minh cho mọi gia đình!</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ Gửi yêu thương từ Tokyo đến mọi gia đình</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> Tải iOS
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Tải Android
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+

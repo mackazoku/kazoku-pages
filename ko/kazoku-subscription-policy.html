@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Policy - Kazoku Family App</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .section:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #8b5cf6;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5cf6, #a855f7);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            border-left: 4px solid #8b5cf6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '✓';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #f3e8ff;
+            color: #6b21a8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">📱 Kazoku - 구독 정책</div>
+            <div class="app-subtitle">구독 서비스 약관</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                적용일: 2025년 1월 1일
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. 소개</h2>
+                </div>
+                <div class="section-content">
+                    <p>본 구독 정책("정책")은 Kazoku의 프리미엄 구독 서비스를 사용하는 데 적용됩니다.
+                        Kazoku 프리미엄 기능을 구독함으로써, 본 정책과 서비스 약관 및 개인정보 처리방침에 동의하게 됩니다.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 App Store & Play Store 준수:</strong> 본 정책은 Apple App Store 및 Google Play Store의 구독
+                            요구사항을 준수하며, 명확한 가격 안내, 자동 갱신 조건, 취소 절차 및 환불 정책을 포함합니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💎</span>
+                    <h2 class="section-title">2. 구독 요금제 및 가격</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku는 다양한 기능과 가격의 여러 구독 요금제를 제공합니다:</p>
+
+                    <div class="list-item">
+                        <strong>월간 구독:</strong> 매월 과금되며 자동으로 갱신됩니다
+                    </div>
+
+                    <div class="list-item">
+                        <strong>연간 구독:</strong> 매년 과금되며 자동으로 갱신됩니다 (월간 요금제보다 저렴)
+                    </div>
+
+                    <div class="list-item">
+                        <strong>무료 체험:</strong> 일부 요금제는 과금 시작 전 무료 체험 기간을 제공할 수 있습니다
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>💰 가격 정보:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>모든 가격은 사용자의 지역 통화로 표시됩니다</li>
+                            <li>가격은 지역에 따라 다를 수 있으며 세금이 적용될 수 있습니다</li>
+                            <li>가격은 30일 전에 사전 공지 후 변경될 수 있습니다</li>
+                            <li>현재 구독자에게는 가격 변경이 적용되기 전에 알림이 제공됩니다</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>📱 가격 확인 위치:</strong> 현재 요금제와 가격은 앱의 구독 설정 및 웹사이트에서 확인할 수 있습니다. 가격은 App Store 및 Play
+                            Store에서도 표시됩니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">3. 자동 갱신 및 결제</h2>
+                </div>
+                <div class="section-content">
+                    <p><strong>자동 갱신:</strong></p>
+                    <p>구독은 각 결제 기간 종료 시 자동으로 갱신됩니다. 갱신일 이전에 취소하지 않는 경우, 갱신 기간에 대한 결제가 자동으로 이루어집니다.</p>
+
+                    <div class="list-item">
+                        <strong>결제 주기:</strong>
+                        <div class="sub-list-item">월간 구독은 30일마다 갱신</div>
+                        <div class="sub-list-item">연간 구독은 365일마다 갱신</div>
+                        <div class="sub-list-item">갱신일은 최초 구독한 날짜와 동일합니다</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>결제 방식:</strong>
+                        <div class="sub-list-item">결제는 Apple App Store(iOS) 또는 Google Play Store(Android)를 통해 처리됩니다
+                        </div>
+                        <div class="sub-list-item">결제는 App Store 또는 Play Store 계정에 등록된 결제 수단으로 청구됩니다</div>
+                        <div class="sub-list-item">사용자는 유효한 결제 정보를 유지해야 합니다</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>갱신 알림:</strong>
+                        <div class="sub-list-item">갱신 전(보통 24~48시간 전) 알림이 전송됩니다</div>
+                        <div class="sub-list-item">갱신 후 확인 이메일이 발송됩니다</div>
+                        <div class="sub-list-item">결제가 실패한 경우 실패 알림이 전송됩니다</div>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ 중요:</strong> 결제가 실패할 경우 구독이 일시 중지되거나 취소될 수 있습니다. 결제 갱신을 재시도하지만, 사용자는 결제 수단을 직접
+                            업데이트해야 합니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">❌</span>
+                    <h2 class="section-title">4. 구독 취소 정책</h2>
+                </div>
+                <div class="section-content">
+                    <p>사용자는 언제든지 구독을 취소할 수 있으며, 취소는 현재 결제 기간이 종료된 후 적용됩니다.</p>
+
+                    <div class="list-item">
+                        <strong>취소 방법:</strong>
+                        <div class="sub-list-item"><strong>iOS (Apple):</strong> 설정 → [사용자 이름] → 구독 → Kazoku → 구독 취소
+                        </div>
+                        <div class="sub-list-item"><strong>Android (Google):</strong> Google Play Store → 구독 → Kazoku →
+                            구독 취소</div>
+                        <div class="sub-list-item"><strong>앱 내:</strong> 앱의 구독 설정에서도 취소할 수 있습니다</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>취소 후 효과:</strong>
+                        <div class="sub-list-item">현재 결제 기간 종료 전까지 프리미엄 기능을 계속 사용할 수 있습니다</div>
+                        <div class="sub-list-item">현재 결제 기간에 대한 환불은 제공되지 않습니다</div>
+                        <div class="sub-list-item">현재 기간 종료 후 구독은 자동 갱신되지 않습니다</div>
+                        <div class="sub-list-item">구독 종료 시 프리미엄 기능에 대한 접근 권한이 제거됩니다</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 즉시 취소:</strong> 즉시 취소하더라도 이미 결제한 기간 동안은 계속 이용할 수 있습니다. 부분 기간에 대한 일할 계산 환불은 제공되지
+                            않습니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💰</span>
+                    <h2 class="section-title">5. 환불 정책</h2>
+                </div>
+                <div class="section-content">
+                    <p><strong>표준 환불 정책:</strong></p>
+                    <p>구독 환불은 Apple App Store 및 Google Play Store의 정책에 따라 처리됩니다:</p>
+
+                    <div class="list-item">
+                        <strong>Apple App Store (iOS):</strong>
+                        <div class="sub-list-item">환불 요청은 Apple의 환불 절차를 통해 제출해야 합니다</div>
+                        <div class="sub-list-item">iOS 구독 환불 결정은 Apple이 단독으로 처리합니다</div>
+                        <div class="sub-list-item">환불 요청은 Apple 고객센터에 문의하세요</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Google Play Store (Android):</strong>
+                        <div class="sub-list-item">환불 요청은 Google Play 환불 절차를 통해 제출해야 합니다</div>
+                        <div class="sub-list-item">Android 구독 환불 결정은 Google이 단독으로 처리합니다</div>
+                        <div class="sub-list-item">환불 요청은 Google Play 고객센터에 문의하세요</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>당사의 환불 정책:</strong>
+                        <div class="sub-list-item">당사는 직접 환불을 제공하지 않습니다 - 모든 환불은 해당 스토어를 통해 처리됩니다</div>
+                        <div class="sub-list-item">환불은 보통 구매 후 일정 기간 내(대부분 48시간~14일)에만 가능합니다</div>
+                        <div class="sub-list-item">프리미엄 기능을 많이 사용한 경우 환불이 불가능할 수 있습니다</div>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ 중요:</strong> 구독 기간 중 기능을 이미 사용한 경우 환불이 불가능한 경우가 많습니다. 무료 체험은 언제든지 부담 없이 취소할 수
+                            있습니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🎁</span>
+                    <h2 class="section-title">6. 무료 체험</h2>
+                </div>
+                <div class="section-content">
+                    <p>일부 구독 요금제는 무료 체험을 제공할 수 있습니다:</p>
+
+                    <div class="list-item">
+                        <strong>체험 조건:</strong>
+                        <div class="sub-list-item">무료 체험 기간은 구독 시 명확히 안내됩니다</div>
+                        <div class="sub-list-item">체험 기간 동안 요금은 청구되지 않습니다</div>
+                        <div class="sub-list-item">체험 기간 내 언제든지 취소할 수 있으며 요금은 부과되지 않습니다</div>
+                        <div class="sub-list-item">취소하지 않을 경우, 체험 종료 시 자동으로 유료 구독으로 전환됩니다</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>제한 사항:</strong>
+                        <div class="sub-list-item">사용자당 요금제별 무료 체험은 1회만 제공됩니다</div>
+                        <div class="sub-list-item">일부 지역에서는 무료 체험이 제공되지 않을 수 있습니다</div>
+                        <div class="sub-list-item">무료 체험 제공 여부는 사전 공지 없이 변경될 수 있습니다</div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>📱 체험 관리:</strong> 무료 체험은 언제든지 기기 구독 설정에서 취소할 수 있습니다. 체험 종료 전에 취소해야 요금이 청구되지 않습니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">7. 구독 변경 및 업그레이드</h2>
+                </div>
+                <div class="section-content">
+                    <p>사용자는 언제든지 구독 요금제를 변경할 수 있습니다:</p>
+
+                    <div class="list-item">
+                        <strong>업그레이드:</strong>
+                        <div class="sub-list-item">언제든지 상위 요금제로 업그레이드할 수 있습니다</div>
+                        <div class="sub-list-item">업그레이드는 즉시 적용됩니다</div>
+                        <div class="sub-list-item">현재 요금제의 남은 기간에 대해 일할 계산된 크레딧이 적용될 수 있습니다</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>다운그레이드:</strong>
+                        <div class="sub-list-item">하위 요금제로 변경할 수 있습니다</div>
+                        <div class="sub-list-item">다운그레이드는 현재 결제 기간 종료 후 적용됩니다</div>
+                        <div class="sub-list-item">기간 종료 전까지 현재 요금제 기능을 계속 이용할 수 있습니다</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>요금제 변경:</strong>
+                        <div class="sub-list-item">월간 및 연간 요금제 간 변경이 가능합니다</div>
+                        <div class="sub-list-item">변경 시 요금이 일할 계산될 수 있습니다</div>
+                        <div class="sub-list-item">모든 변경은 App Store 또는 Play Store를 통해 처리됩니다</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">⚖️</span>
+                    <h2 class="section-title">8. 서비스 이용 가능성 및 변경</h2>
+                </div>
+                <div class="section-content">
+                    <p>당사는 구독 서비스를 수정, 중단 또는 종료할 권리를 보유합니다:</p>
+
+                    <div class="list-item">구독 기능을 추가, 변경 또는 삭제할 수 있습니다</div>
+                    <div class="list-item">가격은 30일 사전 공지 후 변경될 수 있습니다</div>
+                    <div class="list-item">특정 구독 요금제를 종료할 수 있으며 기존 사용자는 대체 요금제를 제공받습니다</div>
+                    <div class="list-item">서비스는 유지보수 또는 기술적 문제로 인해 일시적으로 중단될 수 있습니다</div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 변경 알림:</strong> 중요한 변경사항은 이메일 또는 앱 내 알림을 통해 최소 30일 전에 안내됩니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📞</span>
+                    <h2 class="section-title">9. 고객 지원</h2>
+                </div>
+                <div class="section-content">
+                    <p>구독 관련 문의 및 지원:</p>
+
+                    <div class="list-item">
+                        <strong>연락처 정보:</strong>
+                        <div class="sub-list-item">이메일: contact@kazoku-ai.com</div>
+                        <div class="sub-list-item">웹사이트: kazoku-ai.com</div>
+                        <div class="sub-list-item">응답 시간: 48시간 이내 응답을 목표로 합니다</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>지원 항목:</strong>
+                        <div class="sub-list-item">구독 관리 관련 문의</div>
+                        <div class="sub-list-item">결제 문의</div>
+                        <div class="sub-list-item">프리미엄 기능 기술 문제</div>
+                        <div class="sub-list-item">계정 관련 문제</div>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>📱 스토어 지원:</strong> 결제 및 환불 문제는 Apple App Store(iOS) 또는 Google Play(Android)의 고객센터를
+                            통해 처리됩니다.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">10. 정책 업데이트</h2>
+                </div>
+                <div class="section-content">
+                    <p>본 구독 정책은 다음과 같은 경우 업데이트될 수 있습니다:</p>
+
+                    <div class="list-item">구독 서비스의 변경 사항 반영</div>
+                    <div class="list-item">App Store 및 Play Store 요구사항 준수</div>
+                    <div class="list-item">법적 또는 규제적 변경 대응</div>
+                    <div class="list-item">명확성과 사용자 이해 향상</div>
+
+                    <p style="margin-top: 20px;">주요 변경 사항은 다음을 통해 안내드립니다:</p>
+                    <div class="sub-list-item">등록된 이메일로 알림</div>
+                    <div class="sub-list-item">앱 내 알림</div>
+                    <div class="sub-list-item">본 정책 페이지 업데이트</div>
+
+                    <p style="margin-top: 20px;">정책 변경 이후 구독 서비스를 계속 이용하는 경우, 변경된 정책에 동의하는 것으로 간주됩니다.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <h3>Kazoku - 모든 가족을 위한 스마트 어시스턴트!</h3>
+            <p>🌐 kazoku-ai.com | 📧 contact@kazoku-ai.com</p>
+            <p>❤️ 도쿄에서 전 세계 모든 가족에게 사랑을 전합니다</p>
+            <div style="display: flex; justify-content: center; gap: 2rem; margin: 0.5rem 0; flex-wrap: wrap;">
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-apple"></i> iOS 다운로드
+                </a>
+                <a href="#" style="color: #fff; text-decoration: none;">
+                    <i class="fab fa-android"></i> Android 다운로드
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="https://www.tiktok.com/@kazokumac"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/Kazoku.mac/"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@KazokuMac"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.threads.com/@kazoku.mac"><i class="fab fa-threads"></i></a>
+                <a href="https://x.com/KazokuMac"><i class="fab fa-x"></i></a>
+                <a href="https://www.instagram.com/kazoku.mac"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.pinterest.com/kazokumac/"><i class="fab fa-pinterest"></i></a>
+            </div>
+        </div>
+        <div style="margin: 1rem 0;">
+            <a href="kazoku-terms.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">서비스 이용
+                약관</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">개인정보
+                처리방침</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="kazoku-subscription-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">구독
+                개인정보</a>
+            <span style="color: rgba(255, 255, 255, 0.5);">|</span>
+            <a href="mac-index.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">운영 회사</a>
+        </div>
+        <p>&copy; 2025 Kazoku Family App. 모든 권리 보유.<br>
+            <em>"사랑을 연결하고, 행복을 나누다"</em>
+        </p>
+    </footer>
+</body>
+
+
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Policy - Kazoku Family App</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .section:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #8b5cf6;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5cf6, #a855f7);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            border-left: 4px solid #8b5cf6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '✓';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #f3e8ff;
+            color: #6b21a8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">📱 Kazoku - サブスクリプションポリシー</div>
+            <div class="app-subtitle">サブスクリプションサービスに関する利用規約</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                有効開始日：2025年1月1日
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. はじめに</h2>
+                </div>
+                <div class="section-content">
+                    <p>本サブスクリプションポリシー（以下「本ポリシー」）は、Kazoku のプレミアムサブスクリプションサービスの利用を規定するものです。
+                        Kazoku のプレミアム機能を購読することで、本ポリシー、利用規約、およびプライバシーポリシーに同意したものとみなされます。</p>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 App Store & Play Store 準拠：</strong>本ポリシーは、Apple App Store および Google Play Store
+                            のサブスクリプション要件（価格表示、自動更新、解約手続き、返金ポリシーなど）に準拠しています。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💎</span>
+                    <h2 class="section-title">2. サブスクリプションプランと料金</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku では、さまざまな機能と料金のサブスクリプションプランをご用意しています：</p>
+
+                    <div class="list-item">
+                        <strong>月額サブスクリプション：</strong>毎月請求され、自動的に更新されます
+                    </div>
+
+                    <div class="list-item">
+                        <strong>年額サブスクリプション：</strong>毎年請求され、自動的に更新されます（⽉額プランよりお得です）
+                    </div>
+
+                    <div class="list-item">
+                        <strong>無料トライアル：</strong>一部のプランでは、請求開始前に無料トライアル期間を提供する場合があります
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>💰 料金について：</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>すべての価格はお住まいの地域の通貨で表示されます</li>
+                            <li>価格は地域によって異なる場合があり、適用税が加算されます</li>
+                            <li>価格変更がある場合は30日前に通知します</li>
+                            <li>現在の購読者には、価格変更の施行前に通知されます</li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>📱 料金の確認場所：</strong>最新のサブスクリプションプランと料金は、アプリ内のサブスクリプション設定および公式ウェブサイトで確認できます。また、App
+                            Store と Play Store にも表示されます。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">3. 自動更新と請求</h2>
+                </div>
+                <div class="section-content">
+                    <p><strong>自動更新：</strong></p>
+                    <p>サブスクリプションは、解約しない限り、各請求期間の終了時に自動的に更新されます。購読することで、更新期間の料金が登録済みの支払い方法に請求されることに同意したものとみなされます。</p>
+
+                    <div class="list-item">
+                        <strong>請求サイクル：</strong>
+                        <div class="sub-list-item">月額プラン：30日ごとに更新</div>
+                        <div class="sub-list-item">年額プラン：365日ごとに更新</div>
+                        <div class="sub-list-item">更新は初回購入日と同じ日付に行われます</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>支払い処理：</strong>
+                        <div class="sub-list-item">支払いは Apple App Store（iOS）または Google Play Store（Android）を通じて処理されます
+                        </div>
+                        <div class="sub-list-item">支払いは App Store または Play Store に登録された支払い方法に請求されます</div>
+                        <div class="sub-list-item">有効な支払い情報を維持する責任はユーザーにあります</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>更新通知：</strong>
+                        <div class="sub-list-item">更新前にリマインダーを送信します（通常24〜48時間前）</div>
+                        <div class="sub-list-item">更新成功後に確認メールが送信されます</div>
+                        <div class="sub-list-item">支払いが失敗した場合、通知が送られます</div>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️
+                                重要：</strong>支払いが失敗すると、サブスクリプションが一時停止またはキャンセルされる場合があります。再請求を試みますが、支払い方法の更新はユーザーの責任です。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">❌</span>
+                    <h2 class="section-title">4. 解約ポリシー</h2>
+                </div>
+                <div class="section-content">
+                    <p>サブスクリプションはいつでも解約できます。解約は現在の請求期間の終了時に反映されます。</p>
+
+                    <div class="list-item">
+                        <strong>解約方法：</strong>
+                        <div class="sub-list-item"><strong>iOS（Apple）：</strong>設定 → [自分の名前] → サブスクリプション → Kazoku →
+                            サブスクリプションをキャンセル</div>
+                        <div class="sub-list-item"><strong>Android（Google）：</strong>Google Play ストア → サブスクリプション → Kazoku
+                            → サブスクリプションをキャンセル</div>
+                        <div class="sub-list-item"><strong>アプリ内：</strong>アプリ内のサブスクリプション設定からも解約できます</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>解約後の影響：</strong>
+                        <div class="sub-list-item">現在の請求期間が終了するまでプレミアム機能を利用できます</div>
+                        <div class="sub-list-item">現在の請求期間分の返金は行われません</div>
+                        <div class="sub-list-item">請求期間終了後は自動更新されません</div>
+                        <div class="sub-list-item">サブスクリプションが終了するとプレミアム機能へのアクセスが停止します</div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 即時解約について：</strong>即時解約しても、すでに支払い済み期間の終了までは引き続き利用できます。部分的期間の比例返金は行っていません。</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phần tiếp theo quá dài để gửi trong một lần → Tôi sẽ dịch tiếp đầy đủ từ Mục 5 → Footer ở phần tiếp theo. -->
+        </div>
+    </div>
+</body>
+
+
+</html>

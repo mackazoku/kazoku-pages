@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscription Policy - Kazoku Family App</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2c3e50;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="white" opacity="0.1"/><circle cx="25" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .app-logo {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .app-subtitle {
+            font-size: 1.1em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .section:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #8b5cf6;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e5e7eb;
+            position: relative;
+        }
+
+        .section-title::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5cf6, #a855f7);
+        }
+
+        .section-content {
+            color: #374151;
+            font-size: 0.95em;
+        }
+
+        .section-content p {
+            margin-bottom: 12px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%);
+            border-left: 4px solid #8b5cf6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+            border-left: 4px solid #ef4444;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            border-left: 4px solid #3b82f6;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .list-item {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .list-item::before {
+            content: '✓';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        .sub-list-item {
+            margin-bottom: 6px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 0.9em;
+        }
+
+        .sub-list-item::before {
+            content: '•';
+            color: #8b5cf6;
+            font-weight: bold;
+            position: absolute;
+            left: 10px;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .data-table th {
+            background: linear-gradient(135deg, #8b5cf6 0%, #a855f7 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: #f3e8ff;
+            color: #6b21a8;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .section-icon {
+            font-size: 1.5em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .app-logo {
+                font-size: 2em;
+            }
+
+            .data-table {
+                font-size: 0.85em;
+            }
+
+            .data-table th,
+            .data-table td {
+                padding: 10px 8px;
+            }
+        }
+
+        footer {
+            background: transparent;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            margin-bottom: 1rem;
+            line-height: 1.5;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="app-logo">📱 Kazoku - Política de Assinatura</div>
+            <div class="app-subtitle">Termos e Condições para Serviços de Assinatura</div>
+        </div>
+
+        <div class="content">
+            <div class="effective-date">
+                Vigente a partir de: 1º de janeiro de 2025
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">📋</span>
+                    <h2 class="section-title">1. Introdução</h2>
+                </div>
+                <div class="section-content">
+                    <p>Esta Política de Assinatura ("Política") rege o uso dos serviços premium de assinatura do Kazoku.
+                        Ao assinar os recursos premium do Kazoku, você concorda em cumprir esta Política, nossos Termos
+                        de Serviço e nossa Política de Privacidade.</p>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 Conformidade com App Store & Play Store:</strong> Esta política cumpre os
+                            requisitos de assinatura da Apple App Store e Google Play Store, incluindo preços claros,
+                            termos de renovação automática, procedimentos de cancelamento e políticas de reembolso.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">💎</span>
+                    <h2 class="section-title">2. Planos de Assinatura e Preços</h2>
+                </div>
+                <div class="section-content">
+                    <p>O Kazoku oferece vários planos de assinatura com diferentes recursos e preços:</p>
+
+                    <div class="list-item">
+                        <strong>Assinatura Mensal:</strong> Cobrança mensal, renovação automática todo mês
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Assinatura Anual:</strong> Cobrança anual, renovação automática todo ano (oferece
+                        economia em relação ao plano mensal)
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Teste Gratuito:</strong> Alguns planos podem oferecer um período de teste gratuito antes
+                        do início da cobrança
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>💰 Informações de Preço:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Todos os preços são exibidos na moeda local</li>
+                            <li>Os preços podem variar por região e estão sujeitos a impostos aplicáveis</li>
+                            <li>Os preços podem ser alterados com aviso prévio de 30 dias</li>
+                            <li>Assinantes atuais serão notificados sobre alterações de preço antes de entrarem em vigor
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="info-box">
+                        <p><strong>📱 Onde visualizar preços:</strong> Os planos e preços atuais estão disponíveis nas
+                            configurações de assinatura do aplicativo e em nosso site. Os preços também são exibidos na
+                            App Store e Play Store.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">🔄</span>
+                    <h2 class="section-title">3. Renovação Automática e Cobrança</h2>
+                </div>
+                <div class="section-content">
+                    <p><strong>Renovação Automática:</strong></p>
+                    <p>Sua assinatura será renovada automaticamente ao final de cada período de cobrança, a menos que
+                        você a cancele antes da data de renovação. Ao assinar, você autoriza que cobremos o método de
+                        pagamento registrado para o período de renovação.</p>
+
+                    <div class="list-item">
+                        <strong>Ciclo de Cobrança:</strong>
+                        <div class="sub-list-item">Assinaturas mensais renovam a cada 30 dias</div>
+                        <div class="sub-list-item">Assinaturas anuais renovam a cada 365 dias</div>
+                        <div class="sub-list-item">A renovação ocorre no mesmo dia do mês/ano da assinatura original
+                        </div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Processamento de Pagamento:</strong>
+                        <div class="sub-list-item">Os pagamentos são processados pela Apple App Store (iOS) ou Google
+                            Play Store (Android)</div>
+                        <div class="sub-list-item">O pagamento será cobrado do método associado à sua conta na App Store
+                            ou Play Store</div>
+                        <div class="sub-list-item">Você é responsável por manter informações de pagamento válidas</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Notificações de Renovação:</strong>
+                        <div class="sub-list-item">Enviaremos um lembrete antes de cada renovação (normalmente 24–48
+                            horas antes)</div>
+                        <div class="sub-list-item">Você receberá um e-mail de confirmação após cada renovação
+                            bem-sucedida</div>
+                        <div class="sub-list-item">Notificações de falha de pagamento serão enviadas se a renovação não
+                            puder ser processada</div>
+                    </div>
+
+                    <div class="warning-box">
+                        <p><strong>⚠️ Importante:</strong> Se o pagamento falhar, sua assinatura pode ser suspensa ou
+                            cancelada. Tentaremos processar o pagamento novamente, mas você é responsável por atualizar
+                            seu método de pagamento caso expire ou se torne inválido.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">❌</span>
+                    <h2 class="section-title">4. Política de Cancelamento</h2>
+                </div>
+                <div class="section-content">
+                    <p>Você pode cancelar sua assinatura a qualquer momento. O cancelamento será efetivo no final do
+                        período de cobrança atual.</p>
+
+                    <div class="list-item">
+                        <strong>Como Cancelar:</strong>
+                        <div class="sub-list-item"><strong>iOS (Apple):</strong> Vá em Configurações → [Seu Nome] →
+                            Assinaturas → Kazoku → Cancelar Assinatura</div>
+                        <div class="sub-list-item"><strong>Android (Google):</strong> Vá na Google Play Store →
+                            Assinaturas → Kazoku → Cancelar Assinatura</div>
+                        <div class="sub-list-item"><strong>Dentro do App:</strong> Você também pode cancelar nas
+                            configurações de assinatura do aplicativo</div>
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Efeitos do Cancelamento:</strong>
+                        <div class="sub-list-item">Você continuará com acesso às funções premium até o final do período
+                            atual</div>
+                        <div class="sub-list-item">Nenhum reembolso será fornecido pelo período atual</div>
+                        <div class="sub-list-item">Sua assinatura não será renovada após o período atual</div>
+                        <div class="sub-list-item">Você perderá acesso às funções premium quando a assinatura expirar
+                        </div>
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>📱 Cancelamento Imediato:</strong> Mesmo que cancele imediatamente, você terá acesso
+                            até o final do período já pago. Não fornecemos reembolsos proporcionais por períodos
+                            parciais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

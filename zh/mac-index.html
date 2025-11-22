@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +30,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
             animation: slideDown 0.5s ease;
         }
@@ -39,6 +40,7 @@
                 transform: translateY(-100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -62,9 +64,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.05);
             }
@@ -127,6 +132,7 @@
             0% {
                 transform: scale(1);
             }
+
             100% {
                 transform: scale(1.1);
             }
@@ -139,7 +145,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             animation: rotate 15s linear infinite;
         }
 
@@ -147,6 +153,7 @@
             from {
                 transform: rotate(0deg);
             }
+
             to {
                 transform: rotate(360deg);
             }
@@ -161,7 +168,7 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .hero p {
@@ -170,7 +177,7 @@
             margin: 0 auto 2rem;
             opacity: 0.95;
             animation: fadeInUp 1s ease 0.2s both;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes fadeInUp {
@@ -178,6 +185,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -208,6 +216,7 @@
                 opacity: 0;
                 transform: scale(0.9);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -240,17 +249,28 @@
             background: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             opacity: 0;
             transform: translateY(30px);
             animation: slideUp 0.6s ease forwards;
         }
 
-        .value-card:nth-child(1) { animation-delay: 0.1s; }
-        .value-card:nth-child(2) { animation-delay: 0.2s; }
-        .value-card:nth-child(3) { animation-delay: 0.3s; }
-        .value-card:nth-child(4) { animation-delay: 0.4s; }
+        .value-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .value-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .value-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .value-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes slideUp {
             to {
@@ -288,7 +308,7 @@
             height: 400px;
             background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop') center/cover;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
@@ -301,7 +321,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.7s;
         }
 
@@ -311,7 +331,7 @@
 
         .company-image:hover {
             transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .ceo-letter-section {
@@ -336,7 +356,7 @@
             height: 450px;
             background: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=900&fit=crop') center/cover;
             border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
             transition: all 0.5s ease;
         }
 
@@ -351,7 +371,7 @@
             padding: 1.5rem;
             background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .ceo-info h4 {
@@ -369,7 +389,7 @@
             background: white;
             padding: 3rem;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         .ceo-letter-content h3 {
@@ -442,7 +462,7 @@
             background: #f7fafc;
             padding: 1.5rem;
             border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .timeline-content h4 {
@@ -468,17 +488,28 @@
             padding: 1.5rem;
             background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateX(-30px);
             animation: slideRight 0.6s ease forwards;
         }
 
-        .service-item:nth-child(1) { animation-delay: 0.1s; }
-        .service-item:nth-child(2) { animation-delay: 0.2s; }
-        .service-item:nth-child(3) { animation-delay: 0.3s; }
-        .service-item:nth-child(4) { animation-delay: 0.4s; }
+        .service-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .service-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .service-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .service-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes slideRight {
             to {
@@ -489,7 +520,7 @@
 
         .service-item:hover {
             transform: translateX(10px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
         .service-icon {
@@ -518,7 +549,7 @@
             margin: 2rem auto;
             background: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop') center/cover;
             border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
@@ -531,14 +562,17 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
             animation: shine 3s ease-in-out infinite;
         }
 
         @keyframes shine {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translate(-50%, -50%) rotate(0deg);
             }
+
             50% {
                 transform: translate(-50%, -50%) rotate(180deg);
             }
@@ -567,17 +601,28 @@
             background: white;
             border-radius: 8px;
             border-left: 4px solid #667eea;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateX(-20px);
             animation: slideRight 0.5s ease forwards;
         }
 
-        .product-features li:nth-child(1) { animation-delay: 0.1s; }
-        .product-features li:nth-child(2) { animation-delay: 0.2s; }
-        .product-features li:nth-child(3) { animation-delay: 0.3s; }
-        .product-features li:nth-child(4) { animation-delay: 0.4s; }
+        .product-features li:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .product-features li:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .product-features li:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .product-features li:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         .product-features li:hover {
             transform: translateX(10px);
@@ -597,17 +642,28 @@
             padding: 2rem;
             border-radius: 10px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
             transition: all 0.4s ease;
             opacity: 0;
             transform: scale(0.8);
             animation: popIn 0.5s ease forwards;
         }
 
-        .step-card:nth-child(1) { animation-delay: 0.1s; }
-        .step-card:nth-child(2) { animation-delay: 0.2s; }
-        .step-card:nth-child(3) { animation-delay: 0.3s; }
-        .step-card:nth-child(4) { animation-delay: 0.4s; }
+        .step-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .step-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .step-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .step-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes popIn {
             to {
@@ -638,9 +694,12 @@
         }
 
         @keyframes bounce {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -673,7 +732,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.5s;
         }
 
@@ -701,7 +760,7 @@
             background: white;
             padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         .info-item {
@@ -744,7 +803,7 @@
             background: white;
             padding: 3rem;
             border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.4s ease;
         }
 
@@ -759,10 +818,21 @@
             opacity: 0;
         }
 
-        .form-group:nth-child(1) { animation-delay: 0.1s; }
-        .form-group:nth-child(2) { animation-delay: 0.2s; }
-        .form-group:nth-child(3) { animation-delay: 0.3s; }
-        .form-group:nth-child(4) { animation-delay: 0.4s; }
+        .form-group:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .form-group:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .form-group:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .form-group:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         .form-group label {
             display: block;
@@ -826,7 +896,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.5s;
         }
 
@@ -896,9 +966,17 @@
             animation: rotateIn 0.6s ease forwards;
         }
 
-        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
-        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
-        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+        .testimonial-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .testimonial-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .testimonial-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
 
         @keyframes rotateIn {
             to {
@@ -1036,6 +1114,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -1060,7 +1139,7 @@
     <section id="about" class="container">
         <h2 class="section-title">关于MAC</h2>
         <p class="section-subtitle">您值得信赖的现代家庭科技伙伴</p>
-        
+
         <div class="company-intro">
             <div>
                 <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
@@ -1199,7 +1278,7 @@
         <div class="container">
             <h2 class="section-title">联系我们</h2>
             <p class="section-subtitle">我们随时准备倾听并支持您</p>
-            
+
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: #2d3748;">联系信息</h3>
@@ -1233,32 +1312,33 @@
                     </div>
                 </div>
 
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" data-success-message="感谢您联系我们！我们将尽快回复。">
                     <div class="form-group">
                         <label for="name">姓名 <span style="color: #e53e3e;">*</span></label>
                         <input type="text" id="name" name="name" required placeholder="输入您的全名">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="email">电子邮件 <span style="color: #e53e3e;">*</span></label>
                         <input type="email" id="email" name="email" required placeholder="email@example.com">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="phone">电话号码</label>
                         <input type="tel" id="phone" name="phone" placeholder="+81 123 456 789">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="message">留言 <span style="color: #e53e3e;">*</span></label>
-                        <textarea id="message" name="message" rows="5" required placeholder="与我们分享您的项目、问题或请求..."></textarea>
+                        <textarea id="message" name="message" rows="5" required
+                            placeholder="与我们分享您的项目、问题或请求..."></textarea>
                     </div>
-                    
-                    <button type="submit" class="submit-button">
+
+                    <button type="submit" class="submit-button" data-sending-text="发送中...">
                         <span>发送消息</span>
                         <span class="button-icon">→</span>
                     </button>
-                    
+
                     <div class="form-message" id="formMessage"></div>
                 </form>
             </div>
@@ -1290,7 +1370,7 @@
         <div class="container">
             <h2 class="section-title">CEO致辞</h2>
             <p class="section-subtitle">将科技带给家庭幸福的旅程</p>
-    
+
             <div class="ceo-letter-wrapper">
                 <div class="ceo-image-container">
                     <div class="ceo-image"></div>
@@ -1299,44 +1379,44 @@
                         <p>创始人兼CEO,MAC公司</p>
                     </div>
                 </div>
-    
+
                 <div class="ceo-letter-content">
                     <h3>用科技守护家庭幸福的愿望</h3>
-                    
+
                     <p>
                         亲爱的读者们,
                     </p>
-    
+
                     <p>
                         在讲述MAC的故事之前,我想分享一个小秘密:MAC不仅仅是公司名称,它还是我三个心爱孩子名字的首字母缩写—<strong>M</strong>inh、<strong>A</strong>nh和<strong>C</strong>hi。每次看到这个名字,我都会想起开始这段旅程的原因:为了家庭,为了爱,为了希望为孩子们创造一个更美好的世界。
                     </p>
-    
+
                     <p>
                         Kazoku的想法始于大约1-2年前的一个简单时刻。那时,我们家非常忙碌——工作不断,孩子们要上学,我们错过了许多家庭计划。意识到这一点后,我决心安排一次全家一起去海边的旅行——这是全家团聚的宝贵时光。
                     </p>
-    
+
                     <p>
                         然而,即使在那次旅行中,我注意到我们仍然面临挑战。年迈的母亲跟不上手机上的消息,孩子们错过了即将到来活动的通知,我的妻子在几十个不同的应用程序中挣扎。站在海滩上,看着我的三个孩子玩耍,我问自己:"为什么科技这么复杂?为什么它不能更简单、更温暖,真正服务于我们的幸福?"那一刻,Kazoku在我心中诞生了。
                     </p>
-    
+
                     <p>
                         说实话,以前我经常出差离家在外。虽然我深爱Minh、Anh和Chi,但我几乎不了解他们的饮食和学习时间表。我只能模糊地记得他们的身体发育指标——身高、体重——那些枯燥的数字。但那些日常的小时刻呢?他们最喜欢的食物?他们苦恼的科目?他们与妈妈分享的小梦想?我错过了太多太多。
                     </p>
-    
+
                     <p>
                         这是我心中无声的痛。这也是我决心建立Kazoku的原因。我希望不会再有人像我一样——忙碌的父母仍然可以记住孩子的每一个小时刻。Kazoku不仅仅是一个管理应用,而是保存日常记忆的宝库。这样多年后,当我们回顾时,我们看到的不仅仅是数字,而是充满有意义时刻的整个爱的旅程。
                     </p>
-    
+
                     <div class="quote">
                         "科技只有在为我们所爱的人带来微笑时才有意义。这就是MAC诞生的原因。"
                     </div>
-    
+
                     <h3>从愿景到现实的旅程</h3>
-    
+
                     <p>
                         Kazoku——一款智能家庭管理应用的想法——始于我随身携带的一本小笔记本。每当我看到家人在使用科技时遇到困难,我就会记下来。这些页面逐渐成为Kazoku的基础。
                     </p>
-    
+
                     <div class="timeline-container">
                         <div class="timeline-item">
                             <div class="timeline-dot">1</div>
@@ -1345,7 +1425,7 @@
                                 <p>在一次家庭海滩旅行中,在忙碌的生活和错过的计划中,我意识到我的家庭需要一个真正的解决方案。一个真正易于使用且温暖的家庭应用的想法就在那个海滩上诞生了。</p>
                             </div>
                         </div>
-    
+
                         <div class="timeline-item">
                             <div class="timeline-dot">2</div>
                             <div class="timeline-content">
@@ -1353,7 +1433,7 @@
                                 <p>怀着坚定的信念,我聚集了一支志同道合的工程师团队。我们不仅仅是编程——我们研究家庭心理学、多代文化,并集成AI,使应用真正理解每个家庭。</p>
                             </div>
                         </div>
-    
+
                         <div class="timeline-item">
                             <div class="timeline-dot">3</div>
                             <div class="timeline-content">
@@ -1361,7 +1441,7 @@
                                 <p>Kazoku正式在日本市场发布。用户的第一批反馈——母亲们的微笑、老年人轻松与家人联系时的满意——成为我们继续完善产品的最大动力。</p>
                             </div>
                         </div>
-    
+
                         <div class="timeline-item">
                             <div class="timeline-dot">4</div>
                             <div class="timeline-content">
@@ -1369,7 +1449,7 @@
                                 <p>我们现在专注于在日本建立强大的用户社区,倾听反馈,并持续改进Kazoku。每一个加入的新家庭都是我们每天做得更好的动力。</p>
                             </div>
                         </div>
-    
+
                         <div class="timeline-item">
                             <div class="timeline-dot">5</div>
                             <div class="timeline-content">
@@ -1378,43 +1458,43 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <h3>清晨的幸福</h3>
-    
+
                     <p>
                         很多人问我:"工作这么多不累吗?"老实说,每天早上醒来为Kazoku编写代码时,我一点也不觉得这是累人的工作。相反,这是我最大的幸福。
                     </p>
-    
+
                     <p>
                         当我黎明时坐在电脑前,我想起我的三个心爱的孩子——MAC。我想起日本各地使用Kazoku的家庭——从东京到大阪,从京都到札幌。我想象一位祖父正在查看孙子新分享的照片,一位母亲被提醒带孩子去打疫苗,一个家庭正在计划周末旅行。我梦想有一天Kazoku会为世界各地的家庭带来这些时刻——从河内到首尔,从曼谷到遥远的地方。这些想法让我的心充满幸福。
                     </p>
-    
+
                     <div class="quote">
                         "编写Kazoku不是累人的劳动,而是巨大的幸福。因为我写的每一行代码,都是连接家庭的又一根线。"
                     </div>
-    
+
                     <h3>未来愿景</h3>
-    
+
                     <p>
                         目前,我们全心全意专注于日本市场。我们相信,要把Kazoku带到世界,我们必须首先在我们生活的地方建立坚实的基础。来自日本用户的每一条反馈,每一个通过Kazoku连接的家庭时刻的故事,都帮助我们每天更好地完善产品。
                     </p>
-    
+
                     <p>
                         在未来3-5年,当Kazoku成为数百万日本家庭生活中不可或缺的一部分时,我们将扩展到国际市场。我梦想一个科技不再是障碍而是桥梁的世界——80岁的祖母可以仅用声音轻松地与国外的孙子视频通话,忙碌的父母仍然不会错过孩子的任何重要时刻,每个家庭,无论在越南、韩国、泰国还是其他任何地方,都能感受到连接和爱。
                     </p>
-    
+
                     <p>
                         MAC不仅仅是一家科技公司。我们是家庭幸福的守护者。我们编写的每一行代码,我们开发的每一个功能,都来自爱和为您的家庭带来最好的愿望——就像我们自己的家庭一样。
                     </p>
-    
+
                     <div class="quote">
                         "科技将继续发展,但家庭之爱的价值是不变的。我们的使命是用前者服务后者。"
                     </div>
-    
+
                     <p>
                         感谢您花时间阅读这些文字。如果我们的故事触动了您的心,请给我们机会为您的家庭服务。如果您有任何反馈或建议,请不要犹豫分享——因为您是激励我们继续这段旅程的灵感。
                     </p>
-    
+
                     <p style="margin-top: 2rem; font-weight: 600;">
                         怀着最深的感激,<br>
                         <span style="color: #667eea; font-size: 1.2rem;">山本武志</span><br>
@@ -1467,37 +1547,9 @@
         </div>
     </footer>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="../js/contact.js"></script>
     <script>
-        // 处理表单提交
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formMessage = document.getElementById('formMessage');
-            const submitButton = this.querySelector('.submit-button');
-            
-            // 提交期间禁用按钮
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<span>发送中...</span>';
-            
-            // 模拟表单提交（替换为实际的API调用）
-            setTimeout(() => {
-                formMessage.className = 'form-message success';
-                formMessage.textContent = '✓ 感谢您联系我们！我们将尽快回复。';
-                
-                // 重置表单
-                this.reset();
-                
-                // 重新启用按钮
-                submitButton.disabled = false;
-                submitButton.innerHTML = '<span>发送消息</span><span class="button-icon">→</span>';
-                
-                // 5秒后隐藏消息
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 5000);
-            }, 1500);
-        });
-
         // 为导航链接添加平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1513,4 +1565,5 @@
         });
     </script>
 </body>
+
 </html>

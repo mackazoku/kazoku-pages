@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +30,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
             animation: slideDown 0.5s ease;
         }
@@ -39,6 +40,7 @@
                 transform: translateY(-100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -62,9 +64,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.05);
             }
@@ -127,6 +132,7 @@
             0% {
                 transform: scale(1);
             }
+
             100% {
                 transform: scale(1.1);
             }
@@ -139,7 +145,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             animation: rotate 15s linear infinite;
         }
 
@@ -147,6 +153,7 @@
             from {
                 transform: rotate(0deg);
             }
+
             to {
                 transform: rotate(360deg);
             }
@@ -161,7 +168,7 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .hero p {
@@ -170,7 +177,7 @@
             margin: 0 auto 2rem;
             opacity: 0.95;
             animation: fadeInUp 1s ease 0.2s both;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes fadeInUp {
@@ -178,6 +185,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -208,6 +216,7 @@
                 opacity: 0;
                 transform: scale(0.9);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -240,17 +249,28 @@
             background: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             opacity: 0;
             transform: translateY(30px);
             animation: slideUp 0.6s ease forwards;
         }
 
-        .value-card:nth-child(1) { animation-delay: 0.1s; }
-        .value-card:nth-child(2) { animation-delay: 0.2s; }
-        .value-card:nth-child(3) { animation-delay: 0.3s; }
-        .value-card:nth-child(4) { animation-delay: 0.4s; }
+        .value-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .value-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .value-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .value-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes slideUp {
             to {
@@ -288,7 +308,7 @@
             height: 400px;
             background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop') center/cover;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
@@ -301,7 +321,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.7s;
         }
 
@@ -311,7 +331,7 @@
 
         .company-image:hover {
             transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .ceo-letter-section {
@@ -336,7 +356,7 @@
             height: 450px;
             background: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=900&fit=crop') center/cover;
             border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
             transition: all 0.5s ease;
         }
 
@@ -351,7 +371,7 @@
             padding: 1.5rem;
             background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .ceo-info h4 {
@@ -369,7 +389,7 @@
             background: white;
             padding: 3rem;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         .ceo-letter-content h3 {
@@ -442,7 +462,7 @@
             background: #f7fafc;
             padding: 1.5rem;
             border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .timeline-content h4 {
@@ -468,17 +488,28 @@
             padding: 1.5rem;
             background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateX(-30px);
             animation: slideRight 0.6s ease forwards;
         }
 
-        .service-item:nth-child(1) { animation-delay: 0.1s; }
-        .service-item:nth-child(2) { animation-delay: 0.2s; }
-        .service-item:nth-child(3) { animation-delay: 0.3s; }
-        .service-item:nth-child(4) { animation-delay: 0.4s; }
+        .service-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .service-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .service-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .service-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes slideRight {
             to {
@@ -489,7 +520,7 @@
 
         .service-item:hover {
             transform: translateX(10px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
         .service-icon {
@@ -518,7 +549,7 @@
             margin: 2rem auto;
             background: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop') center/cover;
             border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
@@ -531,14 +562,17 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
             animation: shine 3s ease-in-out infinite;
         }
 
         @keyframes shine {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translate(-50%, -50%) rotate(0deg);
             }
+
             50% {
                 transform: translate(-50%, -50%) rotate(180deg);
             }
@@ -567,17 +601,28 @@
             background: white;
             border-radius: 8px;
             border-left: 4px solid #667eea;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateX(-20px);
             animation: slideRight 0.5s ease forwards;
         }
 
-        .product-features li:nth-child(1) { animation-delay: 0.1s; }
-        .product-features li:nth-child(2) { animation-delay: 0.2s; }
-        .product-features li:nth-child(3) { animation-delay: 0.3s; }
-        .product-features li:nth-child(4) { animation-delay: 0.4s; }
+        .product-features li:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .product-features li:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .product-features li:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .product-features li:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         .product-features li:hover {
             transform: translateX(10px);
@@ -597,17 +642,28 @@
             padding: 2rem;
             border-radius: 10px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
             transition: all 0.4s ease;
             opacity: 0;
             transform: scale(0.8);
             animation: popIn 0.5s ease forwards;
         }
 
-        .step-card:nth-child(1) { animation-delay: 0.1s; }
-        .step-card:nth-child(2) { animation-delay: 0.2s; }
-        .step-card:nth-child(3) { animation-delay: 0.3s; }
-        .step-card:nth-child(4) { animation-delay: 0.4s; }
+        .step-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .step-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .step-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .step-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes popIn {
             to {
@@ -638,9 +694,12 @@
         }
 
         @keyframes bounce {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -673,7 +732,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.5s;
         }
 
@@ -701,7 +760,7 @@
             background: white;
             padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         .info-item {
@@ -744,7 +803,7 @@
             background: white;
             padding: 3rem;
             border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.4s ease;
         }
 
@@ -759,10 +818,21 @@
             opacity: 0;
         }
 
-        .form-group:nth-child(1) { animation-delay: 0.1s; }
-        .form-group:nth-child(2) { animation-delay: 0.2s; }
-        .form-group:nth-child(3) { animation-delay: 0.3s; }
-        .form-group:nth-child(4) { animation-delay: 0.4s; }
+        .form-group:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .form-group:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .form-group:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .form-group:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         .form-group label {
             display: block;
@@ -826,7 +896,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.5s;
         }
 
@@ -896,9 +966,17 @@
             animation: rotateIn 0.6s ease forwards;
         }
 
-        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
-        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
-        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+        .testimonial-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .testimonial-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .testimonial-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
 
         @keyframes rotateIn {
             to {
@@ -1036,6 +1114,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -1053,14 +1132,15 @@
     <section class="hero">
         <div class="hero-content">
             <h1>家族生活のためのAI技術</h1>
-            <p>MACは日本に本社を置くテクノロジー企業で、最新の人工知能（AI）を統合したモバイルアプリケーションの開発を専門としています。私たちは常に人間的価値を持つ製品を作り、世界中の家族の日常生活に貢献することを目指しています。</p>
+            <p>MACは日本に本社を置くテクノロジー企業で、最新の人工知能（AI）を統合したモバイルアプリケーションの開発を専門としています。私たちは常に人間的価値を持つ製品を作り、世界中の家族の日常生活に貢献することを目指しています。
+            </p>
         </div>
     </section>
 
     <section id="about" class="container">
         <h2 class="section-title">MACについて</h2>
         <p class="section-subtitle">現代家族のための信頼できるテクノロジーパートナー</p>
-        
+
         <div class="company-intro">
             <div>
                 <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
@@ -1105,7 +1185,8 @@
                 <div class="service-icon">📱</div>
                 <div>
                     <h3>モバイルアプリケーション開発</h3>
-                    <p>高性能で美しいインターフェース、スムーズなユーザー体験を持つクロスプラットフォームのモバイルアプリケーション開発（Flutter、iOS、Android）。すべてのデバイスで完璧に動作することを保証します。</p>
+                    <p>高性能で美しいインターフェース、スムーズなユーザー体験を持つクロスプラットフォームのモバイルアプリケーション開発（Flutter、iOS、Android）。すべてのデバイスで完璧に動作することを保証します。
+                    </p>
                 </div>
             </div>
             <div class="service-item">
@@ -1199,7 +1280,7 @@
         <div class="container">
             <h2 class="section-title">お問い合わせ</h2>
             <p class="section-subtitle">私たちはいつでもあなたの声に耳を傾け、サポートする準備ができています</p>
-            
+
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: #2d3748;">連絡先情報</h3>
@@ -1233,32 +1314,33 @@
                     </div>
                 </div>
 
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm" data-success-message="お問い合わせありがとうございます！できるだけ早くご返信いたします。">
                     <div class="form-group">
                         <label for="name">お名前 <span style="color: #e53e3e;">*</span></label>
                         <input type="text" id="name" name="name" required placeholder="お名前をご入力ください">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="email">メールアドレス <span style="color: #e53e3e;">*</span></label>
                         <input type="email" id="email" name="email" required placeholder="email@example.com">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="phone">電話番号</label>
                         <input type="tel" id="phone" name="phone" placeholder="+81 123 456 789">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="message">メッセージ <span style="color: #e53e3e;">*</span></label>
-                        <textarea id="message" name="message" rows="5" required placeholder="プロジェクト、ご質問、ご要望についてお聞かせください..."></textarea>
+                        <textarea id="message" name="message" rows="5" required
+                            placeholder="プロジェクト、ご質問、ご要望についてお聞かせください..."></textarea>
                     </div>
-                    
-                    <button type="submit" class="submit-button">
+
+                    <button type="submit" class="submit-button" data-sending-text="送信中...">
                         <span>メッセージを送信</span>
                         <span class="button-icon">→</span>
                     </button>
-                    
+
                     <div class="form-message" id="formMessage"></div>
                 </form>
             </div>
@@ -1290,7 +1372,7 @@
         <div class="container">
             <h2 class="section-title">CEOからのメッセージ</h2>
             <p class="section-subtitle">テクノロジーで家族の幸せを支える旅</p>
-    
+
             <div class="ceo-letter-wrapper">
                 <div class="ceo-image-container">
                     <div class="ceo-image"></div>
@@ -1299,122 +1381,127 @@
                         <p>創業者兼CEO、MAC株式会社</p>
                     </div>
                 </div>
-    
+
                 <div class="ceo-letter-content">
                     <h3>家族の幸せを守るテクノロジーへの願い</h3>
-                    
+
                     <p>
                         親愛なる読者の皆様へ、
                     </p>
-    
+
                     <p>
                         MACの物語をお話しする前に、小さな秘密を共有したいと思います。MACは単なる会社名ではなく、私の愛する3人の子供たち—<strong>M</strong>inh、<strong>A</strong>nh、<strong>C</strong>hiの名前の頭文字でもあります。この名前を見るたびに、なぜこの旅を始めたのかを思い出します。家族のため、愛のため、そして子供たちのためにより良い世界を創りたいという願いのためです。
                     </p>
-    
+
                     <p>
                         Kazokuのアイデアは、1〜2年前のシンプルな瞬間から始まりました。当時、私たち家族は非常に忙しく、仕事は続き、子供たちは学校があり、多くの家族の計画を逃していました。これに気づいた私は、家族全員で海へ行く旅行を計画しました。家族が再会するための貴重な時間でした。
                     </p>
-    
+
                     <p>
                         しかし、その旅行中でさえ、まだ課題があることに気づきました。年老いた母は携帯電話のメッセージについていけず、子供たちは今後の活動の通知を見逃し、妻は何十もの異なるアプリと格闘していました。ビーチに立ち、3人の子供たちが遊ぶのを見ながら、私は自問しました。「なぜテクノロジーはこんなに複雑なのか？もっとシンプルで、温かく、本当に私たちの幸せに役立つものにできないのか？」その瞬間、Kazokuが私の心の中で生まれました。
                     </p>
-    
+
                     <p>
                         正直に言うと、以前は頻繁に出張で家を離れていました。Minh、Anh、Chiを深く愛していましたが、彼らの食事や勉強のスケジュールをほとんど把握していませんでした。身体発育の数値—身長、体重—そんな無味乾燥な数字しか覚えていませんでした。でも、日々の小さな瞬間は？好きな食事は？苦手な科目は？母親に共有した小さな夢は？あまりにも多くのことを見逃していました。
                     </p>
-    
+
                     <p>
                         それは私の心の中で静かな痛みでした。そしてそれこそが、Kazokuを作ろうと決心した理由です。私のような人が二度と現れないことを願っています—忙しい親でも、子供たちの小さな瞬間をすべて覚えていられるように。Kazokuは単なる管理アプリではなく、日々の思い出を保存する宝物です。何年後かに振り返ったとき、数字だけでなく、意味のある瞬間に満ちた愛の旅全体が見えるように。
                     </p>
-    
+
                     <div class="quote">
                         「テクノロジーは、愛する人に笑顔をもたらすときにのみ意味を持ちます。それがMACが生まれた理由です。」
                     </div>
-    
+
                     <h3>ビジョンから現実への旅</h3>
-    
+
                     <p>
                         Kazoku—インテリジェントな家族管理アプリ—のアイデアは、私が持ち歩いていた小さなノートから始まりました。家族の誰かがテクノロジーに苦労しているのを目撃するたびに、書き留めていました。それらのページが徐々にKazokuの基盤となりました。
                     </p>
-    
+
                     <div class="timeline-container">
                         <div class="timeline-item">
                             <div class="timeline-dot">1</div>
                             <div class="timeline-content">
                                 <h4>2023年 - アイデアの始まり</h4>
-                                <p>家族での海辺旅行中、忙しい生活と逃した計画の中で、家族に本当の解決策が必要だと気づきました。本当に使いやすく温かい家族向けアプリのアイデアが、そのビーチで生まれました。</p>
+                                <p>家族での海辺旅行中、忙しい生活と逃した計画の中で、家族に本当の解決策が必要だと気づきました。本当に使いやすく温かい家族向けアプリのアイデアが、そのビーチで生まれました。
+                                </p>
                             </div>
                         </div>
-    
+
                         <div class="timeline-item">
                             <div class="timeline-dot">2</div>
                             <div class="timeline-content">
                                 <h4>2024年 - 構築と開発</h4>
-                                <p>強い信念を持って、同じビジョンを共有するエンジニアチームを集めました。私たちは単にコーディングするだけでなく、家族心理学、多世代文化を研究し、AIを統合して、アプリが各家族を本当に理解できるようにしました。</p>
+                                <p>強い信念を持って、同じビジョンを共有するエンジニアチームを集めました。私たちは単にコーディングするだけでなく、家族心理学、多世代文化を研究し、AIを統合して、アプリが各家族を本当に理解できるようにしました。
+                                </p>
                             </div>
                         </div>
-    
+
                         <div class="timeline-item">
                             <div class="timeline-dot">3</div>
                             <div class="timeline-content">
                                 <h4>2025年 - 日本でのローンチ</h4>
-                                <p>Kazokuは日本市場で正式にローンチされました。ユーザーからの最初のフィードバック—母親の笑顔、家族と簡単につながれる高齢者の満足—が、製品を完璧にし続ける最大のモチベーションとなりました。</p>
+                                <p>Kazokuは日本市場で正式にローンチされました。ユーザーからの最初のフィードバック—母親の笑顔、家族と簡単につながれる高齢者の満足—が、製品を完璧にし続ける最大のモチベーションとなりました。
+                                </p>
                             </div>
                         </div>
-    
+
                         <div class="timeline-item">
                             <div class="timeline-dot">4</div>
                             <div class="timeline-content">
                                 <h4>現在</h4>
-                                <p>現在、日本で強力なユーザーコミュニティを構築し、フィードバックを聞き、Kazokuを継続的に改善することに注力しています。参加する新しい家族ごとに、毎日より良くなるモチベーションとなっています。</p>
+                                <p>現在、日本で強力なユーザーコミュニティを構築し、フィードバックを聞き、Kazokuを継続的に改善することに注力しています。参加する新しい家族ごとに、毎日より良くなるモチベーションとなっています。
+                                </p>
                             </div>
                         </div>
-    
+
                         <div class="timeline-item">
                             <div class="timeline-dot">5</div>
                             <div class="timeline-content">
                                 <h4>未来 - グローバル展開</h4>
-                                <p>Kazokuが日本で人気を博し愛されるようになった後、アジア、ヨーロッパ、アメリカ、その他多くの国の家族に製品を届けます。新しい市場ごとに、地域文化を学び適応する機会となります。</p>
+                                <p>Kazokuが日本で人気を博し愛されるようになった後、アジア、ヨーロッパ、アメリカ、その他多くの国の家族に製品を届けます。新しい市場ごとに、地域文化を学び適応する機会となります。
+                                </p>
                             </div>
                         </div>
                     </div>
-    
+
                     <h3>朝の幸せ</h3>
-    
+
                     <p>
                         多くの人が私に尋ねます。「そんなに働いて疲れませんか？」正直に言うと、毎朝目覚めてKazokuのコードを書くとき、それが疲れる仕事だとは全く感じません。むしろ、それは私の最大の幸せです。
                     </p>
-    
+
                     <p>
                         夜明けにコンピューターの前に座ると、愛する3人の子供たち—MACのことを考えます。日本全国でKazokuを使用している家族のことを考えます—東京から大阪、京都から札幌まで。孫の新しく共有された写真を見ている祖父、予防接種に子供を連れて行くよう思い出される母親、週末旅行を計画している家族を想像します。そしてKazokuが世界中の家族にこれらの瞬間をもたらす日を夢見ています—ハノイからソウル、バンコクから遠く離れた場所まで。これらの考えが私の心を幸せで満たします。
                     </p>
-    
+
                     <div class="quote">
                         「Kazokuを書くことは疲れる労働ではなく、大きな幸せです。なぜなら、私が書くコードの一行一行が、家族を結ぶもう一本の糸だからです。」
                     </div>
-    
+
                     <h3>未来のビジョン</h3>
-    
+
                     <p>
                         現在、私たちは日本市場に全力を注いでいます。Kazokuを世界に届けるには、まず私たちが住んでいる場所で強固な基盤を築く必要があると信じています。日本のユーザーからのフィードバック、Kazokuを通じて家族の瞬間がつながったという話、それらすべてが毎日製品をより完璧にするのに役立っています。
                     </p>
-    
+
                     <p>
                         今後3〜5年で、Kazokuが何百万もの日本の家族の生活に欠かせない一部となったとき、国際市場に拡大します。私は、テクノロジーが障壁ではなく架け橋となる世界を夢見ています—80歳の祖母が声だけで海外にいる孫とビデオ通話できる場所、忙しい親が子供の重要な瞬間を見逃さない場所、ベトナム、韓国、タイ、またはどこにいても、すべての家族がつながりと愛を感じられる場所を。
                     </p>
-    
+
                     <p>
                         MACは単なるテクノロジー企業ではありません。私たちは家族の幸せの守護者です。私たちが書くコードの一行一行、開発する機能の一つ一つは、愛と、あなたの家族に最高のものをもたらしたいという願いから来ています—私たち自身の家族と同じように。
                     </p>
-    
+
                     <div class="quote">
                         「テクノロジーは進化し続けますが、家族愛の価値は不変です。私たちの使命は、前者を使って後者に奉仕することです。」
                     </div>
-    
+
                     <p>
                         これらの言葉を読むために時間を割いていただきありがとうございます。私たちの物語があなたの心に触れたら、あなたの家族にサービスを提供する機会を与えてください。そして、フィードバックや提案がある場合は、遠慮なく共有してください—あなたこそが、私たちがこの旅を続けるインスピレーションだからです。
                     </p>
-    
+
                     <p style="margin-top: 2rem; font-weight: 600;">
                         心から感謝を込めて、<br>
                         <span style="color: #667eea; font-size: 1.2rem;">山本 武志</span><br>
@@ -1467,37 +1554,9 @@
         </div>
     </footer>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="../js/contact.js"></script>
     <script>
-        // Handle form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formMessage = document.getElementById('formMessage');
-            const submitButton = this.querySelector('.submit-button');
-            
-            // Disable button during submission
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<span>送信中...</span>';
-            
-            // Simulate form submission (replace with actual API call)
-            setTimeout(() => {
-                formMessage.className = 'form-message success';
-                formMessage.textContent = '✓ お問い合わせありがとうございます！できるだけ早くご返信いたします。';
-                
-                // Reset form
-                this.reset();
-                
-                // Re-enable button
-                submitButton.disabled = false;
-                submitButton.innerHTML = '<span>メッセージを送信</span><span class="button-icon">→</span>';
-                
-                // Hide message after 5 seconds
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 5000);
-            }, 1500);
-        });
-
         // Add smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1513,4 +1572,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +30,7 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(10px);
             animation: slideDown 0.5s ease;
         }
@@ -39,6 +40,7 @@
                 transform: translateY(-100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateY(0);
                 opacity: 1;
@@ -62,9 +64,12 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: scale(1);
             }
+
             50% {
                 transform: scale(1.05);
             }
@@ -127,6 +132,7 @@
             0% {
                 transform: scale(1);
             }
+
             100% {
                 transform: scale(1.1);
             }
@@ -139,7 +145,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
             animation: rotate 15s linear infinite;
         }
 
@@ -147,6 +153,7 @@
             from {
                 transform: rotate(0deg);
             }
+
             to {
                 transform: rotate(360deg);
             }
@@ -161,7 +168,7 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             animation: fadeInUp 1s ease;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .hero p {
@@ -170,7 +177,7 @@
             margin: 0 auto 2rem;
             opacity: 0.95;
             animation: fadeInUp 1s ease 0.2s both;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes fadeInUp {
@@ -178,6 +185,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -208,6 +216,7 @@
                 opacity: 0;
                 transform: scale(0.9);
             }
+
             to {
                 opacity: 1;
                 transform: scale(1);
@@ -240,17 +249,28 @@
             background: white;
             padding: 2rem;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             opacity: 0;
             transform: translateY(30px);
             animation: slideUp 0.6s ease forwards;
         }
 
-        .value-card:nth-child(1) { animation-delay: 0.1s; }
-        .value-card:nth-child(2) { animation-delay: 0.2s; }
-        .value-card:nth-child(3) { animation-delay: 0.3s; }
-        .value-card:nth-child(4) { animation-delay: 0.4s; }
+        .value-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .value-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .value-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .value-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes slideUp {
             to {
@@ -288,7 +308,7 @@
             height: 400px;
             background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&h=600&fit=crop') center/cover;
             border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
@@ -301,7 +321,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.7s;
         }
 
@@ -311,7 +331,7 @@
 
         .company-image:hover {
             transform: scale(1.05);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
         }
 
         .ceo-letter-section {
@@ -336,7 +356,7 @@
             height: 450px;
             background: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=800&h=900&fit=crop') center/cover;
             border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
             transition: all 0.5s ease;
         }
 
@@ -351,7 +371,7 @@
             padding: 1.5rem;
             background: white;
             border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
         }
 
         .ceo-info h4 {
@@ -369,7 +389,7 @@
             background: white;
             padding: 3rem;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         .ceo-letter-content h3 {
@@ -442,7 +462,7 @@
             background: #f7fafc;
             padding: 1.5rem;
             border-radius: 10px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
 
         .timeline-content h4 {
@@ -468,17 +488,28 @@
             padding: 1.5rem;
             background: white;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateX(-30px);
             animation: slideRight 0.6s ease forwards;
         }
 
-        .service-item:nth-child(1) { animation-delay: 0.1s; }
-        .service-item:nth-child(2) { animation-delay: 0.2s; }
-        .service-item:nth-child(3) { animation-delay: 0.3s; }
-        .service-item:nth-child(4) { animation-delay: 0.4s; }
+        .service-item:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .service-item:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .service-item:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .service-item:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes slideRight {
             to {
@@ -489,7 +520,7 @@
 
         .service-item:hover {
             transform: translateX(10px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         }
 
         .service-icon {
@@ -518,7 +549,7 @@
             margin: 2rem auto;
             background: url('https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1200&h=600&fit=crop') center/cover;
             border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
             transition: all 0.5s ease;
             position: relative;
             overflow: hidden;
@@ -531,14 +562,17 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
             animation: shine 3s ease-in-out infinite;
         }
 
         @keyframes shine {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translate(-50%, -50%) rotate(0deg);
             }
+
             50% {
                 transform: translate(-50%, -50%) rotate(180deg);
             }
@@ -567,17 +601,28 @@
             background: white;
             border-radius: 8px;
             border-left: 4px solid #667eea;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             opacity: 0;
             transform: translateX(-20px);
             animation: slideRight 0.5s ease forwards;
         }
 
-        .product-features li:nth-child(1) { animation-delay: 0.1s; }
-        .product-features li:nth-child(2) { animation-delay: 0.2s; }
-        .product-features li:nth-child(3) { animation-delay: 0.3s; }
-        .product-features li:nth-child(4) { animation-delay: 0.4s; }
+        .product-features li:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .product-features li:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .product-features li:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .product-features li:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         .product-features li:hover {
             transform: translateX(10px);
@@ -597,17 +642,28 @@
             padding: 2rem;
             border-radius: 10px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
             transition: all 0.4s ease;
             opacity: 0;
             transform: scale(0.8);
             animation: popIn 0.5s ease forwards;
         }
 
-        .step-card:nth-child(1) { animation-delay: 0.1s; }
-        .step-card:nth-child(2) { animation-delay: 0.2s; }
-        .step-card:nth-child(3) { animation-delay: 0.3s; }
-        .step-card:nth-child(4) { animation-delay: 0.4s; }
+        .step-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .step-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .step-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .step-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         @keyframes popIn {
             to {
@@ -638,9 +694,12 @@
         }
 
         @keyframes bounce {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0);
             }
+
             50% {
                 transform: translateY(-10px);
             }
@@ -673,7 +732,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.5s;
         }
 
@@ -701,7 +760,7 @@
             background: white;
             padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
         .info-item {
@@ -744,7 +803,7 @@
             background: white;
             padding: 3rem;
             border-radius: 15px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.4s ease;
         }
 
@@ -759,10 +818,21 @@
             opacity: 0;
         }
 
-        .form-group:nth-child(1) { animation-delay: 0.1s; }
-        .form-group:nth-child(2) { animation-delay: 0.2s; }
-        .form-group:nth-child(3) { animation-delay: 0.3s; }
-        .form-group:nth-child(4) { animation-delay: 0.4s; }
+        .form-group:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .form-group:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .form-group:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .form-group:nth-child(4) {
+            animation-delay: 0.4s;
+        }
 
         .form-group label {
             display: block;
@@ -826,7 +896,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
             transition: left 0.5s;
         }
 
@@ -896,9 +966,17 @@
             animation: rotateIn 0.6s ease forwards;
         }
 
-        .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
-        .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
-        .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+        .testimonial-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .testimonial-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .testimonial-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
 
         @keyframes rotateIn {
             to {
@@ -1036,6 +1114,7 @@
         }
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -1053,24 +1132,31 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Technologie IA pour la vie de famille</h1>
-            <p>MAC est une entreprise technologique basée au Japon, spécialisée dans le développement d'applications mobiles intégrant l'intelligence artificielle (IA) moderne. Nous visons toujours à créer des produits à valeur humaine, au service de la vie quotidienne des familles du monde entier.</p>
+            <p>MAC est une entreprise technologique basée au Japon, spécialisée dans le développement d'applications
+                mobiles intégrant l'intelligence artificielle (IA) moderne. Nous visons toujours à créer des produits à
+                valeur humaine, au service de la vie quotidienne des familles du monde entier.</p>
         </div>
     </section>
 
     <section id="about" class="container">
         <h2 class="section-title">À propos de MAC</h2>
         <p class="section-subtitle">Votre partenaire technologique de confiance pour les familles modernes</p>
-        
+
         <div class="company-intro">
             <div>
                 <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
-                    Fondée au Japon, MAC a continuellement développé des solutions technologiques avancées avec pour mission de connecter et d'améliorer la qualité de vie des familles. Nous croyons que la technologie doit servir les gens, et non l'inverse.
+                    Fondée au Japon, MAC a continuellement développé des solutions technologiques avancées avec pour
+                    mission de connecter et d'améliorer la qualité de vie des familles. Nous croyons que la technologie
+                    doit servir les gens, et non l'inverse.
                 </p>
                 <p style="font-size: 1.1rem; margin-bottom: 1.5rem;">
-                    Avec une équipe d'ingénieurs expérimentés et passionnés, MAC se concentre sur la création d'applications conviviales et faciles à utiliser pour chaque membre de la famille - des personnes âgées aux enfants.
+                    Avec une équipe d'ingénieurs expérimentés et passionnés, MAC se concentre sur la création
+                    d'applications conviviales et faciles à utiliser pour chaque membre de la famille - des personnes
+                    âgées aux enfants.
                 </p>
                 <p style="font-size: 1.1rem;">
-                    Nous sommes fiers d'être le partenaire technologique de confiance de milliers de familles au Japon et nous nous développons sur les marchés internationaux.
+                    Nous sommes fiers d'être le partenaire technologique de confiance de milliers de familles au Japon
+                    et nous nous développons sur les marchés internationaux.
                 </p>
             </div>
             <div class="company-image"></div>
@@ -1080,19 +1166,23 @@
         <div class="values-grid">
             <div class="value-card">
                 <h3>🎯 Centré sur l'humain</h3>
-                <p>Chaque produit MAC place les besoins et les expériences humaines au centre. Nous écoutons les utilisateurs et nous améliorons continuellement en fonction des retours réels.</p>
+                <p>Chaque produit MAC place les besoins et les expériences humaines au centre. Nous écoutons les
+                    utilisateurs et nous améliorons continuellement en fonction des retours réels.</p>
             </div>
             <div class="value-card">
                 <h3>🚀 Technologie avancée</h3>
-                <p>Nous appliquons l'IA, l'apprentissage automatique et les dernières technologies pour améliorer chaque détail, offrant la meilleure expérience utilisateur.</p>
+                <p>Nous appliquons l'IA, l'apprentissage automatique et les dernières technologies pour améliorer chaque
+                    détail, offrant la meilleure expérience utilisateur.</p>
             </div>
             <div class="value-card">
                 <h3>🔒 Sécurité absolue</h3>
-                <p>Les données des utilisateurs sont toujours protégées par une technologie de cryptage moderne et ne sont jamais partagées avec des tiers. La confidentialité est notre priorité absolue.</p>
+                <p>Les données des utilisateurs sont toujours protégées par une technologie de cryptage moderne et ne
+                    sont jamais partagées avec des tiers. La confidentialité est notre priorité absolue.</p>
             </div>
             <div class="value-card">
                 <h3>🌍 Vision globale</h3>
-                <p>Visant à créer des produits qui améliorent la qualité de vie de millions de familles dans le monde, transcendant toutes les barrières culturelles et géographiques.</p>
+                <p>Visant à créer des produits qui améliorent la qualité de vie de millions de familles dans le monde,
+                    transcendant toutes les barrières culturelles et géographiques.</p>
             </div>
         </div>
     </section>
@@ -1105,28 +1195,36 @@
                 <div class="service-icon">📱</div>
                 <div>
                     <h3>Développement d'applications mobiles</h3>
-                    <p>Développement d'applications mobiles multiplateformes (Flutter, iOS, Android) avec des performances élevées, une belle interface et une expérience utilisateur fluide. Nous garantissons que les applications fonctionnent parfaitement sur tous les appareils.</p>
+                    <p>Développement d'applications mobiles multiplateformes (Flutter, iOS, Android) avec des
+                        performances élevées, une belle interface et une expérience utilisateur fluide. Nous
+                        garantissons que les applications fonctionnent parfaitement sur tous les appareils.</p>
                 </div>
             </div>
             <div class="service-item">
                 <div class="service-icon">🤖</div>
                 <div>
                     <h3>Intégration IA intelligente</h3>
-                    <p>Intégration de l'intelligence artificielle (IA) dans les applications : traitement du langage naturel, reconnaissance d'images, suggestions intelligentes basées sur l'apprentissage automatique. L'IA aide les applications à apprendre et à s'adapter à chaque utilisateur.</p>
+                    <p>Intégration de l'intelligence artificielle (IA) dans les applications : traitement du langage
+                        naturel, reconnaissance d'images, suggestions intelligentes basées sur l'apprentissage
+                        automatique. L'IA aide les applications à apprendre et à s'adapter à chaque utilisateur.</p>
                 </div>
             </div>
             <div class="service-item">
                 <div class="service-icon">🧩</div>
                 <div>
                     <h3>Solutions numériques pour familles</h3>
-                    <p>Solutions numériques complètes conçues pour les familles et les groupes d'utilisateurs spécifiques. De la gestion financière, de la planification, aux notes et au partage de moments - tout dans une seule plateforme.</p>
+                    <p>Solutions numériques complètes conçues pour les familles et les groupes d'utilisateurs
+                        spécifiques. De la gestion financière, de la planification, aux notes et au partage de moments -
+                        tout dans une seule plateforme.</p>
                 </div>
             </div>
             <div class="service-item">
                 <div class="service-icon">🛠️</div>
                 <div>
                     <h3>Conseil en développement logiciel</h3>
-                    <p>Conseil et développement logiciel sur mesure pour les entreprises. Notre équipe d'experts est prête à vous accompagner de la phase d'idéation et de conception au déploiement et à la maintenance.</p>
+                    <p>Conseil et développement logiciel sur mesure pour les entreprises. Notre équipe d'experts est
+                        prête à vous accompagner de la phase d'idéation et de conception au déploiement et à la
+                        maintenance.</p>
                 </div>
             </div>
         </div>
@@ -1139,53 +1237,69 @@
                 <p class="section-subtitle">Application intelligente de gestion familiale avec IA</p>
                 <div class="product-image"></div>
                 <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto;">
-                    Kazoku est le produit phare de MAC - une application complète de gestion familiale avec toutes les fonctionnalités pour connecter et organiser la vie familiale de la manière la plus efficace. Entièrement gratuit et sans publicité.
+                    Kazoku est le produit phare de MAC - une application complète de gestion familiale avec toutes les
+                    fonctionnalités pour connecter et organiser la vie familiale de la manière la plus efficace.
+                    Entièrement gratuit et sans publicité.
                 </p>
             </div>
 
             <div class="product-content">
                 <div>
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: #2d3748;">Fonctionnalités principales</h3>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: #2d3748;">Fonctionnalités principales
+                    </h3>
                     <ul class="product-features">
-                        <li><strong>Timeline & Chat :</strong> Gérer et partager les tâches ménagères, événements, journaux de santé et activités quotidiennes</li>
-                        <li><strong>Dépenses :</strong> Suivre les dépenses familiales et planifier intelligemment les finances</li>
-                        <li><strong>Notes & Albums :</strong> Stocker et partager en toute sécurité les moments privés de la famille</li>
-                        <li><strong>Family AI :</strong> Connecter les générations grâce à une interface conviviale et un support IA intelligent qui apprend et se personnalise</li>
+                        <li><strong>Timeline & Chat :</strong> Gérer et partager les tâches ménagères, événements,
+                            journaux de santé et activités quotidiennes</li>
+                        <li><strong>Dépenses :</strong> Suivre les dépenses familiales et planifier intelligemment les
+                            finances</li>
+                        <li><strong>Notes & Albums :</strong> Stocker et partager en toute sécurité les moments privés
+                            de la famille</li>
+                        <li><strong>Family AI :</strong> Connecter les générations grâce à une interface conviviale et
+                            un support IA intelligent qui apprend et se personnalise</li>
                     </ul>
                 </div>
                 <div>
                     <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem; color: #2d3748;">Avantages</h3>
                     <ul class="product-features">
-                        <li><strong>Gain de temps :</strong> Toutes les informations familiales en un seul endroit, faciles à rechercher et à gérer</li>
-                        <li><strong>Connexion accrue :</strong> Chaque membre reste informé et participe à la vie familiale</li>
-                        <li><strong>Sécurité absolue :</strong> Les données sont cryptées et seule votre famille y a accès</li>
-                        <li><strong>Facile à utiliser :</strong> Interface intuitive adaptée à tous les âges, des enfants aux personnes âgées</li>
+                        <li><strong>Gain de temps :</strong> Toutes les informations familiales en un seul endroit,
+                            faciles à rechercher et à gérer</li>
+                        <li><strong>Connexion accrue :</strong> Chaque membre reste informé et participe à la vie
+                            familiale</li>
+                        <li><strong>Sécurité absolue :</strong> Les données sont cryptées et seule votre famille y a
+                            accès</li>
+                        <li><strong>Facile à utiliser :</strong> Interface intuitive adaptée à tous les âges, des
+                            enfants aux personnes âgées</li>
                     </ul>
                 </div>
             </div>
 
             <div style="text-align: center; margin-top: 3rem;">
-                <h3 style="font-size: 1.8rem; margin-bottom: 2rem; color: #2d3748;">Commencez avec Kazoku en 4 étapes simples</h3>
+                <h3 style="font-size: 1.8rem; margin-bottom: 2rem; color: #2d3748;">Commencez avec Kazoku en 4 étapes
+                    simples</h3>
                 <div class="steps-grid">
                     <div class="step-card">
                         <div class="step-number">1</div>
                         <h4 style="margin-bottom: 0.5rem;">Télécharger l'application</h4>
-                        <p>Téléchargez Kazoku depuis l'App Store ou Google Play. Entièrement gratuit et sans publicité.</p>
+                        <p>Téléchargez Kazoku depuis l'App Store ou Google Play. Entièrement gratuit et sans publicité.
+                        </p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">2</div>
                         <h4 style="margin-bottom: 0.5rem;">Créer une famille</h4>
-                        <p>Inscrivez-vous et créez une nouvelle famille. Vous deviendrez superviseur avec tous les droits de gestion.</p>
+                        <p>Inscrivez-vous et créez une nouvelle famille. Vous deviendrez superviseur avec tous les
+                            droits de gestion.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">3</div>
                         <h4 style="margin-bottom: 0.5rem;">Inviter des membres</h4>
-                        <p>Invitez les membres de la famille par e-mail ou code QR. Remplissez les informations pour que l'IA puisse personnaliser l'expérience.</p>
+                        <p>Invitez les membres de la famille par e-mail ou code QR. Remplissez les informations pour que
+                            l'IA puisse personnaliser l'expérience.</p>
                     </div>
                     <div class="step-card">
                         <div class="step-number">4</div>
                         <h4 style="margin-bottom: 0.5rem;">Explorer</h4>
-                        <p>Explorez les fonctionnalités : Timeline, Chat, Dépenses, Notes. Kazoku apprendra et s'adaptera à votre famille.</p>
+                        <p>Explorez les fonctionnalités : Timeline, Chat, Dépenses, Notes. Kazoku apprendra et
+                            s'adaptera à votre famille.</p>
                     </div>
                 </div>
                 <a href="https://www.kazoku-ai.com/fr/kazoku-menu.html" class="cta-button" target="_blank">
@@ -1199,7 +1313,7 @@
         <div class="container">
             <h2 class="section-title">Contactez-nous</h2>
             <p class="section-subtitle">Nous sommes toujours prêts à vous écouter et à vous soutenir</p>
-            
+
             <div class="contact-wrapper">
                 <div class="contact-info">
                     <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: #2d3748;">Informations de contact</h3>
@@ -1233,32 +1347,34 @@
                     </div>
                 </div>
 
-                <form class="contact-form" id="contactForm">
+                <form class="contact-form" id="contactForm"
+                    data-success-message="Merci de nous avoir contactés ! Nous vous répondrons dans les plus brefs délais.">
                     <div class="form-group">
                         <label for="name">Nom complet <span style="color: #e53e3e;">*</span></label>
                         <input type="text" id="name" name="name" required placeholder="Entrez votre nom complet">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="email">E-mail <span style="color: #e53e3e;">*</span></label>
                         <input type="email" id="email" name="email" required placeholder="email@exemple.com">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="phone">Numéro de téléphone</label>
                         <input type="tel" id="phone" name="phone" placeholder="+81 123 456 789">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="message">Message <span style="color: #e53e3e;">*</span></label>
-                        <textarea id="message" name="message" rows="5" required placeholder="Partagez avec nous votre projet, questions ou demandes..."></textarea>
+                        <textarea id="message" name="message" rows="5" required
+                            placeholder="Partagez avec nous votre projet, questions ou demandes..."></textarea>
                     </div>
-                    
-                    <button type="submit" class="submit-button">
+
+                    <button type="submit" class="submit-button" data-sending-text="Envoi en cours...">
                         <span>Envoyer le message</span>
                         <span class="button-icon">→</span>
                     </button>
-                    
+
                     <div class="form-message" id="formMessage"></div>
                 </form>
             </div>
@@ -1271,15 +1387,18 @@
             <p class="section-subtitle">Des milliers de familles ont fait confiance et adoré les produits MAC</p>
             <div class="testimonial-grid">
                 <div class="testimonial-card">
-                    <p>« Kazoku est la première application qui aide toute ma famille à mieux se connecter chaque jour. Les enfants et les parents peuvent l'utiliser facilement. »</p>
+                    <p>« Kazoku est la première application qui aide toute ma famille à mieux se connecter chaque jour.
+                        Les enfants et les parents peuvent l'utiliser facilement. »</p>
                     <div class="testimonial-author">— Mme Hanako, Tokyo</div>
                 </div>
                 <div class="testimonial-card">
-                    <p>« Je suis impressionné par la fluidité et la sécurité de l'application. Merci à MAC d'avoir créé un produit aussi formidable ! »</p>
+                    <p>« Je suis impressionné par la fluidité et la sécurité de l'application. Merci à MAC d'avoir créé
+                        un produit aussi formidable ! »</p>
                     <div class="testimonial-author">— M. Sato, Osaka</div>
                 </div>
                 <div class="testimonial-card">
-                    <p>« La fonctionnalité Family AI est vraiment utile pour les familles avec de jeunes enfants. Elle rappelle et suggère intelligemment les choses à faire. »</p>
+                    <p>« La fonctionnalité Family AI est vraiment utile pour les familles avec de jeunes enfants. Elle
+                        rappelle et suggère intelligemment les choses à faire. »</p>
                     <div class="testimonial-author">— Mme Yuki, Saitama</div>
                 </div>
             </div>
@@ -1290,7 +1409,7 @@
         <div class="container">
             <h2 class="section-title">Message du PDG</h2>
             <p class="section-subtitle">Un voyage pour mettre la technologie au service du bonheur familial</p>
-    
+
             <div class="ceo-letter-wrapper">
                 <div class="ceo-image-container">
                     <div class="ceo-image"></div>
@@ -1299,122 +1418,186 @@
                         <p>Fondateur et PDG, MAC Corporation</p>
                     </div>
                 </div>
-    
+
                 <div class="ceo-letter-content">
                     <h3>Un souhait d'apporter la technologie pour prendre soin du bonheur familial</h3>
-                    
+
                     <p>
                         Chers lecteurs,
                     </p>
-    
+
                     <p>
-                        Avant de raconter l'histoire de MAC, je voudrais partager un petit secret : MAC n'est pas seulement le nom de l'entreprise—c'est aussi l'acronyme des noms de mes trois enfants bien-aimés : <strong>M</strong>inh, <strong>A</strong>nh et <strong>C</strong>hi. Chaque fois que je vois ce nom, je me rappelle pourquoi j'ai commencé ce voyage : pour la famille, pour l'amour et pour le désir de créer un monde meilleur pour mes enfants.
+                        Avant de raconter l'histoire de MAC, je voudrais partager un petit secret : MAC n'est pas
+                        seulement le nom de l'entreprise—c'est aussi l'acronyme des noms de mes trois enfants bien-aimés
+                        : <strong>M</strong>inh, <strong>A</strong>nh et <strong>C</strong>hi. Chaque fois que je vois
+                        ce nom, je me rappelle pourquoi j'ai commencé ce voyage : pour la famille, pour l'amour et pour
+                        le désir de créer un monde meilleur pour mes enfants.
                     </p>
-    
+
                     <p>
-                        L'idée de Kazoku a commencé par un moment simple il y a environ 1 à 2 ans. À cette époque, notre famille était extrêmement occupée—le travail était constant, les enfants avaient l'école, et nous avions manqué de nombreux projets familiaux. Prenant conscience de cela, j'étais déterminé à organiser un voyage à la plage ensemble—un moment précieux pour toute la famille de se réunir.
+                        L'idée de Kazoku a commencé par un moment simple il y a environ 1 à 2 ans. À cette époque, notre
+                        famille était extrêmement occupée—le travail était constant, les enfants avaient l'école, et
+                        nous avions manqué de nombreux projets familiaux. Prenant conscience de cela, j'étais déterminé
+                        à organiser un voyage à la plage ensemble—un moment précieux pour toute la famille de se réunir.
                     </p>
-    
+
                     <p>
-                        Pourtant, même pendant ce voyage, j'ai remarqué que nous faisions toujours face à des défis. Ma mère âgée ne pouvait pas suivre les messages sur son téléphone, les enfants manquaient les notifications sur les activités à venir, et ma femme jonglait avec des dizaines d'applications différentes. Debout sur la plage, regardant mes trois enfants jouer, je me suis demandé : "Pourquoi la technologie est-elle si compliquée ? Pourquoi ne peut-elle pas être plus simple, plus chaleureuse et vraiment servir notre bonheur ?" C'est à ce moment que Kazoku a été conçu dans mon esprit.
+                        Pourtant, même pendant ce voyage, j'ai remarqué que nous faisions toujours face à des défis. Ma
+                        mère âgée ne pouvait pas suivre les messages sur son téléphone, les enfants manquaient les
+                        notifications sur les activités à venir, et ma femme jonglait avec des dizaines d'applications
+                        différentes. Debout sur la plage, regardant mes trois enfants jouer, je me suis demandé :
+                        "Pourquoi la technologie est-elle si compliquée ? Pourquoi ne peut-elle pas être plus simple,
+                        plus chaleureuse et vraiment servir notre bonheur ?" C'est à ce moment que Kazoku a été conçu
+                        dans mon esprit.
                     </p>
-    
+
                     <p>
-                        Pour être honnête, je voyageais fréquemment pour le travail loin de la maison. Bien que j'aime profondément Minh, Anh et Chi, je connaissais à peine leurs horaires de repas et d'études. Je ne me souvenais que vaguement de leurs indicateurs de développement physique—taille, poids—ces chiffres secs. Mais les petits moments quotidiens ? Leurs repas préférés ? Les matières avec lesquelles ils avaient du mal ? Les petits rêves qu'ils partageaient avec leur mère ? J'en avais manqué bien trop.
+                        Pour être honnête, je voyageais fréquemment pour le travail loin de la maison. Bien que j'aime
+                        profondément Minh, Anh et Chi, je connaissais à peine leurs horaires de repas et d'études. Je ne
+                        me souvenais que vaguement de leurs indicateurs de développement physique—taille, poids—ces
+                        chiffres secs. Mais les petits moments quotidiens ? Leurs repas préférés ? Les matières avec
+                        lesquelles ils avaient du mal ? Les petits rêves qu'ils partageaient avec leur mère ? J'en avais
+                        manqué bien trop.
                     </p>
-    
+
                     <p>
-                        C'était une douleur silencieuse dans mon cœur. Et c'est aussi pourquoi j'étais déterminé à construire Kazoku. J'espère que personne d'autre ne sera comme moi—des parents occupés qui peuvent encore se souvenir de chaque petit moment de leurs enfants. Kazoku n'est pas seulement une application de gestion, mais un trésor qui préserve les souvenirs quotidiens. Pour que des années plus tard, quand nous regardons en arrière, nous ne voyons pas seulement des chiffres, mais tout un voyage d'amour rempli de moments significatifs.
+                        C'était une douleur silencieuse dans mon cœur. Et c'est aussi pourquoi j'étais déterminé à
+                        construire Kazoku. J'espère que personne d'autre ne sera comme moi—des parents occupés qui
+                        peuvent encore se souvenir de chaque petit moment de leurs enfants. Kazoku n'est pas seulement
+                        une application de gestion, mais un trésor qui préserve les souvenirs quotidiens. Pour que des
+                        années plus tard, quand nous regardons en arrière, nous ne voyons pas seulement des chiffres,
+                        mais tout un voyage d'amour rempli de moments significatifs.
                     </p>
-    
+
                     <div class="quote">
-                        "La technologie n'a de sens que lorsqu'elle apporte des sourires aux personnes que nous aimons. C'est pourquoi MAC est né."
+                        "La technologie n'a de sens que lorsqu'elle apporte des sourires aux personnes que nous aimons.
+                        C'est pourquoi MAC est né."
                     </div>
-    
+
                     <h3>Le voyage de la vision à la réalité</h3>
-    
+
                     <p>
-                        L'idée de Kazoku—une application intelligente de gestion familiale—a commencé avec un petit carnet que je portais avec moi. Chaque fois que je voyais un membre de la famille avoir du mal avec la technologie, je le notais. Ces pages sont progressivement devenues la fondation de Kazoku.
+                        L'idée de Kazoku—une application intelligente de gestion familiale—a commencé avec un petit
+                        carnet que je portais avec moi. Chaque fois que je voyais un membre de la famille avoir du mal
+                        avec la technologie, je le notais. Ces pages sont progressivement devenues la fondation de
+                        Kazoku.
                     </p>
-    
+
                     <div class="timeline-container">
                         <div class="timeline-item">
                             <div class="timeline-dot">1</div>
                             <div class="timeline-content">
                                 <h4>2023 - Le début de l'idée</h4>
-                                <p>Lors d'un voyage à la plage en famille, au milieu de nos vies occupées et de nos plans manqués, j'ai réalisé que ma famille avait besoin d'une vraie solution. L'idée d'une application familiale vraiment facile à utiliser et chaleureuse a été conçue sur cette plage même.</p>
+                                <p>Lors d'un voyage à la plage en famille, au milieu de nos vies occupées et de nos
+                                    plans manqués, j'ai réalisé que ma famille avait besoin d'une vraie solution. L'idée
+                                    d'une application familiale vraiment facile à utiliser et chaleureuse a été conçue
+                                    sur cette plage même.</p>
                             </div>
                         </div>
-    
+
                         <div class="timeline-item">
                             <div class="timeline-dot">2</div>
                             <div class="timeline-content">
                                 <h4>2024 - Construction et développement</h4>
-                                <p>Avec une conviction forte, j'ai rassemblé une équipe d'ingénieurs partageant la même vision. Nous n'avons pas seulement codé—nous avons étudié la psychologie familiale, la culture multigénérationnelle et intégré l'IA pour que l'application comprenne vraiment chaque famille.</p>
+                                <p>Avec une conviction forte, j'ai rassemblé une équipe d'ingénieurs partageant la même
+                                    vision. Nous n'avons pas seulement codé—nous avons étudié la psychologie familiale,
+                                    la culture multigénérationnelle et intégré l'IA pour que l'application comprenne
+                                    vraiment chaque famille.</p>
                             </div>
                         </div>
-    
+
                         <div class="timeline-item">
                             <div class="timeline-dot">3</div>
                             <div class="timeline-content">
                                 <h4>2025 - Lancement au Japon</h4>
-                                <p>Kazoku a été officiellement lancé sur le marché japonais. Les premiers retours des utilisateurs—les sourires des mères, la satisfaction des personnes âgées lorsqu'elles se connectent facilement avec leurs familles—sont devenus notre plus grande motivation pour continuer à perfectionner le produit.</p>
+                                <p>Kazoku a été officiellement lancé sur le marché japonais. Les premiers retours des
+                                    utilisateurs—les sourires des mères, la satisfaction des personnes âgées
+                                    lorsqu'elles se connectent facilement avec leurs familles—sont devenus notre plus
+                                    grande motivation pour continuer à perfectionner le produit.</p>
                             </div>
                         </div>
-    
+
                         <div class="timeline-item">
                             <div class="timeline-dot">4</div>
                             <div class="timeline-content">
                                 <h4>Présent</h4>
-                                <p>Nous nous concentrons maintenant sur la construction d'une communauté d'utilisateurs solide au Japon, l'écoute des retours et l'amélioration continue de Kazoku. Chaque nouvelle famille qui rejoint est une motivation pour nous faire mieux chaque jour.</p>
+                                <p>Nous nous concentrons maintenant sur la construction d'une communauté d'utilisateurs
+                                    solide au Japon, l'écoute des retours et l'amélioration continue de Kazoku. Chaque
+                                    nouvelle famille qui rejoint est une motivation pour nous faire mieux chaque jour.
+                                </p>
                             </div>
                         </div>
-    
+
                         <div class="timeline-item">
                             <div class="timeline-dot">5</div>
                             <div class="timeline-content">
                                 <h4>Futur - Expansion mondiale</h4>
-                                <p>Après que Kazoku devienne populaire et aimé au Japon, nous apporterons le produit aux familles en Asie, en Europe, en Amérique et dans de nombreux autres pays. Chaque nouveau marché est une opportunité pour nous d'apprendre et de nous adapter aux cultures locales.</p>
+                                <p>Après que Kazoku devienne populaire et aimé au Japon, nous apporterons le produit aux
+                                    familles en Asie, en Europe, en Amérique et dans de nombreux autres pays. Chaque
+                                    nouveau marché est une opportunité pour nous d'apprendre et de nous adapter aux
+                                    cultures locales.</p>
                             </div>
                         </div>
                     </div>
-    
+
                     <h3>Le bonheur du matin</h3>
-    
+
                     <p>
-                        Beaucoup de gens me demandent : "N'êtes-vous pas fatigué de travailler autant ?" Honnêtement, chaque matin quand je me réveille pour écrire du code pour Kazoku, je ne sens pas du tout que c'est un travail épuisant. Au contraire, c'est mon plus grand bonheur.
+                        Beaucoup de gens me demandent : "N'êtes-vous pas fatigué de travailler autant ?" Honnêtement,
+                        chaque matin quand je me réveille pour écrire du code pour Kazoku, je ne sens pas du tout que
+                        c'est un travail épuisant. Au contraire, c'est mon plus grand bonheur.
                     </p>
-    
+
                     <p>
-                        Quand je m'assois devant mon ordinateur à l'aube, je pense à mes trois enfants bien-aimés—MAC. Je pense aux familles utilisant Kazoku à travers le Japon—de Tokyo à Osaka, de Kyoto à Sapporo. J'imagine un grand-père regardant la photo nouvellement partagée de son petit-enfant, une mère rappelée d'emmener son enfant pour la vaccination, une famille planifiant son voyage de week-end. Et je rêve du jour où Kazoku apportera ces moments aux familles du monde entier—de Hanoi à Séoul, de Bangkok aux endroits lointains. Ces pensées remplissent mon cœur de bonheur.
+                        Quand je m'assois devant mon ordinateur à l'aube, je pense à mes trois enfants bien-aimés—MAC.
+                        Je pense aux familles utilisant Kazoku à travers le Japon—de Tokyo à Osaka, de Kyoto à Sapporo.
+                        J'imagine un grand-père regardant la photo nouvellement partagée de son petit-enfant, une mère
+                        rappelée d'emmener son enfant pour la vaccination, une famille planifiant son voyage de
+                        week-end. Et je rêve du jour où Kazoku apportera ces moments aux familles du monde entier—de
+                        Hanoi à Séoul, de Bangkok aux endroits lointains. Ces pensées remplissent mon cœur de bonheur.
                     </p>
-    
+
                     <div class="quote">
-                        "Écrire Kazoku n'est pas un travail épuisant, mais un grand bonheur. Parce que chaque ligne de code que j'écris est un autre fil qui connecte une famille."
+                        "Écrire Kazoku n'est pas un travail épuisant, mais un grand bonheur. Parce que chaque ligne de
+                        code que j'écris est un autre fil qui connecte une famille."
                     </div>
-    
+
                     <h3>Vision pour l'avenir</h3>
-    
+
                     <p>
-                        Actuellement, nous nous consacrons pleinement au marché japonais. Nous croyons que pour apporter Kazoku au monde, nous devons d'abord construire une base solide là où nous vivons. Chaque retour d'utilisateurs japonais, chaque histoire de moments familiaux connectés grâce à Kazoku, nous aide à perfectionner le produit chaque jour davantage.
+                        Actuellement, nous nous consacrons pleinement au marché japonais. Nous croyons que pour apporter
+                        Kazoku au monde, nous devons d'abord construire une base solide là où nous vivons. Chaque retour
+                        d'utilisateurs japonais, chaque histoire de moments familiaux connectés grâce à Kazoku, nous
+                        aide à perfectionner le produit chaque jour davantage.
                     </p>
-    
+
                     <p>
-                        Dans les 3 à 5 prochaines années, lorsque Kazoku deviendra une partie indispensable de la vie de millions de familles japonaises, nous nous étendrons aux marchés internationaux. Je rêve d'un monde où la technologie n'est plus un obstacle mais un pont—où une grand-mère de 80 ans peut facilement passer un appel vidéo avec son petit-fils à l'étranger juste avec sa voix, où les parents occupés ne manquent toujours aucun moment important de leurs enfants, où chaque famille, qu'elle soit au Vietnam, en Corée, en Thaïlande ou ailleurs, se sent connectée et aimée.
+                        Dans les 3 à 5 prochaines années, lorsque Kazoku deviendra une partie indispensable de la vie de
+                        millions de familles japonaises, nous nous étendrons aux marchés internationaux. Je rêve d'un
+                        monde où la technologie n'est plus un obstacle mais un pont—où une grand-mère de 80 ans peut
+                        facilement passer un appel vidéo avec son petit-fils à l'étranger juste avec sa voix, où les
+                        parents occupés ne manquent toujours aucun moment important de leurs enfants, où chaque famille,
+                        qu'elle soit au Vietnam, en Corée, en Thaïlande ou ailleurs, se sent connectée et aimée.
                     </p>
-    
+
                     <p>
-                        MAC n'est pas seulement une entreprise technologique. Nous sommes des gardiens du bonheur familial. Chaque ligne de code que nous écrivons, chaque fonctionnalité que nous développons, vient de l'amour et du désir d'apporter le meilleur à votre famille—tout comme notre propre famille.
+                        MAC n'est pas seulement une entreprise technologique. Nous sommes des gardiens du bonheur
+                        familial. Chaque ligne de code que nous écrivons, chaque fonctionnalité que nous développons,
+                        vient de l'amour et du désir d'apporter le meilleur à votre famille—tout comme notre propre
+                        famille.
                     </p>
-    
+
                     <div class="quote">
-                        "La technologie continuera d'évoluer, mais la valeur de l'amour familial est immuable. Notre mission est d'utiliser le premier pour servir le second."
+                        "La technologie continuera d'évoluer, mais la valeur de l'amour familial est immuable. Notre
+                        mission est d'utiliser le premier pour servir le second."
                     </div>
-    
+
                     <p>
-                        Merci d'avoir pris le temps de lire ces mots. Si notre histoire touche votre cœur, veuillez nous donner l'opportunité de servir votre famille. Et si vous avez des retours ou des suggestions, n'hésitez pas à les partager—car vous êtes l'inspiration qui nous maintient sur ce voyage.
+                        Merci d'avoir pris le temps de lire ces mots. Si notre histoire touche votre cœur, veuillez nous
+                        donner l'opportunité de servir votre famille. Et si vous avez des retours ou des suggestions,
+                        n'hésitez pas à les partager—car vous êtes l'inspiration qui nous maintient sur ce voyage.
                     </p>
-    
+
                     <p style="margin-top: 2rem; font-weight: 600;">
                         Avec la plus profonde gratitude,<br>
                         <span style="color: #667eea; font-size: 1.2rem;">Takeshi Yamamoto</span><br>
@@ -1429,7 +1612,8 @@
         <div class="footer-content">
             <div class="footer-section">
                 <h3>MAC</h3>
-                <p style="margin-bottom: 1rem;">Une entreprise technologique spécialisée dans le développement d'applications mobiles avec IA moderne, au service de la vie familiale.</p>
+                <p style="margin-bottom: 1rem;">Une entreprise technologique spécialisée dans le développement
+                    d'applications mobiles avec IA moderne, au service de la vie familiale.</p>
                 <div class="social-links">
                     <a href="#" title="Facebook">f</a>
                     <a href="#" title="Twitter">𝕏</a>
@@ -1439,7 +1623,8 @@
             <div class="footer-section">
                 <h3>Produits</h3>
                 <ul>
-                    <li><a href="https://www.kazoku-ai.com/fr/kazoku-menu.html" target="_blank">Application Kazoku</a></li>
+                    <li><a href="https://www.kazoku-ai.com/fr/kazoku-menu.html" target="_blank">Application Kazoku</a>
+                    </li>
                     <li><a href="#">Fonctionnalités</a></li>
                     <li><a href="#">Guide</a></li>
                     <li><a href="#">Mises à jour</a></li>
@@ -1463,41 +1648,14 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2025 MAC Corporation. Tous droits réservés.</p>
-            <p style="margin-top: 0.5rem;">Siège social : Tokyo, Japon | E-mail : info@mac-tech.com | Tél : +81-3-XXXX-XXXX</p>
+            <p style="margin-top: 0.5rem;">Siège social : Tokyo, Japon | E-mail : info@mac-tech.com | Tél :
+                +81-3-XXXX-XXXX</p>
         </div>
     </footer>
 
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="../js/contact.js"></script>
     <script>
-        // Handle form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formMessage = document.getElementById('formMessage');
-            const submitButton = this.querySelector('.submit-button');
-            
-            // Disable button during submission
-            submitButton.disabled = true;
-            submitButton.innerHTML = '<span>Envoi en cours...</span>';
-            
-            // Simulate form submission (replace with actual API call)
-            setTimeout(() => {
-                formMessage.className = 'form-message success';
-                formMessage.textContent = '✓ Merci de nous avoir contactés ! Nous vous répondrons dans les plus brefs délais.';
-                
-                // Reset form
-                this.reset();
-                
-                // Re-enable button
-                submitButton.disabled = false;
-                submitButton.innerHTML = '<span>Envoyer le message</span><span class="button-icon">→</span>';
-                
-                // Hide message after 5 seconds
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 5000);
-            }, 1500);
-        });
-
         // Add smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1513,4 +1671,5 @@
         });
     </script>
 </body>
+
 </html>

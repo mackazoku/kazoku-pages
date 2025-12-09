@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Delete Account — Kazoku</title>
+  <style>
+    :root{--bg:#f6f8fb;--card:#ffffff;--muted:#6b7280;--accent:#0b63d6}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;margin:0;background:var(--bg);color:#111}
+    .wrap{max-width:900px;margin:40px auto;padding:28px}
+    header{display:flex;align-items:center;gap:16px}
+    .logo{width:56px;height:56px;background:linear-gradient(135deg,var(--accent),#2aa3ff);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700}
+    h1{margin:0 0 8px;font-size:20px}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+    .card{background:var(--card);padding:20px;border-radius:12px;box-shadow:0 6px 16px rgba(16,24,40,0.06);margin-top:18px}
+    h2{font-size:16px;margin:0 0 10px}
+    ul{margin:8px 0 18px 20px}
+    .muted{color:var(--muted)}
+    .btn{display:inline-block;background:var(--accent);color:#fff;padding:10px 14px;border-radius:8px;text-decoration:none}
+    .note{font-size:13px;color:var(--muted);margin-top:8px}
+    footer{margin-top:22px;font-size:13px;color:var(--muted)}
+    pre {background:#f3f4f6;padding:12px;border-radius:8px;overflow:auto}
+    .grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+    @media (max-width:840px){.grid{grid-template-columns:1fr}}
+    label{display:block;font-weight:600;margin-bottom:6px}
+    input[type=text], input[type=email], textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ef}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <div>
+        <h1>Delete Your Account — [Kazoku]</h1>
+        <p class="lead">This page explains how to request permanent deletion of your account and what happens to your data. Replace the placeholders (app name, developer name, and support email) with your actual information before publishing.</p>
+      </div>
+    </header>
+
+    <div class="grid">
+      <div>
+        <section class="card" aria-labelledby="how-to-delete">
+          <h2 id="how-to-delete">How to request account deletion</h2>
+          <p class="muted">You may request deletion using either the in-app flow or by sending an email. We will verify your identity before processing the deletion.</p>
+
+          <h3 style="margin-top:12px">1. From inside the app</h3>
+          <ol>
+            <li>Open <strong>[Kazoku]</strong>.</li>
+            <li>Go to <strong>Account-Settings</strong>.</li>
+            <li>Select <strong>Delete Account</strong> and follow the prompts to confirm.</li>
+          </ol>
+
+          <h3 style="margin-top:12px">2. By email (if you cannot access the app)</h3>
+          <p>Send an email to our support team with the subject line: <strong>Account Deletion Request</strong>. Please include the email address associated with your account and a short statement requesting deletion.</p>
+
+          <p style="margin-top:8px"><strong>Support email:</strong> <a href="mailto:contact@kazoku-ai.com?subject=Account%20Deletion%20Request">contact@kazoku-ai.com</a></p>
+
+          <p class="note">We will respond to verify your identity and confirm the deletion within the timeframes shown below.</p>
+        </section>
+
+        <section class="card" style="margin-top:16px" aria-labelledby="data-deleted">
+          <h2 id="data-deleted">What data will be deleted</h2>
+          <p class="muted">When you request permanent deletion, we will remove the following data from our servers:</p>
+          <ul>
+            <li>Account profile information (name, email, phone number)</li>
+            <li>Authentication credentials</li>
+            <li>Health data synced from Health Connect (steps, heart rate, sleep, calories, exercise sessions)</li>
+            <li>Family group membership and shared family records (personal data will be removed; references will be anonymized)</li>
+            <li>App activity logs, settings, and user-generated files or reports</li>
+          </ul>
+
+          <p class="note">After deletion is complete, this data cannot be recovered.</p>
+        </section>
+
+        <section class="card" style="margin-top:16px" aria-labelledby="data-retain">
+          <h2 id="data-retain">What data may be retained and retention period</h2>
+          <p class="muted">In some limited cases we may retain certain information for legal, security, or operational reasons. Examples include:</p>
+          <ul>
+            <li>Transaction or billing records required by law</li>
+            <li>Security logs and fraud-prevention information</li>
+            <li>Records required for compliance with regulatory obligations</li>
+          </ul>
+
+          <p>Retention period for such data is <strong>up to 30 days</strong> after the deletion request, unless a longer period is required by applicable law. After the retention period, we will securely delete or anonymize remaining data.</p>
+        </section>
+
+        <section class="card" style="margin-top:16px" aria-labelledby="family-data">
+          <h2 id="family-data">What happens to shared family data</h2>
+          <p class="muted">If you are part of a family group within the app:</p>
+          <ul>
+            <li>Your personal health data will be deleted from our servers.</li>
+            <li>Shared family records that referenced you will be anonymized so that other members' records remain intact.</li>
+            <li>Other family members' data will not be deleted due to your request.</li>
+          </ul>
+        </section>
+
+        <section class="card" style="margin-top:16px" aria-labelledby="timeline">
+          <h2 id="timeline">Timeline & confirmation</h2>
+          <p class="muted">We will verify your request and typically complete account deletion within <strong>7 days</strong>. Once deletion is complete, we will send a confirmation email to the address on file.</p>
+        </section>
+
+        <section class="card" style="margin-top:16px" aria-labelledby="contact">
+          <h2 id="contact">Contact</h2>
+          <p class="muted">If you have questions about deletion or data handling, contact us:</p>
+          <p><strong>Email:</strong> <a href="mailto:contact@kazoku-ai.com">contact@kazoku-ai.com</a></p>
+          <p class="note">Replace <em>contact@kazoku-ai.com</em>, <em>[Your App Name]</em>, and <em>[Developer Name]</em> with your actual contact and app information before publishing this page.</p>
+        </section>
+      </div>
+
+      <aside>
+        <div class="card">
+          <h2>Quick actions</h2>
+          <p class="muted">Use this button to open an email pre-filled for account deletion.</p>
+          <p style="margin-top:12px"><a class="btn" href="mailto:contact@kazoku-ai.com?subject=Account%20Deletion%20Request&body=Please%20delete%20my%20account%20for%20email%3A%20[enter%20your%20account%20email%20here]">Request deletion by email</a></p>
+
+          <hr style="margin:14px 0;border:none;border-top:1px solid #eef2f7">
+          <h3 style="margin:0 0 8px">Sample deletion request (copy)</h3>
+          <pre>Subject: Account Deletion Request
+
+Hello,
+
+Please delete my account and all associated data. My account email is: user@example.com
+
+Thank you,
+[Your name]</pre>
+
+          <!-- <p class="note">If you want an automated in-app deletion API, replace the mailto flow with a server endpoint such as <code>https://yourdomain.com/api/delete-account</code> and implement identity verification on the server.</p> -->
+        </div>
+
+        <div class="card" style="margin-top:18px">
+          <h2>Developer & legal</h2>
+          <p class="muted">App: <strong>[Kazoku]</strong><br>Developer: <strong>[MAC KAZOKU]</strong><br>Store listing: as shown on Google Play</p>
+          <p class="muted">Privacy policy: <a href="https://kazoku-ai.com/en/kazoku-privacy.html">https://kazoku-ai.com/en/kazoku-privacy.html</a></p>
+        </div>
+      </aside>
+    </div>
+
+    <footer class="muted">Last updated: <time datetime="2025-12-09">December 9, 2025</time></footer>
+  </main>
+</body>
+</html>

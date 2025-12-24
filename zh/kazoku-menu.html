@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -117,11 +118,25 @@
             animation: slideInLeft 0.6s ease-out both;
         }
 
-        .feature-item:nth-child(1) { animation-delay: 0.5s; }
-        .feature-item:nth-child(2) { animation-delay: 0.6s; }
-        .feature-item:nth-child(3) { animation-delay: 0.7s; }
-        .feature-item:nth-child(4) { animation-delay: 0.8s; }
-        .feature-item:nth-child(5) { animation-delay: 0.9s; }
+        .feature-item:nth-child(1) {
+            animation-delay: 0.5s;
+        }
+
+        .feature-item:nth-child(2) {
+            animation-delay: 0.6s;
+        }
+
+        .feature-item:nth-child(3) {
+            animation-delay: 0.7s;
+        }
+
+        .feature-item:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+
+        .feature-item:nth-child(5) {
+            animation-delay: 0.9s;
+        }
 
         .feature-item::before {
             content: '';
@@ -243,26 +258,26 @@
             text-align: center;
             padding: 2rem 0;
         }
-        
+
         .footer-content {
             margin-bottom: 1rem;
             line-height: 1.5;
         }
-        
+
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin: 1rem 0;
         }
-        
+
         .social-links a {
             color: white;
             font-size: 1.5rem;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
+
         .social-links a:hover {
             color: #667eea;
         }
@@ -288,6 +303,7 @@
                 opacity: 0;
                 transform: translateY(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -299,6 +315,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -310,6 +327,7 @@
                 opacity: 0;
                 transform: translateX(-50px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -320,11 +338,11 @@
             .header h1 {
                 font-size: 2.2rem;
             }
-            
+
             .header p {
                 font-size: 1rem;
             }
-            
+
             .features-menu {
                 padding: 30px 20px;
             }
@@ -350,7 +368,8 @@
                 gap: 15px;
             }
 
-            .video-section, .tutorial-section {
+            .video-section,
+            .tutorial-section {
                 padding: 30px 20px;
             }
 
@@ -403,26 +422,26 @@
                 text-align: center;
                 padding: 2rem 0;
             }
-            
+
             .footer-content {
                 margin-bottom: 1rem;
                 line-height: 1.5;
             }
-            
+
             .social-links {
                 display: flex;
                 justify-content: center;
                 gap: 1rem;
                 margin: 1rem 0;
             }
-            
+
             .social-links a {
                 color: white;
                 font-size: 1.5rem;
                 text-decoration: none;
                 transition: color 0.3s ease;
             }
-            
+
             .social-links a:hover {
                 color: #667eea;
             }
@@ -502,8 +521,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
         }
 
         .ripple {
@@ -862,7 +888,7 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
         }
-        
+
         .cta-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
@@ -873,13 +899,14 @@
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        
+
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
         }
     </style>
 </head>
+
 <body>
     <div class="floating-elements">
         <div class="floating-circle"></div>
@@ -1055,7 +1082,7 @@
                 <h2>🎬 体验Kazoku</h2>
                 <p>观看演示视频，更好地了解Kazoku的工作方式</p>
             </div>
-            
+
             <div class="video-container">
                 <div class="video-placeholder">
                     <div class="video-placeholder-content">
@@ -1067,7 +1094,7 @@
                         <div class="video-duration">⏱️ 3:24</div>
                     </div>
                 </div>
-            </div>            
+            </div>
         </div>
 
         <div class="tutorial-section">
@@ -1151,11 +1178,18 @@
             </div>
         </div>
         <div style="margin: 1rem 0;">
-            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">服务条款</a>
+            <a href="kazoku-terms.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">服务条款</a>
             <span style="color: rgba(255, 255, 255, 0.5);">|</span>
-            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">隐私政策</a>
+            <a href="kazoku-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">隐私政策</a>
             <span style="color: rgba(255, 255, 255, 0.5);">|</span>
-            <a href="mac-index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">管理公司</a>
+            <a href="mac-index.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">管理公司:
+                MAC公司</a>
         </div>
         <p>&copy; 2025 Kazoku家庭应用。保留所有权利。<br>
             <em>"连接爱 - 分享幸福"</em>
@@ -1166,7 +1200,7 @@
         window.addEventListener('scroll', () => {
             const scrolled = window.pageYOffset;
             const parallaxElements = document.querySelectorAll('.floating-circle');
-            
+
             parallaxElements.forEach((element, index) => {
                 const speed = (index + 1) * 0.3;
                 element.style.transform = `translateY(${scrolled * speed}px)`;
@@ -1195,7 +1229,7 @@
             const items = document.querySelectorAll('.feature-item');
             const focused = document.activeElement;
             const currentIndex = Array.from(items).indexOf(focused);
-            
+
             if (e.key === 'ArrowDown' && currentIndex < items.length - 1) {
                 e.preventDefault();
                 items[currentIndex + 1].focus();
@@ -1213,7 +1247,7 @@
                 item.style.outline = '3px solid #667eea';
                 item.style.outlineOffset = '2px';
             });
-            
+
             item.addEventListener('blur', () => {
                 item.style.outline = 'none';
             });
@@ -1226,7 +1260,7 @@
                     numbers.forEach(number => {
                         const value = number.textContent;
                         number.textContent = '0';
-                        
+
                         if (value.includes('%')) {
                             animateNumber(number, 0, parseInt(value), '%');
                         } else if (!isNaN(value)) {
@@ -1243,7 +1277,7 @@
             const duration = 1000;
             const increment = (end - start) / (duration / 16);
             let current = start;
-            
+
             const timer = setInterval(() => {
                 current += increment;
                 if (current >= end) {
@@ -1289,7 +1323,7 @@
                 if (entry.isIntersecting) {
                     entry.target.style.opacity = '1';
                     entry.target.style.transform = 'translateY(0)';
-                    
+
                     if (entry.target.classList.contains('tutorial-step')) {
                         const stepNumber = entry.target.querySelector('.step-number');
                         stepNumber.style.transform = 'scale(1.1)';
@@ -1309,12 +1343,12 @@
             step.addEventListener('click', () => {
                 const stepNumber = index + 1;
                 const stepTitle = step.querySelector('h3').textContent;
-                
+
                 step.style.background = '#f0f4ff';
                 setTimeout(() => {
                     step.style.background = 'transparent';
                 }, 500);
-                
+
                 console.log(`点击步骤 ${stepNumber}：${stepTitle}`);
             });
         });
@@ -1346,7 +1380,7 @@
         function handleResize() {
             const isMobile = window.innerWidth <= 768;
             const tutorialSteps = document.querySelectorAll('.tutorial-step');
-            
+
             tutorialSteps.forEach(step => {
                 if (isMobile) {
                     step.style.flexDirection = 'column';
@@ -1366,7 +1400,7 @@
                 e.preventDefault();
                 const targetId = link.getAttribute('href').substring(1);
                 const targetElement = document.getElementById(targetId);
-                
+
                 if (targetElement) {
                     targetElement.scrollIntoView({
                         behavior: 'smooth',
@@ -1379,7 +1413,7 @@
         document.querySelector('.newsletter-form input').addEventListener('input', (e) => {
             const email = e.target.value;
             const button = document.querySelector('.newsletter-form button');
-            
+
             if (email.includes('@') && email.includes('.')) {
                 button.style.background = '#4ade80';
                 button.textContent = '订阅';
@@ -1392,10 +1426,10 @@
         document.querySelector('.play-button').addEventListener('click', () => {
             const playButton = document.querySelector('.play-button');
             const originalContent = playButton.innerHTML;
-            
+
             playButton.innerHTML = '<div style="font-size: 1.5rem;">⏳</div>';
             playButton.style.animation = 'spin 1s linear infinite';
-            
+
             setTimeout(() => {
                 playButton.innerHTML = originalContent;
                 playButton.style.animation = 'none';
@@ -1413,4 +1447,5 @@
         document.head.appendChild(spinStyle);
     </script>
 </body>
+
 </html>

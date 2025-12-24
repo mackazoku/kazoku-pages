@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kazoku - 家族が愛でつながる場所</title>
-    <link rel="icon" type="image/png" href="images/logo.png">
-    <link rel="shortcut icon" type="image/png" href="images/logo.png">
-    <link rel="apple-touch-icon" href="images/logo.png">
+    <title>Kazoku - Where Family Connects with Love</title>
+    <link rel="icon" type="image/png" href="../images/logo.png">
+    <link rel="shortcut icon" type="image/png" href="../images/logo.png">
+    <link rel="apple-touch-icon" href="../images/logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <style>
@@ -205,112 +205,6 @@
             color: #ffd700;
             /* Gold color on hover */
             border-color: #ffd700;
-        }
-
-        /* Custom Language Switcher */
-        .language-switcher {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            z-index: 1000;
-        }
-
-        .custom-select {
-            position: relative;
-            font-family: inherit;
-            width: 160px;
-        }
-
-        .select-selected {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            color: white;
-            padding: 10px 16px;
-            border-radius: 20px;
-            cursor: pointer;
-            user-select: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .select-selected:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-1px);
-        }
-
-        .select-selected:after {
-            content: "";
-            width: 0;
-            height: 0;
-            border: 6px solid transparent;
-            border-color: #fff transparent transparent transparent;
-            margin-left: 8px;
-            margin-top: 4px;
-        }
-
-        .select-selected.select-arrow-active:after {
-            border-color: transparent transparent #fff transparent;
-            margin-top: -4px;
-        }
-
-        .select-items {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            top: 110%;
-            left: 0;
-            right: 0;
-            z-index: 99;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            display: none;
-            animation: fadeIn 0.2s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .select-items.show {
-            display: block;
-        }
-
-        .select-items div {
-            color: #333;
-            padding: 12px 16px;
-            cursor: pointer;
-            user-select: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 500;
-            transition: background 0.2s;
-        }
-
-        .select-items div:hover {
-            background-color: rgba(102, 126, 234, 0.1);
-            color: #667eea;
-        }
-
-        .flag-icon {
-            font-size: 1.2em;
         }
 
         /* Phone Mockup */
@@ -1174,6 +1068,218 @@
                 opacity: 0.5;
             }
         }
+
+        /* Custom Language Switcher */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .custom-select {
+            position: relative;
+            font-family: inherit;
+            width: 160px;
+        }
+
+        .select-selected {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .select-selected:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .select-selected:after {
+            content: "";
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-color: #fff transparent transparent transparent;
+            margin-left: 8px;
+            margin-top: 4px;
+        }
+
+        .select-selected.select-arrow-active:after {
+            border-color: transparent transparent #fff transparent;
+            margin-top: -4px;
+        }
+
+        .select-items {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            top: 110%;
+            left: 0;
+            right: 0;
+            z-index: 99;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            display: none;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .select-items.show {
+            display: block;
+        }
+
+        .select-items div {
+            color: #333;
+            padding: 12px 16px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .select-items div:hover {
+            background-color: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        .flag-icon {
+            font-size: 1.2em;
+        }
+
+        /* Custom Language Switcher */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .custom-select {
+            position: relative;
+            font-family: inherit;
+            width: 160px;
+        }
+
+        .select-selected {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 10px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .select-selected:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .select-selected:after {
+            content: "";
+            width: 0;
+            height: 0;
+            border: 6px solid transparent;
+            border-color: #fff transparent transparent transparent;
+            margin-left: 8px;
+            margin-top: 4px;
+        }
+
+        .select-selected.select-arrow-active:after {
+            border-color: transparent transparent #fff transparent;
+            margin-top: -4px;
+        }
+
+        .select-items {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            top: 110%;
+            left: 0;
+            right: 0;
+            z-index: 99;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            display: none;
+            animation: fadeIn 0.2s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .select-items.show {
+            display: block;
+        }
+
+        .select-items div {
+            color: #333;
+            padding: 12px 16px;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 500;
+            transition: background 0.2s;
+        }
+
+        .select-items div:hover {
+            background-color: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+        }
+
+        .flag-icon {
+            font-size: 1.2em;
+        }
     </style>
 </head>
 
@@ -1182,21 +1288,16 @@
         <div class="custom-select">
             <div class="select-selected" onclick="toggleDropdown()" id="currentLangDisplay">
                 <span style="display: flex; align-items: center; gap: 8px;">
-                    <span class="flag-icon">🇯🇵</span> 日本語
+                    <span class="flag-icon">🇬🇧</span> English
                 </span>
             </div>
             <div class="select-items" id="langList">
-                <div onclick="updateLanguage('ja')">
-                    <span class="flag-icon">🇯🇵</span> 日本語
-                </div>
                 <div onclick="updateLanguage('en')">
                     <span class="flag-icon">🇬🇧</span> English
                 </div>
-                <!-- Future languages can be added here
-                <div onclick="updateLanguage('vi')">
-                    <span class="flag-icon">🇻🇳</span> Tiếng Việt
+                <div onclick="updateLanguage('ja')">
+                    <span class="flag-icon">🇯🇵</span> 日本語
                 </div>
-                -->
             </div>
         </div>
     </div>
@@ -1207,7 +1308,7 @@
             <canvas id="networkCanvas"></canvas>
             <div class="banner-content">
                 <div class="logo">
-                    <img class="logo-image" src="images/logo.png" alt="Kazoku Logo">
+                    <img class="logo-image" src="../images/logo.png" alt="Kazoku Logo">
                     <div class="logo-text-container">
                         <div class="logo-text">KAZOKU</div>
                         <div class="logo-subtitle">The Family Assistant</div>
@@ -1222,49 +1323,54 @@
             </div>
 
             <div class="phone-mockup-container">
-                <img src="images/family.png" alt="Kazoku App" class="phone-image">
+                <img src="../images/family.png" alt="Kazoku App" class="phone-image">
             </div>
         </div>
 
         <!-- Features Section -->
         <div class="features-section">
-            <h2 class="features-title">主な機能</h2>
+            <h2 class="features-title">Key Features</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">📸</div>
-                    <div class="feature-name">タイムライン (FNS)</div>
-                    <div class="feature-description">家族のためのプライベートSNS「Family Network Service」。大切な家族とだけ、思い出や瞬間を共有できます。
-                    </div>
+                    <div class="feature-name">Timeline (FNS)</div>
+                    <div class="feature-description">Private social network for families - Family Network Service.
+                        Connect and share moments exclusively with your loved ones.</div>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">✓</div>
-                    <div class="feature-name">家事・タスク</div>
-                    <div class="feature-description">スマートで使いやすい家事タスク管理。家族みんなで分担し、協力し合うのをサポートします。</div>
+                    <div class="feature-name">Household Tasks</div>
+                    <div class="feature-description">Smart and friendly task management for household chores. Help
+                        family members share responsibilities together.</div>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">📅</div>
-                    <div class="feature-name">家族カレンダー</div>
-                    <div class="feature-description">Googleカレンダーのように直感的に共有スケジュールを管理。みんなの予定を簡単に同期できます。</div>
+                    <div class="feature-name">Family Calendar</div>
+                    <div class="feature-description">Manage shared schedules intuitively like Google Calendar. Sync
+                        everyone's activities with ease.</div>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">🏖️</div>
-                    <div class="feature-name">活動履歴</div>
-                    <div class="feature-description">家族のお出かけの計画や思い出を保存。すべての瞬間を効果的かつ簡単に記録します。</div>
+                    <div class="feature-name">Activity History</div>
+                    <div class="feature-description">Plan and preserve memories of family outings. Every moment is
+                        captured effectively and easily.</div>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">📔</div>
-                    <div class="feature-name">日記・ライフログ</div>
-                    <div class="feature-description">運動、睡眠、食事、健康管理、個人の日記など、日々の活動を記録できます。</div>
+                    <div class="feature-name">Daily Journal</div>
+                    <div class="feature-description">Track daily activities: exercise, sleep, meals, health, personal
+                        diary, and much more.</div>
                 </div>
 
                 <div class="feature-card">
                     <div class="feature-icon">✨</div>
                     <div class="feature-name">Kazoku AI</div>
-                    <div class="feature-description">家族の日々の活動に基づいて、いつでも手助けやアドバイスを提供する、親しみやすいスマートアシスタントです。</div>
+                    <div class="feature-description">Smart assistant like a friendly companion, always ready to help and
+                        provide insights based on your family's daily activities.</div>
                 </div>
             </div>
         </div>
@@ -1282,42 +1388,42 @@
                     <div class="carousel-page">
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/timeline_en.png" alt="Family Timeline" data-label="Family Timeline">
+                                <img src="../images/timeline_en.png" alt="Family Timeline" data-label="Family Timeline">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/task_en.png" alt="Family Tasks" data-label="Family Tasks">
+                                <img src="../images/task_en.png" alt="Family Tasks" data-label="Family Tasks">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/calendar_en.png" alt="Family Events" data-label="Family Events">
+                                <img src="../images/calendar_en.png" alt="Family Events" data-label="Family Events">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/chat_en.png" alt="Family Chat" data-label="Family Chat">
+                                <img src="../images/chat_en.png" alt="Family Chat" data-label="Family Chat">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/fun_en.png" alt="Family Fun" data-label="Family Fun">
+                                <img src="../images/fun_en.png" alt="Family Fun" data-label="Family Fun">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/journal_en.png" alt="Journal" data-label="Journal">
+                                <img src="../images/journal_en.png" alt="Journal" data-label="Journal">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/kazokuai_en.png" alt="Kazoku AI" data-label="Kazoku AI">
+                                <img src="../images/kazokuai_en.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/expenses_en.png" alt="Family Expenses" data-label="Family Expenses">
+                                <img src="../images/expenses_en.png" alt="Family Expenses" data-label="Family Expenses">
                             </div>
                         </div>
                     </div>
@@ -1326,42 +1432,42 @@
                     <div class="carousel-page">
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/timeline_vi.png" alt="Dòng thời gian" data-label="Dòng thời gian">
+                                <img src="../images/timeline_vi.png" alt="Dòng thời gian" data-label="Dòng thời gian">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/task_vi.png" alt="Việc nhà" data-label="Việc nhà">
+                                <img src="../images/task_vi.png" alt="Việc nhà" data-label="Việc nhà">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/calendar_vi.png" alt="Lịch gia đình" data-label="Lịch gia đình">
+                                <img src="../images/calendar_vi.png" alt="Lịch gia đình" data-label="Lịch gia đình">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/chat_vi.png" alt="Nhắn tin" data-label="Nhắn tin">
+                                <img src="../images/chat_vi.png" alt="Nhắn tin" data-label="Nhắn tin">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/fun_vi.png" alt="Vui chơi" data-label="Vui chơi">
+                                <img src="../images/fun_vi.png" alt="Vui chơi" data-label="Vui chơi">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/journal_vi.png" alt="Nhật ký" data-label="Nhật ký">
+                                <img src="../images/journal_vi.png" alt="Nhật ký" data-label="Nhật ký">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/kazokuai_vi.png" alt="Kazoku AI" data-label="Kazoku AI">
+                                <img src="../images/kazokuai_vi.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/expenses_vi.png" alt="Chi Tiêu Gia Đình"
+                                <img src="../images/expenses_vi.png" alt="Chi Tiêu Gia Đình"
                                     data-label="Chi Tiêu Gia Đình">
                             </div>
                         </div>
@@ -1371,42 +1477,42 @@
                     <div class="carousel-page">
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/timeline_ja.png" alt="家族のタイムライン" data-label="家族のタイムライン">
+                                <img src="../images/timeline_ja.png" alt="家族のタイムライン" data-label="家族のタイムライン">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/task_ja.png" alt="家族のタスク" data-label="家族のタスク">
+                                <img src="../images/task_ja.png" alt="家族のタスク" data-label="家族のタスク">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/calendar_ja.png" alt="家族のイベント" data-label="家族のイベント">
+                                <img src="../images/calendar_ja.png" alt="家族のイベント" data-label="家族のイベント">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/chat_ja.png" alt="家族チャット" data-label="家族チャット">
+                                <img src="../images/chat_ja.png" alt="家族チャット" data-label="家族チャット">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/fun_ja.png" alt="家族の楽しみ" data-label="家族の楽しみ">
+                                <img src="../images/fun_ja.png" alt="家族の楽しみ" data-label="家族の楽しみ">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/journal_ja.png" alt="日記" data-label="日記">
+                                <img src="../images/journal_ja.png" alt="日記" data-label="日記">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/kazokuai_ja.png" alt="Kazoku AI" data-label="Kazoku AI">
+                                <img src="../images/kazokuai_ja.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/expenses_ja.png" alt="家計簿" data-label="家計簿">
+                                <img src="../images/expenses_ja.png" alt="家計簿" data-label="家計簿">
                             </div>
                         </div>
                     </div>
@@ -1415,45 +1521,45 @@
                     <div class="carousel-page">
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/timeline_fr.png" alt="Chronologie Familiale"
+                                <img src="../images/timeline_fr.png" alt="Chronologie Familiale"
                                     data-label="Chronologie Familiale">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/task_fr.png" alt="Tâches Familiales" data-label="Tâches Familiales">
+                                <img src="../images/task_fr.png" alt="Tâches Familiales" data-label="Tâches Familiales">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/calendar_fr.png" alt="Événements Familiaux"
+                                <img src="../images/calendar_fr.png" alt="Événements Familiaux"
                                     data-label="Événements Familiaux">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/chat_fr.png" alt="Chat Familial" data-label="Chat Familial">
+                                <img src="../images/chat_fr.png" alt="Chat Familial" data-label="Chat Familial">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/fun_fr.png" alt="Divertissement Familial"
+                                <img src="../images/fun_fr.png" alt="Divertissement Familial"
                                     data-label="Divertissement Familial">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/journal_fr.png" alt="Journal" data-label="Journal">
+                                <img src="../images/journal_fr.png" alt="Journal" data-label="Journal">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/kazokuai_fr.png" alt="Kazoku AI" data-label="Kazoku AI">
+                                <img src="../images/kazokuai_fr.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/expenses_fr.png" alt="Dépenses Familiales"
+                                <img src="../images/expenses_fr.png" alt="Dépenses Familiales"
                                     data-label="Dépenses Familiales">
                             </div>
                         </div>
@@ -1463,42 +1569,42 @@
                     <div class="carousel-page">
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/timeline_zh.png" alt="家庭时间线" data-label="家庭时间线">
+                                <img src="../images/timeline_zh.png" alt="家庭时间线" data-label="家庭时间线">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/task_zh.png" alt="家庭任务" data-label="家庭任务">
+                                <img src="../images/task_zh.png" alt="家庭任务" data-label="家庭任务">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/calendar_zh.png" alt="家庭活动" data-label="家庭活动">
+                                <img src="../images/calendar_zh.png" alt="家庭活动" data-label="家庭活动">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/chat_zh.png" alt="家庭聊天" data-label="家庭聊天">
+                                <img src="../images/chat_zh.png" alt="家庭聊天" data-label="家庭聊天">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/fun_zh.png" alt="家庭娱乐" data-label="家庭娱乐">
+                                <img src="../images/fun_zh.png" alt="家庭娱乐" data-label="家庭娱乐">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/journal_zh.png" alt="日记" data-label="日记">
+                                <img src="../images/journal_zh.png" alt="日记" data-label="日记">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/kazokuai_zh.png" alt="Kazoku AI" data-label="Kazoku AI">
+                                <img src="../images/kazokuai_zh.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/expenses_zh.png" alt="家庭开支" data-label="家庭开支">
+                                <img src="../images/expenses_zh.png" alt="家庭开支" data-label="家庭开支">
                             </div>
                         </div>
                     </div>
@@ -1507,42 +1613,42 @@
                     <div class="carousel-page">
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/timeline_kr.png" alt="가족 타임라인" data-label="가족 타임라인">
+                                <img src="../images/timeline_kr.png" alt="가족 타임라인" data-label="가족 타임라인">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/task_kr.png" alt="가족 작업" data-label="가족 작업">
+                                <img src="../images/task_kr.png" alt="가족 작업" data-label="가족 작업">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/calendar_kr.png" alt="가족 이벤트" data-label="가족 이벤트">
+                                <img src="../images/calendar_kr.png" alt="가족 이벤트" data-label="가족 이벤트">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/chat_kr.png" alt="가족 채팅" data-label="가족 채팅">
+                                <img src="../images/chat_kr.png" alt="가족 채팅" data-label="가족 채팅">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/fun_kr.png" alt="가족 즐거움" data-label="가족 즐거움">
+                                <img src="../images/fun_kr.png" alt="가족 즐거움" data-label="가족 즐거움">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/journal_kr.png" alt="일기" data-label="일기">
+                                <img src="../images/journal_kr.png" alt="일기" data-label="일기">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/kazokuai_kr.png" alt="Kazoku AI" data-label="Kazoku AI">
+                                <img src="../images/kazokuai_kr.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/expenses_kr.png" alt="가족 지출" data-label="가족 지출">
+                                <img src="../images/expenses_kr.png" alt="가족 지출" data-label="가족 지출">
                             </div>
                         </div>
                     </div>
@@ -1551,44 +1657,45 @@
                     <div class="carousel-page">
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/timeline_es.png" alt="Línea de Tiempo Familiar"
+                                <img src="../images/timeline_es.png" alt="Línea de Tiempo Familiar"
                                     data-label="Línea de Tiempo Familiar">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/task_es.png" alt="Tareas Familiares" data-label="Tareas Familiares">
+                                <img src="../images/task_es.png" alt="Tareas Familiares" data-label="Tareas Familiares">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/calendar_es.png" alt="Eventos Familiares"
+                                <img src="../images/calendar_es.png" alt="Eventos Familiares"
                                     data-label="Eventos Familiares">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/chat_es.png" alt="Chat Familiar" data-label="Chat Familiar">
+                                <img src="../images/chat_es.png" alt="Chat Familiar" data-label="Chat Familiar">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/fun_es.png" alt="Diversión Familiar" data-label="Diversión Familiar">
+                                <img src="../images/fun_es.png" alt="Diversión Familiar"
+                                    data-label="Diversión Familiar">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/journal_es.png" alt="Diario" data-label="Diario">
+                                <img src="../images/journal_es.png" alt="Diario" data-label="Diario">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/kazokuai_es.png" alt="Kazoku AI" data-label="Kazoku AI">
+                                <img src="../images/kazokuai_es.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/expenses_es.png" alt="Gastos Familiares"
+                                <img src="../images/expenses_es.png" alt="Gastos Familiares"
                                     data-label="Gastos Familiares">
                             </div>
                         </div>
@@ -1598,44 +1705,45 @@
                     <div class="carousel-page">
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/timeline_pt.png" alt="Linha do Tempo da Família"
+                                <img src="../images/timeline_pt.png" alt="Linha do Tempo da Família"
                                     data-label="Linha do Tempo da Família">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/task_pt.png" alt="Tarefas Familiares" data-label="Tarefas Familiares">
+                                <img src="../images/task_pt.png" alt="Tarefas Familiares"
+                                    data-label="Tarefas Familiares">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/calendar_pt.png" alt="Eventos Familiares"
+                                <img src="../images/calendar_pt.png" alt="Eventos Familiares"
                                     data-label="Eventos Familiares">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/chat_pt.png" alt="Chat da Família" data-label="Chat da Família">
+                                <img src="../images/chat_pt.png" alt="Chat da Família" data-label="Chat da Família">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/fun_pt.png" alt="Diversão Familiar" data-label="Diversão Familiar">
+                                <img src="../images/fun_pt.png" alt="Diversão Familiar" data-label="Diversão Familiar">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/journal_pt.png" alt="Diário" data-label="Diário">
+                                <img src="../images/journal_pt.png" alt="Diário" data-label="Diário">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/kazokuai_pt.png" alt="Kazoku AI" data-label="Kazoku AI">
+                                <img src="../images/kazokuai_pt.png" alt="Kazoku AI" data-label="Kazoku AI">
                             </div>
                         </div>
                         <div class="screenshot-card" onclick="openImageOverlay(this)">
                             <div class="img-container">
-                                <img src="images/expenses_pt.png" alt="Despesas Familiares"
+                                <img src="../images/expenses_pt.png" alt="Despesas Familiares"
                                     data-label="Despesas Familiares">
                             </div>
                         </div>
@@ -1653,7 +1761,7 @@
         </div>
 
         <!-- Language Selection Section -->
-        <h2 class="section-title">KAZOKUアプリの使い方</h2>
+        <h2 class="section-title">How to Use the KAZOKU App</h2>
         <div class="language-grid">
             <div class="language-card" onclick="selectLanguage('en')">
                 <span class="language-flag">🇬🇧</span>
@@ -1706,8 +1814,9 @@
 
         <!-- Download Section -->
         <div class="download-section">
-            <h2 class="download-title">KAZOKUアプリをダウンロード</h2>
-            <p class="download-subtitle">いつでもどこでも家族とつながる。<br>以下のリンクをクリックするか、QRコードをスキャンして始めましょう。</p>
+            <h2 class="download-title">Download the KAZOKU App</h2>
+            <p class="download-subtitle">Connect with family anytime, anywhere. Click below link or scan the QR code to
+                get started.</p>
 
             <div class="download-container">
                 <!-- App Store -->
@@ -1969,13 +2078,13 @@
             card.style.transform = 'scale(0.95)';
 
             setTimeout(() => {
-                if (langCode === 'en') {
-                    window.location.href = 'en/index.html';
-                } else if (langCode === 'ja') {
-                    // Already on Japanese page
+                if (langCode === 'ja') {
+                    window.location.href = '../index.html';
+                } else if (langCode === 'en') {
+                    // Already on English page, do nothing or reload
                     window.location.reload();
                 } else {
-                    window.location.href = `${langCode}/kazoku-menu.html`;
+                    window.location.href = `../${langCode}/kazoku-menu.html`;
                 }
             }, 200);
         }
@@ -2151,12 +2260,52 @@
         }
 
         function updateLanguage(langCode) {
-            if (langCode === 'en') {
-                window.location.href = 'en/index.html';
-            } else if (langCode === 'ja') {
+            if (langCode === 'ja') {
+                window.location.href = '../index.html';
+            } else if (langCode === 'en') {
                 window.location.reload();
             } else {
-                window.location.href = `${langCode}/kazoku-menu.html`;
+                window.location.href = `../${langCode}/kazoku-menu.html`;
+            }
+        }
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function (event) {
+            if (!event.target.matches('.select-selected') && !event.target.closest('.select-selected')) {
+                const dropdowns = document.getElementsByClassName("select-items");
+                const selector = document.querySelector(".select-selected");
+
+                for (let i = 0; i < dropdowns.length; i++) {
+                    const openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+
+                if (selector && selector.classList.contains('select-arrow-active')) {
+                    selector.classList.remove('select-arrow-active');
+                }
+            }
+        });
+
+        // Dropdown Logic
+        function toggleDropdown() {
+            const list = document.getElementById("langList");
+            const selected = document.getElementById("currentLangDisplay");
+            if (list && selected) {
+                list.classList.toggle("show");
+                selected.classList.toggle("select-arrow-active");
+            }
+            if (event) event.stopPropagation();
+        }
+
+        function updateLanguage(langCode) {
+            if (langCode === 'ja') {
+                window.location.href = '../index.html';
+            } else if (langCode === 'en') {
+                window.location.reload();
+            } else {
+                window.location.href = `../${langCode}/kazoku-menu.html`;
             }
         }
 

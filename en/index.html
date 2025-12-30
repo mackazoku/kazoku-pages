@@ -2078,14 +2078,7 @@
             card.style.transform = 'scale(0.95)';
 
             setTimeout(() => {
-                if (langCode === 'ja') {
-                    window.location.href = '../index.html';
-                } else if (langCode === 'en') {
-                    // Already on English page, do nothing or reload
-                    window.location.reload();
-                } else {
-                    window.location.href = `../${langCode}/kazoku-menu.html`;
-                }
+                window.location.href = `../${langCode}/kazoku-menu.html`;
             }, 200);
         }
 
@@ -2262,10 +2255,8 @@
         function updateLanguage(langCode) {
             if (langCode === 'ja') {
                 window.location.href = '../index.html';
-            } else if (langCode === 'en') {
-                window.location.reload();
             } else {
-                window.location.href = `../${langCode}/kazoku-menu.html`;
+                window.location.reload();
             }
         }
 

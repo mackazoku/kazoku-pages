@@ -1272,7 +1272,7 @@
         <!-- Screenshots Carousel -->
         <div class="carousel-section">
             <div class="carousel-header">
-                <h2 class="carousel-title">Explore KAZOKU</h2>
+                <h2 class="carousel-title">KAZOKUの体験</h2>
                 <p class="carousel-language" id="carouselLanguage">English</p>
             </div>
 
@@ -1790,7 +1790,8 @@
             <span style="color: rgba(255, 255, 255, 0.5);">|</span>
             <a href="en/mac-index.html"
                 style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
-                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">株式会社MAC</a>
+                onmouseover="this.style.color='#fff'"
+                onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">株式会社MAC</a>
         </div>
         <p>&copy; 2025 Kazoku Family App. All rights reserved.<br>
             <em>"愛をつなぐ - 幸せを分かち合う"</em>
@@ -1967,14 +1968,7 @@
             card.style.transform = 'scale(0.95)';
 
             setTimeout(() => {
-                if (langCode === 'en') {
-                    window.location.href = 'en/index.html';
-                } else if (langCode === 'ja') {
-                    // Already on Japanese page
-                    window.location.reload();
-                } else {
-                    window.location.href = `${langCode}/kazoku-menu.html`;
-                }
+                window.location.href = `${langCode}/kazoku-menu.html`;
             }, 200);
         }
 
@@ -2149,12 +2143,10 @@
         }
 
         function updateLanguage(langCode) {
-            if (langCode === 'en') {
-                window.location.href = 'en/index.html';
-            } else if (langCode === 'ja') {
+            if (langCode === 'ja') {
                 window.location.reload();
             } else {
-                window.location.href = `${langCode}/kazoku-menu.html`;
+                window.location.href = 'en/index.html';
             }
         }
 

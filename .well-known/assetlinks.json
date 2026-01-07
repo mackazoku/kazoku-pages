@@ -31,7 +31,8 @@
       "namespace": "android_app",
       "package_name": "com.mac.kazoku",
       "sha256_cert_fingerprints": [
-        "7E:82:5B:04:3E:C4:3A:78:AD:95:FF:F3:F3:FC:66:D3:10:F2:5F:F4:92:20:78:12:00:E8:9E:33:9D:A1:17:DD"
+        "7E:82:5B:04:3E:C4:3A:78:AD:95:FF:F3:F3:FC:66:D3:10:F2:5F:F4:92:20:78:12:00:E8:9E:33:9D:A1:17:DD",
+        "22:A0:D3:83:02:5C:A4:E8:F6:F6:FB:DB:25:08:CA:88:21:09:4C:1A:FB:52:48:5B:C3:C4:C7:92:A6:CB:2C:81"
       ]
     }
   }

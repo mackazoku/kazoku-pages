@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,6 +41,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -90,14 +92,49 @@
             animation: fadeIn 0.6s ease-out forwards;
         }
 
-        .section:nth-child(1) { animation-delay: 0.1s; }
-        .section:nth-child(2) { animation-delay: 0.2s; }
-        .section:nth-child(3) { animation-delay: 0.3s; }
-        .section:nth-child(4) { animation-delay: 0.4s; }
-        .section:nth-child(5) { animation-delay: 0.5s; }
-        .section:nth-child(6) { animation-delay: 0.6s; }
-        .section:nth-child(7) { animation-delay: 0.7s; }
-        .section:nth-child(8) { animation-delay: 0.8s; }
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .section:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        .section:nth-child(10) {
+            animation-delay: 1.0s;
+        }
+
+        .section:nth-child(11) {
+            animation-delay: 1.1s;
+        }
 
         @keyframes fadeIn {
             to {
@@ -259,15 +296,15 @@
                 margin: 10px;
                 border-radius: 15px;
             }
-            
+
             .header {
                 padding: 30px 20px;
             }
-            
+
             .content {
                 padding: 30px 20px;
             }
-            
+
             .app-logo {
                 font-size: 2em;
             }
@@ -276,7 +313,8 @@
                 font-size: 0.85em;
             }
 
-            .data-table th, .data-table td {
+            .data-table th,
+            .data-table td {
                 padding: 10px 8px;
             }
         }
@@ -287,26 +325,26 @@
             text-align: center;
             padding: 2rem 0;
         }
-        
+
         .footer-content {
             margin-bottom: 1rem;
             line-height: 1.5;
         }
-        
+
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin: 1rem 0;
         }
-        
+
         .social-links a {
             color: white;
             font-size: 1.5rem;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
+
         .social-links a:hover {
             color: #667eea;
         }
@@ -328,6 +366,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -346,10 +385,14 @@
                     <h2 class="section-title">1. Giới thiệu</h2>
                 </div>
                 <div class="section-content">
-                    <p>Kazoku cam kết bảo vệ quyền riêng tư và dữ liệu cá nhân của bạn. Chính sách này giải thích cách chúng tôi thu thập, sử dụng, lưu trữ và bảo vệ thông tin của bạn khi sử dụng ứng dụng quản lý gia đình Kazoku.</p>
-                    
+                    <p>Kazoku cam kết bảo vệ quyền riêng tư và dữ liệu cá nhân của bạn. Chính sách này giải thích cách
+                        chúng tôi thu thập, sử dụng, lưu trữ và bảo vệ thông tin của bạn khi sử dụng ứng dụng quản lý
+                        gia đình Kazoku.</p>
+
                     <div class="highlight-box">
-                        <p><strong>🛡️ Cam kết của chúng tôi:</strong> Dữ liệu gia đình của bạn là tài sản quý giá nhất. Chúng tôi áp dụng các biện pháp bảo mật cao nhất để đảm bảo thông tin của bạn luôn được an toàn và riêng tư.</p>
+                        <p><strong>🛡️ Cam kết của chúng tôi:</strong> Dữ liệu gia đình của bạn là tài sản quý giá nhất.
+                            Chúng tôi áp dụng các biện pháp bảo mật cao nhất để đảm bảo thông tin của bạn luôn được an
+                            toàn và riêng tư.</p>
                     </div>
                 </div>
             </div>
@@ -386,10 +429,53 @@
                             <td>Loại thiết bị, hệ điều hành, ID thiết bị</td>
                             <td>Tối ưu hóa hiệu suất</td>
                         </tr>
+                        <tr>
+                            <td><strong>Dữ liệu sức khỏe</strong></td>
+                            <td>Số bước chân, quãng đường, calo, phân tích giấc ngủ</td>
+                            <td>Theo dõi tiến độ tập luyện và cung cấp thông tin sức khỏe</td>
+                        </tr>
                     </table>
 
                     <div class="warning-box">
-                        <p><strong>⚠️ Lưu ý:</strong> Chúng tôi chỉ thu thập thông tin cần thiết để cung cấp dịch vụ. Bạn có thể từ chối một số loại dữ liệu nhưng điều này có thể ảnh hưởng đến trải nghiệm sử dụng.</p>
+                        <p><strong>⚠️ Lưu ý:</strong> Chúng tôi chỉ thu thập thông tin cần thiết để cung cấp dịch vụ.
+                            Bạn có thể từ chối một số loại dữ liệu nhưng điều này có thể ảnh hưởng đến trải nghiệm sử
+                            dụng.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">❤️</span>
+                    <h2 class="section-title">3. Quyền riêng tư Dữ liệu sức khỏe (HealthKit & Health Connect)</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku tích hợp với Apple HealthKit và Google Health Connect để cung cấp các tính năng theo dõi
+                        sức khỏe.</p>
+
+                    <div class="list-item">
+                        <strong>Thu thập dữ liệu:</strong> Chúng tôi chỉ đọc dữ liệu mà bạn cấp phép rõ ràng (số bước chân,
+                        phân tích giấc ngủ, v.v.) để hiển thị trong ứng dụng.
+                    </div>
+                    <div class="list-item">
+                        <strong>Sử dụng dữ liệu:</strong> Dữ liệu sức khỏe của bạn CHỈ được sử dụng để tính toán thống
+                        kê sức khỏe gia đình và trực quan hóa tiến độ của bạn.
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Không quảng cáo:</strong> Chúng tôi KHÔNG BAO GIỜ sử dụng dữ liệu sức khỏe của bạn cho
+                        mục đích quảng cáo, tiếp thị hoặc khai thác dữ liệu.
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Không chia sẻ với bên thứ ba:</strong> Chúng tôi không chia sẻ dữ liệu sức khỏe của bạn
+                        với bất kỳ bên thứ ba nào, ngoại trừ các dịch vụ lưu trữ (Google Cloud) cần thiết để cung cấp
+                        dịch vụ.
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🔒 Kiểm soát người dùng:</strong> Bạn có thể cấp hoặc thu hồi quyền truy cập Dữ liệu
+                            sức khỏe bất kỳ lúc nào trong cài đặt thiết bị (Quyền riêng tư > Sức khỏe).</p>
                     </div>
                 </div>
             </div>
@@ -397,11 +483,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🎯</span>
-                    <h2 class="section-title">3. Cách chúng tôi sử dụng thông tin</h2>
+                    <h2 class="section-title">4. Cách chúng tôi sử dụng thông tin</h2>
                 </div>
                 <div class="section-content">
                     <p>Dữ liệu của bạn được sử dụng để:</p>
-                    
+
                     <div class="list-item">Cung cấp và duy trì các tính năng của ứng dụng</div>
                     <div class="list-item">Đồng bộ hóa dữ liệu giữa các thiết bị</div>
                     <div class="list-item">Gửi thông báo và nhắc nhở theo yêu cầu</div>
@@ -420,11 +506,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🛡️</span>
-                    <h2 class="section-title">4. Bảo mật dữ liệu</h2>
+                    <h2 class="section-title">5. Bảo mật dữ liệu</h2>
                 </div>
                 <div class="section-content">
                     <p>Chúng tôi áp dụng nhiều lớp bảo mật để bảo vệ dữ liệu của bạn:</p>
-                    
+
                     <div class="list-item">
                         <strong>Mã hóa dữ liệu:</strong>
                         <div class="sub-list-item">Mã hóa AES-256 cho dữ liệu lưu trữ</div>
@@ -451,11 +537,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🤝</span>
-                    <h2 class="section-title">5. Chia sẻ thông tin</h2>
+                    <h2 class="section-title">6. Chia sẻ thông tin</h2>
                 </div>
                 <div class="section-content">
                     <p>Chúng tôi chỉ chia sẻ thông tin trong các trường hợp sau:</p>
-                    
+
                     <div class="list-item">
                         <strong>Trong gia đình:</strong> Theo cài đặt quyền riêng tư mà bạn thiết lập
                     </div>
@@ -472,7 +558,8 @@
                     </div>
 
                     <div class="highlight-box">
-                        <p><strong>🔒 Đảm bảo:</strong> Tất cả đối tác của chúng tôi đều phải tuân thủ các tiêu chuẩn bảo mật cao và chỉ được truy cập dữ liệu cần thiết để cung cấp dịch vụ.</p>
+                        <p><strong>🔒 Đảm bảo:</strong> Tất cả đối tác của chúng tôi đều phải tuân thủ các tiêu chuẩn
+                            bảo mật cao và chỉ được truy cập dữ liệu cần thiết để cung cấp dịch vụ.</p>
                     </div>
                 </div>
             </div>
@@ -480,11 +567,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">⚙️</span>
-                    <h2 class="section-title">6. Quyền kiểm soát của bạn</h2>
+                    <h2 class="section-title">7. Quyền kiểm soát của bạn</h2>
                 </div>
                 <div class="section-content">
                     <p>Bạn có toàn quyền kiểm soát dữ liệu cá nhân của mình:</p>
-                    
+
                     <div class="list-item">
                         <strong>Truy cập:</strong> Xem tất cả dữ liệu chúng tôi lưu trữ về bạn
                     </div>
@@ -518,11 +605,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🍪</span>
-                    <h2 class="section-title">7. Công nghệ theo dõi</h2>
+                    <h2 class="section-title">8. Công nghệ theo dõi</h2>
                 </div>
                 <div class="section-content">
                     <p>Kazoku sử dụng các công nghệ sau để cải thiện trải nghiệm:</p>
-                    
+
                     <table class="data-table">
                         <tr>
                             <th>Loại</th>
@@ -556,7 +643,7 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🔄</span>
-                    <h2 class="section-title">8. Lưu trữ và Xóa dữ liệu</h2>
+                    <h2 class="section-title">9. Lưu trữ và Xóa dữ liệu</h2>
                 </div>
                 <div class="section-content">
                     <div class="list-item">
@@ -574,7 +661,8 @@
                     </div>
 
                     <div class="highlight-box">
-                        <p><strong>🗑️ Xóa tài khoản:</strong> Khi bạn xóa tài khoản, chúng tôi sẽ xóa toàn bộ dữ liệu cá nhân trong vòng 30 ngày, trừ những thông tin cần thiết cho mục đích pháp lý.</p>
+                        <p><strong>🗑️ Xóa tài khoản:</strong> Khi bạn xóa tài khoản, chúng tôi sẽ xóa toàn bộ dữ liệu
+                            cá nhân trong vòng 30 ngày, trừ những thông tin cần thiết cho mục đích pháp lý.</p>
                     </div>
                 </div>
             </div>
@@ -582,18 +670,20 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">👶</span>
-                    <h2 class="section-title">9. Bảo vệ trẻ em</h2>
+                    <h2 class="section-title">10. Bảo vệ trẻ em</h2>
                 </div>
                 <div class="section-content">
                     <p>Kazoku đặc biệt quan tâm đến việc bảo vệ thông tin của trẻ em:</p>
-                    
-                    <div class="list-item">Không thu thập thông tin cá nhân từ trẻ dưới 13 tuổi mà không có sự đồng ý của phụ huynh</div>
+
+                    <div class="list-item">Không thu thập thông tin cá nhân từ trẻ dưới 13 tuổi mà không có sự đồng ý
+                        của phụ huynh</div>
                     <div class="list-item">Các tính năng dành cho trẻ em được thiết kế với mức độ bảo mật cao hơn</div>
                     <div class="list-item">Phụ huynh có quyền kiểm soát hoàn toàn dữ liệu của con em mình</div>
                     <div class="list-item">Không hiển thị quảng cáo hoặc nội dung không phù hợp với trẻ em</div>
 
                     <div class="warning-box">
-                        <p><strong>👨‍👩‍👧‍👦 Dành cho phụ huynh:</strong> Phụ huynh có quyền quản trị trong gia đình có thể kiểm tra và chỉnh sửa thông tin do con trẻ cung cấp.</p>
+                        <p><strong>👨‍👩‍👧‍👦 Dành cho phụ huynh:</strong> Phụ huynh có quyền quản trị trong gia đình
+                            có thể kiểm tra và chỉnh sửa thông tin do con trẻ cung cấp.</p>
                     </div>
                 </div>
             </div>
@@ -601,11 +691,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🔄</span>
-                    <h2 class="section-title">10. Cập nhật Chính sách</h2>
+                    <h2 class="section-title">11. Cập nhật Chính sách</h2>
                 </div>
                 <div class="section-content">
                     <p>Chúng tôi có thể cập nhật chính sách này để:</p>
-                    
+
                     <div class="list-item">Tuân thủ các quy định pháp luật mới</div>
                     <div class="list-item">Phản ánh các thay đổi trong dịch vụ</div>
                     <div class="list-item">Cải thiện việc bảo vệ dữ liệu</div>
@@ -618,7 +708,7 @@
                     <p>Phiên bản cập nhật sẽ có hiệu lực sau 30 ngày thông báo.</p>
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
 
     <footer id="contact">
@@ -645,15 +735,25 @@
             </div>
         </div>
         <div style="margin: 1rem 0;">
-            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Điều khoản dịch vụ</a>
+            <a href="kazoku-terms.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Điều
+                khoản dịch vụ</a>
             <span style="color: rgba(255, 255, 255, 0.5);">|</span>
-            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Chính sách bảo mật</a>
+            <a href="kazoku-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Chính
+                sách bảo mật</a>
             <span style="color: rgba(255, 255, 255, 0.5);">|</span>
-            <a href="mac-index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Công ty chủ quản</a>
+            <a href="mac-index.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Công ty
+                chủ quản</a>
         </div>
         <p>&copy; 2025 Kazoku Family App. Tất cả quyền được bảo lưu.<br>
             <em>"Kết nối yêu thương - Chia sẻ hạnh phúc"</em>
         </p>
     </footer>
 </body>
+
 </html>

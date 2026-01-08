@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,6 +41,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -90,14 +92,49 @@
             animation: fadeIn 0.6s ease-out forwards;
         }
 
-        .section:nth-child(1) { animation-delay: 0.1s; }
-        .section:nth-child(2) { animation-delay: 0.2s; }
-        .section:nth-child(3) { animation-delay: 0.3s; }
-        .section:nth-child(4) { animation-delay: 0.4s; }
-        .section:nth-child(5) { animation-delay: 0.5s; }
-        .section:nth-child(6) { animation-delay: 0.6s; }
-        .section:nth-child(7) { animation-delay: 0.7s; }
-        .section:nth-child(8) { animation-delay: 0.8s; }
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .section:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        .section:nth-child(10) {
+            animation-delay: 1.0s;
+        }
+
+        .section:nth-child(11) {
+            animation-delay: 1.1s;
+        }
 
         @keyframes fadeIn {
             to {
@@ -259,15 +296,15 @@
                 margin: 10px;
                 border-radius: 15px;
             }
-            
+
             .header {
                 padding: 30px 20px;
             }
-            
+
             .content {
                 padding: 30px 20px;
             }
-            
+
             .app-logo {
                 font-size: 2em;
             }
@@ -276,7 +313,8 @@
                 font-size: 0.85em;
             }
 
-            .data-table th, .data-table td {
+            .data-table th,
+            .data-table td {
                 padding: 10px 8px;
             }
         }
@@ -287,26 +325,26 @@
             text-align: center;
             padding: 2rem 0;
         }
-        
+
         .footer-content {
             margin-bottom: 1rem;
             line-height: 1.5;
         }
-        
+
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin: 1rem 0;
         }
-        
+
         .social-links a {
             color: white;
             font-size: 1.5rem;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
+
         .social-links a:hover {
             color: #667eea;
         }
@@ -328,6 +366,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -347,7 +386,7 @@
                 </div>
                 <div class="section-content">
                     <p>Kazoku致力于保护您的隐私和个人数据。本政策解释了我们在使用Kazoku家庭管理应用时如何收集、使用、存储和保护您的信息。</p>
-                    
+
                     <div class="highlight-box">
                         <p><strong>🛡️ 我们的承诺：</strong>您的家庭数据是您最宝贵的资产。我们采用最高的安全措施来确保您的信息始终安全和私密。</p>
                     </div>
@@ -386,6 +425,11 @@
                             <td>设备类型、操作系统、设备ID</td>
                             <td>优化性能</td>
                         </tr>
+                        <tr>
+                            <td><strong>健康数据</strong></td>
+                            <td>步数、距离、卡路里、睡眠分析</td>
+                            <td>跟踪身体进度并提供健康信息</td>
+                        </tr>
                     </table>
 
                     <div class="warning-box">
@@ -396,12 +440,41 @@
 
             <div class="section">
                 <div class="icon-title">
+                    <span class="section-icon">❤️</span>
+                    <h2 class="section-title">3. 健康数据隐私 (HealthKit 和 Health Connect)</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku 与 Apple HealthKit 和 Google Health Connect 集成，以提供健康跟踪功能。</p>
+
+                    <div class="list-item">
+                        <strong>数据收集：</strong> 我们只读取您明确授权的数据（步数、睡眠分析等），以便在应用中显示。
+                    </div>
+                    <div class="list-item">
+                        <strong>数据使用：</strong> 您的健康数据仅用于计算家庭健康统计数据和可视化您的进度。
+                    </div>
+
+                    <div class="list-item">
+                        <strong>无广告：</strong> 我们绝不将您的健康数据用于广告、营销或数据挖掘目的。
+                    </div>
+
+                    <div class="list-item">
+                        <strong>无第三方共享：</strong> 除提供服务所需的存储服务（Google Cloud）外，我们不会与任何第三方共享健康数据。
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🔒 用户控制：</strong> 您可以在设备设置（隐私 > 健康）中随时授予或撤销健康数据访问权限。</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
                     <span class="section-icon">🎯</span>
-                    <h2 class="section-title">3. 我们如何使用信息</h2>
+                    <h2 class="section-title">4. 我们如何使用信息</h2>
                 </div>
                 <div class="section-content">
                     <p>您的数据用于：</p>
-                    
+
                     <div class="list-item">提供和维护应用功能</div>
                     <div class="list-item">跨设备同步数据</div>
                     <div class="list-item">根据请求发送通知和提醒</div>
@@ -420,11 +493,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🛡️</span>
-                    <h2 class="section-title">4. 数据安全</h2>
+                    <h2 class="section-title">5. 数据安全</h2>
                 </div>
                 <div class="section-content">
                     <p>我们采用多层安全措施来保护您的数据：</p>
-                    
+
                     <div class="list-item">
                         <strong>数据加密：</strong>
                         <div class="sub-list-item">存储数据使用AES-256加密</div>
@@ -451,11 +524,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🤝</span>
-                    <h2 class="section-title">5. 信息共享</h2>
+                    <h2 class="section-title">6. 信息共享</h2>
                 </div>
                 <div class="section-content">
                     <p>我们仅在以下情况下共享信息：</p>
-                    
+
                     <div class="list-item">
                         <strong>家庭内部：</strong>根据您配置的隐私设置
                     </div>
@@ -480,11 +553,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">⚙️</span>
-                    <h2 class="section-title">6. 您的权利</h2>
+                    <h2 class="section-title">7. 您的权利</h2>
                 </div>
                 <div class="section-content">
                     <p>您对个人数据拥有完全控制权：</p>
-                    
+
                     <div class="list-item">
                         <strong>访问：</strong>查看我们存储的关于您的所有数据
                     </div>
@@ -518,11 +591,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🍪</span>
-                    <h2 class="section-title">7. 跟踪技术</h2>
+                    <h2 class="section-title">8. 跟踪技术</h2>
                 </div>
                 <div class="section-content">
                     <p>Kazoku使用以下技术来改善体验：</p>
-                    
+
                     <table class="data-table">
                         <tr>
                             <th>类型</th>
@@ -556,7 +629,7 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">📄</span>
-                    <h2 class="section-title">8. 数据存储和删除</h2>
+                    <h2 class="section-title">9. 数据存储和删除</h2>
                 </div>
                 <div class="section-content">
                     <div class="list-item">
@@ -582,11 +655,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">👶</span>
-                    <h2 class="section-title">9. 儿童保护</h2>
+                    <h2 class="section-title">10. 儿童保护</h2>
                 </div>
                 <div class="section-content">
                     <p>Kazoku特别关注保护儿童的信息：</p>
-                    
+
                     <div class="list-item">未经父母同意，不收集13岁以下儿童的个人信息</div>
                     <div class="list-item">儿童功能设计具有更高的安全级别</div>
                     <div class="list-item">父母对孩子的数据拥有完全控制权</div>
@@ -601,11 +674,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🔄</span>
-                    <h2 class="section-title">10. 政策更新</h2>
+                    <h2 class="section-title">11. 政策更新</h2>
                 </div>
                 <div class="section-content">
                     <p>我们可能会更新此政策以：</p>
-                    
+
                     <div class="list-item">遵守新的法律法规</div>
                     <div class="list-item">反映服务的变化</div>
                     <div class="list-item">改善数据保护</div>
@@ -618,7 +691,7 @@
                     <p>更新版本将在通知后30天生效。</p>
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
 
     <footer id="contact">
@@ -645,15 +718,22 @@
             </div>
         </div>
         <div style="margin: 1rem 0;">
-            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">服务条款</a>
+            <a href="kazoku-terms.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">服务条款</a>
             <span style="color: rgba(255, 255, 255, 0.5);">|</span>
-            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">隐私政策</a>
+            <a href="kazoku-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">隐私政策</a>
             <span style="color: rgba(255, 255, 255, 0.5);">|</span>
-            <a href="mac-index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">管理公司</a>
+            <a href="mac-index.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">管理公司</a>
         </div>
         <p>&copy; 2025 Kazoku家庭应用。保留所有权利。<br>
             <em>"连接爱 - 分享幸福"</em>
         </p>
     </footer>
 </body>
+
 </html>

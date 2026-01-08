@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,6 +41,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -90,14 +92,49 @@
             animation: fadeIn 0.6s ease-out forwards;
         }
 
-        .section:nth-child(1) { animation-delay: 0.1s; }
-        .section:nth-child(2) { animation-delay: 0.2s; }
-        .section:nth-child(3) { animation-delay: 0.3s; }
-        .section:nth-child(4) { animation-delay: 0.4s; }
-        .section:nth-child(5) { animation-delay: 0.5s; }
-        .section:nth-child(6) { animation-delay: 0.6s; }
-        .section:nth-child(7) { animation-delay: 0.7s; }
-        .section:nth-child(8) { animation-delay: 0.8s; }
+        .section:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .section:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .section:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .section:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .section:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .section:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .section:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .section:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .section:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        .section:nth-child(10) {
+            animation-delay: 1.0s;
+        }
+
+        .section:nth-child(11) {
+            animation-delay: 1.1s;
+        }
 
         @keyframes fadeIn {
             to {
@@ -259,15 +296,15 @@
                 margin: 10px;
                 border-radius: 15px;
             }
-            
+
             .header {
                 padding: 30px 20px;
             }
-            
+
             .content {
                 padding: 30px 20px;
             }
-            
+
             .app-logo {
                 font-size: 2em;
             }
@@ -276,7 +313,8 @@
                 font-size: 0.85em;
             }
 
-            .data-table th, .data-table td {
+            .data-table th,
+            .data-table td {
                 padding: 10px 8px;
             }
         }
@@ -287,26 +325,26 @@
             text-align: center;
             padding: 2rem 0;
         }
-        
+
         .footer-content {
             margin-bottom: 1rem;
             line-height: 1.5;
         }
-        
+
         .social-links {
             display: flex;
             justify-content: center;
             gap: 1rem;
             margin: 1rem 0;
         }
-        
+
         .social-links a {
             color: white;
             font-size: 1.5rem;
             text-decoration: none;
             transition: color 0.3s ease;
         }
-        
+
         .social-links a:hover {
             color: #667eea;
         }
@@ -328,6 +366,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <div class="header">
@@ -346,10 +385,14 @@
                     <h2 class="section-title">1. Introdução</h2>
                 </div>
                 <div class="section-content">
-                    <p>O Kazoku está comprometido em proteger sua privacidade e dados pessoais. Esta política explica como coletamos, usamos, armazenamos e protegemos suas informações ao usar o aplicativo de gestão familiar Kazoku.</p>
-                    
+                    <p>O Kazoku está comprometido em proteger sua privacidade e dados pessoais. Esta política explica
+                        como coletamos, usamos, armazenamos e protegemos suas informações ao usar o aplicativo de gestão
+                        familiar Kazoku.</p>
+
                     <div class="highlight-box">
-                        <p><strong>🛡️ Nosso Compromisso:</strong> Seus dados familiares são seu bem mais valioso. Aplicamos as mais altas medidas de segurança para garantir que suas informações estejam sempre seguras e privadas.</p>
+                        <p><strong>🛡️ Nosso Compromisso:</strong> Seus dados familiares são seu bem mais valioso.
+                            Aplicamos as mais altas medidas de segurança para garantir que suas informações estejam
+                            sempre seguras e privadas.</p>
                     </div>
                 </div>
             </div>
@@ -386,10 +429,52 @@
                             <td>Tipo de dispositivo, sistema operacional, ID do dispositivo</td>
                             <td>Otimizar desempenho</td>
                         </tr>
+                        <tr>
+                            <td><strong>Dados de Saúde</strong></td>
+                            <td>Passos, distância, calorias, análise do sono</td>
+                            <td>Acompanhar o progresso físico e fornecer informações de saúde</td>
+                        </tr>
                     </table>
 
                     <div class="warning-box">
-                        <p><strong>⚠️ Nota:</strong> Coletamos apenas informações necessárias para fornecer o serviço. Você pode recusar alguns tipos de dados, mas isso pode afetar sua experiência.</p>
+                        <p><strong>⚠️ Nota:</strong> Coletamos apenas informações necessárias para fornecer o serviço.
+                            Você pode recusar alguns tipos de dados, mas isso pode afetar sua experiência.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="icon-title">
+                    <span class="section-icon">❤️</span>
+                    <h2 class="section-title">3. Privacidade de Dados de Saúde (HealthKit & Health Connect)</h2>
+                </div>
+                <div class="section-content">
+                    <p>Kazoku integra-se com Apple HealthKit e Google Health Connect para fornecer recursos de
+                        rastreamento de saúde.</p>
+
+                    <div class="list-item">
+                        <strong>Coleta de dados:</strong> Lemos apenas os dados que você autoriza explicitamente
+                        (passos, análise do sono, etc.) para exibir no aplicativo.
+                    </div>
+                    <div class="list-item">
+                        <strong>Uso de dados:</strong> Seus dados de saúde são usados APENAS para calcular estatísticas
+                        de saúde da família e visualizar seu progresso.
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Zero publicidade:</strong> NUNCA usamos seus dados de saúde para fins de publicidade,
+                        marketing ou mineração de dados.
+                    </div>
+
+                    <div class="list-item">
+                        <strong>Sem compartilhamento com terceiros:</strong> Não compartilhamos seus dados de saúde com
+                        terceiros, exceto os serviços de armazenamento (Google Cloud) necessários para fornecer o
+                        serviço.
+                    </div>
+
+                    <div class="highlight-box">
+                        <p><strong>🔒 Controle do usuário:</strong> Você pode conceder ou revogar o acesso aos dados de
+                            saúde a qualquer momento nas configurações do seu dispositivo (Privacidade > Saúde).</p>
                     </div>
                 </div>
             </div>
@@ -397,11 +482,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🎯</span>
-                    <h2 class="section-title">3. Como Usamos as Informações</h2>
+                    <h2 class="section-title">4. Como Usamos as Informações</h2>
                 </div>
                 <div class="section-content">
                     <p>Seus dados são usados para:</p>
-                    
+
                     <div class="list-item">Fornecer e manter recursos do aplicativo</div>
                     <div class="list-item">Sincronizar dados entre dispositivos</div>
                     <div class="list-item">Enviar notificações e lembretes conforme solicitado</div>
@@ -420,11 +505,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🛡️</span>
-                    <h2 class="section-title">4. Segurança de Dados</h2>
+                    <h2 class="section-title">5. Segurança de Dados</h2>
                 </div>
                 <div class="section-content">
                     <p>Aplicamos múltiplas camadas de segurança para proteger seus dados:</p>
-                    
+
                     <div class="list-item">
                         <strong>Criptografia de Dados:</strong>
                         <div class="sub-list-item">Criptografia AES-256 para dados armazenados</div>
@@ -451,13 +536,14 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🤝</span>
-                    <h2 class="section-title">5. Compartilhamento de Informações</h2>
+                    <h2 class="section-title">6. Compartilhamento de Informações</h2>
                 </div>
                 <div class="section-content">
                     <p>Compartilhamos informações apenas nos seguintes casos:</p>
-                    
+
                     <div class="list-item">
-                        <strong>Dentro da família:</strong> De acordo com as configurações de privacidade que você configura
+                        <strong>Dentro da família:</strong> De acordo com as configurações de privacidade que você
+                        configura
                     </div>
 
                     <div class="list-item">
@@ -472,7 +558,8 @@
                     </div>
 
                     <div class="highlight-box">
-                        <p><strong>🔒 Garantia:</strong> Todos os nossos parceiros devem cumprir altos padrões de segurança e podem acessar apenas dados necessários para fornecer o serviço.</p>
+                        <p><strong>🔒 Garantia:</strong> Todos os nossos parceiros devem cumprir altos padrões de
+                            segurança e podem acessar apenas dados necessários para fornecer o serviço.</p>
                     </div>
                 </div>
             </div>
@@ -480,11 +567,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">⚙️</span>
-                    <h2 class="section-title">6. Seus Direitos</h2>
+                    <h2 class="section-title">7. Seus Direitos</h2>
                 </div>
                 <div class="section-content">
                     <p>Você tem controle total sobre seus dados pessoais:</p>
-                    
+
                     <div class="list-item">
                         <strong>Acesso:</strong> Visualizar todos os dados que armazenamos sobre você
                     </div>
@@ -510,7 +597,8 @@
                     </div>
 
                     <div class="warning-box">
-                        <p><strong>📱 Como fazer: Configure as configurações de compartilhamento no aplicativo.</strong></p>
+                        <p><strong>📱 Como fazer: Configure as configurações de compartilhamento no aplicativo.</strong>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -518,11 +606,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🍪</span>
-                    <h2 class="section-title">7. Tecnologias de Rastreamento</h2>
+                    <h2 class="section-title">8. Tecnologias de Rastreamento</h2>
                 </div>
                 <div class="section-content">
                     <p>O Kazoku usa as seguintes tecnologias para melhorar a experiência:</p>
-                    
+
                     <table class="data-table">
                         <tr>
                             <th>Tipo</th>
@@ -556,7 +644,7 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🔄</span>
-                    <h2 class="section-title">8. Armazenamento e Exclusão de Dados</h2>
+                    <h2 class="section-title">9. Armazenamento e Exclusão de Dados</h2>
                 </div>
                 <div class="section-content">
                     <div class="list-item">
@@ -574,7 +662,8 @@
                     </div>
 
                     <div class="highlight-box">
-                        <p><strong>🗑️ Exclusão de conta:</strong> Quando você excluir sua conta, excluiremos todos os dados pessoais em até 30 dias, exceto informações necessárias para fins legais.</p>
+                        <p><strong>🗑️ Exclusão de conta:</strong> Quando você excluir sua conta, excluiremos todos os
+                            dados pessoais em até 30 dias, exceto informações necessárias para fins legais.</p>
                     </div>
                 </div>
             </div>
@@ -582,18 +671,21 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">👶</span>
-                    <h2 class="section-title">9. Proteção de Crianças</h2>
+                    <h2 class="section-title">10. Proteção de Crianças</h2>
                 </div>
                 <div class="section-content">
                     <p>O Kazoku presta atenção especial à proteção das informações das crianças:</p>
-                    
-                    <div class="list-item">Não coletamos informações pessoais de crianças menores de 13 anos sem consentimento dos pais</div>
-                    <div class="list-item">Recursos para crianças são projetados com níveis de segurança mais altos</div>
+
+                    <div class="list-item">Não coletamos informações pessoais de crianças menores de 13 anos sem
+                        consentimento dos pais</div>
+                    <div class="list-item">Recursos para crianças são projetados com níveis de segurança mais altos
+                    </div>
                     <div class="list-item">Os pais têm controle total sobre os dados de seus filhos</div>
                     <div class="list-item">Não exibimos anúncios ou conteúdo inadequado para crianças</div>
 
                     <div class="warning-box">
-                        <p><strong>👨‍👩‍👧‍👦 Para Pais:</strong> Supervisores familiares podem revisar e editar as informações fornecidas pelas crianças.</p>
+                        <p><strong>👨‍👩‍👧‍👦 Para Pais:</strong> Supervisores familiares podem revisar e editar as
+                            informações fornecidas pelas crianças.</p>
                     </div>
                 </div>
             </div>
@@ -601,11 +693,11 @@
             <div class="section">
                 <div class="icon-title">
                     <span class="section-icon">🔄</span>
-                    <h2 class="section-title">10. Atualizações da Política</h2>
+                    <h2 class="section-title">11. Atualizações da Política</h2>
                 </div>
                 <div class="section-content">
                     <p>Podemos atualizar esta política para:</p>
-                    
+
                     <div class="list-item">Cumprir novas regulamentações legais</div>
                     <div class="list-item">Refletir mudanças nos serviços</div>
                     <div class="list-item">Melhorar a proteção de dados</div>
@@ -618,7 +710,7 @@
                     <p>A versão atualizada entrará em vigor 30 dias após a notificação.</p>
                 </div>
             </div>
-        </div>        
+        </div>
     </div>
 
     <footer id="contact">
@@ -645,15 +737,25 @@
             </div>
         </div>
         <div style="margin: 1rem 0;">
-            <a href="kazoku-terms.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Termos de Serviço</a>
+            <a href="kazoku-terms.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Termos de
+                Serviço</a>
             <span style="color: rgba(255, 255, 255, 0.5);">|</span>
-            <a href="kazoku-privacy.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Política de Privacidade</a>
+            <a href="kazoku-privacy.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Política
+                de Privacidade</a>
             <span style="color: rgba(255, 255, 255, 0.5);">|</span>
-            <a href="mac-index.html" style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Empresa Gestora</a>
+            <a href="mac-index.html"
+                style="color: rgba(255, 255, 255, 0.8); text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;"
+                onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255, 255, 255, 0.8)'">Empresa
+                Gestora</a>
         </div>
         <p>&copy; 2025 Aplicativo Familiar Kazoku. Todos os direitos reservados.<br>
             <em>"Conectando Amor - Compartilhando Felicidade"</em>
         </p>
     </footer>
 </body>
+
 </html>

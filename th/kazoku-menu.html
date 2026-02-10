@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kazoku App - ผู้ช่วยอัจฉริยะสำหรับครอบครัว</title>
@@ -315,6 +317,51 @@
             font-size: 0.9rem;
         }
 
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            background: #000;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            background: #000;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        
+            background: rgba(0, 0, 0, 0.6);
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
         .tutorial-section {
             background: rgba(255, 255, 255, 0.95);
             border-radius: 25px;
@@ -494,7 +541,7 @@
 
         @keyframes slideInDown {
             from {
-                opacity: 0;
+                opacity: 1;
                 transform: translateY(-50px);
             }
             to {
@@ -505,7 +552,7 @@
 
         @keyframes fadeInUp {
             from {
-                opacity: 0;
+                opacity: 1;
                 transform: translateY(30px);
             }
             to {
@@ -516,7 +563,7 @@
 
         @keyframes slideInLeft {
             from {
-                opacity: 0;
+                opacity: 1;
                 transform: translateX(-50px);
             }
             to {
@@ -638,6 +685,45 @@
         @keyframes float {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
             50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .youtube-overlay {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 0, 0, 0.85);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 10;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .youtube-overlay:hover {
+            background: #ff0000;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+        }
+
+        .youtube-overlay i {
+            font-size: 1.1rem;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -816,19 +902,24 @@
                 <h2>🎬 สัมผัสประสบการณ์ Kazoku</h2>
                 <p>ดูวิดีโอสาธิตเพื่อเข้าใจการทำงานของ Kazoku ได้ดีขึ้น</p>
             </div>
-            
             <div class="video-container">
-                <div class="video-placeholder">
-                    <div class="video-placeholder-content">
-                        <div class="play-button" onclick="playVideo()">
-                            <div class="play-icon">▶️</div>
-                        </div>
-                        <h3>แอป Kazoku</h3>
-                        <p>ค้นพบฟีเจอร์หลักของ Kazoku ใน 3 นาที</p>
-                        <div class="video-duration">⏱️ 3:24</div>
-                    </div>
+                <div class="video-wrapper">
+                    <video 
+                        id="player" controls muted 
+                        width="100%" 
+                        height="100%" loop 
+                        playsinline 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);"
+                    >
+                        <source src="../images/kazoku.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <a href="https://www.youtube.com/watch?v=2ePyO2U63sk" target="_blank" class="youtube-overlay" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i>
+                        <span>ดูบน YouTube</span>
+                    </a>
                 </div>
-            </div>            
+            </div>
         </div>
 
         <div class="tutorial-section">
@@ -934,9 +1025,55 @@
             });
         });
 
-        function playVideo() {
-            alert('🎬 วิดีโอสาธิตจะถูกเล่น!\n\nในแอปจริง นี่จะเป็นวิดีโอแนะนำ Kazoku Family App พร้อมสาธิตฟีเจอร์ครบถ้วน');
+        
+            
+
+        
+            });
+        },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
         }
-    </script>
+
+        function onPlayerReady(event) {
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        player.
+                    } else {
+                        player.pauseVideo();
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            videoObserver.observe(document.querySelector('.video-container'));
+        }
+    
+        
+        
+                
+        // Video Scroll Observer Logic
+        const player = document.getElementById('player');
+        const videoContainer = document.querySelector('.video-container');
+        
+        if (player && videoContainer) {
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        player.play().catch(e => {
+                            console.log("Auto-play blocked, waiting for interaction:", e);
+                        });
+                    } else {
+                        player.pause();
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            videoObserver.observe(videoContainer);
+            player.muted = true;
+        }
+</script>
 </body>
 </html>

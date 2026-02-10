@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Application Kazoku - Assistant Intelligent pour les Familles</title>
@@ -285,7 +287,7 @@
 
         @keyframes slideInDown {
             from {
-                opacity: 0;
+                opacity: 1;
                 transform: translateY(-50px);
             }
             to {
@@ -296,7 +298,7 @@
 
         @keyframes fadeInUp {
             from {
-                opacity: 0;
+                opacity: 1;
                 transform: translateY(30px);
             }
             to {
@@ -307,7 +309,7 @@
 
         @keyframes slideInLeft {
             from {
-                opacity: 0;
+                opacity: 1;
                 transform: translateX(-50px);
             }
             to {
@@ -453,11 +455,7 @@
                 margin: 0 auto 25px;
             }
 
-            .newsletter-form {
-                flex-direction: column;
-                max-width: 250px;
-                margin: 0 auto;
-            }
+            
         }
 
         .floating-elements {
@@ -518,7 +516,7 @@
         @keyframes ripple-animation {
             to {
                 transform: scale(4);
-                opacity: 0;
+                opacity: 1;
             }
         }
 
@@ -627,6 +625,51 @@
         }
 
         .video-duration {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 5px 12px;
+            border-radius: 15px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            background: #000;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            background: #000;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        
             background: rgba(0, 0, 0, 0.6);
             padding: 5px 12px;
             border-radius: 15px;
@@ -869,7 +912,7 @@
         }
 
         .fade-in {
-            opacity: 0;
+            opacity: 1;
             transform: translateY(30px);
             transition: opacity 0.6s ease, transform 0.6s ease;
         }
@@ -877,6 +920,45 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        .youtube-overlay {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 0, 0, 0.85);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 10;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .youtube-overlay:hover {
+            background: #ff0000;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255, 0, 0, 0.4);
+        }
+
+        .youtube-overlay i {
+            font-size: 1.1rem;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     </style>
 </head>
@@ -1055,19 +1137,24 @@
                 <h2>🎬 Découvrez Kazoku</h2>
                 <p>Regardez la vidéo de démonstration pour mieux comprendre comment fonctionne Kazoku</p>
             </div>
-            
             <div class="video-container">
-                <div class="video-placeholder">
-                    <div class="video-placeholder-content">
-                        <div class="play-button" onclick="playVideo()">
-                            <div class="play-icon">▶️</div>
-                        </div>
-                        <h3>Application Kazoku</h3>
-                        <p>Découvrez les principales fonctionnalités de Kazoku en 3 minutes</p>
-                        <div class="video-duration">⏱️ 3:24</div>
-                    </div>
+                <div class="video-wrapper">
+                    <video 
+                        id="player" controls muted 
+                        width="100%" 
+                        height="100%" loop 
+                        playsinline 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);"
+                    >
+                        <source src="../images/kazoku.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <a href="https://www.youtube.com/watch?v=2ePyO2U63sk" target="_blank" class="youtube-overlay" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i>
+                        <span>Regarder sur YouTube</span>
+                    </a>
                 </div>
-            </div>            
+            </div>
         </div>
 
         <div class="tutorial-section">
@@ -1262,10 +1349,6 @@
             observer.observe(el);
         });
 
-        function playVideo() {
-            alert('🎬 La vidéo de démonstration sera diffusée !\n\nEn réalité, ce sera une vidéo de présentation de Kazoku Family App avec une démo complète de toutes les fonctionnalités.');
-        }
-
         function showSupport() {
             alert('💬 Contacter le support !\n\n📧 E-mail : support@kazoku.app\n📞 Hotline : 1900-KAZOKU\n💬 Chat en direct : 24/7 sur le site web');
         }
@@ -1274,10 +1357,7 @@
             alert('📖 Documentation !\n\nVous serez redirigé vers la page de documentation détaillée avec :\n• Guide étape par étape\n• Tutoriels vidéo\n• FAQ courantes\n• Trucs et astuces');
         }
 
-        function subscribeNewsletter() {
-            const email = document.querySelector('.newsletter-form input').value;
-            if (email) {
-                alert(`✅ Inscription réussie !\n\nE-mail : ${email}\n\nVous recevrez des notifications sur les nouvelles fonctionnalités et mises à jour de Kazoku.`);
+        \n\nVous recevrez des notifications sur les nouvelles fonctionnalités et mises à jour de Kazoku.`);
                 document.querySelector('.newsletter-form input').value = '';
             } else {
                 alert('⚠️ Veuillez entrer une adresse e-mail !');
@@ -1399,7 +1479,7 @@
             setTimeout(() => {
                 playButton.innerHTML = originalContent;
                 playButton.style.animation = 'none';
-                playVideo();
+                
             }, 1500);
         });
 
@@ -1411,6 +1491,30 @@
             }
         `;
         document.head.appendChild(spinStyle);
-    </script>
+    
+        
+        
+                
+        // Video Scroll Observer Logic
+        const player = document.getElementById('player');
+        const videoContainer = document.querySelector('.video-container');
+        
+        if (player && videoContainer) {
+            const videoObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        player.play().catch(e => {
+                            console.log("Auto-play blocked, waiting for interaction:", e);
+                        });
+                    } else {
+                        player.pause();
+                    }
+                });
+            }, { threshold: 0.25 });
+
+            videoObserver.observe(videoContainer);
+            player.muted = true;
+        }
+</script>
 </body>
 </html>

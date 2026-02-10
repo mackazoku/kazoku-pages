@@ -1280,6 +1280,79 @@
         .flag-icon {
             font-size: 1.2em;
         }
+        /* Floating QR Overlay */
+        .floating-qr-overlay {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .floating-qr-overlay.hidden {
+            opacity: 0;
+            transform: scale(0.8) translateY(20px);
+            pointer-events: none;
+        }
+
+        .floating-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .floating-item:hover {
+            transform: scale(1.05);
+        }
+
+        .floating-qr-small {
+            width: 50px;
+            height: 50px;
+            background: white;
+            padding: 3px;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .floating-qr-small img {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .floating-icon {
+            color: white;
+            font-size: 12px;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 640px) {
+            .floating-qr-overlay {
+                bottom: 15px;
+                right: 15px;
+                padding: 8px;
+                gap: 8px;
+            }
+            .floating-qr-small {
+                width: 42px;
+                height: 42px;
+            }
+        }
     </style>
 </head>
 
@@ -1293,10 +1366,31 @@
             </div>
             <div class="select-items" id="langList">
                 <div onclick="updateLanguage('en')">
-                    <span class="flag-icon">🇬🇧</span> English
+                    <span class="flag-icon">🇺🇸</span> English
                 </div>
                 <div onclick="updateLanguage('ja')">
                     <span class="flag-icon">🇯🇵</span> 日本語
+                </div>
+                <div onclick="updateLanguage('vi')">
+                    <span class="flag-icon">🇻🇳</span> Tiếng Việt
+                </div>
+                <div onclick="updateLanguage('es')">
+                    <span class="flag-icon">🇪🇸</span> Español
+                </div>
+                <div onclick="updateLanguage('fr')">
+                    <span class="flag-icon">🇫🇷</span> Français
+                </div>
+                <div onclick="updateLanguage('ko')">
+                    <span class="flag-icon">🇰🇷</span> 한국어
+                </div>
+                <div onclick="updateLanguage('pt')">
+                    <span class="flag-icon">🇵🇹</span> Português
+                </div>
+                <div onclick="updateLanguage('th')">
+                    <span class="flag-icon">🇹🇭</span> ภาษาไทย
+                </div>
+                <div onclick="updateLanguage('zh')">
+                    <span class="flag-icon">🇨🇳</span> 中文
                 </div>
             </div>
         </div>
@@ -1829,8 +1923,7 @@
                         </div>
                     </a>
                     <div class="qr-code">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://apps.apple.com/app/kazoku"
-                            alt="App Store QR Code">
+                        <a href="https://apps.apple.com/jp/app/kazoku-the-family-assistant/id6670735001"><img src="../images/qrcode_ios.svg" alt="App Store QR Code"></a>
                     </div>
                 </div>
 
@@ -1844,8 +1937,7 @@
                         </div>
                     </a>
                     <div class="qr-code">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://play.google.com/store/apps/details?id=com.kazoku"
-                            alt="Google Play QR Code">
+                        <a href="https://play.google.com/store/apps/details?id=com.mac.kazoku"><img src="../images/qrcode_android.svg" alt="Google Play QR Code"></a>
                     </div>
                 </div>
             </div>
@@ -1907,6 +1999,22 @@
             <em>"Connecting Love - Sharing Happiness"</em>
         </p>
     </footer>
+
+    <!-- Floating QR Overlay -->
+    <div class="floating-qr-overlay" id="floatingOverlay">
+        <a href="https://apps.apple.com/jp/app/kazoku-the-family-assistant/id6670735001" class="floating-item">
+            <div class="floating-qr-small">
+                <img src="../images/qrcode_ios.svg" alt="iOS QR">
+            </div>
+            <i class="fab fa-apple floating-icon"></i>
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.mac.kazoku" class="floating-item">
+            <div class="floating-qr-small">
+                <img src="../images/qrcode_android.svg" alt="Android QR">
+            </div>
+            <i class="fab fa-android floating-icon"></i>
+        </a>
+    </div>
 
     <script>
         // Main tagline and subtitle translations
@@ -2279,45 +2387,34 @@
             }
         });
 
-        // Dropdown Logic
-        function toggleDropdown() {
-            const list = document.getElementById("langList");
-            const selected = document.getElementById("currentLangDisplay");
-            if (list && selected) {
-                list.classList.toggle("show");
-                selected.classList.toggle("select-arrow-active");
-            }
-            if (event) event.stopPropagation();
-        }
+        // Floating Overlay Visibility
+        function initFloatingOverlay() {
+            const overlay = document.getElementById('floatingOverlay');
+            const downloadSection = document.querySelector('.download-section');
+            
+            if (!overlay || !downloadSection) return;
 
-        function updateLanguage(langCode) {
-            if (langCode === 'ja') {
-                window.location.href = '../index.html';
-            } else if (langCode === 'en') {
-                window.location.reload();
-            } else {
-                window.location.href = `../${langCode}/kazoku-menu.html`;
-            }
-        }
-
-        // Close dropdown when clicking outside
-        window.addEventListener('click', function (event) {
-            if (!event.target.matches('.select-selected') && !event.target.closest('.select-selected')) {
-                const dropdowns = document.getElementsByClassName("select-items");
-                const selector = document.querySelector(".select-selected");
-
-                for (let i = 0; i < dropdowns.length; i++) {
-                    const openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        overlay.classList.add('hidden');
+                    } else {
+                        overlay.classList.remove('hidden');
                     }
-                }
+                });
+            }, {
+                threshold: 0.1
+            });
 
-                if (selector && selector.classList.contains('select-arrow-active')) {
-                    selector.classList.remove('select-arrow-active');
-                }
-            }
-        });
+            observer.observe(downloadSection);
+        }
+
+        // Initialize when DOM ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initFloatingOverlay);
+        } else {
+            initFloatingOverlay();
+        }
     </script>
     <script src="js/network-background.js"></script>
 </body>
